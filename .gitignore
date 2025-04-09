@@ -1,0 +1,8 @@
+.venv-web3-edu-projects/**
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+build/
+dist/
+.eggs/

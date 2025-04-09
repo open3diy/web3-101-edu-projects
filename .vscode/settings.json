@@ -1,6 +1,7 @@
 {
     "cSpell.language": "en,es-ES",
     "cSpell.words": [
+        "acíclico",
         "autonat",
         "certbot",
         "certonly",
@@ -9,7 +10,10 @@
         "configurarlo",
         "criptoeconomía",
         "criptoeconómica",
+        "deduplicación",
         "descomentar",
+        "deserializarlo",
+        "direccionar",
         "dockremap",
         "enrutando",
         "enrutar",
@@ -23,17 +27,24 @@
         "Kubo",
         "letsencrypt",
         "limitándolo",
+        "Merkle",
+        "mitigables",
         "Monitoreo",
         "nginx",
+        "ofrecerlas",
         "plaintest",
         "programáticamente",
         "resetear",
         "resilencia",
         "segurizado",
+        "serialización",
+        "serializado",
         "setfacl",
         "SPOF",
         "tecnólogos",
         "Tokenización",
+        "Veámoslo",
         "webui"
-    ]
+    ],
+    "cSpell.ignorePaths": ["**/*.py"]
 }

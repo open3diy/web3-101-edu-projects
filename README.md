@@ -10,7 +10,7 @@ Este contenido tiene un enfoque educativo para divulgar el potencial de la Web3.
 
 Web3 representa la evolución de internet hacia un modelo descentralizado basado en tecnologías como blockchain, contratos inteligentes y redes peer-to-peer. Su propósito es devolver a los usuarios el control sobre sus datos y transacciones sin intermediarios centralizados.
 
-Esto tiene aplicaciones en identidades digitales, economías descentralizadas, almacenamiento distribuido y dApps.
+Esto tiene aplicaciones en identidades digitales, economías descentralizadas, almacenamiento distribuido, cadena de suministro, Tokenización del mundo real y dApps.
 
 ## Propósito
 
@@ -26,13 +26,59 @@ Ver la licencia de [open3diy](https://github.com/open3diy/org/blob/main/LICENSE)
 
 El canal de YouTube [Proyectos web3](https://www.youtube.com/@proyectos-web3) tiene una licencia `Creative Commons de YouTube`.
 
-El contenido es académico y completamente libre de propiedad intelectual, lo que significa que puede usarse o difundir libremente.
+El contenido es académico y libre de restricciones de propiedad intelectual, lo que significa que puede usarse o difundirse libremente, pero no puede ser apropiado ni reclamado como propio por ninguna entidad, incluida una empresa.
 
-No se permite el uso comercial del contenido, y cualquier reproducción parcial o completa debe incluir una mención adecuada del canal [Proyectos web3](https://www.youtube.com/@proyectos-web3).
+No se permite el uso comercial del contenido, y cualquier reproducción parcial o completa debe incluir una mención adecuada del canal [Proyectos web3](https://www.youtube.com/@proyectos-web3) o de este repositorio de github.
 
 ## Referencias
 
 Las referencias las podemos encontrar en [la comunidad](https://github.com/open3diy/web3-101/blob/main/COMMUNITY.md).
+
+## Contribuir
+
+### Preparar el entorno local
+
+Es necesario instalar previamente:
+
+* python 3 o superior / entornos virtuales python: <https://docs.python-guide.org/starting/install3/linux/>.
+* Graphviz y PyGraphviz:
+
+  ```bash
+  sudo apt install graphviz libgraphviz-dev
+  ```
+
+* nvm: <https://github.com/nvm-sh/nvm>.
+
+**Entorno virtual python**.
+
+Se creará un entorno virtual de python propio al repositorio, siguiendo los siguientes pasos.
+
+```bash
+python3 -m venv .venv-web3-edu-projects
+```
+
+Al abrir vscode normalmente se activa el entorno virtual, pero si no es el caso, en terminal para activarlo:
+
+```bash
+source .venv-web3-edu-projects/bin/activate
+```
+
+Instalar paquetes necesarios:
+
+```bash
+pip install ipykernel multiformats graphviz networkx matplotlib pydot ipympl pygraphviz
+```
+
+Instalar extensión de vscode `Jupyter`.
+
+### Iniciar vscode
+
+Desde la carpeta del proyecto, abrir terminal y ejecutar:
+
+```bash
+nvm use
+code .
+```
 
 ## Notas adicionales
 
