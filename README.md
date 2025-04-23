@@ -40,11 +40,16 @@ Las referencias las podemos encontrar en [la comunidad](https://github.com/open3
 
 Es necesario instalar previamente:
 
-* python 3 o superior / entornos virtuales python: <https://docs.python-guide.org/starting/install3/linux/>.
+* python / entornos virtuales python.
+
+  ```bash
+  sudo apt install python3 python3-dev python3-venv
+  ```
+
 * Graphviz y PyGraphviz:
 
   ```bash
-  sudo apt install graphviz libgraphviz-dev
+  sudo apt install graphviz libgraphviz-dev pkg-config
   ```
 
 * nvm: <https://github.com/nvm-sh/nvm>.
@@ -66,7 +71,8 @@ source .venv-web3-edu-projects/bin/activate
 Instalar paquetes necesarios:
 
 ```bash
-pip install ipykernel multiformats graphviz networkx matplotlib pydot ipympl pygraphviz
+pip install notebook ipykernel multiformats graphviz networkx matplotlib pydot ipympl pygraphviz pyvis networkx bokeh networkx
+
 ```
 
 Instalar extensión de vscode `Jupyter`.

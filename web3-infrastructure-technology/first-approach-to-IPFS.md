@@ -42,7 +42,7 @@ Puedes comparar IPFS con otros sistemas con propósitos parecidos, tal como indi
 
 ## Descentralizando el contenido con IPLD
 
-<img src="./assets/ipfsInterplanetary.png" alt="proceso" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsInterplanetary.png" alt="proceso" width="300">
 
 IPFS se dice que es interplanetario porque permite distribuir la información a lo largo del planeta con su modelo IPLD (InterPlanetary Linked Data).
 
@@ -86,7 +86,7 @@ el almacenamiento y localización de contenido se basan en nodos distribuidos me
 
 IPFS es una red P2P (peer-to-peer) de nodos diseñada para almacenar, compartir y localizar contenido de forma descentralizada.
 
-no broadcast total, sino estilo IPFS: solicitud -> transferencia
+
 
 > Ejemplo práctica de propagación de contenido
 
