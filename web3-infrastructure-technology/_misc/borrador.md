@@ -8,7 +8,7 @@
 
 pueden ser redes persistentes establecen conexiones por defecto al iniciarse, manteniendo un número fijo de pares conectados, aunque no haya tráfico inmediato,  o  pueden ser más efímeras o específicas, solo conectan al necesitar consultar o propagar.
 
-Normalmente, el programa ejecutado como servicio en el nodo, suele tener pre-configurados una lista de nodos conocidos a los que conectarse en el inicio. Estos nodos suelen estar siempre disponibles, son confiables y normalmente son nodos de los propios fundadores del protocolo. Son conocidos como [nodos bootstrap](https://en.wikipedia.org/wiki/Bootstrapping_node) y gracias a ellos, al ser un punto común de encuentro, un nodo, no solo puede conectarse a estos nodos, también puede descubrir al resto de nodos
+
 
 
 protocolos de enrutamiento como kademlia
@@ -23,16 +23,7 @@ Hay varios modelos, principalmente:
 
 
 
-**Propagación de consultas**.
 
-Proceso de difundir peticiones entre nodos para localizar información, es decir, un nodo recibe la pregunta y si no lo sabe, consulta a sus próximos nodos.
-
-El descubrimiento entre nodos permite conocer a quién consultar, y la propagación usa ese conocimiento para difundir la petición. A veces, la propia consulta sirve para descubrir nodos.
-
-
-En las redes p2p, existen mecanismos de descubrimiento y propagación de consultas y se puede decir que unos se ajustan mejor topología estructuradas y otros desestructuradas.
-
-Como ejemplo, en las estructuradas podemos ver las siguientes
 
 
 
@@ -64,13 +55,5 @@ Mixtas:
 
 Y finalmente, híbridas con elementos centralizados como Napster Model, eDonkey Model, Kazaa Model...
 
-**Como otras características**.
-
-
-Bootstrap nodes son nodos conocidos y preconfigurados en una red P2P que ayudan a los nuevos nodos a descubrir y conectarse con el resto de la red.
-
-
-
-funciona en capa de servicio TCP
 
 
