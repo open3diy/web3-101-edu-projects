@@ -2,7 +2,7 @@
 
 ## Visión inicial de redes de nodos
 
-<img src="assets/netHosts.png" alt="notHosts" width="250">
+<img src="assets/p2p/netHosts.png" alt="notHosts" width="250">
 
 🌐 Como visión inicial, conviene resumir qué son las redes de nodos, para luego centrarnos en las redes P2P, introduciendo sus características principales.
 
@@ -12,11 +12,15 @@ En el contexto de internet, en el estudio de las [redes de computadoras](https:/
 
 Algunos de esos nodos actúan como [host](https://es.wikipedia.org/wiki/Host) o anfitriones de servicios, y cuando es continuado, se denominan [servidores](https://es.wikipedia.org/wiki/Servidor) que suelen estar en [centros de datos](https://es.wikipedia.org/wiki/Centro_de_procesamiento_de_datos).
 
-> 💡O en tu propio hogar o negocio si decides participar en una red descentralizada.
+> 💡O en tu propio hogar o negocio si decides participar en una red lo mas descentralizada posible.
 
-En los servidores se alojan los [servicios](https://es.wikipedia.org/wiki/Daemon_(inform%C3%A1tica)), compuestos por [aplicaciones](https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_inform%C3%A1tica) y [componentes](https://es.wikipedia.org/wiki/Componente_de_software) que implementan funciones específicas para atender peticiones de otros nodos en la red.
+⚠️ Es importante no confundir un host con un dominio. Un host es un dispositivo o servidor que ejecuta servicios y aplicaciones en la red, mientras que un dominio es simplemente un nombre legible (por ejemplo, ejemplo.com) registrado en el DNS para facilitar el acceso. El dominio suele apuntar a la dirección IP del host y, en muchos casos, el acceso se gestiona a través de un proxy inverso que enruta las peticiones al servicio adecuado dentro del host, o incluso a múltiples hosts o clústeres distribuidos.
 
-Servicios, que se pueden ofrecer a clientes, bajo términos de licencia, en lo que se denomina la nube y que pueden seguir un modelo como [SaaS (Software as a Service)](https://es.wikipedia.org/wiki/Software_como_servicio), o puede ser [On Premise](https://en.wikipedia.org/wiki/On-premises_software) si se entrega para la infraestructura cliente.
+En los servidores se alojan los [servicios](https://es.wikipedia.org/wiki/Daemon_(inform%C3%A1tica)), compuestos por [aplicaciones](https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_inform%C3%A1tica) y [componentes](https://es.wikipedia.org/wiki/Componente_de_software) contenidos en [servidores de aplicaciones](https://es.wikipedia.org/wiki/Servidor_de_aplicaciones), que implementan funciones específicas para atender peticiones de otros nodos en la red.
+
+Servidores de aplicaciones, donde pasamos de contenedores pesados y modulares a aplicaciones autocontenidas y, finalmente, a binarios independientes, reduciendo la dependencia del entorno de ejecución.
+
+Y servicios, que se pueden ofrecer a clientes, bajo términos de licencia, en lo que se denomina la nube y que pueden seguir un modelo como [SaaS (Software as a Service)](https://es.wikipedia.org/wiki/Software_como_servicio), o puede ser [On Premise](https://en.wikipedia.org/wiki/On-premises_software) si se entrega para la infraestructura cliente.
 
 Y aplicaciones que pueden seguir una arquitectura de [microservicios](https://es.wikipedia.org/wiki/Arquitectura_de_microservicios), o ser una [SPA](https://en.wikipedia.org/wiki/Single-page_application) siguiendo un patrón [BFF](https://bff-patterns.com/), o una [dApp](https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_descentralizada),o un [gateway](https://es.wikipedia.org/wiki/Puerta_de_enlace), [proxy](https://es.wikipedia.org/wiki/Servidor_proxy), [VPN](https://es.wikipedia.org/wiki/Red_privada_virtual), o [API REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional), servidor [GraphQL](https://es.wikipedia.org/wiki/GraphQL), o un [servicio de mensajería](https://es.wikipedia.org/wiki/Mensajer%C3%ADa_instant%C3%A1nea), sistema de [autorización](https://es.wikipedia.org/wiki/OAuth), [orquestador de tareas](https://es.wikipedia.org/wiki/Motor_de_flujo_de_trabajo), o un nodo P2P, [un indexador de blockchain](https://www.alchemy.com/overviews/blockchain-indexer) o incluso un servicio de almacenamiento distribuido como IPFS, etc...
 
@@ -32,7 +36,7 @@ Protocolos de comunicación que siguen un estilo de interacción que puede ser [
 
 Y donde se siguen [patrones de comunicación de mensajes](https://en.wikipedia.org/wiki/Messaging_pattern), donde podemos ver algunos:
 
-<img src="assets/msgPatterns.png" alt="msgPatterns" width="400">
+<img src="assets/p2p/msgPatterns.png" alt="msgPatterns" width="400">
 
 Y si los describimos son:
 
@@ -48,7 +52,9 @@ Y si los describimos son:
 
 Mensaje que se considera la carga útil ([payload](https://es.wikipedia.org/wiki/Carga_%C3%BAtil_(inform%C3%A1tica))) de la comunicación porque aunque en el [Handshake](https://es.wikipedia.org/wiki/Establecimiento_de_comunicaci%C3%B3n) hay mucha información transmitida, no es el propósito del intercambio.
 
-🫱🏻‍🫲🏽 Además vemos que un conjunto de nodos puede organizarse para ejecutar funciones específicas, como ocurre en la [computación distribuida](https://es.wikipedia.org/wiki/Computaci%C3%B3n_distribuida). Esta puede requerir coordinación central, como en el modelo cliente-servidor, en un clúster o en grid computing, donde los nodos colaboran bajo una gestión común. También existe el [edge computing](https://en.wikipedia.org/wiki/Edge_computing), entre otros, que acerca el procesamiento al nodo cliente para reducir latencia. Y si no requiere coordinación centralizada, el modelo puede ser descentralizado, como en las redes peer-to-peer (P2P).
+🫱🏻‍🫲🏽 Además, un conjunto de nodos puede organizarse para ejecutar funciones específicas, como ocurre en la [computación distribuida](https://es.wikipedia.org/wiki/Computaci%C3%B3n_distribuida). Esta abarca distintos modelos: el modelo cliente-servidor con coordinación central; los [clúster](https://es.wikipedia.org/wiki/Cl%C3%BAster_de_computadoras) —donde los nodos cooperan como un único sistema lógico, usualmente con coordinación central y, en muchos casos, compartiendo estado o almacenamiento.— o en [grid computing](https://es.wikipedia.org/wiki/Computaci%C3%B3n_en_malla), donde varios nodos colaboran de forma coordinada para resolver tareas, pudiendo ser centralizado o descentralizado según el diseño. También existen enfoques como el [edge computing](https://en.wikipedia.org/wiki/Edge_computing), que acerca el procesamiento al nodo cliente para reducir latencia. Finalmente, si no se requiere coordinación centralizada, se puede optar arquitectura de redes peer-to-peer (P2P).
+
+Estos nodos organizados pueden estar tightly coupled (fuertemente acoplados), con memoria o estado compartido y baja latencia; o loosely coupled (débilmente acoplados), siendo más independientes, sin memoria compartida directa, con mayor latencia y mayor heterogeneidad."
 
 Y estos nodos organizados se conectan para comunicarse, siguiendo una estructura o enlace que se conoce como [topología lógica](https://techriders.tajamar.es/topologia-fisica-vs-topologia-logica/) e igualmente tenemos de nuevo, como topología, Cliente-Servidor o Cliente-Servidor Distribuido, en redes centralizadas, P2P (peer-to-peer) en redes descentralizadas o Multicast/broadcast en redes de [difusión](https://es.wikipedia.org/wiki/Difusi%C3%B3n_amplia) o streaming, anillo, etc...
 
@@ -56,13 +62,15 @@ Y estos nodos organizados se conectan para comunicarse, siguiendo una estructura
 
 ## Redes entre pares - peer-to-peer o p2p
 
-En las redes entre pares, [peer-to-peer o p2p](https://academy.bit2me.com/que-es-una-red-p2p/), todos los nodos funcionan como iguales.
+En las redes entre pares, [peer-to-peer o p2p](https://academy.bit2me.com/que-es-una-red-p2p/), todos los nodos funcionan como iguales para el mismo propósito de la red.
 
-> 💡 No debe confundirse una red P2P con una topología de red distribuida. Como su nombre indica, una red P2P implica comunicación entre pares: si un nodo no puede conectarse en igualdad de condiciones con otro, no es una red P2P. Tampoco debe confundirse una red P2P con una red descentralizada; una red entre pares puede tener un nodo coordinador central, y en ese caso no sería descentralizada.
+> 💡 No debe confundirse una red P2P con una red distribuida. Como su nombre indica, una red P2P implica comunicación entre pares: si un nodo no puede conectarse en igualdad de condiciones con otro, no es una red P2P. Tampoco debe confundirse que una red P2P sea inherentemente descentralizada; una red entre pares puede tener un nodo coordinador central, y en ese caso no lo sería del todo.
 
-Suelen funcionar mediante un protocolo, implementado en un programa que se ejecuta como servicio en cada nodo, permitiendo la interacción entre nodos según las reglas definidas.
+Una red p2p elimina el punto único de fallo (SPOF), aumentando la resiliencia y dificultando la censura, ya que no depende de un único nodo o servidor central para funcionar.
 
-Si lo vemos de forma menos abstracta, podemos ver el ejemplo de [BitTorrent](https://es.wikipedia.org/wiki/BitTorrent), donde cada persona instala un programa en su PC, que sería un nodo. Cuando quieres un archivo, tu programa busca otros usuarios (otros nodos) que ya tienen partes de ese archivo para descargar varias partes a la vez.
+Suelen funcionar mediante un protocolo o varios subprotocolos, implementado en un programa que se ejecuta como servicio en cada nodo, permitiendo la interacción entre nodos según las reglas definidas.
+
+Si lo vemos de forma menos abstracta, podemos ver el ejemplo de [BitTorrent](https://es.wikipedia.org/wiki/BitTorrent), donde cada persona instala un programa en su PC, que sería un nodo. Cuando quieres un archivo, tu programa busca otros usuarios (otros nodos) que ya tienen partes de ese archivo para descargar varias partes a la vez, que ese sería el propósito de la red.
 Al mismo tiempo, tú también compartes las partes que ya tienes con otros, sin depender de un servidor central.
 
 Que una red P2P sea entre iguales facilita un diseño descentralizado, lo que la hace muy relevante en la Web3. Sin embargo, en la práctica, Web3 adopta lo que sea necesario para ofrecer la funcionalidad requerida, incluso soluciones centralizadas, ya que debe mantenerse un equilibrio entre descentralización, seguridad y escalabilidad.
@@ -75,11 +83,27 @@ Existen propiedades o cualidades que definen una red p2p y que son elegidas seg�
 
 > Asumiendo que muchos conceptos se conocen sobre todo por blockchain, también los podemos aplicar a redes p2p.
 
+#### Modelo de gobernanza
+
+El modelo de gobernanza en una red p2p o sistema distribuido define cómo se toman las decisiones clave sobre la evolución del protocolo, la validación de transacciones, la actualización de reglas y la resolución de conflictos. La gobernanza determina quién tiene autoridad para proponer, aprobar o rechazar cambios, y cómo se implementan estos cambios en la red. Dependiendo del propósito y del grado de descentralización (que veremos mas adelante), existen diferentes enfoques de gobernanza, cada uno con sus ventajas y limitaciones.
+
+<img src="assets/p2p/governanceModel.png" alt="governanceModel" width="400">
+
+Los principales modelos de gobernanza en sistemas distribuidos o blockchain principalmente son:
+
+* Centralizada, una única entidad o grupo reducido controla las reglas, la validación y las actualizaciones del sistema. Este modelo permite una toma de decisiones rápida y un control claro, pero introduce un punto único de fallo y reduce la descentralización.
+* Federada, varias entidades coordinadas —como redes, organizaciones o nodos seleccionados— comparten la responsabilidad de la gobernanza. Las decisiones se toman de forma conjunta, lo que mejora la resiliencia y la confianza, aunque requiere mecanismos de coordinación y consenso entre las partes. Un caso común de este modelo es el consorcio, donde un grupo de entidades colabora formalmente en la gestión y operación de la red.
+* Descentralizada, todos los participantes de la red pueden influir en las decisiones, normalmente a través de mecanismos de consenso abiertos. Este modelo maximiza la participación y la resistencia a la censura, pero puede hacer más lento el proceso de toma de decisiones y requerir sistemas robustos para evitar ataques o manipulaciones.
+* DAO (Organización Autónoma Descentralizada), la gobernanza se automatiza mediante contratos inteligentes y procesos de votación en la propia red (on-chain), donde los participantes suelen usar tokens para votar sobre propuestas. Este enfoque permite una gestión transparente y programable, eliminando intermediarios y facilitando la evolución del sistema según la voluntad colectiva.
+* Híbrida, combina elementos de los modelos anteriores, por ejemplo, una DAO que delega ciertas decisiones a un comité multisig o a un grupo de expertos, o una red federada que incorpora mecanismos de votación abiertos para algunas cuestiones. Este modelo busca equilibrar eficiencia, seguridad y participación.
+
+La elección del modelo de gobernanza influye directamente en la seguridad, la flexibilidad y la capacidad de adaptación de la red, y suele evolucionar con el tiempo a medida que la red crece y cambian sus necesidades.
+
 #### Grado de descentralización
 
-Define cuánto control está distribuido entre los nodos de la red lo influye en la escalabilidad y facilidad de diseño.
+Define cuánto control está distribuido entre los nodos de la red y si existen jerarquías, lo influye en la escalabilidad y facilidad de diseño.
 
-<img src="assets/levelofDecentralization.png" alt="trustModel" width="300">
+<img src="assets/p2p/levelofDecentralization.png" alt="trustModel" width="350">
 
 Puede ser normalmente:
 
@@ -87,7 +111,7 @@ Puede ser normalmente:
   
   > Se menciona a modo de divulgación, pero no es normal encontrarlo, aun menos en la web3.
 
-* Parcialmente descentralizadas (Partially decentralized), varios nodos controlan la red, pero no todos. Ej: consorcios, supernodos, federaciones.
+* Parcialmente descentralizadas (Partially decentralized), varios nodos controlan la red, pero no todos. Ej: consorcios (como veremos en [modelo de autorización](#modelo-de-autorización)), supernodos (como detallaremos en [clases de nodos](#clasificación-por-capacidad)), federaciones (del [modelo de gobernanza](#modelo-de-gobernanza)).
 * Totalmente descentralizadas (Fully decentralized), todos los nodos tienen el mismo rol, sin jerarquía. Ej: Bitcoin, IPFS (sin bootstrap central), [Gnutella](https://en.wikipedia.org/wiki/Gnutella).
 
 Normalmente, un mayor grado de centralización suele buscar:
@@ -107,22 +131,22 @@ Normalmente, un mayor grado de centralización suele buscar:
 
 Define cómo y en quién confían los nodos para interactuar, validar información y alcanzar consenso. Determina si la red requiere identidad, reputación o prueba criptográfica para garantizar seguridad y funcionamiento correcto.
 
-<img src="assets/trustModel.png" alt="trustModel" width="200">
+<img src="assets/p2p/trustModel.png" alt="trustModel" width="250">
 
 Puede ser normalmente:
 
-* Sin confianza ([Trustless](https://academy.binance.com/es/glossary/trustless)), donde los nodos interactúan sabiendo que no pueden confiar entre sí y gracias a [mecanismos criptográficos](https://es.wikipedia.org/wiki/Criptograf%C3%ADa) y [reglas de consenso](https://www.bitstamp.net/es/learn/security/what-are-blockchain-consensus-rules/) verificables, entre otros, pueden hacerlo. Ejemplos claros son en blockchain con Bitcoin, Ethereum, IPFS + FileCoin.
+* Sin confianza ([Trustless](https://academy.binance.com/es/glossary/trustless)), donde los nodos interactúan sin necesidad de confiar entre sí, ya que utilizan [mecanismos criptográficos](https://es.wikipedia.org/wiki/Criptograf%C3%ADa) y [reglas de consenso](https://www.bitstamp.net/es/learn/security/what-are-blockchain-consensus-rules/) verificables. Estos mecanismos generan pruebas objetivas, como los árboles de Merkle (para verificar integridad de datos) o las zk-proofs (para demostrar la validez de información sin revelarla). Ejemplos claros son blockchain con Bitcoin, Ethereum, IPFS + FileCoin.
 * Confiable o basado en confianza (Trusted), los nodos interactúan basándose en relaciones de confianza previa, donde existe identidad verificada o autoridad central parcial que ayuda a autenticar al nodo, reduciendo la necesidad de mecanismos criptográficos o consenso complejo. Por ejemplo, igualmente en blockchain en redes corporativas o [Hyperledger Fabric](https://en.wikipedia.org/wiki/Hyperledger#Hyperledger_Fabric) con [Proof of Authority](https://en.wikipedia.org/wiki/Proof_of_authority) (PoA).
 * Parcialmente confiable (Partially trusted), combina nodos confiables con nodos anónimos o no verificados, aplicando confianza selectiva. Usa mecanismos criptográficos y validación, pero permite ciertos roles privilegiados o relaciones basadas en confianza. Por ejemplo, [Lightning Network](https://es.wikipedia.org/wiki/Lightning_Network) (sobre Bitcoin):
 * Confianza híbrida (Hybrid trust), combina modelos trustless y trusted, donde algunas funciones dependen de nodos confiables o autoridades, y otras se descentralizan mediante consenso y criptografía. Ejemplo [Ripple](https://es.wikipedia.org/wiki/Ripple_Labs,_Inc.), donde usa un conjunto confiable de nodos validadores (UNL), pero con comunicación P2P.
 
   > La diferencia entre Partially trusted e Hybrid trust, en la primera se reconoce que en ciertos nodos se puede confiar más por su propia naturaleza, en la segunda combina explícitamente componentes o mecanismos centralizados, asi que se puede decir que más que una diferencia es evolucionar de un grado de descentralización de mayor a menor.
 
-#### [Modelo de autorización](https://worldtokencongress.com/en/entendiendo-las-redes-blockchain-publicas-permisionadas-y-privadas/)
+#### Modelo de autorización
 
 Define quién puede participar y con qué permisos, lo cual influye en la resistencia a la censura, tolerancia a fallos y gobernanza.
 
-<img src="assets/authorizationModel.png" alt="trustModel" width="250">
+<img src="assets/p2p/authorizationModel.png" alt="trustModel" width="300">
 
 Puede ser normalmente:
 
@@ -134,17 +158,22 @@ Puede ser normalmente:
 
 #### Estrategias de almacenamiento en redes p2p
 
-Definen cómo se organiza y guarda la información entre los nodos participantes. Buscan optimizar la disponibilidad, localización eficiente de datos y equilibrio de carga. Podemos ver los siguientes:
+Definen cómo se organiza y guarda la información entre los nodos participantes. Buscan optimizar la disponibilidad, localización eficiente de datos y equilibrio de carga.
 
-<img src="assets/p2pStorageStrategies.png" alt="p2pStorageStrategies" width="250">
+<img src="assets/p2p/p2pStorageStrategies.png" alt="p2pStorageStrategies" width="300">
 
-* Almacenamiento Distribuido (Distributed Storage), los datos se distribuyen entre múltiples nodos de la red, utilizando mecanismos de **replicación** (total o parcial) para aumentar la redundancia y la disponibilidad. Esta distribución puede organizarse de forma estructurada (por ejemplo, mediante DHTs) o no estructurada, según el protocolo de la red. Ejemplos: [IPFS](https://ipfs.tech/), [Filecoin](https://filecoin.io/), [Freenet](https://freenetproject.org/) (replicación automática), [Storj](https://www.storj.io/) (replicación contractual).
+El Almacenamiento Distribuido (Distributed Storage), donde los datos se distribuyen entre múltiples nodos de la red utilizando [técnicas de replicación](#técnicas-de-replicación), como puede ser la replicación entre nodos parcial o total, es la estrategia principal aplicada en una red p2p.
 
-  > Esta es la estrategia habitual en una red P2P, y lo veremos en detalle tanto las [DHT](#enrutamiento-routing-en-redes-estructuradas) como las [técnicas de replicación](#técnicas-de-replicación).
+Además, como veremos más adelante, la red puede ser [estructurada](#topología-estructurada), [no estructurada](#topología-no-estructurada) o una solución mixta. En las redes estructuradas, el almacenamiento y la búsqueda de datos se gestionan de forma determinista mediante índices distribuidos (como las DHT), lo que permite búsquedas rápidas y eficientes. En las no estructuradas, los datos se almacenan y localizan de manera más aleatoria, propagando consultas entre nodos; esto resulta menos eficiente, pero aporta mayor resiliencia frente a desconexiones. La elección de la topología de la red es, por tanto, una decisión clave que impacta directamente en la estrategia de almacenamiento.
+
+Además, existen otras decisiones que pueden tomarse para optimizar el almacenamiento, aunque a veces impliquen reducir el grado de descentralización. Estas se aplican cuando las circunstancias específicas de la red lo requieren, por ejemplo:
 
 * Indexación centralizada (Centralized indexing), un servidor central mantiene un índice de los archivos disponibles, pero los datos se transfieren directamente entre nodos. Ejemplo: [Napster](https://es.wikipedia.org/wiki/Napster) (modelo híbrido respecto a la descentralización).
 * Fragmentación con [Erasure Coding](https://en.wikipedia.org/wiki/Erasure_code), los datos se dividen en fragmentos codificados matemáticamente, permitiendo recuperación incluso si se pierden algunos. Ejemplo: [Tahoe-LAFS](https://www.tahoe-lafs.org/trac/tahoe-lafs), [Filecoin](https://storj.dev/learn/concepts/file-redundancy#erasure-code) (opcional).
-* Fragmentación ([Sharding](https://es.cointelegraph.com/explained/sharding-an-opportunity-for-distributed-scalability)), los datos se dividen en partes no redundantes asignadas a nodos distintos. Requiere mecanismos de reconstrucción. Ejemplo: Algunas blockchains ([Ethereum](https://www.bitstamp.net/es/learn/blockchain/what-is-sharding-on-ethereum/)), sistemas de bases de datos P2P
+
+  > No se incluye como [técnicas de replicación](#técnicas-de-replicación) porque no copia íntegramente los datos, sino que los codifica en fragmentos con redundancia dispersa, aunque si no estás de acuerdo y lo pondrías, opina al respecto.
+
+* Fragmentación ([Sharding](https://es.cointelegraph.com/explained/sharding-an-opportunity-for-distributed-scalability)), los datos se dividen en partes no redundantes asignadas a nodos distintos. Requiere mecanismos de reconstrucción. Ejemplo: Algunas blockchains ([Ethereum](https://www.bitstamp.net/es/learn/blockchain/what-is-sharding-on-ethereum/)), sistemas de bases de datos P2P,
 
 ### Problemas en redes p2p
 
@@ -154,11 +183,11 @@ Las redes p2p vienen a resolver principalmente el problema de la centralización
 
 Una red p2p no está exento de problemas de seguridad, sobre todo si es pública, por lo tanto, se debe considerar que puede existir
 
-<img src="assets/securityProblems.png" alt="trustModel" width="300">
+<img src="assets/p2p/securityProblems.png" alt="trustModel" width="400">
 
 * Fragmentación de la red (network partitioning), donde los nodos están aislados en subgrupos, lo que impide una vista global coherente o sincronización entre ellos. Es sobre todo un problema físico de conectividad
 * Estado paralelo de la red ([forks](https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(desarrollo_de_software)) o view divergence), donde pueden coexistir versiones distintas, es decir, un conjunto de nodos entienden que exista un estado concreto y otros otro diferente, aunque normalmente el consenso resuelve el problema. Es diferente a la fragmentación de la red, en este caso hay conectividad, no es problema de comunicación, sino de consenso.
-* Ataques que puede recibir una red p2p, como [MITM (Man-in-the-Middle)](https://es.wikipedia.org/wiki/Ataque_de_intermediario), [Sybil](https://academy.bit2me.com/que-es-un-ataque-sybil/), [Eclipse](https://academy.bit2me.com/que-es-ataque-eclipse-eclipse-attack/), [DoS](https://academy.bit2me.com/que-son-ataques-dos/), [Erebus](https://academy.bit2me.com/que-es-ataque-erebus/) o [envenenamiento de DHT](https://www.semanticscholar.org/paper/Conducting-routing-table-poisoning-attack-in-DHT-Lin-Ma/3882e35b71bef5e8327574b3940279c7df3f3d8e), y aunque sobre todo se relaciona con blockchain, tenemos ataques como [Replay](https://academy.bit2me.com/que-es-un-ataque-replay/) o [del 51%](https://academy.bit2me.com/ataque-51-bitcoin/).
+* Ataques que puede recibir una red p2p, como [MITM (Man-in-the-Middle)](https://es.wikipedia.org/wiki/Ataque_de_intermediario), [Sybil](https://academy.bit2me.com/que-es-un-ataque-sybil/), [Eclipse](https://academy.bit2me.com/que-es-ataque-eclipse-eclipse-attack/), [DoS](https://academy.bit2me.com/que-son-ataques-dos/), [Erebus](https://es.cointelegraph.com/explained/erebus-attack-explaining-its-scope) o [ataques a la DHT](https://medium.com/unitychain/dht-attacks-and-defenses-e159b3d1bcf8), y aunque sobre todo se relaciona con blockchain, tenemos ataques como [Replay](https://academy.bit2me.com/que-es-un-ataque-replay/) o [del 51%](https://academy.bit2me.com/ataque-51-bitcoin/).
 
 #### Problema de disponibilidad o rotación: Churn
 
@@ -166,7 +195,7 @@ Churn (o "rotación de nodos") se refiere al fenómeno en el que los nodos de un
 
 > Quizás es un problema de seguridad, pero lo menciono como categoría nueva.
 
-<img src="assets/churn.png" alt="trustModel" width="250">
+<img src="assets/p2p/churn.png" alt="trustModel" width="250">
 
 Causas del Churn:
 
@@ -175,43 +204,65 @@ Causas del Churn:
 * Comportamiento egoísta: Nodos que abandonan la red después de descargar un archivo (problema común en *file-sharing*).
 * Ataques: Nodos maliciosos que entran y salen para sabotear la red (ej. ataques Sybil).
 
+#### Problemas de rendimiento
+
+Los problemas de rendimiento en redes p2p surgen principalmente por la naturaleza descentralizada y la variabilidad de los nodos participantes. Los más comunes incluyen:
+
+<img src="assets/p2p/p2pPerformaceProblems.png" alt="p2pPerformaceProblems" width="400">
+
+* Latencia elevada, la comunicación entre nodos puede requerir múltiples saltos, aumentando el tiempo de respuesta, especialmente en redes globales o con topologías no estructuradas (que veremos mas adelante).
+* Ancho de banda limitado, los nodos pueden tener conexiones lentas o asimétricas, lo que afecta la velocidad de propagación de datos y la eficiencia general de la red.
+* Sobrecarga de mensajes, protocolos de difusión como flooding o gossip (que veremos mas adelante) pueden generar un gran volumen de mensajes redundantes, saturando la red y los recursos de los nodos.
+* Desbalance de carga, algunos nodos pueden recibir más solicitudes o almacenar más datos que otros, provocando cuellos de botella y afectando la disponibilidad.
+* Escalabilidad, a medida que la red crece, mantener la eficiencia en la búsqueda, el [enrutamiento](#enrutamiento-routing-en-redes-estructuradas) y la replicación de datos se vuelve más complejo.
+* Sincronización y consistencia, mantener datos consistentes entre nodos distribuidos puede requerir mecanismos costosos en términos de comunicación y procesamiento.
+
+> Muchos de estos problemas son solventados, como los de seguridad, aplicando soluciones menos descentralizadas. Es decir, el trilema siempre se aplica cotejando descentralización con seguridad y escalabilidad.
+
 ### Clasificación principal de redes p2p
 
-En base a las [características iniciales](#características-de-una-red-p2p) y los [problemas que pueden surgir](#problemas-en-redes-p2p), las redes p2p se clasifican en dos categorías, que también corresponden con su topología lógica —o, si se prefiere, con su modelo de [red superpuesta](https://es.wikipedia.org/wiki/Red_superpuesta) (overlay network), que definen cómo se organizan los nodos para buscar y compartir recursos: [estructuradas y no estructuradas](https://www.geeksforgeeks.org/structured-and-unstructured-peer-to-peer-systems/).
+Las redes p2p se organizan para buscar y compartir información siguiendo dos topologías lógicas conocidas —o, si se prefiere, con su modelo de [red superpuesta](https://es.wikipedia.org/wiki/Red_superpuesta) (overlay network): [estructuradas y no estructuradas](https://www.geeksforgeeks.org/structured-and-unstructured-peer-to-peer-systems/).
 
-<img src="assets/structuresUnstructured.png" alt="strUn" width="250">
+<img src="assets/p2p/structuresUnstructured.png" alt="strUn" width="300 ">
+
+Elegir entre estructurada o no estructurada, entre otros factores que veremos, principalmente depende de las [características iniciales](#características-de-una-red-p2p) y los [problemas que pueden surgir](#problemas-en-redes-p2p), por ejemplo, si será una red pública o trustless o si se debe seguir una estrategia de almacenamiento que permita la disponibilidad rápida y eficiente del contenido.
 
 #### Topología estructurada
 
-En la topología estructurada se sigue un patrón definido y determinista, lo que permite búsquedas eficientes y un uso optimizado del almacenamiento, siendo especialmente adecuado para redes estables (bajo churn) donde los nodos permanecen disponibles con regularidad.
+En la topología estructurada se sigue un patrón definido y determinista, lo que permite búsquedas eficientes y uso optimizado del almacenamiento, siendo adecuado para redes estables (bajo churn), donde los nodos permanecen disponibles con regularidad.
 
-En las redes P2P estructuradas, los nodos colaboran para consultar o distribuir información. Sin embargo, dado que solo un subconjunto de nodos es responsable, es necesario un mecanismo previo de localización. Para ello, los nodos emplean estructuras que actúan como índices distribuidos, asociando identificadores con la ubicación lógica de los nodos encargados.
+En este tipo de redes, existe un mecanismo donde cada nodo (o su conjunto por redundancia) es responsable de almacenar un dato dado. Para ello, se emplean mecanismos de localización, que funcionan como índices distribuidos, los cuales asocian identificadores únicos (por ejemplo, hashes) con la ubicación lógica de los nodos encargados de gestionar el dato dentro de la red.
 
-Para entender mejor esto esto de los índices distribuidos, tomaremos como ejemplo las [DHT](https://es.wikipedia.org/wiki/Tabla_de_hash_distribuida), concretamente la implementación [Kademlia](https://es.wikipedia.org/wiki/Kademlia), donde los nodos se organizan según la "distancia" entre sus identificadores y el hash del dato buscado, manteniendo estructuras tipo diccionario clave/valor que actúan como índices distribuidos para localizar los nodos responsables de un dato en la red.
+Para entender mejor estas redes, varemos la solución principal (y casi única en la práctica) de la [DHT](https://es.wikipedia.org/wiki/Tabla_de_hash_distribuida), que es un diccionario tipo clave/valor, con su implementación de [Kademlia](https://es.wikipedia.org/wiki/Kademlia), donde los nodos se organizan según la "distancia" XOR de sus identificadores y el hash del dato buscado.
 
 > 🤔 Entiendo que no hayas comprendido nada...esta explicación la veremos más en detalle en [los mecanismos de las redes p2p](#️-mecanismos-de-las-redes-p2p).
 
-Existen otras implementaciones de DHT como [Chord](https://es.wikipedia.org/wiki/Chord), [Pastry](https://es.wikipedia.org/wiki/Pastry_(P2P)#:~:text=Pastry%20fue%20desarrollado%20en%20el,la%20mayor%C3%ADa%20de%20los%20casos.) y [Tapestry](https://es.wikipedia.org/wiki/Tapestry_(P2P)) que no veremos porque son menos usadas en redes p2p.
+Existen otras implementaciones de DHT además de Kademlia, cada una con una topología lógica diferente que influye en cómo se enrutan y localizan los datos:
 
-Además de las DHT, con topología de árbol, existen otras redes estructuradas basadas en jerarquías, como anillo o grafo:
+<img src="assets/p2p/p2pStructuredTopologies.png" alt="p2pStructuredTopologies" width="350">
 
-<img src="assets/treeRingGraph.png" alt="treeRingGr" width="250">
+* Anillo: como en [Chord](https://es.wikipedia.org/wiki/Chord), que utiliza [Consistent Hashing](https://en.wikipedia.org/wiki/Consistent_hashing) y conecta los nodos en una estructura circular. Cada nodo es responsable de un rango de claves y el enrutamiento se realiza siguiendo el orden del anillo, logrando búsquedas eficientes y balanceo de carga.
+* Árbol: aunque menos común en la práctica, existen propuestas como BATON (Balanced Tree Overlay Network), que implementan DHTs sobre árboles balanceados para optimizar búsquedas y balanceo de carga. En este modelo, los nodos se organizan jerárquicamente, donde los nodos padres coordinan a sus hijos, útil en escenarios de difusión o agregación.
+* Grafo: algunas DHTs, como [Pastry](https://es.wikipedia.org/wiki/Pastry_(P2P)) y [Tapestry](https://es.wikipedia.org/wiki/Tapestry_(P2P)), emplean rutas prefijadas. Su topología combina características de árbol (por los niveles de prefijo en las rutas) y de grafo (por la redundancia y la existencia de múltiples caminos posibles entre nodos), lo que proporciona tolerancia a fallos y rutas alternativas.
+* Hiperespacio (Hypercube): existen implementaciones como HyperCup y CubeNet, donde cada nodo representa un vértice de un hipercubo n-dimensional y se conecta a otros nodos que difieren en un solo bit en su identificador. Esta topología permite rutas logarítmicas y alta escalabilidad.
 
-Muchas de las cuales han sido exploradas principalmente en el ámbito académico o en sistemas distribuidos tradicionales. En el contexto de la web3, donde priman la descentralización, la tolerancia a fallos y el direccionamiento por contenido, las DHT resultan más adecuadas y son, por ello, las más utilizadas en la práctica.
+Y Kademlia - *¿qué topología es?*... Kademlia se considera una red que utiliza una métrica de distancia XOR para organizar y localizar nodos, en lugar de seguir una topología rígida como anillo, árbol o hipercubo. Por eso, habitualmente se clasifica aparte y no se menciona que sea una topología concreta.
+
+> 🎓 Muchas de estas topologías han sido exploradas principalmente en el ámbito académico o en sistemas distribuidos tradicionales. En el contexto de la web3, donde priman la descentralización, la tolerancia a fallos y el direccionamiento por contenido, las DHT basadas en espacio de claves (como Kademlia) y en anillo (como Chord) resultan más adecuadas y son las más utilizadas en la práctica.
 
 #### Topología no estructurada
 
 En las topologías no estructuradas, las conexiones entre nodos son aleatorias o sin un patrón definido, lo que las hace más adecuadas para consultas complejas y además es mas optimo para entornos inestables donde los nodos se conectan y desconectan con frecuencia (alto churn). Son redes más resilientes, pero al no existir una estructura lógica que relacione directamente el contenido con nodos específicos, las consultas deben propagarse entre múltiples nodos para localizar la información, aunque lo cierto es que permite consultas más complejas que las estructuradas.
 
-En redes no estructuradas, no hay un índice distribuido ni nodos responsables predefinidos, por lo que la consulta y localización de nodos ocurre mediante técnicas de difusión.
+> En redes no estructuradas, no hay un índice distribuido ni nodos responsables predefinidos, por lo que la consulta y localización de nodos ocurre mediante la propagación entre nodos que veremos más adelante en [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas).
 
-> Pero en el contexto de las redes p2p no debemos confundirlo con la [difusión amplia](https://es.wikipedia.org/wiki/Difusi%C3%B3n_amplia) de las telecomunicaciones, que se refiere a la transmisión o consulta de información desde un nodo origen hacia múltiples en una red distribuida. Más adelante, se explican las técnicas específicas de difusión en redes p2p.
+En la topología no estructurada se utilizan técnicas de propagación (que forma parte de las [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas)) como [Flooding](https://en.wikipedia.org/wiki/Query_flooding) (malla completa), [Scoped Flooding](https://suzanbayhan.github.io/pdf/2018_wang_understanding_scoped_flooding.pdf) (malla completa) y [Random Walks](https://en.wikipedia.org/wiki/Random_walk) (random). En Web3 predomina [Gossip](https://academy.bit2me.com/que-es-gossip-protocol/) y derivados como [Gossipsub](https://github.com/libp2p/specs/tree/master/pubsub/gossipsub) y [Gossip Epidemic](https://viktoria-karamyshau.medium.com/gossip-epidemic-protocols-b1d44ce50c10) (las tres como malla parcial).
 
-Técnicas de difusión que se implementan en protocolos donde destacan [Flooding](https://en.wikipedia.org/wiki/Query_flooding), o su variante acotada Scoped Flooding (para reducir la sobrecarga), y los [Random Walks](https://en.wikipedia.org/wiki/Random_walk), utilizados cuando se prioriza la eficiencia y el bajo consumo. En el contexto de Web3, sin embargo, predomina el uso del protocolo [Gossip](https://academy.bit2me.com/que-es-gossip-protocol/) y sus derivados, como [Gossipsub](https://github.com/libp2p/specs/tree/master/pubsub/gossipsub), una variante optimizada empleada en libp2p para mejorar la escalabilidad y eficiencia del intercambio de mensajes o [Gossip Epidemic](https://viktoria-karamyshau.medium.com/gossip-epidemic-protocols-b1d44ce50c10).
+Las topologías mencionadas como malla parcial, malla completa o topología aleatoria se puede representar como:
 
-Las topologías que pude formar una red no estructurada suele ser normalmente malla parcial, malla completa o topología aleatoria:
+<img src="assets/p2p/partialMeshFullRandom.png" alt="partMesRan" width="350">
 
-<img src="assets/partialMeshFullRandom.png" alt="partMesRan" width="250">
+> 🎓 Este es solo un resumen orientativo; el objetivo es ofrecer una visión general, no una explicación exhaustiva, es posible que existan fallos o generalizaciones sobre las topologías ahora explicadas, pero es un tema tan complejo que no merece la pena profundizar mucho más.
 
 #### Aclaraciones de topología redes
 
@@ -230,33 +281,33 @@ Es decir, cada red implementa lo que mejor sirva para su propósito, y en genera
 
 En una red peer-to-peer (P2P), los nodos se comunican mediante el intercambio de mensajes, que pueden ser peticiones de información (lecturas, R) o entregas (escrituras, W). Un nodo puede iniciar la transacción o actuar como intermediario replicando peticiones hacia otros nodos.
 
-Estas operaciones están reguladas por una serie de mecanismos compuestos por procesos o técnicas o estrategias o modelos establecidos en el protocolo de la red y es lo que veremos a continuación.
+Estas operaciones están reguladas por una serie de mecanismos compuestos por procesos o técnicas o estrategias o modelos, establecidos en el protocolo de la red.
 
 > Este apartado intenta explicar las diferentes soluciones técnicas que podemos encontrarnos.
 
-> Se debe considerar que estos mecanismos no están exentos de excepcione según el [grado de descentralización](#grado-de-descentralización) o su [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p).
+Se debe considerar que estos mecanismos no están exentos de excepcione según el [grado de descentralización](#grado-de-descentralización) o su [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p).
 
-Se describen los más relevantes, considerando que algunos se aplican específicamente a redes estructuradas y otros a no estructuradas.
+Se describen los mecanismos más relevantes, considerando que algunos se aplican específicamente a redes estructuradas y otros a no estructuradas.
 
 #### Conexión inicial de nodos (Bootstrapp)
 
 Cuando un nodo se inicia por primera vez, durante el arranque (conocido como bootstrap), se conecta a otros nodos denominados nodos semilla o [nodos bootstrap](https://en.wikipedia.org/wiki/Bootstrapping_node), normalmente preconfigurados en el propio software del nodo. Estos nodos suelen ser confiables y frecuentemente pertenecen a los fundadores o mantenedores del protocolo.
 
-Como simplificación, podemos ver el siguiente ejemplo:
+Esta conexión inicial continua con el descubrimiento de nodos que veremos a continuación, pero como simplificación, se puede ver en el siguiente ejemplo:
 
-<img src="assets/p2pBootStrap.gif" alt="bootstrap" width="300">
+<img src="assets/p2p/p2pBootStrap.gif" alt="bootstrap" width="350">
 
-Inicialmente, el nodo parte de una lista de nodos conocidos, normalmente los nodos semilla, y el proceso consiste en consultar a esos nodos para descubrir otros nuevos y así sucesivamente con los nuevos nodos para ampliar y actualizar su red de relaciones.
+Inicialmente, el nodo parte de una lista de nodos conocidos, por ejemplo los nodos identificados como 1, 2, 3 y 4 que son nodos semilla, y el proceso consiste en consultar a esos nodos para descubrir otros nuevos, como serían el 10, 14, 25 y 3 30; así sucesivamente con los nuevos nodos para ampliar y actualizar su red de relaciones.
 
-Además de los nodos semilla, también es común el uso de mecanismos como seed DNS, que resuelven nombres de dominio a direcciones IP de nodos activos, [servidores de directorio](https://www.redeszone.net/tutoriales/internet/que-son-peer-seed-leech-ratio-p2p/) (también conocidos como bootstrap servers o trackers), que ofrecen listas centralizadas de nodos disponibles y también en redes locales difusión broadcast/multicast para descubrir nodos usando [mDNS](https://docs.libp2p.io/concepts/discovery-routing/mdns/), aunque en modelos descentralizados como Web3, predominan los nodos semilla.
+Además de los nodos semilla, existen diversos mecanismos para el descubrimiento inicial de nodos. Entre ellos se encuentran el uso de [Rendezvous](https://docs.libp2p.io/concepts/discovery-routing/rendezvous/), el DNS seed (que resuelve dominios a direcciones IP de nodos activos), y los servidores de directorio (también llamados *bootstrap servers* o *trackers*), que ofrecen listas centralizadas de nodos disponibles. En redes locales, también se emplea difusión mediante *broadcast* o *multicast*, como [mDNS](https://docs.libp2p.io/concepts/discovery-routing/mdns/), para descubrir nodos cercanos. No obstante, en modelos descentralizados como Web3, predominan los **nodos semilla** para iniciar la conexión a la red.
 
 #### Descubrimiento de nodos (Node Discovery)
 
-El descubrimiento de nodos es el mecanismo que permite a un nodo encontrar nuevos pares a su lista de nodos activos.
+El descubrimiento de nodos es el mecanismo que permite al nodo encontrar nuevos pares para incluirlos en su lista de confianza.
 
-Este proceso ocurre después del arranque inicial (bootstrap), pero también puede ejecutarse de forma periódica para mantener la red actualizada, o de manera reactiva, por ejemplo, cuando se detecta la caída de nodos durante la comprobación de conectividad.
+Ocurre tras el arranque inicial (bootstrap), pero también periódicamente para mantener la red actualizada y de manera reactiva, por ejemplo, cuando se detecta la caída de nodos durante la [comprobación de conectividad](#comprobación-de-conectividad).
 
-En redes estructuradas (por ejemplo, DHTs), este proceso sigue protocolos deterministas, mientras que en redes no estructuradas se basa en estrategias de difusión, como veremos a continuación:
+En redes estructuradas (por ejemplo, DHTs), este proceso sigue protocolos deterministas, mientras que en redes no estructuradas se basa en la propagación de consulta —que es una [técnica de difusión](#técnicas-de-difusión-en-redes-no-estructurabas)—.
 
 **Redes estructuradas**.
 
@@ -266,7 +317,7 @@ Tomando como ejemplo la DHT [Kademlia](https://en.wikipedia.org/wiki/Kademlia), 
 
 > Tabla que se usará posteriormente en el proceso [routing](#enrutamiento-routing-en-redes-estructuradas) que veremos más adelante.
 
-La "cercanía entre nodos", es la forma de hacer que siempre la consulta sea determinista, es decir, que siempre devuelva lo mismo, y se basa en la [operación binaria XOR](https://es.wikipedia.org/wiki/Puerta_XOR).
+La "cercanía entre nodos" permite que las consultas sean deterministas, es decir, que siempre produzcan el mismo resultado. Esta cercanía se calcula utilizando la [operación binaria XOR](https://es.wikipedia.org/wiki/Puerta_XOR).
 
 En Kademlia, la tabla de enrutamiento almacena contactos de otros nodos organizados según su distancia XOR respecto al nodo local. Estos contactos se agrupan en estructuras llamadas k-buckets (del inglés bucket, que en este contexto equivale a 'contenedor'), donde cada bucket contiene hasta k nodos a una determinada distancia. Por convención, k suele ser 20.
 
@@ -274,63 +325,75 @@ En Kademlia, la tabla de enrutamiento almacena contactos de otros nodos organiza
 
 Esto aunque es una generalización, nos da una idea de lo que se busca, que es tener un mecanismo para que un nodo solo se relacione con un conjunto de nodos y se basa en "la cercanía", que no deja de ser una operación simple para tener un mismo criterio, pero si quieres entrar en detalle, lo vemos en un ejemplo:
 
-<img src="assets/p2pNodeDiscoveryKademlia1-2.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+<img src="assets/p2p/p2pNodeDiscoveryKademlia1-2.gif" alt="p2pNodeDiscoveryKademlia" width="350">
 
-* Inicialmente, un nodo local con id 0b0001 conoce al nodo semilla con ID 0b1000 y lo incluye en el Bucket 3 como el único nodo que conoce.
+* Inicialmente, un nodo local con id 0b0001 (1) conoce al nodo semilla con ID 0b1000 (8) y lo incluye en el Bucket 3 como el único nodo que conoce.
 
   Si calculamos `0b0001 XOR 0b1000` es `0b1001` (9), siendo posición del bucket 3:
 
-  | 3 <- | 2 | 1 | 0 |
+  | 3 ◄ | 2 | 1 | 0 |
   | - | - | - | - |
   | 1 | 0 | 0 | 1 |
 
-  > Si la posición empieza desde 0 y de izquierda a derecha, 3 es la posición del último bit 1.
+  > Si la posición empieza desde 0 y buscamos de izquierda a derecha, 3 es la posición del último bit 1.
 
-* El nodo realiza una consulta a ese nodo semilla mediante el método FIND_NODE, donde indica como ID objetivo el 0b0001, siendo su propio ID de nodo, y además, se especifica k = 3, por lo que el nodo consultado devuelve hasta 3 nodos que conoce y que están más cercanos a 0b0001 según la distancia XOR.
+* El nodo realiza una consulta a ese nodo semilla mediante el método FIND_NODE, donde indica como ID objetivo el 0b0001 (1), siendo su propio ID de nodo, y además, se especifica k = 3 (a modo de ejemplo, lo normal seria 20). El nodo consultado devuelve hasta 3 nodos que conoce y que están más cercanos a 1 (0b0001) según la distancia XOR calculado de la siguiente forma:
 
-  Los 3 nodos más cercanos son:
+  ```text
+  0b0001 XOR 0b0011 = 0b0010 (2)
+  0b0001 XOR 0b0010 = 0b0011 (3)
+  0b0001 XOR 0b0111 = 0b0110 (6)
+  ```
 
-  * `0b0011` con resultado XOR `0b0010` (2) y posición del bucket 1.
-  * `0b0010` con resultado XOR `0b0011` (3) y posición del bucket 1.
-  * `0b0111` con resultado XOR `0b0110` (6) y posición del bucket 2.
+  Estando los nodos en las siguientes posiciones:
 
-<img src="assets/p2pNodeDiscoveryKademlia2-2.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+  * `0b0011` (ID 3) con resultado XOR `0b0010` (2) en posición del bucket 1.
+  * `0b0010` (ID 2) con resultado XOR `0b0011` (3) en posición del bucket 1.
+  * `0b0111` (ID 7) con resultado XOR `0b0110` (6) en posición del bucket 2.
 
-* En la segunda ronda, con los nuevos nodos descubiertos, se realiza α (alfa) consultas paralelas para buscar más nodos con FIND_NODE a los nodos 0b0011 (3) y 0b0010 (2).
+  > Por cierto, en el bucket 0 no hay ningún nodo en este ejemplo, pero podría ser, porque recordar que empiezan los buckets desde 0.
+
+  > Aparte de la posición del bucket, como vemos en el ejemplo, en el bucket 1 hay dos nodos y en ese caso el 0b0010 con valor decimal 2 es más cercano que el 0b0011 con valor decimal 3.
+
+<img src="assets/p2p/p2pNodeDiscoveryKademlia2-2.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+
+* En la segunda ronda, con los nuevos nodos descubiertos, se realiza α (alfa) consultas paralelas para buscar más nodos con FIND_NODE, siendo las consultas a los nodos 0b0011 (3) y 0b0010 (2).
 
   > El valor de α (alfa) indica el número máximo de consultas concurrentes por ronda, por ejemplo α = 2, con 2 consultas concurrentes. Por defecto en Kademlia α suele ser entre 2 y 3.
 
-* Los nodos consultados responden con los nuevos nodos 0b0100 y 0b0101 y se calcula su posición de Bucket en la Routing table, siendo en el Bucket 2.
+* Los nodos consultados responden con los nuevos nodos 0b0100 (4) y 0b0101 (5) y se calcula su posición de Bucket en la Routing table, siendo ambos en el Bucket 2.
 * Y se repite otra ronda con el nodo con ID 7...
 
 **Redes no estructuradas**.
 
-En primer lugar hay que aclarar, que en redes no estructuradas, también se realiza un descubrimiento de nuevos nodos cuando ocurre una propagación de consulta, como veremos en [técnica de difusión](#técnicas-de-difusión-en-redes-no-estructurabas), es decir, cuando un nodo realiza una petición se aprovecha para encontrar nuevos nodos.
+En redes no estructuradas, el descubrimiento de nodos se basa en la propagación, no es determinista como en las redes estructuradas, e implica una búsqueda probabilística.
 
-El mecanismo es generalmente usando técnicas de difusión, ya sea por petición del nodo o mediante el intercambio de vecinos, generalmente a través de comunicación push. A continuación, veremos un ejemplo tomando como referencia Gossip para explicarlo, pero entendiendo que existen muchas particularidades y esto es una generalización:
+El descubrimiento de nodos es una actividad que puede formar parte de las implementaciones de las [técnica de difusión](#técnicas-de-difusión-en-redes-no-estructurabas), como *Gossip* o *Flooding* —aunque ese no sea el propósito principal de dichas técnicas—. También existen otros mecanismos que una red puede utilizar, como [Peer Exchange (PEX)](https://en.wikipedia.org/wiki/Peer_exchange), implementado en BitTorrent.
 
-<img src="assets/p2pNodeDiscoveryGossip1-3.gif" alt="p2pNodeDiscoveryGossip" width="350">
+Es importante aclarar que, en redes no estructuradas, el descubrimiento de nuevos nodos ocurre principalmente durante la propagación de consultas. Como se verá en [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas), cada vez que se realiza una operación de consulta (R), el nodo consultado puede aprovechar para devolver referencias a otros nodos al solicitante. Sin embargo, también este descubrimiento ocurre al arranque inicial (bootstrap) del nodo o periódicamente como se menciono.
+
+A continuación, veremos un ejemplo tomando como referencia Gossip para explicarlo, pero entendiendo que existen muchas particularidades y esto es una generalización:
+
+<img src="assets/p2p/p2pNodeDiscoveryGossip1-3.gif" alt="p2pNodeDiscoveryGossip" width="350">
 
 * Inicialmente un nodo consulta a un nodo semilla para conocer otros nodos, y este le responde con los nodos que conoce, por ejemplo, los 6, 2, 3 y 7. Estas consultas pueden ser en paralelo a varios nodos según el fan-out (abanico), que puede se entre 3 y 5, es decir, entre 3 y 5 consultas paralelas.
 
-<img src="assets/p2pNodeDiscoveryGossip2-3.gif" alt="p2pNodeDiscoveryGossip" width="350">
+<img src="assets/p2p/p2pNodeDiscoveryGossip2-3.gif" alt="p2pNodeDiscoveryGossip" width="350">
 
 * El nodo continua consultando a los nodos 6, 2, 3 y 7, y suponiendo que el fan-out es 2, consultaría en una ronda a los nodos 2 y 3, para conocer los nuevos nodos 4 y 5.
 * Es importante comprender, que en esta petición del nodo 1, también el nodo 2 y 3 conocen al nodo 1 y lo añaden en su lista de nodos, y esto porque el descubrimiento es reciproco (reciprocal peer discovery).
 
   > En la representación anterior, cuando el nodo 1 consulta al 8, igualmente existe un descubrimiento reciproco, se ha omitido para simplificar.
 
-<img src="assets/p2pNodeDiscoveryGossip3-3.gif" alt="p2pNodeDiscoveryGossip" width="350">
+<img src="assets/p2p/p2pNodeDiscoveryGossip3-3.gif" alt="p2pNodeDiscoveryGossip" width="350">
 
-* Como el nodo 2 ya conoce al nodo 1 gracias al descubrimiento recíproco, cuando detecta nuevos nodos o cambios en la topología de la red, puede notificar proactivamente al nodo 1 mediante una comunicación push. Es decir, no espera a que el nodo 1 realice una consulta, sino que le envía la información tan pronto como la tiene disponible, como en este ejemplo, donde comunica la existencia de los nodos 9 y 10.
-
-**Otras técnicas**.
-
-Adicionalmente al descubrimiento de nodos, existen otras técnicas como [Peer Exchange (PEX)](https://en.wikipedia.org/wiki/Peer_exchange), que se basa en el intercambio directo de información entre pares ya conectados, a diferencia de los métodos de descubrimiento de nodos que implican consultar fuentes externas; o [Rendezvous](https://docs.libp2p.io/concepts/discovery-routing/rendezvous/), que actúa como un punto intermedio donde los nodos pueden registrarse y descubrirse mutuamente para facilitar la conexión inicial.
+* Como el nodo 2 ya conoce al nodo 1 gracias al descubrimiento recíproco (siendo el intercambio de vecinos), cuando detecta nuevos nodos o cambios en la topología de la red, puede notificar proactivamente al nodo 1 mediante una comunicación push. Es decir, no espera a que el nodo 1 realice una consulta, sino que le envía la información tan pronto como la tiene disponible, como en este ejemplo, donde comunica la existencia de los nodos 9 y 10.
 
 #### Enrutamiento (Routing) en redes estructuradas
 
-Es un proceso propio de las redes P2P estructuradas y consiste en determinar qué conjunto de nodos son responsables de gestionar una operación o recurso específico dentro de la red, utilizando generalmente un índice distribuido.
+Es un proceso propio de las redes P2P estructuradas y consiste en determinar qué conjunto de nodos son responsables de gestionar una operación, lo que sería comúnmente atender una solicitud de escritura (W) o lectura (R).
+
+El enrutamiento ocurre por lo tanto en cualquier momento que sea necesario, según sea solicitado.
 
 Como vimos en el descubrimiento de nodos, el enrutamiento también busca ser determinista y siguiendo el ejemplo de la DHT Kademlia, se basa en la cercanía XOR entre el ID de un nodo y la key o hash del dato.
 
@@ -338,17 +401,17 @@ Como vimos en el descubrimiento de nodos, el enrutamiento también busca ser det
 
 Es complicado entenderlo, asi que lo veremos en un ejemplo:
 
-**En el caso de escribir (W) un recurso**.
+**En el caso de escribir (W)**.
 
-<img src="assets/p2pRoutingKademlia1-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+<img src="assets/p2p/p2pRoutingKademlia1-6.png" alt="p2pNodeDiscoveryKademlia" width="350">
 
-* Inicialmente existe una transacción iniciado desde el propio nodo o provenir de un cliente ligero.
-* En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos como en base a un identificador o key que hace referencia al recurso (normalmente suele ser su hash), se realiza una solicitud para buscar o guardar en la DHT. Este recurso puede representar datos como archivos, fragmentos de archivos, metadatos, bloques de datos en una blockchain, direcciones de nodos, o cualquier otro recurso específico que la red P2P esté diseñada para gestionar.
+* Inicialmente existe una transacción iniciado desde el propio nodo o realiza por un cliente ligero.
+* En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos como en base a un identificador o key que hace referencia al recurso (normalmente su hash), se realiza una solicitud para buscar o guardar en la DHT. Este recurso puede representar datos como archivos, fragmentos de archivos, metadatos, bloques de datos en una blockchain, direcciones de nodos, o cualquier otro recurso específico que la red P2P esté diseñada para gestionar.
 * El nodo 1, que recibe la petición, localiza en su tabla de enrutamiento sus k nodos más cercanos (en este ejemplo 3), es decir, localiza nodos del Bucket 0, pero como no hay, busca del Bucket 1 (los ID 2 y 3) y luego del Bucket 2 (el ID 7).
 
-<img src="assets/p2pRoutingKademlia2-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+<img src="assets/p2p/p2pRoutingKademlia2-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
 
-* Con los 3 nodos más cercanos, ahora tiene que buscar la cercanía con el key del recurso, realizando las operaciones binarias XOR.
+* En base a los 3 nodos más cercanos, ahora se calcula la cercanía usando el key del recurso 0b1111 (15), es decir, se realizan las operaciones binarias XOR y se ordena de menor número a mayor para usar los k nodos más cercanos.
 
   ```text
   0b0111 XOR 0b1111 = 0b1000 (8) 
@@ -356,32 +419,35 @@ Es complicado entenderlo, asi que lo veremos en un ejemplo:
   0b0010 XOR 0b1111 = 0b1101 (13)
   0b0001 XOR 0b1111 = 0b1110 (14)
   ```
+  
+  Se debe aclarar que:
+  * Aunque el nodo 0b0111 (7) no era el más cercano según la tabla del nodo local (estaba en el Bucket 2), tras aplicar la operación XOR con la clave del recurso, se convierte en el más cercano. Esto refleja que no se propaga solo hacia nodos vecinos, sino hacia los más cercanos a la key del recurso. Así se evita que todos los datos vayan siempre a los mismos nodos, favoreciendo una distribución más descentralizada y determinista, independientemente del nodo que inicia la consulta.
 
-  > Aunque el nodo 7 (0b0111) no era el más cercano según la tabla del nodo local (estaba en el Bucket 2), tras aplicar la operación XOR con la clave del recurso, se convierte en el más cercano. Esto refleja que no se propaga solo hacia nodos vecinos, sino hacia los más cercanos a la key del recurso. Así se evita que todos los datos vayan siempre a los mismos nodos, favoreciendo una distribución más descentralizada y determinista, independientemente del nodo que inicia la propagación.
+  * El propio nodo que ha recibido la petición, el nodo 1, no forma parte del calculo para determinar la cercanía ya que en la Routing table (tabla de enrutamiento) solo hay relación de otros nodos, no de si mismo.
 
-<img src="assets/p2pRoutingKademlia3-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+<img src="assets/p2p/p2pRoutingKademlia3-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
 
-* Cuando se tiene que almacenar en la DHT (STORE), se realizan α (alfa) peticiones concurrentes a los nodos establecidos, los cuales guardan en su registro de la DHT la key del recurso y normalmente la forma de acceder al recurso, como una dirección.
+* Una vez determinados los 3 nodos más cercanos, que son los responsables del dato, el nodo 1 envía a los nodos 2, 3 y 7 el dato a guardar (W) y almacenar (STORE) en la DHT la relación key del dato con el acceso al recurso. Se debe aclarar que:
+  * El nodo 1 ha recibido la solicitud, pero como ni siquiera está entre los k nodos más cercanos, nunca puede ser responsable del dato y no lo guarda ni almacena.
+  * Los nodos 2, 3 y 7 reciben el dato o recurso a guardar (el payload) y lo almacenan como corresponda, y en la DHT, siendo un índice clave/valor, se guarda normalmente la key (el hash) del dato y el acceso al payload, es decir, en la DHT no se guarda normalmente el dato o payload completo, se puede guardar su URL de recurso o IP del nodo o cualquier referencia para obtener el dato; sí se pueden guardar datos menores, pero tenemos que ver a la DHT como una especie de índice.
 
-  > Depende de la red, la DHT no es un lugar donde almacenar el payload, se entiende más como un índice; aunque pueden ser datos si son representativos, normalmente suelen ser metadatos o URLs o direcciones o cualquier información para localizar el recurso.
+**En el caso de leer (R)**.
 
-  > No existe propagación entre los nodos, el nodo 1 es el único que almacena.  
-
-**En el caso de leer (R) un recurso**.
-
-<img src="assets/p2pRoutingKademlia4-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+<img src="assets/p2p/p2pRoutingKademlia4-6.png" alt="p2pNodeDiscoveryKademlia" width="350">
 
 * Cuando el nodo 1 consulta a los nodos cercanos, se realizan hasta α (alfa) consultas concurrentes para obtener la información.
 
   > No existe propagación entre los nodos, el nodo 1 es el único que consulta.
 
-<img src="assets/p2pRoutingKademlia5-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+<img src="assets/p2p/p2pRoutingKademlia5-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
 
-* Por ejemplo el nodo 7, al recibir la petición de consulta, en primer lugar se asegura de nuevo que es un nodo cercano a la key solicitada y luego busca en su DHT la key 0b1111 para devolver el acceso al recurso, como podría ser su propia dirección IP o cualquier otra forma que permite al nodo 1 descargar el payload (o cualquier otra comunicación) desde el nodo 7.
+* Por ejemplo el nodo 7, al recibir la petición de consulta, en primer lugar se asegura de nuevo que es un nodo cercano a la key solicitada y luego busca en su DHT la key 0b1111 para devolver el acceso al recurso, como podría ser su propia dirección IP o cualquier otra forma que permite al nodo 1 descargar o acceder al payload del nodo 7.
 
   > Se asegura que es el nodo cercano aunque parezca redundante por coherencia, es una validación que suele hacer el nodo para asegurar que solo los nodos responsables al recurso lo pueden devolver. Si fuera el caso que no lo es, como veremos a continuación, lo que hará el nodo es buscar los nodos que son mas cercanos para devolver esa información.
 
-<img src="assets/p2pRoutingKademlia6-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
+**En el caso de leer (R) pero el nodo no es responsable**.
+
+<img src="assets/p2p/p2pRoutingKademlia6-6.gif" alt="p2pNodeDiscoveryKademlia" width="350">
 
 * En este ejemplo, los nodos 2, 3 y 7 son los responsables del recurso, pero en un momento dado se pueden caer uno o varios y el nodo 1 por descarte, podría usar un nodo donde no se escribió el recurso, como podría ser el nodo semilla 8.
 * El nodo 8, recibe la petición, tiene registros en la DHT para otras key, pero no para la key 0b1111 (15) porque no es el responsable del dato.
@@ -392,11 +458,11 @@ Es complicado entenderlo, asi que lo veremos en un ejemplo:
 
 **¿Es esta la forma más optima?**
 
-El concepto de DHT se refiere a una tabla hash distribuida que permite localizar recursos entre nodos. Kademlia es una implementación concreta que organiza la información usando una métrica de distancia basada en XOR. Cada sistema puede adaptar el protocolo, por ejemplo, mediante un método PROVIDE para anunciar la posesión de un contenido, permitiendo que otros nodos almacenen también esa asociación en la DHT según sus necesidades.
+El concepto de DHT se refiere a una tabla hash distribuida que permite localizar recursos entre nodos. Kademlia es una implementación concreta que organiza la información usando una métrica de distancia basada en XOR. Cada sistema puede adaptar el protocolo según sus necesidades, por ejemplo, mediante un método PROVIDE como en IPFS para anunciar la posesión de un contenido, permitiendo que otros nodos almacenen también esa asociación en la DHT según sus necesidades o demanda del usuario.
 
-**¿Es una consulta exponencial la que tiene que hacer el nodo para encontrar un dato?**
+**¿La búsqueda de un dato es exponencial si el nodo no lo encuentra?**
 
-No, no es una consulta exponencial; es logarítmica.
+Si el nodo consultado no es responsable del dato, consultará a otro y asi sucesivamente, podemos pensar que esto no es optimo, pero no es una consulta exponencial, es logarítmica, en concreto se le denomina tiempo logarítmico.
 
 El tiempo logarítmico significa que el número de pasos crece como log₂(N), es decir, muy lentamente en relación al tamaño de la red.
 
@@ -406,63 +472,78 @@ En una DHT como Kademlia, esto permite localizar datos eficientemente incluso co
 
 #### Técnicas de difusión en redes no estructurabas  
 
-Es una técnica que solo afecta a redes no estructuradas, porque el enrutamiento de las redes estructuradas permite localizar nodos o datos sin necesidad de difundir mensajes indiscriminadamente.
+Son técnicas propias de las redes no estructuradas y se aplican cuando es necesario gestionar una operación, lo que sería comúnmente atender una solicitud de escritura (W) o lectura (R).
 
-La difusión en este contexto de redes p2p, son técnicas para transmitir o consultar información desde un nodo origen hacia múltiples nodos en una red distribuida, pero además en la mayoría de protocolos de redes no estructuras, se produce una propagación, donde a diferencia de una difusión simple, los nodos que reciben la petición se comportan como agentes intermedios que replican la petición.
+> Al igual que el enrutamiento gestiona las operaciones en redes estructuradas, en las redes no estructuradas se emplean técnicas de difusión, ya que, al no haber una relación directa entre nodos y datos, las solicitudes deben propagarse entre múltiples nodos para tratar la información.
 
- > Cuando son consultas de denominan comúnmente propagación de consultas (Query Propagation)
+Estas técnicas se aplican por lo tanto en cualquier momento que sea necesario, según sea solicitada la operación.
 
-<img src="assets/difusionVsPropagation.png" alt="difusionVsPropagation" width="250">
+La difusión en este contexto de redes p2p, son técnicas para transmitir o consultar información desde un nodo origen hacia múltiples nodos en una red, pero además, en la mayoría de protocolos de redes no estructuras, se produce una propagación, donde a diferencia de una difusión simple, los nodos que reciben la petición se comportan como agentes intermedios que replican la petición. Cuando son consultas, se denominan comúnmente **propagación de consultas** (Query Propagation):
 
-Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entender mejor las redes no estructuradas, veremos un ejemplo:
+<img src="assets/p2p/difusionVsPropagation.png" alt="difusionVsPropagation" width="350">
 
-<img src="assets/p2pPropagationGossip1-5.gif" alt="p2pPropagationGossip1-5" width="350">
+> PD: No debemos confundirlo con la [difusión amplia](https://es.wikipedia.org/wiki/Difusi%C3%B3n_amplia) de las telecomunicaciones, que se refiere a la transmisión o consulta de información desde un nodo origen hacia múltiples en una red distribuida.
 
-* Inicialmente existe una transacción iniciado desde el propio nodo o provenir de un cliente ligero.
-* En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos primero en lo que sería una escritura, donde se difunde la información desde el nodo 1 hasta el resto de nodos conocidos como el 6, 2, 3 y 5. El k o fan-out (abanico), se refire a la cantidad de peticiones paralelas que se realizan y no se debe confundir con los k-buckets de DHT...
+Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entenderlo mejor, veremos un ejemplo:
 
-  > Valores comunes de fan-out en gossip suelen estar entre 3 y 10. Dependen del tamaño de la red y del tipo de gossip.
+**En el caso de escribir (W)**.
 
-  > En este ejemplo se representa una ronda de 4 peticiones, pero obviamente suele ser varias dependiendo de los nodos conocidos.
+<img src="assets/p2p/p2pPropagationGossip1-5.gif" alt="p2pPropagationGossip1-5" width="350">
 
-* A modo de ejemplo, en los nodos 4 y 5 se representa el límite de propagación de saltos (hops) denominado [TTL*](https://es.wikipedia.org/wiki/Tiempo_de_vida_(inform%C3%A1tica)). Para que la consulta no se extienda hasta el fin, existe un límite, (*) como si sería el tiempo de vida de la petición, que en realidad no se basa en el tiempo, sino en el límite de saltos, que suele ser normalmente de 3 a 8 saltos.
+* Inicialmente existe una transacción iniciada desde el propio nodo o de un cliente ligero.
+* En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos en lo que sería una escritura (W), donde se difunde la información desde el nodo 1 hasta el resto de nodos conocidos como el 6, 2, 3 y 5. El k o fan-out (abanico), se refire a la cantidad de peticiones paralelas que se realizan y no se debe confundir con los k-buckets de DHT...
 
-<img src="assets/p2pPropagationGossip2-5.gif" alt="p2pPropagationGossip2-5" width="350">
+  > Valores comunes de fan-out en gossip suelen estar entre 3 y 10, dependen del tamaño de la red y del tipo de gossip. En este ejemplo se representa una ronda de 4 peticiones.
+
+* A modo de ejemplo, en los nodos 4 y 5 se representa el límite saltos (hops) de propagación, lo que sería el [TTL](https://es.wikipedia.org/wiki/Tiempo_de_vida_(inform%C3%A1tica)), o tiempo de vida, pero en realidad no se basa en tiempo, es un formalismo, son límites de saltos (hops), que suele ser normalmente de 3 a 8.
+
+**En el caso de leer (R)**.
+
+<img src="assets/p2p/p2pPropagationGossip2-5.gif" alt="p2pPropagationGossip2-5" width="350">
 
 * En la propagación de consulta o Query propagation, la petición que realiza el nodo, en principio, no difiere mucho a la escritura que vimos con anterioridad, es decir, se realiza la petición a los nodos conocidos y estos devolverán el resultado **y adicionalmente** la lista de nodos conocidos, porque no debemos olvidar que la propagación de consulta se usa también para el descubrimiento de nuevos nodos.
 * Se dice que se devuelve el dato, pero igualmente como ocurre en las redes estructuradas, dependiendo de la red puede ser un enlace para descargar el payload, como una IP u otra forma de acceso...
 * Aunque no difiere mucho la petición, ahora veremos en detalle que es diferente la respuesta si se devuelve el primer resultado encontrado (first-match), o si se espera multiples resultados de los nodos involucrados (multi-match).
 
-<img src="assets/p2pPropagationGossip3-5.gif" alt="p2pPropagationGossip3-5" width="350">
+**Propagación de consulta First-match**.
 
-* En First-match, por ejemplo, si el nodo 3 recibe una petición de consulta y lo tiene disponible, proporciona la respuesta.
+<img src="assets/p2p/p2pPropagationGossip3-5.gif" alt="p2pPropagationGossip3-5" width="350">
 
-<img src="assets/p2pPropagationGossip4-5.gif" alt="p2pPropagationGossip4-5" width="350">
+* Si el nodo 3 recibe una petición de consulta y lo tiene disponible, proporciona la respuesta.
 
-* En First-match, si el nodo 3 no tiene el dato, consultará al nodo 5 y continuará hasta encontrarlo o alcanzar el límite de saltos (TTL).
+<img src="assets/p2p/p2pPropagationGossip4-5.gif" alt="p2pPropagationGossip4-5" width="350">
 
-<img src="assets/p2pPropagationGossip5-5.gif" alt="p2pPropagationGossip5-5" width="350">
+* Si el nodo 3 no tiene el dato, consultará al nodo 5 y continuará hasta encontrarlo o alcanzar el límite de saltos (TTL).
 
-* En Multi-match, por ejemplo si el nodo 3 recibe la petición, continuará propagando la consulta hasta el último salto posible (TTL).
+**Propagación de consulta Multi-match**.
+
+<img src="assets/p2p/2pPropagationGossip5-5.gif" alt="p2pPropagationGossip5-5" width="350">
+
+* Si el nodo 3 recibe la petición, continuará propagando la consulta hasta el último salto posible (TTL).
 * La respuesta final que recibe el nodo 1 es la acumulación de todas las respuestas de los nodos que han participado.
+
+##### Aclaraciones técnicas de difusión
+
+**¿La consulta es exponencial?**
+
+La propagación de consultas puede crecer de forma cuasi-exponencial en los primeros saltos, pero no se considera formalmente exponencial, sino ineficiente y no acotada logarítmicamente.
 
 #### Comprobación de conectividad
 
 La comprobación de conectividad en redes P2P es fundamental para asegurar que los nodos están activos y disponibles, y para mantener la topología de la red actualizada. Este proceso varía según el tipo de red:
 
 * En redes estructuradas (como DHTs), los nodos realizan comprobaciones periódicas (por ejemplo, mediante mensajes PING/PONG o heartbeats) a los pares registrados en sus tablas de enrutamiento. Esto permite detectar nodos caídos y reemplazarlos por otros, manteniendo la integridad y eficiencia del enrutamiento. Además, estas comprobaciones pueden servir para refrescar la información de los buckets y descubrir nuevos nodos cercanos.
-
-* En redes no estructuradas, la comprobación de conectividad suele integrarse en los propios mecanismos de difusión y descubrimiento de nodos. Los mensajes periódicos (heartbeats) o intercambios de mensajes PING/PONG ayudan a identificar nodos activos y a eliminar de la lista de vecinos aquellos que no responden. En protocolos como Gossip, la conectividad se verifica de forma implícita durante la propagación de mensajes, y los nodos actualizan dinámicamente sus listas de pares en función de la respuesta a estas comunicaciones.
+* En redes no estructuradas, la comprobación de conectividad suele integrarse en los propios mecanismos de propagación, es decir, cuando una operación es solicitada, ya que como vimos, realizar una consulta también supone obtener información de nodos, aunque también hay comprobaciones periódicos que ayudan (por ejemplo, mediante mensajes PING/PONG o heartbeats) a identificar nodos activos y a eliminar de la lista de vecinos aquellos que no responden.
 
 En ambos casos, la comprobación de conectividad es clave para gestionar la rotación de nodos (churn), evitar la propagación de mensajes a nodos inactivos y garantizar la resiliencia y disponibilidad de la red.
 
 #### Establecimiento de la conexión
 
-Es el proceso mediante el cual un nodo inicia comunicación y abre un canal de comunicación (por ejemplo, vía TCP o UDP) con otro nodo previamente descubierto o conocido para cualquiera de las operaciones necesarias posteriores, como realizar una consulta o propagar información.
+Es el proceso mediante el cual un nodo inicia comunicación y abre un canal de comunicación (por ejemplo, vía TCP o UDP o QUIC) con otro nodo previamente descubierto o conocido para cualquiera de las operaciones necesarias posteriores, como realizar una consulta o propagar información.
 
-Es importante distinguir entre el establecimiento de la comunicación y la transferencia de información: establecer comunicación entre nodos de red significa que ambos pueden reconocerse y abrir un canal de conexión, pero esto no implica que se estén transmitiendo datos de aplicación aún. La transferencia de información ocurre después, cuando los nodos ya conectados intercambian mensajes o datos concretos a través del canal previamente establecido. Así, el establecimiento de la conexión es el paso previo y necesario para que la transferencia de información pueda producirse, pero ambos procesos son independientes y pueden ocurrir en momentos distintos.
+Es importante distinguir entre el establecimiento de la comunicación y la transferencia de información: establecer comunicación entre nodos de red significa que ambos pueden reconocerse y abrir un canal de conexión, pero esto no implica que se estén transmitiendo datos útiles (payload). La transferencia de información ocurre después, cuando los nodos ya conectados intercambian mensajes o datos concretos a través del canal previamente establecido. Así, el establecimiento de la conexión es el paso previo y necesario para que la transferencia de información pueda producirse, pero ambos procesos son independientes y pueden ocurrir en momentos distintos.
 
-La comunicación entre dos nodos puede ser activa o mantenerse pasiva mediante mecanismos como "keep-alive", que permiten conservar la conexión abierta enviando mensajes periódicos para evitar su cierre por inactividad.
+La comunicación entre dos nodos puede ser activa, o mantenerse con una actividad mínima mediante mecanismos como [keep-alive](https://en.wikipedia.org/wiki/Keepalive), que permiten conservar la conexión abierta enviando mensajes periódicos para evitar su cierre por inactividad.
 
 Este proceso puede incluir el uso de comunicación cifrada ([TLS](https://es.wikipedia.org/wiki/Seguridad_de_la_capa_de_transporte), [Noise](https://en.wikipedia.org/wiki/Noise_Protocol_Framework), etc.).
 
@@ -470,15 +551,15 @@ Igualmente, cuando la comunicación directa entre nodos no es posible debido a q
 
 Un [Relay](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) se utiliza cuando las técnicas como hole punching no son efectivas.
 
-<img src="assets/p2prelay1-2.gif" alt="p2prelay" width="350">
+<img src="assets/p2p/p2prelay1-2.gif" alt="p2prelay" width="350">
 
 * Cuando otros nodos no pueden acceder al nodo 1 porque está detrás de NATs o firewalls.
 
-<img src="assets/p2prelay2-2.gif" alt="p2prelay" width="350">
+<img src="assets/p2p/p2prelay2-2.gif" alt="p2prelay" width="350">
 
 * El nodo que no puede atender peticiones, sí puede conectarse a otro nodo relay.
 
-  > En telecomunicaciones, cuando un nodo establece una conexión de salida hacia otro, ambos pueden enviar y recibir información, logrando comunicación dúplex (half o full-duplex). Esto es posible porque la conexión abre canales bidireccionales (como sockets TCP), permitiendo el intercambio continuo de datos en ambos sentidos.
+  > En telecomunicaciones, cuando un nodo establece una conexión de salida hacia otro, ambos pueden enviar y recibir información, logrando comunicación duplex (half o full-duplex). Esto es posible porque la conexión abre canales bidireccionales (como sockets TCP), permitiendo el intercambio continuo de datos en ambos sentidos.
 
   > El uso de nodos relay puede impactar el rendimiento debido a la latencia adicional en la comunicación y plantea consideraciones de seguridad, como la confianza en el nodo relay para manejar los datos de forma adecuada.
 
@@ -487,170 +568,182 @@ Un [Relay](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) se u
 
 #### Transferencia de datos (Data Transfer)
 
-La transferencia de datos en redes P2P consiste en el intercambio directo de información entre nodos que ya se han descubierto y conocen sus direcciones.
+La transferencia de datos en redes P2P consiste en el intercambio directo de información entre nodos que ya se han descubierto, conocen sus direcciones y han establecido una conexión.
+Una vez establecida la conexión, existen principalmente dos enfoques de transmisión:
 
-Una vez establecida la relación, existen varios enfoques, un nodo puede solicitar información activamente (pull) y recibirlo de otro nodo. Aunque también un nodo puede propagar y enviarlo activamente (push) y el nodo recibiría la información sin solicitarlo.
+* Pull: un nodo solicita activamente la información a otro.
+* Push: un nodo envía activamente información a otro sin que este la haya solicitado.
 
-> Estos dos enfoques se relacionan normalmente a redes estructuradas con el enrutamiento (pull) y a la propagación en redes no estructuradas.
+Estos enfoques suelen asociarse a:
 
-Los datos transferidos normalmente en fragmentos, asegurando la integridad mediante mecanismos como hashes o checksums.
+* Redes estructuradas, donde predomina el modelo pull mediante mecanismos de enrutamiento.
+* Redes no estructuradas, donde es común el modelo push mediante difusión o propagación.
 
-Este proceso es independiente del establecimiento de la conexión y se centra únicamente en el envío y recepción de la carga útil entre pares.
+La información se transfiere generalmente en fragmentos, utilizando mecanismos como hashes o checksums para garantizar la integridad de los datos.
+
+Este proceso es independiente del establecimiento de la conexión y se enfoca exclusivamente en la transmisión de la carga útil entre los pares.
 
 #### Técnicas de replicación
 
-La replicación del contenido puede seguir una estrategia que determine cómo se distribuyen los datos entre los nodos para buscar mejorar disponibilidad y fallos antes problemas.
+En una red p2p, hemos visto que se consideran una serie de características según su propósito de la red y entre ellas esta la [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p), siendo la principal un almacenamiento distribuido, que permite mejorar la disponibilidad, balanceo de carga y resilencia, donde se puede aplicar algunas estrategias, algo centralizadas como servidores de índices o fragmentación (sharding).
 
-> Este apartado intenta explicar técnicas de replicación comunes, pero debemos considerar la característica inicial de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p), porque podrían existir excepciones o ajustes sobre lo que se explique a continuación, por ejemplo, la red podría crear un índice centralizado, o una fragmentación con [Erasure Coding](https://en.wikipedia.org/wiki/Erasure_code)  o [fragmentación en otro nodos con sharding](#subredes-con-diferentes-protocolos-sharding)...
+Vemos que el almacenamiento distribuido se ve condicionado por dos topológicas de redes principales, las estructuradas, basado en DHT y las no estructuradas, donde ante una operación en las estructuradas se trabaja con enrutamiento y en las no estructuradas con la replicación, que es una técnica de difusión.
+
+Para ambos tipos de redes, estructuradas o no, cuando existe un operación de escritura (W), se usan técnicas para replicar el contenido, para que los datos estén disponibles y mejorar ante fallos, problemas de seguridad y rendimiento.
 
 Podemos resumirlos como los siguientes técnicas:
 
 * Replicación Total (Full Replication), ocurre cuando cada nodo de la red almacena una copia completa de todos los datos. Muy seguro pero costoso en almacenamiento y ancho de banda. Aplica principalmente en redes no estructuradas o en arquitecturas que requieren alta disponibilidad local del historial completo.
 
-  <img src="assets/p2pFullReplication.png" alt="p2pFullReplication" width="250">
+  <img src="assets/p2p/p2pFullReplication.png" alt="p2pFullReplication" width="350">
 
 * Replicación Parcial (Partial Replication), cada nodo almacena solo una parte de los datos. Permite escalar reduciendo la carga en los nodos individuales. Es el modelo por defecto en redes estructuradas y también aplicable en redes no estructuradas más eficientes.
 
-  <img src="assets/p2pPartialReplication.png" alt="p2pPartialReplication" width="250">
+  <img src="assets/p2p/p2pPartialReplication.png" alt="p2pPartialReplication" width="350">
 
 * Replicación Basada en Demanda (Demand-based Replication), los datos se replican automáticamente en los nodos que los solicitan, creando copias temporales o persistentes mediante mecanismos de caching, para que se puedan recupera para futuras solicitudes.
 
-  <img src="assets/p2pdemandbasedreplication.png" alt="p2pdemandbasedreplication" width="250">
+  <img src="assets/p2p/p2pdemandbasedreplication.png" alt="p2pdemandbasedreplication" width="350">
 
 * Replicación Dirigida por el Usuario (User-driven Replication), el usuario selecciona explícitamente qué datos mantener replicados de forma persistente, independientemente de si han sido solicitados o no. Ejemplo: el pinning manual en IPFS, donde se fija contenido en un nodo incluso si no se ha accedido previamente.
 
-  <img src="assets/p2pUserDrivenReplication.png" alt="p2pUserDrivenReplication" width="250">
+  <img src="assets/p2p/p2pUserDrivenReplication.png" alt="p2pUserDrivenReplication" width="350">
 
 * Replicación Basada en Fiabilidad (Reliability-based Replication), los datos se replican preferentemente en nodos más confiables y disponibles. Optimiza disponibilidad según la reputación, el rendimiento o contratos incentivados. Aplica típicamente en redes estructuradas con capas adicionales de selección de nodos. Ejemplos: Filecoin, [Storj](https://www.storj.io/).
 
-  <img src="assets/p2pRealibilityBasedReplication.png" alt="p2pRealibilityBasedReplication" width="250">
+  <img src="assets/p2p/p2pRealibilityBasedReplication.png" alt="p2pRealibilityBasedReplication" width="350">
 
 * Replicación Basada en Redundancia Controlada (Controlled Redundancy Replication), se establece un número fijo o mínimo de copias para cada dato para garantizar disponibilidad. Común en redes estructuradas que utilizan parámetros como el factor k para redundancia. Ejemplos: Filecoin (usa acuerdos de almacenamiento —deals— que especifican cuántas copias deben mantenerse del dato), Kademlia (mantiene cada valor replicado en los k nodos más cercanos al hash de la clave para asegurar redundancia y disponibilidad).
 
-  <img src="assets/p2pControlledRedundancyReplication.png" alt="p2pControlledRedundancyReplication" width="250">
+  <img src="assets/p2p/p2pControlledRedundancyReplication.png" alt="p2pControlledRedundancyReplication" width="350">
 
 * Replicación Basado en Proximidad (Proximity-based Replication), los datos se almacenan preferentemente en nodos cercanos geográficamente o en red para mejorar el acceso. Ejemplo: redes de distribución de contenido p2p, tipo [CDN](https://es.wikipedia.org/wiki/Red_de_distribuci%C3%B3n_de_contenidos).
 
-  <img src="assets/p2pProximityBasedReplication.png" alt="p2pProximityBasedReplication" width="250">
+  <img src="assets/p2p/p2pProximityBasedReplication.png" alt="p2pProximityBasedReplication" width="350">
 
 > Estas técnicas no son excluyentes, una red puede aplicar varias, a no ser que sea excluyentes y pueden existir variantes. Por ejemplo, una red podría tener replicación parcial basado en proximidad y dirigido por el usuario.
 
 #### Modelos de consistencia
 
-Son reglas que definen cómo y cuándo los cambios en los datos replicados se propagan y se reflejan en los distintos nodos de la red, y bajo qué condiciones esos cambios se consideran consistentes o confirmados. Puede ser normalmente:
+Establece el grado de consistencia con el que los datos replicados en los distintos nodos permanecen sincronizados tras una operación de escritura (W), determinando cuándo y cómo se consideran confirmados para garantizar que una lectura posterior (R) devuelva información coherente y actualizada.
 
-* Consistencia fuerte (Strong consistency), implica que después de una escritura, todas las lecturas en cualquier nodo reflejan el valor más reciente, por lo tanto, se espera confirmación de los nodos relevantes (como nodos validadores)  antes de finalizar la escritura
+Existen normalmente los siguientes modelos que una red p2p puede usar:
+
+* Consistencia fuerte (Strong consistency), implica que después de una escritura, todas las lecturas en cualquier nodo reflejan el valor más reciente, por lo tanto, se espera confirmación de los nodos relevantes (como nodos validadores) antes de finalizar la escritura
   
-  <img src="assets/p2pStrongConsistency.gif" alt="strong" width="300">
+  <img src="assets/p2p/p2pStrongConsistency.gif" alt="strong" width="350">
 
   > En este ejemplo, un dato escrito (W) por el nodo emisor que es cliente, debe ser replicado y luego confirmado por el conjunto de nodos relevantes, como serían los nodos validadores, en este ejemplo solo habría un nodo validador, de color azul.
 
 * Consistencia eventual (Eventual consistency), los nodos se sincronizan con el tiempo, sin garantizar cuándo y no se espera una confirmación de escritura.
 
-   <img src="assets/p2pEventualConsistency.gif" alt="eventual" width="300">
+   <img src="assets/p2p/p2pEventualConsistency.gif" alt="eventual" width="350">
 
   > En consistencia eventual, no espera confirmación.
 
-* Consistencia de lectura tras escritura (Read-your-writes consistency), es comp en consistencia eventual, pero garantiza que un nodo emisor cliente si consulta posteriormente consultará el mismo dato que escribió. No implica que el cliente siempre vea su dato si otro nodo lo sobrescribió después.
+* Consistencia de lectura tras escritura (Read-your-writes consistency), es como en consistencia eventual, pero se garantiza que el nodo cliente que escribió el dato, si lo consulta posteriormente lo tendrá disponible. No implica que el cliente siempre vea su dato si otro nodo lo sobrescribió después.
 
-  <img src="assets/p2pRead-your-writesConsistency.gif" alt="RYW" width="300">
+  <img src="assets/p2p/p2pRead-your-writesConsistency.gif" alt="RYW" width="350">
 
   > En este ejemplo, el nodo emisor pregunta de forma posterior y se asegura la respuesta correcta gracias a que guardó una caché. No significa que consistencia eventual no lo haga, simplemente aquí se asegura.
 
 * Consistencia causal (Causal consistency), garantiza que los eventos relacionados por causa-efecto se vean en el mismo orden por todos los nodos. Es decir, si un evento A influye en B, todos los nodos deben ver A antes que B.
 
-   <img src="assets/p2pCausalConsistency.gif" alt="causal" width="300">
+   <img src="assets/p2p/p2pCausalConsistency.gif" alt="causal" width="350">
 
-  > Se logra controlando el orden de entrega, en el ejemplo, se entrega C cuando llega porque no tiene una causa y efecto, sin embargo, sólo entrega B si entrego antes A. Además no se espera confirmación de escritura.
+  > Se logra controlando el orden de entrega, en el ejemplo, se entrega C cuando llega porque no tiene una causa y efecto, sin embargo, sólo entrega B si entrego antes A.
 
 * Consistencia secuencial (Sequential consistency), asegura que todas las operaciones se vean en el mismo orden global, aunque ese orden no sea necesariamente el real (cronológico). En causal, solo se respeta el orden entre operaciones que tienen dependencia (causa-efecto), pero en secuencial, todas las operaciones (incluso no relacionadas) deben verse en el mismo orden global por todos los nodos.
 
-  <img src="assets/p2pSequentialConsistency.gif" alt="secuencial" width="300">
+  <img src="assets/p2p/p2pSequentialConsistency.gif" alt="secuencial" width="350">
 
-  > Se logra controlando el orden de entrega, en el ejemplo, como el orden es A, B y C, asi debe hacerlo el nodo que debe replicar la escritura.
+  > Se logra controlando el orden de entrega, en el ejemplo, como el orden es A, B y C, asi debe hacerlo el nodo que debe replicar la escritura, incluso aunque en un momento dado podría haber entregado C antes que B.
 
 **Aclaraciones**:
 
-En la práctica, las redes P2P rara vez implementan consistencia fuerte debido a sus problemas en rendimiento y disponibilidad, por lo tanto, suelen preferir consistencia eventual.
+* En la práctica, las redes P2P rara vez implementan consistencia fuerte debido a sus problemas en rendimiento y disponibilidad, por lo tanto, suelen preferir consistencia eventual.
+* Una red p2p puede seguir varios modelos, si no son contradictorios, por ejemplo, ser causal y eventual, etc.
 
-Una red p2p puede seguir varios modelos, si no son contradictorios, por ejemplo, ser causal y eventual, etc.
+### Clasificación y roles de los nodos
 
-### Clasificación de nodos
+Vemos que un nodo que participa en una red P2P debe soportar aspectos de la red como una [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p), un [modelo de confianza](#modelo-de-confianza), un [modelo de autorización](#modelo-de-autorización), o cierto nivel de centralización según el [grado de descentralización](#grado-de-descentralización). Por eso, es normal que existan nodos especializados de una clase y sobre todo que asuman roles concretos según el contexto.
 
-Hemos visto que existen características iniciales en una red p2p que sigue una [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p), [modelo de confianza](#modelo-de-confianza) o [autorización](#modelo-de-autorización) y además existiendo un [grado de descentralización](#grado-de-descentralización) para aplicar algunas excepciones que mejoren el rendimiento o seguridad de la red.
-Igualmente vimos que los nodos pueden adoptar distintas funciones o rol según su topología estructurada o no estructurada.
+No es común hablar de “clasificar” un nodo en redes P2P con protocolos heterogéneos entre iguales. En estos casos, los nodos suelen asumir roles específicos dependiendo del contexto, incluso si su participación se centra principalmente en una función concreta dentro de la red.
 
-Como una red se sustenta en nodos, podemos concretarlo con un resumen de los posibles clases o tipos de nodos que existen:
+Que un nodo ejerza un rol ayuda a distribuir tareas, optimizar recursos y mejorar la eficiencia del sistema.
 
-#### Por capacidad
+Estos roles pueden ser dinámicos (un nodo puede cambiar de rol según las necesidades de la red) o fijos (asignados de forma permanente o por configuración).
 
-Un nodo puede tener más capacidad y presencia en la red e incluso poder ejercer funciones que otro nodo de la red no tiene, afectando al grado de descentralización.
+Un mismo nodo puede desempeñar varios roles simultáneamente, dependiendo de su capacidad, permisos y configuración. La asignación de roles puede estar determinada por el protocolo, la reputación del nodo, incentivos económicos o la propia elección del usuario.
+
+A continuación, se presentan las clasificaciones y roles que un nodo puede asumir normalmente en una red P2P:
+
+#### Clasificación por capacidad
+
+Un nodo puede clasificarse según su capacidad y presencia en la red e incluso ejerciendo funciones que otro nodo de la red no tiene, afectando al grado de descentralización.
+
+> Es casi la única clasificación que se puede encontrar a un nodo en una red p2p.
 
 A continuación, listamos estos tipos de nodos como:
 
-<img src="assets/p2pCapacityNode.png" alt="p2pCapacityNode" width="350">
+<img src="assets/p2p/p2pCapacityNode.png" alt="p2pCapacityNode" width="300">
 
 * Nodo semilla o bootstrap (como ya vimos...), nodo con una dirección conocida y accesible, usado por nodos nuevos para descubrir y conectarse inicialmente a la red. No desempeña un rol funcional continuo, pero es esencial para el arranque de la red.
-* Nodo ligero (Light client), no almacena todo el estado ni el historial completo. Depende de nodos completos para verificar información mediante pruebas (ej. Merkle proofs). Está limitado a roles como emisor o receptor.
-  > En algunas redes modernas (ej. Mina Protocol), los light clients pueden verificar sin full nodes gracias a [zk-proofs](https://es.wikipedia.org/wiki/Prueba_de_conocimiento_cero).
+* Nodo ligero (Light client), no almacena todos los datos (lo que se conoce como el estado) o el historial completo. Depende de nodos completos para verificar información mediante pruebas (ej. Merkle proofs).
+  > En algunas redes modernas (ej. Mina Protocol), los light clients pueden verificar sin full nodes gracias a [zk-proofs](https://es.wikipedia.org/wiki/Prueba_de_conocimiento_cero). 🎓 Los zk-proofs requieren un estudio aparte en este repositorio, por lo tanto, no profundizaremos mucho más que este comentario.
 * Nodo completo (Full node), mantiene el estado completo y todo el historial reciente o, en algunos casos, solo una parte relevante del historial si opera en modo "pruned node" (nodo podado). Puede validar, ejecutar, propagar transacciones y bloques, y servir datos a otros nodos. Está capacitado para ejercer cualquier rol funcional dentro de la red.
 * Supernodo (Supernode), es un nodo completo que, además de las funciones básicas, asume tareas adicionales como coordinación, enrutamiento o gestión de recursos. Los supernodos suelen tener mayor capacidad (ancho de banda, almacenamiento, disponibilidad) y pueden actuar como intermediarios o facilitadores para otros nodos menos capaces. Su uso introduce cierto grado de centralización parcial, aunque siguen formando parte de la red P2P.
   > Supernodo se utiliza en varias redes P2P, aunque no es obligatorio en todas. Su presencia depende del diseño y necesidades de la red.
 
-#### Por rol en la red
+#### Roles operativos
 
-Un nodo puede ejercer roles específicos dentro de la red p2p, lo que permite distribuir tareas, optimizar recursos y mejorar la eficiencia y resiliencia del sistema. Estos roles pueden ser dinámicos (un nodo puede cambiar de rol según las necesidades de la red) o fijos (asignados de forma permanente o por configuración).
-
-Los roles más comunes que pueden encontrarse en una red p2p incluyen:
-
-**Roles operativos**.
-
-Asumidos durante la ejecución del protocolo, según el contexto.
+Son las diferentes tipos de operaciones que pueden asumir los nodos durante la ejecución del protocolo. Puede ser:
 
 * Nodo emisor (Initiator/Sender), inicia solicitudes o transacciones, como la publicación de datos, envío de mensajes o peticiones de recursos.
 * Nodo receptor (Receiver), recibe y procesa solicitudes o datos enviados por otros nodos.
 * Nodo validador (Validator), verifica la validez de transacciones, bloques o datos antes de aceptarlos y propagarlos. Es fundamental en redes blockchain y sistemas que requieren consenso.
 * Nodo replicador (Replicator), se encarga de almacenar y replicar datos para asegurar la disponibilidad y redundancia en la red.
 
-> En muchas redes p2p, un mismo nodo puede desempeñar varios roles simultáneamente, dependiendo de su capacidad, permisos y configuración. La asignación de roles puede estar determinada por el protocolo, la reputación del nodo, incentivos económicos o la propia elección del usuario.
+#### Roles funcionales
 
-Esta diferenciación de roles permite que las redes p2p sean flexibles, escalables y adaptables a distintos escenarios de uso, desde el intercambio de archivos hasta sistemas de consenso distribuidos o almacenamiento descentralizado.
+Definen las funciones que los nodos asumen en la red según las necesidades operativas:
 
-**Roles de infraestructura**.
-
-Relacionados con la estructura de conexión y soporte de red.
-
-<img src="assets/p2pInfrastructureNodes.png" alt="p2pInfrastructureNodes" width="350">
-
-* Nodo puente (Bridge node), facilita la comunicación entre redes distintas.
-* Nodo de gateway/pasarela, conecta la red P2P con sistemas externos, APIs, clientes ligeros o redes tradicionales, facilitando la interoperabilidad y el acceso.
-* Nodo relay (que ya vimos), actúa como intermediario para transmitir mensajes o datos entre nodos que no pueden comunicarse directamente, por ejemplo, por estar detrás de NAT/firewall.
-
-**Roles funcionales**.
-
-Definen tareas especializadas dentro del diseño lógico de la red.
-
-<img src="assets/p2pFunctionalsNode.png" alt="p2pFunctionalsNode" width="350">
+<img src="assets/p2p/p2pFunctionalsNode.png" alt="p2pFunctionalsNode" width="350">
 
 * Nodo de monitorización/auditoría (monitoring/auditing node), recopila métricas, verifica el estado de la red o audita transacciones para propósitos de análisis, seguridad o cumplimiento.
 * Nodo de almacenamiento dedicado (Dedicated storage node), especializado en almacenar grandes volúmenes de datos o archivos.
 
 > Dependerá siempre de la red p2p, existiendo, claro esta, muchos más...
 
+#### Roles de infraestructura
+
+Son aquellos nodos o incluso servidores que facilitan el funcionamiento básico y la conectividad de la red. Estos nodos cumplen funciones como conectar partes de la red, facilitar la comunicación entre nodos, o servir de enlace con otras redes o sistemas externos. Aunque no siempre están presentes en todas las redes P2P, su existencia puede ser clave para mejorar la accesibilidad, la interoperabilidad y la robustez de la red.
+
+<img src="assets/p2p/p2pInfrastructureNodes.png" alt="p2pInfrastructureNodes" width="450">
+
+* Nodo puente (bridge), permite la comunicación entre diferentes redes P2P, facilitando el intercambio de datos o mensajes entre ellas.
+* Nodo gateway o pasarela, conecta la red P2P con sistemas externos, como APIs, clientes ligeros o redes tradicionales, permitiendo la interoperabilidad y el acceso desde fuera de la red.
+* Nodo coordinador, coordina y gestiona la comunicación, sincronización o reparto de tareas entre diferentes nodos o subredes. Por ejemplo, en un sistema de sharding, el nodo coordinador se encarga de asignar nodos a cada shard, coordinar la comunicación entre shards y asegurar la consistencia global de la red.
+* Nodo relay, intermedia la transmisión de mensajes o datos entre nodos que no pueden establecer conexión directa, por ejemplo, cuando alguno está detrás de un NAT o firewall, o también puede actuar como relay entre subredes o shards para facilitar la comunicación y sincronización entre ellas.
+* Servidor de directorios o índices centralizados, ofrece un punto de descubrimiento o consulta para que los nodos encuentren recursos, pares o contenidos dentro de la red. Aunque introduce centralización, mejora la eficiencia inicial del acceso.
+* Servidor DNS semilla (seed DNS), proporciona una lista inicial de nodos conocidos (habitualmente nodos completos o bootstrap) para facilitar la incorporación de nuevos participantes. Suelen ser usados en redes como Bitcoin al inicio de la conexión.
+
 ### Dominios funcionales
 
 Un dominio funcional en una red P2P, es una agrupación lógica de nodos que colaboran para desempeñar una función específica dentro de la red, como enrutamiento, indexación, etc **integrado dentro de la misma red**.
 
-<img src="assets/p2pDomainNodes.png" alt="p2pDomainNodes" width="350">
+<img src="assets/p2p/p2pDomainNodes.png" alt="p2pDomainNodes" width="350">
 
   > Por ejemplo en este nodo hay dominios de almacenamiento y auditoria integrados en la red.
 
-Estos dominios pueden estar formados por nodos de diferentes clases, según la [clasificación de nodos](#clasificación-de-nodos) pero incluso aunque menos común, pueden estar formados por nodos de diferente [autorización](#modelo-de-autorización) o [confianza](#modelo-de-confianza).
+Estos dominios pueden estar compuestos por nodos de distintas clases, ya sea según su [capacidad](#clasificación-por-capacidad), o más comúnmente, según su rol de [infraestructura](#roles-de-infraestructura), [funcional](#roles-funcionales) u [operativo](#roles-operativos). En menor medida, también pueden estar compuesto por nodos de diferente [nivel de autorización](#modelo-de-autorización) o [confianza](#modelo-de-confianza).
+
+> Incluso cuando existe un conjunto de nodos semilla —que en principio no ejercen un rol funcional específico—, al integrarse en un dominio funcional su función principal es proporcionar disponibilidad y facilitar el acceso inicial al resto de la red P2P.
 
 **Ejemplos de dominios funcionales**.
 
-* Dominio de almacenamiento, un grupo de nodos (completos y dedicados) que colaboran para almacenar y replicar archivos, independientemente de su nivel de autorización. Por ejemplo, en IPFS, cualquier nodo puede unirse al dominio de almacenamiento si cumple con los requisitos de espacio y disponibilidad.
-* Dominio de auditoría, nodos de diferentes clases (algunos con permisos elevados, otros públicos) que cooperan para verificar la integridad de los datos o transacciones. En una red blockchain, pueden existir nodos auditores que revisan bloques, aunque no todos tengan el mismo nivel de confianza.
+* Dominio de almacenamiento, un grupo de nodos que colaboran para almacenar y replicar archivos, independientemente de su nivel de autorización. Por ejemplo, en IPFS, cualquier nodo puede unirse al dominio de almacenamiento si cumple con los requisitos de espacio y disponibilidad.
+* Dominio de auditoría, nodos de diferentes clases (algunos con autorización elevados, otros públicos) que cooperan para verificar la integridad de los datos o transacciones. En una red blockchain, pueden existir nodos auditores que revisan bloques, aunque no todos tengan el mismo nivel de confianza.
 * Dominio de indexación, nodos ligeros y completos que mantienen índices distribuidos para facilitar búsquedas rápidas, sin importar su rol principal en la red.
 * Dominio de validación, nodos validadores y supernodos que participan en la validación de transacciones, donde algunos pueden tener permisos especiales y otros actuar como observadores.
 * Dominio de monitoreo, nodos de diferentes niveles de confianza que recopilan métricas y supervisan el estado de la red, pudiendo incluir tanto nodos internos como externos.
@@ -665,139 +758,264 @@ La especialización de nodos en funciones específicas puede mejorar la eficienc
 
 ### Subredes lógicas en redes p2p
 
-Las subredes lógicas, son agrupaciones de nodos dentro de una red P2P que colaboran para cumplir una función específica de forma independiente a la red principal.
+Las subredes lógicas, son agrupaciones de nodos dentro de una red P2P que colaboran para cumplir una **función específica** de forma independiente a la red principal.
 
 > A diferencia de los [dominios funcionales](#dominios-funcionales) donde los nodos cooperan en la misma red, las subredes implican una separación topológica y una segmentación de la red.
 
-Estas subredes pueden estar formados por nodos de diferentes clases, según la [clasificación de nodos](#clasificación-de-nodos) e igualmente por nodos de diferente [autorización](#modelo-de-autorización) o [confianza](#modelo-de-confianza).
+Estas subredes, cono en los dominios funcionales, pueden estar compuestos por nodos de distintas clases, ya sea según su [capacidad](#clasificación-por-capacidad), o más comúnmente, según su rol de [infraestructura](#roles-de-infraestructura), [funcional](#roles-funcionales) u [operativo](#roles-operativos). En menor medida, también pueden estar compuesto por nodos de diferente [nivel de autorización](#modelo-de-autorización) o [confianza](#modelo-de-confianza).
 
 Las subredes lógicas pueden operar bajo el mismo protocolo principal de la red, lo cual es lo más habitual, pero también pueden implementar subprotocolos específicos para adaptarse a necesidades concretas de la subred. Por ejemplo, en algunas blockchains, ciertos shards o subredes pueden utilizar un protocolo de consenso diferente al de la red principal para optimizar el rendimiento o la seguridad en función de los requisitos de cada fragmento.
 
-<img src="assets/p2pLogicalSubNet.png" alt="p2pLogicalSubNet" width="350">
+<img src="assets/p2p/p2pLogicalSubNet.png" alt="p2pLogicalSubNet" width="350">
 
 **Ejemplos de subredes lógicas**.
 
-* Redes híbridas (público-privadas), consorcios o entornos empresariales, donde se requiere restringir el acceso a determinados recursos, operaciones o datos. Por ejemplo, una red blockchain puede tener una subred pública abierta a cualquier participante y otra subred privada donde solo entidades autorizadas pueden validar transacciones o acceder a información confidencial.
+* Redes híbridas (público-privadas), redes con [modelo de gobernanza](#modelo-de-gobernanza) consorcios o entornos empresariales, donde se requiere restringir el acceso a determinados recursos, operaciones o datos. Por ejemplo, una red blockchain puede tener una subred pública abierta a cualquier participante y otra subred privada donde solo entidades autorizadas pueden validar transacciones o acceder a información confidencial.
 * Subredes de validadores autorizados en blockchains permisionadas.
 * Grupos privados de almacenamiento o intercambio de datos dentro de una red P2P pública.
 
 Estas subredes permiten especializar a nodos en funciones  mejorando la eficiencia. Sin embargo, pueden reducir el [grado de descentralización](#grado-de-descentralización), ya que ciertos nodos o grupos asumen más responsabilidad o visibilidad. Por tanto, su uso implica un equilibrio entre rendimiento, seguridad y descentralización.
 
-#### Subredes con procesamiento paralelo: Sharding
+#### Subredes para la escalabilidad: Sharding
 
 Estas subredes permiten **paralelizar** procesos, lo que mejora significativamente la escalabilidad; a este enfoque se le conoce como Sharding (fragmentación).
+
+> 🎓 Generalmente, cuando en redes p2p se habla de redes adicionales a la principal, suele hacerse referencia al sharding, cuyo objetivo principal es mejorar la escalabilidad mediante la paralización de procesos. No es común utilizar el término "subredes lógicas"; este se emplea más bien para describir agrupaciones de nodos que, aunque forman parte de la misma red, cumplen funciones específicas o tienen restricciones de acceso, como en el caso de una red público-privada. La diferencia clave es que el sharding fragmenta la red para distribuir la carga de trabajo, mientras que las subredes lógicas segmentan la red según criterios funcionales o de acceso.
 
 Es una técnica que divide la red en fragmentos (shards), cada uno de ellos responsable de procesar y almacenar subconjuntos de datos y transacciones en paralelo, fragmentando el estado de la red.
 
 Mejora la escalabilidad en redes P2P al distribuir la carga, ya sea geográficamente, por tipo de operación solicitada o función concreta que se asigna a un conjunto de nodos.
 
-> No es correcto llamar a los shards una red superpuesta (overlay network); en este contexto, los shards son subredes lógicas dentro de la misma red P2P, no redes superpuestas independientes.
+> No es correcto considerar los shards como una red superpuesta (overlay network); en este contexto, los shards funcionan como subredes independientes, aunque relacionadas entre sí y con la red principal. No suponen una superposición lógica sobre la red principal, sino una fragmentación o partición de la misma para distribuir la carga y mejorar la escalabilidad.
 
 Existen dos enfoques: el modelo estático, con asignación fija de nodos y datos, más simple pero menos adaptable; y el modelo dinámico, que redistribuye recursos según la demanda, ofreciendo mayor flexibilidad a costa de complejidad.
 
 Esta fragmentación requiere mecanismos de coordinación entre fragmentos (cross-shard communication), existiendo dos modelos principales:
 
-* Basado en conjunto de nodos coordinadores que gestionan la asignación y sincronización de los shards, actuando como punto de referencia para la comunicación y el reparto de datos entre fragmentos en la red p2p:
+**Basado en conjunto de nodos coordinadores**.
 
-  <img src="assets/p2pShardingCoodinator.png" alt="p2pShardingCoodinator" width="350">
+Un conjunto de nodos gestionan la asignación y sincronización de los shards, actuando como punto de referencia para la comunicación y el reparto de datos entre fragmentos en la red p2p:
 
-  > Por ejemplo, si el motivo del sharding es una distribución geográfica, cuando el usuario 3 inicia una transacción que involucra datos o nodos de diferentes shards, el nodo que recibe la petición primero identifica los shards relevantes, luego, se comunica con un conjunto de nodos coordinadores (representados en hexágonos) que gestionan la sincronización entre shards, y estos nodos coordinadores actúan como intermediarios, asegurando que los datos necesarios se transfieran entre los shards involucrados y que la transacción se procese correctamente.
+<img src="assets/p2p/p2pShardingCoodinator.png" alt="p2pShardingCoodinator" width="350">
 
-* Basado en relé:
+* Su función principal es ayudar a los nodos a descubrir y establecer relaciones con otros nodos dentro de su propio shard (en muchos casos actúan también como nodos semilla). Además permite la comunicación entre los diferentes fragmentos (shards) de la red, coordinando la comunicación cross-shard
+  > Estos nodos coordinadores no validan, procesan o gestionan el tráfico interno de cada shard ni almacenan datos de usuario; su responsabilidad se limita a la coordinación y el enrutamiento de mensajes entre shards, especialmente para operaciones que requieren sincronización global o transferencia de datos entre fragmentos.
 
-  * Basado en relé (relay):
+  > La comunicación entre shards es esencial para mantener la coherencia y la funcionalidad global de la red. Los nodos coordinadores gestionan esta comunicación, asegurando que los datos y las transacciones se transfieran correctamente entre los diferentes fragmentos, y evitando así la fragmentación del estado o la pérdida de información.
+* Si un nodo intenta comunicarse con un nodo de un shard incorrecto, el nodo coordinador ayuda a redirigir la solicitud al shard adecuado o el nodo simplemente devolverá un error, dependiendo de la lógica implementada por la red.
 
-    <img src="assets/p2pShardingRelay.png" alt="p2pShardingRelay" width="350">
+**Basado en relé (relay)**.
 
-    > En la comunicación inter-shard de redes P2P, los nodos no se conectan directamente entre sí, sino que envían los datos a un nodo relé dentro de su shard. Este los retransmite al nodo relé del shard de destino, que a su vez los entrega al nodo correspondiente. Este mecanismo facilita la coordinación entre fragmentos, mejora la escalabilidad y reduce la complejidad, aunque introduce dependencia en los nodos relé para la transmisión de datos.
+Los propios nodos disponen un módulo relay que permite coordinar el sharding, a diferencia de tener un conjunto de nodos coordinadores.
 
-### Algunos ejemplos de nodos p2p
+<img src="assets/p2p/p2pShardingRelay.png" alt="p2pShardingRelay" width="350">
+
+* Cada nodo está asignado a un shard de forma determinista según reglas establecidas en el protocolo; no se requiere coordinación externa.
+* El módulo relay integrado en cada nodo gestiona la comunicación cross-shard, enviando y recibiendo mensajes hacia y desde el shard correspondiente.
+  > Este enfoque es más descentralizado y elimina dependencias de nodos coordinadores, reduciendo complejidad. Sin embargo, puede generar cuellos de botella a nivel de nodo, ya que cada uno asume carga adicional al manejar tráfico inter-shard, existiendo más latencia.
+
+  > Además, exige sincronización entre nodos de distintos shards y mecanismos de verificación para asegurar integridad y evitar inconsistencia.
+
+### Algunos ejemplos de redes p2p
 
 A continuación se describen algunos ejemplos destacados de redes y nodos P2P, cada una con su propio enfoque y características técnicas:
 
-#### IPFS (InterPlanetary File System)
+#### [Napster](https://es.wikipedia.org/wiki/Napster)
 
-* Tipo de red: P2P estructurada (basada en DHT Kademlia).
-* Propósito: Almacenamiento y distribución de archivos de forma descentralizada.
-* Funcionamiento: Cada archivo se divide en fragmentos, se les asigna un hash único (dirección por contenido) y se distribuyen entre los nodos. La DHT permite localizar qué nodos almacenan cada fragmento.
-* Replicación: Parcial y dirigida por el usuario (pinning). Los archivos se replican en los nodos que los solicitan o los fijan manualmente.
-* Nodos: Cualquier usuario puede ejecutar un nodo IPFS, que puede actuar como emisor, receptor, replicador y, opcionalmente, como nodo de almacenamiento dedicado.
+<img src="assets/p2p/examplesP2p/napster.png" alt="napster" width="300">
 
-#### Filecoin
-
-* Tipo de red: P2P estructurada (basada en IPFS y DHT).
-* Propósito: Almacenamiento descentralizado incentivado mediante criptomonedas.
-* Funcionamiento: Los usuarios (clientes) pagan a los mineros de almacenamiento para guardar archivos. Los mineros demuestran periódicamente que almacenan los datos mediante pruebas criptográficas (Proof of Replication y Proof of Spacetime).
-* Replicación: Contratada y basada en fiabilidad. El número de copias y la duración se negocian en acuerdos (deals) y se puede usar erasure coding para fragmentar y distribuir los datos.
-* Nodos: Existen nodos de almacenamiento, clientes ligeros y nodos de recuperación de datos.
-
-#### Freenet
-
-* Tipo de red: P2P no estructurada (con topología de malla).
-* Propósito: Almacenamiento y publicación anónima de información.
-* Funcionamiento: Los datos se fragmentan y se distribuyen automáticamente entre los nodos. El enrutamiento es adaptativo y busca maximizar el anonimato y la resiliencia.
-* Replicación: Automática y basada en demanda. Los datos populares se replican más ampliamente, y los menos accedidos pueden ser eliminados para liberar espacio.
-* Nodos: Todos los nodos pueden almacenar, buscar y replicar datos, y la red prioriza la privacidad y la resistencia a la censura.
-
-#### Storj
-
-* Tipo de red: P2P estructurada (basada en DHT y contratos inteligentes).
-* Propósito: Almacenamiento descentralizado en la nube, con incentivos económicos.
-* Funcionamiento: Los archivos se fragmentan y codifican (erasure coding), luego se distribuyen entre múltiples nodos de almacenamiento. Los contratos inteligentes gestionan la relación entre clientes y nodos.
-* Replicación: Contractual y basada en redundancia controlada. Se asegura que cada fragmento esté replicado en varios nodos, y la integridad se verifica periódicamente.
-* Nodos: Cualquier usuario puede ofrecer espacio de almacenamiento y recibir recompensas por alojar fragmentos de archivos.
-
-#### BitTorrent
-
-* Tipo de red: P2P no estructurada (con topología de enjambre).
-* Propósito: Compartición eficiente de archivos entre usuarios.
-* Funcionamiento: Los archivos se dividen en partes pequeñas que se distribuyen entre los usuarios (peers). Cada usuario descarga y al mismo tiempo comparte las partes que ya tiene con otros.
-* Replicación: Basada en demanda y popularidad. Cuantos más usuarios descargan un archivo, más copias existen en la red.
-* Nodos: Cualquier usuario puede ser peer (descargar y compartir archivos) o seed (mantener una copia completa del archivo).
-
-#### Gnutella
-
-* Tipo de red: P2P no estructurada (malla plana).
-* Propósito: Búsqueda y compartición de archivos sin servidores centrales.
-* Funcionamiento: Los nodos se conectan entre sí de forma aleatoria y propagan consultas de búsqueda por flooding. Los archivos se transfieren directamente entre los nodos que los poseen.
-* Replicación: Basada en demanda, sin control central.
-* Nodos: Todos los nodos pueden buscar, compartir y almacenar archivos.
-
-#### Napster
-
-* Tipo de red: P2P híbrida (índice centralizado, transferencia directa entre pares).
 * Propósito: Compartición de archivos de música.
-* Funcionamiento: Un servidor central mantiene un índice de los archivos disponibles, pero la transferencia de archivos ocurre directamente entre los usuarios.
-* Replicación: Basada en demanda, según los archivos que comparten los usuarios.
-* Nodos: Usuarios que comparten y descargan archivos, y un servidor central para el índice.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario podía unirse y compartir archivos sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Centralizada, gestionada por la empresa creadora de Napster, que controlaba el servidor central y las reglas del sistema.
+* [Modelo de confianza](#modelo-de-confianza): Basado en confianza (trusted), los usuarios confiaban en el servidor central para indexar y localizar archivos, sin mecanismos criptográficos avanzados.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Híbrida, con un servidor central para el índice y transferencia directa entre pares.
+* Funcionamiento: Un servidor central mantiene un índice de los archivos disponibles, pero la transferencia de archivos ocurre directamente entre los nodos de usuarios.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Indexación centralizada; los archivos permanecen en los dispositivos de los usuarios, el servidor solo almacena metadatos.
+* [Grado de descentralización](#grado-de-descentralización): Centralizada en el índice, descentralizada en la transferencia de archivos.
+* [Replicación](#técnicas-de-replicación): Basada en demanda, según los archivos que comparten los usuarios.
 
-#### eDonkey/eMule
+#### [Gnutella](https://www.gnu.org/philosophy/gnutella.es.html)
 
-* Tipo de red: P2P híbrida (servidores de índice y red de pares).
-* Propósito: Compartición de archivos de gran tamaño.
+<img src="assets/p2p/examplesP2p/gnutella.png" alt="gnutella" width="300">
+
+* Propósito: Compartición de archivos de música y otros ficheros.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y participar sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, no existe una entidad central de control; las reglas están definidas por el protocolo abierto.
+* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí, ya que solo intercambian archivos y metadatos directamente.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): No estructurada, basada en conexiones aleatorias y propagación de consultas por flooding.
+* Funcionamiento: Los nodos se conectan entre sí de forma aleatoria y propagan consultas de búsqueda por flooding. Los archivos se transfieren directamente entre los nodos que los poseen.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo almacena los archivos que comparte localmente.
+* [Grado de descentralización](#grado-de-descentralización): Inicialmente totalmente descentralizada; versiones posteriores introdujeron jerarquía parcial con nodos ultrapeer.
+* [Replicación](#técnicas-de-replicación): Basada en demanda, los archivos se replican temporalmente en los nodos que los descargan.
+
+#### [eDonkey](https://es.wikipedia.org/wiki/Red_eDonkey)/[eMule](https://es.wikipedia.org/wiki/EMule)
+
+<img src="assets/p2p/examplesP2p/edonkeyEmule.png" alt="edonkeyEmule" width="300">
+
+* Propósito: Compartición de archivos de música y otros ficheros.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y compartir archivos sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Híbrida, con servidores centrales que gestionan índices y una red P2P para la transferencia de archivos.
+* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los usuarios confían en los servidores para la indexación, pero la transferencia de archivos es directa entre pares.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Híbrida, combina servidores centrales para búsqueda con transferencia P2P directa.
 * Funcionamiento: Los archivos se dividen en partes y se distribuyen entre los usuarios. Los servidores ayudan a localizar archivos, pero la transferencia es directa entre pares.
-* Replicación: Basada en demanda y popularidad.
-* Nodos: Usuarios que pueden actuar como clientes y servidores de archivos.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido en los nodos, con indexación centralizada en servidores.
+* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada, centralización en la indexación y descentralización en la transferencia.
+* [Replicación](#técnicas-de-replicación): Basada en demanda, los archivos se replican en los nodos que los descargan.
 
-#### Bitcoin
+#### [BitTorrent](https://es.wikipedia.org/wiki/BitTorrent_(programa))
 
-* Tipo de red: P2P estructurada (basada en DHT y flooding).
-* Propósito: Red de pagos y libro contable distribuido (blockchain).
+<img src="assets/p2p/examplesP2p/bitcoin.png" alt="bitcoin" width="300">
+
+* Propósito: Compartición eficiente de archivos de cualquier tipo entre usuarios.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y participar sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y no existe una entidad central de control.
+* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la integridad de los archivos se verifica mediante hashes.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza un protocolo basado en DHT (Kademlia) para la localización de recursos, aunque puede apoyarse en trackers centralizados o descentralizados.
+* Funcionamiento: Los archivos se dividen en partes pequeñas que se distribuyen entre los usuarios (peers). Cada usuario descarga y al mismo tiempo comparte las partes que ya tiene con otros.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo almacena solo las partes de los archivos que descarga y comparte.
+* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada, ya que puede usar trackers centralizados para facilitar la localización inicial, pero la transferencia de datos es completamente P2P.
+* [Replicación](#técnicas-de-replicación): Basada en demanda, las partes de los archivos se replican dinámicamente en los nodos que las descargan, aumentando la disponibilidad según la popularidad del archivo.
+
+#### [Tor](https://es.wikipedia.org/wiki/Tor_(red_de_anonimato))
+
+<img src="assets/p2p/examplesP2p/tor.png" alt="tor" width="300">
+
+* Propósito: Anonimato y privacidad en la navegación y el intercambio de información.
+  > Tor no es tradicionalmente considerado una red P2P en el sentido clásico (no hay compartición entre pares simétricos de recursos). Es más una red de superposición anónima.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como cliente o relay, aunque los nodos de salida y autoridades de directorio requieren cierto nivel de confianza.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Federada, gestionada por la comunidad Tor y organizaciones independientes que operan las autoridades de directorio.
+* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los usuarios confían en las autoridades de directorio y en la integridad de los relays, pero el diseño minimiza la necesidad de confianza en nodos individuales mediante cifrado en capas.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red de relays organizados y autoridades de directorio centralizadas para la gestión de nodos.
+* Funcionamiento: El tráfico se enruta por circuitos cifrados a través de múltiples nodos (relays). Las autoridades de directorio mantienen una lista firmada de nodos disponibles.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): No almacena datos de usuario; los relays solo reenvían tráfico cifrado. Las autoridades de directorio almacenan información sobre los nodos de la red.
+* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; la red de relays es descentralizada, pero la gestión de directorios está centralizada en un conjunto limitado de autoridades.
+* [Replicación](#técnicas-de-replicación): Replicación de la información de directorio entre múltiples autoridades para garantizar disponibilidad y tolerancia a fallos.
+
+#### [I2P](https://geti2p.net/es/)
+
+<img src="assets/p2p/examplesP2p/i2p.png" alt="i2p" width="300">
+
+* Propósito: Anonimato y comunicación segura entre aplicaciones y usuarios, así como compartición de archivos y servicios internos.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo, aunque existen opciones para crear túneles privados.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin una entidad central de control.
+* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los nodos no necesitan confiar entre sí, ya que la privacidad y el anonimato se logran mediante túneles cifrados y rutas aleatorias; sin embargo, existen mecanismos de reputación para mitigar abusos.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red de túneles y rutas virtuales, con DHT para descubrimiento y enrutamiento.
+* Funcionamiento: Los nodos construyen túneles de entrada y salida independientes, enrutando mensajes a través de múltiples saltos cifrados. No existen nodos de salida global como en Tor; toda la comunicación es interna a la red I2P.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido de datos y servicios internos mediante DHT (netDb) para la localización de destinos y recursos.
+* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en el enrutamiento y no existe jerarquía central.
+* [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda, principalmente para la información de enrutamiento y servicios publicados en la red.
+
+#### [Freenet](https://freenet.org/)
+
+<img src="assets/p2p/examplesP2p/freenet.png" alt="freenet" width="300">
+
+* Propósito: Compartición anónima y resistente a la censura de archivos y publicación de contenido.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo y compartir o acceder a contenido.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin entidad central de control.
+* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la privacidad y el anonimato se logran mediante enrutamiento oscuro y cifrado.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza una DHT adaptativa y conexiones entre pares seleccionados para maximizar el anonimato.
+* Funcionamiento: Los datos se fragmentan y se distribuyen automáticamente entre los nodos. El enrutamiento es adaptativo y busca maximizar el anonimato y la resiliencia.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con replicación parcial y encriptación; los datos se almacenan en nodos aleatorios y se accede a ellos mediante claves hash.
+* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, no existen nodos privilegiados ni jerarquía.
+* [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda; los datos se replican automáticamente en varios nodos para asegurar disponibilidad y resistencia a la censura.
+
+#### [Bitcoin](https://es.wikipedia.org/wiki/Protocolo_Bitcoin)
+
+<img src="assets/p2p/examplesP2p/bitcoin.png" alt="bitcoin" width="300">
+
+* Propósito: Transferencia de valor digital (criptomoneda), registro inmutable de transacciones y descentralización financiera.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse a la red, validar y propagar transacciones y bloques sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, las reglas del protocolo son mantenidas por la comunidad y los desarrolladores, y los cambios requieren consenso social y técnico.
+* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la seguridad se garantiza mediante criptografía y consenso por prueba de trabajo (Proof of Work).
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red P2P de nodos completos que propagan bloques y transacciones usando técnicas de difusión (gossip).
 * Funcionamiento: Los nodos validan y propagan transacciones y bloques. Cada nodo mantiene una copia de la blockchain y participa en el consenso mediante prueba de trabajo (Proof of Work).
-* Replicación: Total (todos los nodos completos almacenan la blockchain), con nodos ligeros que solo validan encabezados.
-* Nodos: Nodos completos, nodos ligeros (SPV), mineros y nodos de escucha.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo completo almacena toda la cadena de bloques; los nodos ligeros almacenan solo cabeceras y verifican mediante pruebas criptográficas.
+* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la validación y propagación, sin jerarquía central.
+* [Replicación](#técnicas-de-replicación): Replicación total en nodos completos (full nodes), replicación parcial en nodos ligeros (light clients); la blockchain se replica íntegramente en miles de nodos para garantizar disponibilidad y resiliencia.
 
-#### Ethereum
+#### [Storj](https://storj.dev/)
 
-* Tipo de red: P2P estructurada (basada en DHT Kademlia y protocolos de flooding/gossip).
-* Propósito: Plataforma de contratos inteligentes y aplicaciones descentralizadas.
-* Funcionamiento: Los nodos almacenan el estado de la blockchain, validan y propagan transacciones y bloques, y ejecutan contratos inteligentes. Utiliza mecanismos de descubrimiento de nodos y propagación eficiente de mensajes.
-* Replicación: Total para nodos completos, parcial para nodos ligeros.
-* Nodos: Nodos completos, nodos ligeros, validadores (en proof of stake), clientes de archivo y nodos de infraestructura.
+<img src="assets/p2p/examplesP2p/storj.png" alt="p2pShardingstorjRelay" width="300">
+
+* Propósito: Almacenamiento y compartición descentralizada de archivos en la nube, con incentivos económicos para los nodos participantes.
+* [Modelo de autorización](#modelo-de-autorización): Pública y permisionada; cualquier usuario puede almacenar datos, pero los nodos de almacenamiento deben cumplir ciertos requisitos y pasar verificaciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Híbrida, Storj Labs mantiene el control operativo, aunque promueve apertura y participación de la comunidad.
+* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable; la integridad y disponibilidad de los datos se garantiza mediante contratos inteligentes, reputación de nodos y pruebas criptográficas (auditorías periódicas).
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en nodos de almacenamiento distribuidos y coordinadores (satélites) que gestionan la asignación y auditoría de datos.
+* Funcionamiento: Los archivos se fragmentan y codifican (erasure coding), luego se distribuyen entre múltiples nodos de almacenamiento. Los contratos inteligentes gestionan la relación entre clientes y nodos.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con fragmentación y erasure coding; los fragmentos se almacenan en nodos independientes para maximizar disponibilidad y resiliencia.
+* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; los nodos de almacenamiento son independientes, pero los satélites actúan como coordinadores y puntos de auditoría.
+* [Replicación](#técnicas-de-replicación): Replicación basada en erasure coding y redundancia controlada; se almacenan múltiples fragmentos redundantes para garantizar la recuperación ante fallos de nodos.
+
+#### [Ethereum](https://wiki.lemon.me/blockchain/ethereum-eth-que-es-y-como-funciona/)
+
+<img src="assets/p2p/examplesP2p//ethereum.png" alt="ethereum" width="300">
+
+* Propósito: Plataforma de contratos inteligentes y aplicaciones descentralizadas (dApps), además de transferencia de valor digital (Ether).
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse, validar, propagar transacciones y desplegar contratos inteligentes sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, las reglas del protocolo y las actualizaciones se deciden mediante consenso social y técnico de la comunidad y desarrolladores.
+* [Modelo de confianza](#modelo-de-confianza): Trustless, la seguridad y validez se garantizan mediante criptografía, consenso por prueba de trabajo (Proof of Work, hasta The Merge) y actualmente prueba de participación (Proof of Stake).
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red P2P de nodos completos que propagan bloques y transacciones usando técnicas de difusión (gossip) y mecanismos de descubrimiento de nodos (Kademlia-like).
+* Funcionamiento: Los nodos almacenan el estado de la blockchain, validan y propagan transacciones y bloques, ejecutan contratos inteligentes y mantienen la sincronización mediante técnicas de difusión eficientes.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo completo almacena toda la cadena de bloques y el estado global; los nodos ligeros almacenan solo cabeceras y verifican mediante pruebas criptográficas.
+* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la validación y propagación, sin jerarquía central.
+* [Replicación](#técnicas-de-replicación): Replicación total en nodos completos, replicación parcial en nodos ligeros; la blockchain y el estado se replican en miles de nodos para garantizar disponibilidad y resiliencia.
+
+#### [IPFS (InterPlanetary File System)](https://docs.ipfs.tech/concepts/what-is-ipfs/)
+
+<img src="assets/p2p/examplesP2p/ipfs.png" alt="ipfs" width="300">
+
+* Propósito: Almacenamiento y compartición descentralizada de archivos, con direccionamiento por contenido y resistencia a la censura.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo, almacenar y recuperar archivos sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad y Protocol Labs.
+* [Modelo de confianza](#modelo-de-confianza): Trustless, la integridad y autenticidad de los datos se garantiza mediante hashes criptográficos; los nodos no necesitan confiar entre sí.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en DHT (Kademlia) para descubrimiento y localización de contenido.
+* Funcionamiento: Cada archivo se divide en fragmentos, se les asigna un hash único (dirección por contenido) y se distribuyen entre los nodos. La DHT permite localizar qué nodos almacenan cada fragmento.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con replicación parcial y dirigida por el usuario (pinning); los datos se almacenan en los nodos que los solicitan o fijan.
+* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden almacenar, buscar y servir contenido sin jerarquía central.
+* [Replicación](#técnicas-de-replicación): Replicación parcial, basada en demanda y dirigida por el usuario (pinning); los fragmentos se replican en los nodos que los solicitan o deciden mantenerlos.
+
+#### [ZeroNet](https://zeronet.io/es)
+
+<img src="assets/p2p/examplesP2p/zeronet.png" alt="zeronet" width="300">
+
+* Propósito: Publicación y compartición descentralizada de sitios web y archivos, resistente a la censura.
+* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede crear, acceder y replicar sitios sin restricciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin entidad central de control.
+* [Modelo de confianza](#modelo-de-confianza): Trustless, la integridad de los contenidos se garantiza mediante firmas ECDSA y direccionamiento por clave pública.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza DHT para descubrimiento y BitTorrent para distribución de contenido.
+* Funcionamiento: Cada sitio web tiene una dirección basada en clave pública. Los contenidos se distribuyen vía BitTorrent y se validan con firmas ECDSA. Cada visitante actúa como nodo replicador.
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido y replicación parcial; los archivos se almacenan en los nodos que visitan o replican los sitios.
+* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la publicación, replicación y acceso sin jerarquía central.
+* [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda; los sitios se replican automáticamente en los nodos que los visitan, aumentando la disponibilidad y resiliencia.
+
+#### [Filecoin](https://filecoin.io/)
+
+<img src="assets/p2p/examplesP2p/filecoin.png" alt="filecoin" width="300">
+
+* Propósito: Almacenamiento y compartición descentralizada de archivos con incentivos económicos.
+* [Modelo de autorización](#modelo-de-autorización): Pública y permisionada; cualquier usuario puede almacenar datos, pero los mineros de almacenamiento deben cumplir requisitos y pasar verificaciones.
+* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, gestionada por la comunidad y Protocol Labs, con propuestas y mejoras abiertas.
+* [Modelo de confianza](#modelo-de-confianza): Trustless y parcialmente confiable; la integridad y disponibilidad se garantizan mediante pruebas criptográficas (Proof of Replication, Proof of Spacetime) y reputación de los mineros.
+* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en DHT (Kademlia) para descubrimiento y localización de recursos, y subredes lógicas para coordinación.
+* Funcionamiento: Los usuarios (clientes) pagan a los mineros de almacenamiento para guardar archivos. Los mineros demuestran periódicamente que almacenan los datos mediante pruebas criptográficas (Proof of Replication y Proof of Spacetime).
+* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con fragmentación (sharding) y erasure coding; los datos se dividen en fragmentos codificados y se distribuyen entre múltiples mineros.
+* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; los mineros son independientes, pero existen mecanismos de coordinación y subredes para gestión y auditoría.
+* [Replicación](#técnicas-de-replicación): Basada en erasure coding y redundancia controlada; se almacenan múltiples fragmentos redundantes para garantizar recuperación y disponibilidad ante fallos de nodos.
 
 ## Referencias
 
-* Las referencias son tan pobres que se puede decir que ha sido chatgpt la referencia principal.
+* Las referencias sobre todo son semanas de consultas a chatgpt y deepseek.
 * [geeksforgeeks.com](https://www.geeksforgeeks.org/structured-and-unstructured-peer-to-peer-systems/)
 * Varios autores de Wikipedia...
 * [bit2me academy](https://academy.bit2me.com/).
+
+## Aclaración y agradecimiento
+
+Agradecimiento a quien encuentre fallos y proponga mejoras.
+
+Este documento tiene cierto enfoque heurístico, quizás en algún momento la información ha podido ser interpretada, pero siempre con el propósito de aclarar, porque ha sido complicado encontrar información de referencia.
+
+Hay partes que quizás le falta alguna explicación, pero es asi porque tampoco quiero crear una guía de referencia para crear una red p2p, es un resumen introductorio y en algún momento tengo que dejar de explicar.
+
+Gracias ;).
