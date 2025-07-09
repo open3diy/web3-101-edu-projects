@@ -1,5 +1,11 @@
 # Introducción a redes peer to peer (p2p)
 
+## TL;DR
+
+Las redes peer-to-peer (P2P) permiten que los nodos se comuniquen y colaboren directamente, sin depender de servidores centrales, lo que mejora la resiliencia y la resistencia a la censura. Existen diferentes modelos de gobernanza, descentralización, confianza y autorización, que determinan cómo se organizan y operan estas redes. Las P2P pueden ser estructuradas (con topologías e índices definidos, como DHT/Kademlia) o no estructuradas (con conexiones aleatorias y propagación de consultas, como Gossip).
+
+Los nodos pueden asumir distintos roles (semilla, completo, ligero, coordinador, relay, etc.) y especializarse en funciones como almacenamiento, validación o auditoría. Para escalar, se usan técnicas como sharding (fragmentación en subredes coordinadas). Los principales retos de las redes P2P son la seguridad, la disponibilidad (churn), el rendimiento y la consistencia de los datos. Ejemplos conocidos incluyen BitTorrent, Bitcoin, Ethereum, IPFS y Filecoin.
+
 ## Visión inicial de redes de nodos
 
 <img src="assets/p2p/netHosts.png" alt="notHosts" width="250">
@@ -79,13 +85,13 @@ Que una red P2P sea entre iguales facilita un diseño descentralizado, lo que la
 
 ### Características de una red p2p
 
-Existen propiedades o cualidades que definen una red p2p y que son elegidas según su propósito, que podemos enumerar.
+Existen propiedades o cualidades que definen una red p2p y que podemos enumerar.
 
 > Asumiendo que muchos conceptos se conocen sobre todo por blockchain, también los podemos aplicar a redes p2p.
 
 #### Modelo de gobernanza
 
-El modelo de gobernanza en una red p2p o sistema distribuido define cómo se toman las decisiones clave sobre la evolución del protocolo, la validación de transacciones, la actualización de reglas y la resolución de conflictos. La gobernanza determina quién tiene autoridad para proponer, aprobar o rechazar cambios, y cómo se implementan estos cambios en la red. Dependiendo del propósito y del grado de descentralización (que veremos mas adelante), existen diferentes enfoques de gobernanza, cada uno con sus ventajas y limitaciones.
+El modelo de gobernanza en una red p2p o sistema distribuido define cómo se toman las decisiones clave sobre la evolución del protocolo, la actualización de reglas y la resolución de conflictos. La gobernanza determina quién tiene autoridad para proponer, aprobar o rechazar cambios, y cómo se implementan estos cambios en la red. Dependiendo del propósito y del grado de descentralización (que veremos mas adelante), existen diferentes enfoques de gobernanza, cada uno con sus ventajas y limitaciones.
 
 <img src="assets/p2p/governanceModel.png" alt="governanceModel" width="450">
 
@@ -101,7 +107,7 @@ La elección del modelo de gobernanza influye directamente en la seguridad, la f
 
 #### Grado de descentralización
 
-Define cuánto control está distribuido entre los nodos de la red y si existen jerarquías, lo influye en la escalabilidad y facilidad de diseño.
+Define cuánto control está distribuido entre los nodos de la red y si existen jerarquías, lo que influye en la escalabilidad y facilidad de diseño.
 
 <img src="assets/p2p/levelofDecentralization.png" alt="trustModel" width="400 ">
 
@@ -111,14 +117,14 @@ Puede ser normalmente:
   
   > Se menciona a modo de divulgación, pero no es normal encontrarlo, aun menos en la web3.
 
-* Parcialmente descentralizadas (Partially decentralized), varios nodos controlan la red, pero no todos. Ej: consorcios (como veremos en [modelo de autorización](#modelo-de-autorización)), supernodos (como detallaremos en [clases de nodos](#clasificación-por-capacidad)), federaciones (del [modelo de gobernanza](#modelo-de-gobernanza)).
+* Parcialmente descentralizadas (Partially decentralized), varios nodos controlan la red, pero no todos. Ej: gobernanza de consorcios (como veremos en [modelo de autorización](#modelo-de-autorización)), federaciones (del [modelo de gobernanza](#modelo-de-gobernanza)); y soluciones como supernodos (como detallaremos en [clases de nodos](#clasificación-por-capacidad)) y uso de índice centralizado (como veremos en [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p)).
 * Totalmente descentralizadas (Fully decentralized), todos los nodos tienen el mismo rol, sin jerarquía. Ej: Bitcoin, IPFS (sin bootstrap central), [Gnutella](https://en.wikipedia.org/wiki/Gnutella).
 
 Normalmente, un mayor grado de centralización suele buscar:
 
 * Mejor rendimiento (menor latencia y mayor throughput).
 
-  > [throughput](https://en.wikipedia.org/wiki/Network_throughput) es la cantidad de datos o transacciones procesadas por unidad de tiempo en una red. En redes P2P, suele medirse en transacciones por segundo (TPS) o bloques por segundo. Cuanto mayor el throughput, mayor la capacidad de procesamiento de la red.
+  > [throughput](https://en.wikipedia.org/wiki/Network_throughput) es la cantidad de datos o transacciones procesadas por unidad de tiempo en una red. En redes blockchain, suele medirse en transacciones por segundo (TPS) o bloques por segundo. Cuanto mayor el throughput, mayor la capacidad de procesamiento de la red.
 
 * Control más sencillo (gobernanza y actualizaciones).
 * Seguridad operativa (menos superficie de ataque si los nodos son confiables).
@@ -136,7 +142,7 @@ Define cómo y en quién confían los nodos para interactuar, validar informaci�
 Puede ser normalmente:
 
 * Sin confianza ([Trustless](https://academy.binance.com/es/glossary/trustless)), donde los nodos interactúan sin necesidad de confiar entre sí, ya que utilizan [mecanismos criptográficos](https://es.wikipedia.org/wiki/Criptograf%C3%ADa) y [reglas de consenso](https://www.bitstamp.net/es/learn/security/what-are-blockchain-consensus-rules/) verificables. Estos mecanismos generan pruebas objetivas, como los árboles de Merkle (para verificar integridad de datos) o las zk-proofs (para demostrar la validez de información sin revelarla). Ejemplos claros son blockchain con Bitcoin, Ethereum, IPFS + FileCoin.
-* Confiable o basado en confianza (Trusted), los nodos interactúan basándose en relaciones de confianza previa, donde existe identidad verificada o autoridad central parcial que ayuda a autenticar al nodo, reduciendo la necesidad de mecanismos criptográficos o consenso complejo. Por ejemplo, igualmente en blockchain en redes corporativas o [Hyperledger Fabric](https://en.wikipedia.org/wiki/Hyperledger#Hyperledger_Fabric) con [Proof of Authority](https://en.wikipedia.org/wiki/Proof_of_authority) (PoA).
+* Confiable o basado en confianza (Trusted), los nodos interactúan basándose en relaciones de confianza previa, donde existe identidad verificada o autoridad central parcial que ayuda a autenticar al nodo, reduciendo la necesidad de mecanismos criptográficos o consenso complejo. Por ejemplo, igualmente en blockchain en redes corporativas como [Hyperledger Fabric](https://en.wikipedia.org/wiki/Hyperledger#Hyperledger_Fabric) con [Proof of Authority](https://en.wikipedia.org/wiki/Proof_of_authority) (PoA).
 * Parcialmente confiable (Partially trusted), combina nodos confiables con nodos anónimos o no verificados, aplicando confianza selectiva. Usa mecanismos criptográficos y validación, pero permite ciertos roles privilegiados o relaciones basadas en confianza. Por ejemplo, [Lightning Network](https://es.wikipedia.org/wiki/Lightning_Network) (sobre Bitcoin):
 * Confianza híbrida (Hybrid trust), combina modelos trustless y trusted, donde algunas funciones dependen de nodos confiables o autoridades, y otras se descentralizan mediante consenso y criptografía. Ejemplo [Ripple](https://es.wikipedia.org/wiki/Ripple_Labs,_Inc.), donde usa un conjunto confiable de nodos validadores (UNL), pero con comunicación P2P.
 
@@ -150,10 +156,10 @@ Define quién puede participar y con qué permisos, lo cual influye en la resist
 
 Puede ser normalmente:
 
-* Pública, cualquier participante puede unirse y participar sin restricciones, es descentralizada y abierta a nuevos participantes.
+* Pública, cualquier participante puede unirse y participar sin restricciones, es abierta a nuevos participantes.
 * Privada, acceso limitado a entidades previamente autorizadas, suele tener un control centralizado dentro de una organización o grupo.
-* Permisionada, participación permitida solo a nodos verificados y aprobados, es una red privada que además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir.
-* Consorcio, gobernada por un grupo seleccionado de entidades confiables, es un tipo de red privada, pero gestionada por un grupo de entidades (no una sola).
+* Consorcio, gobernada por un grupo seleccionado de entidades confiables, es un tipo de red privada, pero gestionada por un grupo de entidades (no sólo una).
+* Permisionada, participación permitida a nodos verificados y aprobados; es una red privada que se abre a mas participante bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir.
 * Híbrida, mezcla características de modelos públicos y privados.
 
 #### Estrategias de almacenamiento en redes p2p
@@ -173,20 +179,20 @@ Además, existen otras decisiones que pueden tomarse para optimizar el almacenam
 
   > No se incluye como [técnicas de replicación](#técnicas-de-replicación) porque no copia íntegramente los datos, sino que los codifica en fragmentos con redundancia dispersa, aunque si no estás de acuerdo y lo pondrías, opina al respecto.
 
-* Fragmentación ([Sharding](https://es.cointelegraph.com/explained/sharding-an-opportunity-for-distributed-scalability)), los datos se dividen en partes no redundantes asignadas a nodos distintos. Requiere mecanismos de reconstrucción. Ejemplo: Algunas blockchains ([Ethereum](https://www.bitstamp.net/es/learn/blockchain/what-is-sharding-on-ethereum/)), sistemas de bases de datos P2P,
+* Fragmentación ([Sharding](https://es.cointelegraph.com/explained/sharding-an-opportunity-for-distributed-scalability)): los datos o el estado de la red se dividen en fragmentos (shards), y cada fragmento es gestionado por un subconjunto de nodos, permitiendo procesar operaciones en paralelo y mejorar la escalabilidad. Ejemplos de sharding en redes P2P incluyen [Ethereum](https://www.bitstamp.net/es/learn/blockchain/what-is-sharding-on-ethereum/), [Polkadot](https://wiki.polkadot.network/docs/learn-parachains), [Near Protocol](hhttps://academy.bit2me.com/que-es-near-protocol/), etc.
 
 ### Problemas en redes p2p
 
-Las redes p2p vienen a resolver principalmente el problema de la centralización y el punto único de fallo y para ello deben comunicarse entre iguales entre ellos siguiendo el protocolo, pero esto también tiene ciertos desafíos que se deben considerar y que podemos resumir como:
+Las redes p2p vienen a resolver principalmente, el problema de la centralización y el punto único de fallo y para ello los nodos deben comunicarse entre iguales siguiendo el protocolo, pero esto también tiene ciertos desafíos que se deben considerar y que podemos resumir como:
 
 #### Problemas de seguridad
 
-Una red p2p no está exento de problemas de seguridad, sobre todo si es pública, por lo tanto, se debe considerar que puede existir
+Una red p2p no está exento de problemas de seguridad, sobre todo si es pública, por lo tanto, se debe considerar que puede existir:
 
 <img src="assets/p2p/securityProblems.png" alt="trustModel" width="400">
 
 * Fragmentación de la red (network partitioning), donde los nodos están aislados en subgrupos, lo que impide una vista global coherente o sincronización entre ellos. Es sobre todo un problema físico de conectividad
-* Estado paralelo de la red ([forks](https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(desarrollo_de_software)) o view divergence), donde pueden coexistir versiones distintas, es decir, un conjunto de nodos entienden que exista un estado concreto y otros otro diferente, aunque normalmente el consenso resuelve el problema. Es diferente a la fragmentación de la red, en este caso hay conectividad, no es problema de comunicación, sino de consenso.
+* Estado paralelo de la red ([forks](https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(blockchain))) o view divergence), donde pueden coexistir versiones distintas, es decir, un conjunto de nodos entienden que exista un estado concreto y otros otro diferente, aunque normalmente el consenso resuelve el problema. Es diferente a la fragmentación de la red, en este caso hay conectividad, no es problema de comunicación, sino de consenso.
 * Ataques que puede recibir una red p2p, como [MITM (Man-in-the-Middle)](https://es.wikipedia.org/wiki/Ataque_de_intermediario), [Sybil](https://academy.bit2me.com/que-es-un-ataque-sybil/), [Eclipse](https://academy.bit2me.com/que-es-ataque-eclipse-eclipse-attack/), [DoS](https://academy.bit2me.com/que-son-ataques-dos/), [Erebus](https://es.cointelegraph.com/explained/erebus-attack-explaining-its-scope) o [ataques a la DHT](https://medium.com/unitychain/dht-attacks-and-defenses-e159b3d1bcf8), y aunque sobre todo se relaciona con blockchain, tenemos ataques como [Replay](https://academy.bit2me.com/que-es-un-ataque-replay/) o [del 51%](https://academy.bit2me.com/ataque-51-bitcoin/).
 
 #### Problema de disponibilidad o rotación: Churn
@@ -319,7 +325,7 @@ Tomando como ejemplo la DHT [Kademlia](https://en.wikipedia.org/wiki/Kademlia), 
 
 La "cercanía entre nodos" permite que las consultas sean deterministas, es decir, que siempre produzcan el mismo resultado. Esta cercanía se calcula utilizando la [operación binaria XOR](https://es.wikipedia.org/wiki/Puerta_XOR).
 
-En Kademlia, la tabla de enrutamiento almacena contactos de otros nodos organizados según su distancia XOR respecto al nodo local. Estos contactos se agrupan en estructuras llamadas k-buckets (del inglés bucket, que en este contexto equivale a 'contenedor'), donde cada bucket contiene hasta k nodos a una determinada distancia. Por convención, k suele ser 20.
+En Kademlia, la tabla de enrutamiento almacena contactos de otros nodos organizados según su distancia XOR respecto al nodo local. Estos contactos se agrupan en estructuras llamadas k-buckets (del inglés bucket, que en este contexto equivale a 'cubeta'), donde cada bucket contiene hasta k nodos a una determinada distancia. Por convención, k suele ser 20.
 
 > Los buckets empiezan desde 0, es decir, podemos tener desde Bucket 0 a Bucket 1, 2, 3, etc...
 
@@ -357,6 +363,7 @@ Esto aunque es una generalización, nos da una idea de lo que se busca, que es t
 
 <img src="assets/p2p/p2pNodeDiscoveryKademlia2-2.gif" alt="p2pNodeDiscoveryKademlia" width="450">
 
+* En esta petición del nodo 1, también el nodo 8 conocen al nodo 1 y lo añaden en su lista de nodos, y esto porque el descubrimiento es reciproco (reciprocal peer discovery).
 * En la segunda ronda, con los nuevos nodos descubiertos, se realiza α (alfa) consultas paralelas para buscar más nodos con FIND_NODE, siendo las consultas a los nodos 0b0011 (3) y 0b0010 (2).
 
   > El valor de α (alfa) indica el número máximo de consultas concurrentes por ronda, por ejemplo α = 2, con 2 consultas concurrentes. Por defecto en Kademlia α suele ser entre 2 y 3.
@@ -381,9 +388,9 @@ A continuación, veremos un ejemplo tomando como referencia Gossip para explicar
 <img src="assets/p2p/p2pNodeDiscoveryGossip2-3.gif" alt="p2pNodeDiscoveryGossip" width="450">
 
 * El nodo continua consultando a los nodos 6, 2, 3 y 7, y suponiendo que el fan-out es 2, consultaría en una ronda a los nodos 2 y 3, para conocer los nuevos nodos 4 y 5.
-* Es importante comprender, que en esta petición del nodo 1, también el nodo 2 y 3 conocen al nodo 1 y lo añaden en su lista de nodos, y esto porque el descubrimiento es reciproco (reciprocal peer discovery).
-
-  > En la representación anterior, cuando el nodo 1 consulta al 8, igualmente existe un descubrimiento reciproco, se ha omitido para simplificar.
+* En esta petición, el nodo 1 también es descubierto por los nodos 2 y 3, quienes lo agregan a su lista de nodos conocidos gracias al descubrimiento recíproco (reciprocal peer discovery).
+  > Nota: En la representación anterior, cuando el nodo 1 consulta al 8, igualmente existe un descubrimiento reciproco, se ha omitido para simplificar.
+* En redes no estructuradas como Gossip, este proceso de descubrimiento reciproco es continuo y se denomina diseminación push-based: por ejemplo, el nodo 2 puede enviar comunicaciones push al nodo 1 cada vez que detecta nuevos nodos, manteniendo así actualizada la topología de la red de forma proactiva.
 
 <img src="assets/p2p/p2pNodeDiscoveryGossip3-3.gif" alt="p2pNodeDiscoveryGossip" width="450">
 
@@ -403,7 +410,7 @@ Es complicado entenderlo, asi que lo veremos en un ejemplo:
 
 **En el caso de escribir (W)**.
 
-<img src="assets/p2p/p2pRoutingKademlia1-6.png" alt="p2pNodeDiscoveryKademlia" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRoutingKademlia1-6.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Inicialmente existe una transacción iniciado desde el propio nodo o realiza por un cliente ligero.
 * En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos como en base a un identificador o key que hace referencia al recurso (normalmente su hash), se realiza una solicitud para buscar o guardar en la DHT. Este recurso puede representar datos como archivos, fragmentos de archivos, metadatos, bloques de datos en una blockchain, direcciones de nodos, o cualquier otro recurso específico que la red P2P esté diseñada para gestionar.
@@ -816,192 +823,205 @@ Los propios nodos disponen un módulo relay que permite coordinar el sharding, a
 
   > Además, exige sincronización entre nodos de distintos shards y mecanismos de verificación para asegurar integridad y evitar inconsistencia.
 
-### Algunos ejemplos de redes p2p
+  ### Algunos ejemplos de redes p2p
 
-A continuación se describen algunos ejemplos destacados de redes y nodos P2P, cada una con su propio enfoque y características técnicas:
+  A continuación se describen algunos ejemplos destacados de redes y nodos P2P, cada una con su propio enfoque y características técnicas:
 
-#### [Napster](https://es.wikipedia.org/wiki/Napster)
+  #### [Napster](https://es.wikipedia.org/wiki/Napster)
 
-<img src="assets/p2p/examplesP2p/napster.png" alt="napster" width="300">
+  <img src="assets/p2p/examplesP2p/napster.png" alt="napster" width="300">
 
-* Propósito: Compartición de archivos de música.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario podía unirse y compartir archivos sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Centralizada, gestionada por la empresa creadora de Napster, que controlaba el servidor central y las reglas del sistema.
-* [Modelo de confianza](#modelo-de-confianza): Basado en confianza (trusted), los usuarios confiaban en el servidor central para indexar y localizar archivos, sin mecanismos criptográficos avanzados.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Híbrida, con un servidor central para el índice y transferencia directa entre pares.
-* Funcionamiento: Un servidor central mantiene un índice de los archivos disponibles, pero la transferencia de archivos ocurre directamente entre los nodos de usuarios.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Indexación centralizada; los archivos permanecen en los dispositivos de los usuarios, el servidor solo almacena metadatos.
-* [Grado de descentralización](#grado-de-descentralización): Centralizada en el índice, descentralizada en la transferencia de archivos.
-* [Replicación](#técnicas-de-replicación): Basada en demanda, según los archivos que comparten los usuarios.
+  * Propósito: Compartición de archivos de música.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario podía unirse y compartir archivos sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Centralizada, gestionada por la empresa creadora de Napster, que controlaba el servidor central y las reglas del sistema.
+  * [Modelo de confianza](#modelo-de-confianza): Basado en confianza (trusted), los usuarios confiaban en el servidor central para indexar y localizar archivos, sin mecanismos criptográficos avanzados.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Híbrida, con un servidor central para el índice y transferencia directa entre pares.
+  * Funcionamiento: Un servidor central mantiene un índice de los archivos disponibles, pero la transferencia de archivos ocurre directamente entre los nodos de usuarios.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Indexación centralizada; los archivos permanecen en los dispositivos de los usuarios, el servidor solo almacena metadatos.
+  * [Grado de descentralización](#grado-de-descentralización): Centralizada en el índice, descentralizada en la transferencia de archivos.
+  * [Replicación](#técnicas-de-replicación): Basada en demanda, según los archivos que comparten los usuarios.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; los archivos compartidos pueden variar entre nodos y no existe garantía de sincronización inmediata.
 
-#### [Gnutella](https://www.gnu.org/philosophy/gnutella.es.html)
+  #### [Gnutella](https://www.gnu.org/philosophy/gnutella.es.html)
 
-<img src="assets/p2p/examplesP2p/gnutella.png" alt="gnutella" width="300">
+  <img src="assets/p2p/examplesP2p/gnutella.png" alt="gnutella" width="300">
 
-* Propósito: Compartición de archivos de música y otros ficheros.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y participar sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, no existe una entidad central de control; las reglas están definidas por el protocolo abierto.
-* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí, ya que solo intercambian archivos y metadatos directamente.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): No estructurada, basada en conexiones aleatorias y propagación de consultas por flooding.
-* Funcionamiento: Los nodos se conectan entre sí de forma aleatoria y propagan consultas de búsqueda por flooding. Los archivos se transfieren directamente entre los nodos que los poseen.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo almacena los archivos que comparte localmente.
-* [Grado de descentralización](#grado-de-descentralización): Inicialmente totalmente descentralizada; versiones posteriores introdujeron jerarquía parcial con nodos ultrapeer.
-* [Replicación](#técnicas-de-replicación): Basada en demanda, los archivos se replican temporalmente en los nodos que los descargan.
+  * Propósito: Compartición de archivos de música y otros ficheros.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y participar sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, no existe una entidad central de control; las reglas están definidas por el protocolo abierto.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí, ya que solo intercambian archivos y metadatos directamente.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): No estructurada, basada en conexiones aleatorias y propagación de consultas por flooding.
+  * Funcionamiento: Los nodos se conectan entre sí de forma aleatoria y propagan consultas de búsqueda por flooding. Los archivos se transfieren directamente entre los nodos que los poseen.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo almacena los archivos que comparte localmente.
+  * [Grado de descentralización](#grado-de-descentralización): Inicialmente totalmente descentralizada; versiones posteriores introdujeron jerarquía parcial con nodos ultrapeer.
+  * [Replicación](#técnicas-de-replicación): Basada en demanda, los archivos se replican temporalmente en los nodos que los descargan.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; los archivos pueden estar disponibles en algunos nodos y no en otros, sin sincronización global.
 
-#### [eDonkey](https://es.wikipedia.org/wiki/Red_eDonkey)/[eMule](https://es.wikipedia.org/wiki/EMule)
+  #### [eDonkey](https://es.wikipedia.org/wiki/Red_eDonkey)/[eMule](https://es.wikipedia.org/wiki/EMule)
 
-<img src="assets/p2p/examplesP2p/edonkeyEmule.png" alt="edonkeyEmule" width="300">
+  <img src="assets/p2p/examplesP2p/edonkeyEmule.png" alt="edonkeyEmule" width="300">
 
-* Propósito: Compartición de archivos de música y otros ficheros.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y compartir archivos sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Híbrida, con servidores centrales que gestionan índices y una red P2P para la transferencia de archivos.
-* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los usuarios confían en los servidores para la indexación, pero la transferencia de archivos es directa entre pares.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Híbrida, combina servidores centrales para búsqueda con transferencia P2P directa.
-* Funcionamiento: Los archivos se dividen en partes y se distribuyen entre los usuarios. Los servidores ayudan a localizar archivos, pero la transferencia es directa entre pares.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido en los nodos, con indexación centralizada en servidores.
-* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada, centralización en la indexación y descentralización en la transferencia.
-* [Replicación](#técnicas-de-replicación): Basada en demanda, los archivos se replican en los nodos que los descargan.
+  * Propósito: Compartición de archivos de música y otros ficheros.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y compartir archivos sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Híbrida, con servidores centrales que gestionan índices y una red P2P para la transferencia de archivos.
+  * [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los usuarios confían en los servidores para la indexación, pero la transferencia de archivos es directa entre pares.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Híbrida, combina servidores centrales para búsqueda con transferencia P2P directa.
+  * Funcionamiento: Los archivos se dividen en partes y se distribuyen entre los usuarios. Los servidores ayudan a localizar archivos, pero la transferencia es directa entre pares.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido en los nodos, con indexación centralizada en servidores.
+  * [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada, centralización en la indexación y descentralización en la transferencia.
+  * [Replicación](#técnicas-de-replicación): Basada en demanda, los archivos se replican en los nodos que los descargan.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; la disponibilidad de archivos depende de los nodos conectados y no hay garantía de actualización inmediata.
 
-#### [BitTorrent](https://es.wikipedia.org/wiki/BitTorrent_(programa))
+  #### [BitTorrent](https://es.wikipedia.org/wiki/BitTorrent_(programa))
 
-<img src="assets/p2p/examplesP2p/bitcoin.png" alt="bitcoin" width="300">
+  <img src="assets/p2p/examplesP2p/bitcoin.png" alt="bitcoin" width="300">
 
-* Propósito: Compartición eficiente de archivos de cualquier tipo entre usuarios.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y participar sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y no existe una entidad central de control.
-* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la integridad de los archivos se verifica mediante hashes.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza un protocolo basado en DHT (Kademlia) para la localización de recursos, aunque puede apoyarse en trackers centralizados o descentralizados.
-* Funcionamiento: Los archivos se dividen en partes pequeñas que se distribuyen entre los usuarios (peers). Cada usuario descarga y al mismo tiempo comparte las partes que ya tiene con otros.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo almacena solo las partes de los archivos que descarga y comparte.
-* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada, ya que puede usar trackers centralizados para facilitar la localización inicial, pero la transferencia de datos es completamente P2P.
-* [Replicación](#técnicas-de-replicación): Basada en demanda, las partes de los archivos se replican dinámicamente en los nodos que las descargan, aumentando la disponibilidad según la popularidad del archivo.
+  * Propósito: Compartición eficiente de archivos de cualquier tipo entre usuarios.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse y participar sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y no existe una entidad central de control.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la integridad de los archivos se verifica mediante hashes.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza un protocolo basado en DHT (Kademlia) para la localización de recursos, aunque puede apoyarse en trackers centralizados o descentralizados.
+  * Funcionamiento: Los archivos se dividen en partes pequeñas que se distribuyen entre los usuarios (peers). Cada usuario descarga y al mismo tiempo comparte las partes que ya tiene con otros.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo almacena solo las partes de los archivos que descarga y comparte.
+  * [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada, ya que puede usar trackers centralizados para facilitar la localización inicial, pero la transferencia de datos es completamente P2P.
+  * [Replicación](#técnicas-de-replicación): Basada en demanda, las partes de los archivos se replican dinámicamente en los nodos que las descargan, aumentando la disponibilidad según la popularidad del archivo.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; las partes de los archivos pueden estar disponibles en diferentes nodos en distintos momentos.
 
-#### [Tor](https://es.wikipedia.org/wiki/Tor_(red_de_anonimato))
+  #### [Tor](https://es.wikipedia.org/wiki/Tor_(red_de_anonimato))
 
-<img src="assets/p2p/examplesP2p/tor.png" alt="tor" width="300">
+  <img src="assets/p2p/examplesP2p/tor.png" alt="tor" width="300">
 
-* Propósito: Anonimato y privacidad en la navegación y el intercambio de información.
-  > Tor no es tradicionalmente considerado una red P2P en el sentido clásico (no hay compartición entre pares simétricos de recursos). Es más una red de superposición anónima.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como cliente o relay, aunque los nodos de salida y autoridades de directorio requieren cierto nivel de confianza.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Federada, gestionada por la comunidad Tor y organizaciones independientes que operan las autoridades de directorio.
-* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los usuarios confían en las autoridades de directorio y en la integridad de los relays, pero el diseño minimiza la necesidad de confianza en nodos individuales mediante cifrado en capas.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red de relays organizados y autoridades de directorio centralizadas para la gestión de nodos.
-* Funcionamiento: El tráfico se enruta por circuitos cifrados a través de múltiples nodos (relays). Las autoridades de directorio mantienen una lista firmada de nodos disponibles.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): No almacena datos de usuario; los relays solo reenvían tráfico cifrado. Las autoridades de directorio almacenan información sobre los nodos de la red.
-* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; la red de relays es descentralizada, pero la gestión de directorios está centralizada en un conjunto limitado de autoridades.
-* [Replicación](#técnicas-de-replicación): Replicación de la información de directorio entre múltiples autoridades para garantizar disponibilidad y tolerancia a fallos.
+  * Propósito: Anonimato y privacidad en la navegación y el intercambio de información.
+    > Tor no es tradicionalmente considerado una red P2P en el sentido clásico (no hay compartición entre pares simétricos de recursos). Es más una red de superposición anónima.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como cliente o relay, aunque los nodos de salida y autoridades de directorio requieren cierto nivel de confianza.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Federada, gestionada por la comunidad Tor y organizaciones independientes que operan las autoridades de directorio.
+  * [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los usuarios confían en las autoridades de directorio y en la integridad de los relays, pero el diseño minimiza la necesidad de confianza en nodos individuales mediante cifrado en capas.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red de relays organizados y autoridades de directorio centralizadas para la gestión de nodos.
+  * Funcionamiento: El tráfico se enruta por circuitos cifrados a través de múltiples nodos (relays). Las autoridades de directorio mantienen una lista firmada de nodos disponibles.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): No almacena datos de usuario; los relays solo reenvían tráfico cifrado. Las autoridades de directorio almacenan información sobre los nodos de la red.
+  * [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; la red de relays es descentralizada, pero la gestión de directorios está centralizada en un conjunto limitado de autoridades.
+  * [Replicación](#técnicas-de-replicación): Replicación de la información de directorio entre múltiples autoridades para garantizar disponibilidad y tolerancia a fallos.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia fuerte para la información de directorio (sincronización entre autoridades); consistencia eventual para el estado de los relays.
 
-#### [I2P](https://geti2p.net/es/)
+  #### [I2P](https://geti2p.net/es/)
 
-<img src="assets/p2p/examplesP2p/i2p.png" alt="i2p" width="300">
+  <img src="assets/p2p/examplesP2p/i2p.png" alt="i2p" width="300">
 
-* Propósito: Anonimato y comunicación segura entre aplicaciones y usuarios, así como compartición de archivos y servicios internos.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo, aunque existen opciones para crear túneles privados.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin una entidad central de control.
-* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los nodos no necesitan confiar entre sí, ya que la privacidad y el anonimato se logran mediante túneles cifrados y rutas aleatorias; sin embargo, existen mecanismos de reputación para mitigar abusos.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red de túneles y rutas virtuales, con DHT para descubrimiento y enrutamiento.
-* Funcionamiento: Los nodos construyen túneles de entrada y salida independientes, enrutando mensajes a través de múltiples saltos cifrados. No existen nodos de salida global como en Tor; toda la comunicación es interna a la red I2P.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido de datos y servicios internos mediante DHT (netDb) para la localización de destinos y recursos.
-* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en el enrutamiento y no existe jerarquía central.
-* [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda, principalmente para la información de enrutamiento y servicios publicados en la red.
+  * Propósito: Anonimato y comunicación segura entre aplicaciones y usuarios, así como compartición de archivos y servicios internos.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo, aunque existen opciones para crear túneles privados.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin una entidad central de control.
+  * [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable, los nodos no necesitan confiar entre sí, ya que la privacidad y el anonimato se logran mediante túneles cifrados y rutas aleatorias; sin embargo, existen mecanismos de reputación para mitigar abusos.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red de túneles y rutas virtuales, con DHT para descubrimiento y enrutamiento.
+  * Funcionamiento: Los nodos construyen túneles de entrada y salida independientes, enrutando mensajes a través de múltiples saltos cifrados. No existen nodos de salida global como en Tor; toda la comunicación es interna a la red I2P.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido de datos y servicios internos mediante DHT (netDb) para la localización de destinos y recursos.
+  * [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en el enrutamiento y no existe jerarquía central.
+  * [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda, principalmente para la información de enrutamiento y servicios publicados en la red.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; la información de enrutamiento y servicios puede variar entre nodos y se sincroniza progresivamente.
 
-#### [Freenet](https://freenet.org/)
+  #### [Freenet](https://freenet.org/)
 
-<img src="assets/p2p/examplesP2p/freenet.png" alt="freenet" width="300">
+  <img src="assets/p2p/examplesP2p/freenet.png" alt="freenet" width="300">
 
-* Propósito: Compartición anónima y resistente a la censura de archivos y publicación de contenido.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo y compartir o acceder a contenido.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin entidad central de control.
-* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la privacidad y el anonimato se logran mediante enrutamiento oscuro y cifrado.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza una DHT adaptativa y conexiones entre pares seleccionados para maximizar el anonimato.
-* Funcionamiento: Los datos se fragmentan y se distribuyen automáticamente entre los nodos. El enrutamiento es adaptativo y busca maximizar el anonimato y la resiliencia.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con replicación parcial y encriptación; los datos se almacenan en nodos aleatorios y se accede a ellos mediante claves hash.
-* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, no existen nodos privilegiados ni jerarquía.
-* [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda; los datos se replican automáticamente en varios nodos para asegurar disponibilidad y resistencia a la censura.
+  * Propósito: Compartición anónima y resistente a la censura de archivos y publicación de contenido.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo y compartir o acceder a contenido.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin entidad central de control.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la privacidad y el anonimato se logran mediante enrutamiento oscuro y cifrado.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza una DHT adaptativa y conexiones entre pares seleccionados para maximizar el anonimato.
+  * Funcionamiento: Los datos se fragmentan y se distribuyen automáticamente entre los nodos. El enrutamiento es adaptativo y busca maximizar el anonimato y la resiliencia.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con replicación parcial y encriptación; los datos se almacenan en nodos aleatorios y se accede a ellos mediante claves hash.
+  * [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, no existen nodos privilegiados ni jerarquía.
+  * [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda; los datos se replican automáticamente en varios nodos para asegurar disponibilidad y resistencia a la censura.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; los datos pueden estar disponibles en diferentes nodos y la sincronización no es inmediata.
 
-#### [Bitcoin](https://es.wikipedia.org/wiki/Protocolo_Bitcoin)
+  #### [Bitcoin](https://es.wikipedia.org/wiki/Protocolo_Bitcoin)
 
-<img src="assets/p2p/examplesP2p/bitcoin.png" alt="bitcoin" width="300">
+  <img src="assets/p2p/examplesP2p/bitcoin.png" alt="bitcoin" width="300">
 
-* Propósito: Transferencia de valor digital (criptomoneda), registro inmutable de transacciones y descentralización financiera.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse a la red, validar y propagar transacciones y bloques sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, las reglas del protocolo son mantenidas por la comunidad y los desarrolladores, y los cambios requieren consenso social y técnico.
-* [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la seguridad se garantiza mediante criptografía y consenso por prueba de trabajo (Proof of Work).
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red P2P de nodos completos que propagan bloques y transacciones usando técnicas de difusión (gossip).
-* Funcionamiento: Los nodos validan y propagan transacciones y bloques. Cada nodo mantiene una copia de la blockchain y participa en el consenso mediante prueba de trabajo (Proof of Work).
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo completo almacena toda la cadena de bloques; los nodos ligeros almacenan solo cabeceras y verifican mediante pruebas criptográficas.
-* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la validación y propagación, sin jerarquía central.
-* [Replicación](#técnicas-de-replicación): Replicación total en nodos completos (full nodes), replicación parcial en nodos ligeros (light clients); la blockchain se replica íntegramente en miles de nodos para garantizar disponibilidad y resiliencia.
+  * Propósito: Transferencia de valor digital (criptomoneda), registro inmutable de transacciones y descentralización financiera.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse a la red, validar y propagar transacciones y bloques sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, las reglas del protocolo son mantenidas por la comunidad y los desarrolladores, y los cambios requieren consenso social y técnico.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless, los nodos no necesitan confiar entre sí; la seguridad se garantiza mediante criptografía y consenso por prueba de trabajo (Proof of Work).
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red P2P de nodos completos que propagan bloques y transacciones usando técnicas de difusión (gossip).
+  * Funcionamiento: Los nodos validan y propagan transacciones y bloques. Cada nodo mantiene una copia de la blockchain y participa en el consenso mediante prueba de trabajo (Proof of Work).
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo completo almacena toda la cadena de bloques; los nodos ligeros almacenan solo cabeceras y verifican mediante pruebas criptográficas.
+  * [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la validación y propagación, sin jerarquía central.
+  * [Replicación](#técnicas-de-replicación): Replicación total en nodos completos (full nodes), replicación parcial en nodos ligeros (light clients); la blockchain se replica íntegramente en miles de nodos para garantizar disponibilidad y resiliencia.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual y secuencial; la red alcanza consistencia eventual tras la propagación y validación de bloques, y mantiene el mismo orden global de transacciones en la cadena principal.
 
-#### [Storj](https://storj.dev/)
+  #### [Storj](https://storj.dev/)
 
-<img src="assets/p2p/examplesP2p/storj.png" alt="p2pShardingstorjRelay" width="300">
+  <img src="assets/p2p/examplesP2p/storj.png" alt="p2pShardingstorjRelay" width="300">
 
-* Propósito: Almacenamiento y compartición descentralizada de archivos en la nube, con incentivos económicos para los nodos participantes.
-* [Modelo de autorización](#modelo-de-autorización): Pública y permisionada; cualquier usuario puede almacenar datos, pero los nodos de almacenamiento deben cumplir ciertos requisitos y pasar verificaciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Híbrida, Storj Labs mantiene el control operativo, aunque promueve apertura y participación de la comunidad.
-* [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable; la integridad y disponibilidad de los datos se garantiza mediante contratos inteligentes, reputación de nodos y pruebas criptográficas (auditorías periódicas).
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en nodos de almacenamiento distribuidos y coordinadores (satélites) que gestionan la asignación y auditoría de datos.
-* Funcionamiento: Los archivos se fragmentan y codifican (erasure coding), luego se distribuyen entre múltiples nodos de almacenamiento. Los contratos inteligentes gestionan la relación entre clientes y nodos.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con fragmentación y erasure coding; los fragmentos se almacenan en nodos independientes para maximizar disponibilidad y resiliencia.
-* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; los nodos de almacenamiento son independientes, pero los satélites actúan como coordinadores y puntos de auditoría.
-* [Replicación](#técnicas-de-replicación): Replicación basada en erasure coding y redundancia controlada; se almacenan múltiples fragmentos redundantes para garantizar la recuperación ante fallos de nodos.
+  * Propósito: Almacenamiento y compartición descentralizada de archivos en la nube, con incentivos económicos para los nodos participantes.
+  * [Modelo de autorización](#modelo-de-autorización): Pública y permisionada; cualquier usuario puede almacenar datos, pero los nodos de almacenamiento deben cumplir ciertos requisitos y pasar verificaciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Híbrida, Storj Labs mantiene el control operativo, aunque promueve apertura y participación de la comunidad.
+  * [Modelo de confianza](#modelo-de-confianza): Parcialmente confiable; la integridad y disponibilidad de los datos se garantiza mediante contratos inteligentes, reputación de nodos y pruebas criptográficas (auditorías periódicas).
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en nodos de almacenamiento distribuidos y coordinadores (satélites) que gestionan la asignación y auditoría de datos.
+  * Funcionamiento: Los archivos se fragmentan y codifican (erasure coding), luego se distribuyen entre múltiples nodos de almacenamiento. Los contratos inteligentes gestionan la relación entre clientes y nodos.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con fragmentación y erasure coding; los fragmentos se almacenan en nodos independientes para maximizar disponibilidad y resiliencia.
+  * [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; los nodos de almacenamiento son independientes, pero los satélites actúan como coordinadores y puntos de auditoría.
+  * [Replicación](#técnicas-de-replicación): Replicación basada en erasure coding y redundancia controlada; se almacenan múltiples fragmentos redundantes para garantizar la recuperación ante fallos de nodos.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; los fragmentos pueden sincronizarse con retraso y la disponibilidad depende de la recuperación de fragmentos redundantes.
 
-#### [Ethereum](https://wiki.lemon.me/blockchain/ethereum-eth-que-es-y-como-funciona/)
+  #### [Ethereum](https://wiki.lemon.me/blockchain/ethereum-eth-que-es-y-como-funciona/)
 
-<img src="assets/p2p/examplesP2p//ethereum.png" alt="ethereum" width="300">
+  <img src="assets/p2p/examplesP2p//ethereum.png" alt="ethereum" width="300">
 
-* Propósito: Plataforma de contratos inteligentes y aplicaciones descentralizadas (dApps), además de transferencia de valor digital (Ether).
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse, validar, propagar transacciones y desplegar contratos inteligentes sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, las reglas del protocolo y las actualizaciones se deciden mediante consenso social y técnico de la comunidad y desarrolladores.
-* [Modelo de confianza](#modelo-de-confianza): Trustless, la seguridad y validez se garantizan mediante criptografía, consenso por prueba de trabajo (Proof of Work, hasta The Merge) y actualmente prueba de participación (Proof of Stake).
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red P2P de nodos completos que propagan bloques y transacciones usando técnicas de difusión (gossip) y mecanismos de descubrimiento de nodos (Kademlia-like).
-* Funcionamiento: Los nodos almacenan el estado de la blockchain, validan y propagan transacciones y bloques, ejecutan contratos inteligentes y mantienen la sincronización mediante técnicas de difusión eficientes.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo completo almacena toda la cadena de bloques y el estado global; los nodos ligeros almacenan solo cabeceras y verifican mediante pruebas criptográficas.
-* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la validación y propagación, sin jerarquía central.
-* [Replicación](#técnicas-de-replicación): Replicación total en nodos completos, replicación parcial en nodos ligeros; la blockchain y el estado se replican en miles de nodos para garantizar disponibilidad y resiliencia.
+  * Propósito: Plataforma de contratos inteligentes y aplicaciones descentralizadas (dApps), además de transferencia de valor digital (Ether).
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede unirse, validar, propagar transacciones y desplegar contratos inteligentes sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Híbrida, combina mecanismos descentralizados (comunidad, validadores, desarrolladores) y elementos centralizados (fundaciones, equipos de desarrollo principales). Las decisiones sobre actualizaciones y cambios en el protocolo se toman mediante propuestas abiertas (EIP), discusión comunitaria y consenso social/técnico.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless, la seguridad y validez se garantizan mediante criptografía y mecanismos de consenso. Inicialmente usó prueba de trabajo (Proof of Work, hasta The Merge) y actualmente utiliza prueba de participación (Proof of Stake).
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en una red P2P de nodos completos que propagan bloques y transacciones usando técnicas de difusión (gossip) y mecanismos de descubrimiento de nodos (Kademlia-like).
+  * Funcionamiento: Los nodos almacenan el estado de la blockchain, validan y propagan transacciones y bloques, ejecutan contratos inteligentes y mantienen la sincronización mediante técnicas de difusión eficientes.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido, cada nodo completo almacena toda la cadena de bloques y el estado global; los nodos ligeros almacenan solo cabeceras y verifican mediante pruebas criptográficas.
+  * [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la validación y propagación, sin jerarquía central.
+  * [Replicación](#técnicas-de-replicación): Replicación total en nodos completos, replicación parcial en nodos ligeros; la blockchain y el estado se replican en miles de nodos para garantizar disponibilidad y resiliencia.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual y secuencial; la red alcanza consistencia eventual tras la propagación y validación de bloques, y mantiene el mismo orden global de transacciones.
 
-#### [IPFS (InterPlanetary File System)](https://docs.ipfs.tech/concepts/what-is-ipfs/)
+  #### [IPFS (InterPlanetary File System)](https://docs.ipfs.tech/concepts/what-is-ipfs/)
 
-<img src="assets/p2p/examplesP2p/ipfs.png" alt="ipfs" width="300">
+  <img src="assets/p2p/examplesP2p/ipfs.png" alt="ipfs" width="300">
 
-* Propósito: Almacenamiento y compartición descentralizada de archivos, con direccionamiento por contenido y resistencia a la censura.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo, almacenar y recuperar archivos sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad y Protocol Labs.
-* [Modelo de confianza](#modelo-de-confianza): Trustless, la integridad y autenticidad de los datos se garantiza mediante hashes criptográficos; los nodos no necesitan confiar entre sí.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en DHT (Kademlia) para descubrimiento y localización de contenido.
-* Funcionamiento: Cada archivo se divide en fragmentos, se les asigna un hash único (dirección por contenido) y se distribuyen entre los nodos. La DHT permite localizar qué nodos almacenan cada fragmento.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con replicación parcial y dirigida por el usuario (pinning); los datos se almacenan en los nodos que los solicitan o fijan.
-* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden almacenar, buscar y servir contenido sin jerarquía central.
-* [Replicación](#técnicas-de-replicación): Replicación parcial, basada en demanda y dirigida por el usuario (pinning); los fragmentos se replican en los nodos que los solicitan o deciden mantenerlos.
+  * Propósito: Almacenamiento y compartición descentralizada de archivos, con direccionamiento por contenido y resistencia a la censura.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede participar como nodo, almacenar y recuperar archivos sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, aunque Protocol Labs toma un papel relevante en las decisiones, quizás también por su autoridad al respecto.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless, la integridad y autenticidad de los datos se garantiza mediante hashes criptográficos; los nodos no necesitan confiar entre sí.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en DHT (Kademlia) para descubrimiento y localización de contenido.
+  * Funcionamiento: Cada archivo se divide en fragmentos, se les asigna un hash único (dirección por contenido) y se distribuyen entre los nodos. La DHT permite localizar qué nodos almacenan cada fragmento.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con replicación parcial y dirigida por el usuario (pinning); los datos se almacenan en los nodos que los solicitan o fijan.
+  * [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden almacenar, buscar y servir contenido sin jerarquía central.
+  * [Replicación](#técnicas-de-replicación): Replicación parcial, basada en demanda y dirigida por el usuario (pinning); los fragmentos se replican en los nodos que los solicitan o deciden mantenerlos.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual y de lectura tras escritura; los datos replicados pueden estar disponibles en diferentes nodos en distintos momentos, pero el nodo que fija (pin) un contenido siempre podrá acceder a él.
 
-#### [ZeroNet](https://zeronet.io/es)
+  #### [ZeroNet](https://zeronet.io/es)
 
-<img src="assets/p2p/examplesP2p/zeronet.png" alt="zeronet" width="300">
+  <img src="assets/p2p/examplesP2p/zeronet.png" alt="zeronet" width="300">
 
-* Propósito: Publicación y compartición descentralizada de sitios web y archivos, resistente a la censura.
-* [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede crear, acceder y replicar sitios sin restricciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin entidad central de control.
-* [Modelo de confianza](#modelo-de-confianza): Trustless, la integridad de los contenidos se garantiza mediante firmas ECDSA y direccionamiento por clave pública.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza DHT para descubrimiento y BitTorrent para distribución de contenido.
-* Funcionamiento: Cada sitio web tiene una dirección basada en clave pública. Los contenidos se distribuyen vía BitTorrent y se validan con firmas ECDSA. Cada visitante actúa como nodo replicador.
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido y replicación parcial; los archivos se almacenan en los nodos que visitan o replican los sitios.
-* [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la publicación, replicación y acceso sin jerarquía central.
-* [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda; los sitios se replican automáticamente en los nodos que los visitan, aumentando la disponibilidad y resiliencia.
+  * Propósito: Publicación y compartición descentralizada de sitios web y archivos, resistente a la censura.
+  * [Modelo de autorización](#modelo-de-autorización): Pública, cualquier usuario puede crear, acceder y replicar sitios sin restricciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, el protocolo es abierto y mantenido por la comunidad, sin entidad central de control.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless, la integridad de los contenidos se garantiza mediante firmas ECDSA y direccionamiento por clave pública.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, utiliza DHT para descubrimiento y BitTorrent para distribución de contenido.
+  * Funcionamiento: Cada sitio web tiene una dirección basada en clave pública. Los contenidos se distribuyen vía BitTorrent y se validan con firmas ECDSA. Cada visitante actúa como nodo replicador.
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido y replicación parcial; los archivos se almacenan en los nodos que visitan o replican los sitios.
+  * [Grado de descentralización](#grado-de-descentralización): Totalmente descentralizada, todos los nodos pueden participar en la publicación, replicación y acceso sin jerarquía central.
+  * [Replicación](#técnicas-de-replicación): Replicación parcial y basada en demanda; los sitios se replican automáticamente en los nodos que los visitan, aumentando la disponibilidad y resiliencia.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual y de lectura tras escritura; los sitios replicados pueden variar entre nodos, pero el creador o replicador siempre puede acceder a su copia.
 
-#### [Filecoin](https://filecoin.io/)
+  #### [Filecoin](https://filecoin.io/)
 
-<img src="assets/p2p/examplesP2p/filecoin.png" alt="filecoin" width="300">
+  <img src="assets/p2p/examplesP2p/filecoin.png" alt="filecoin" width="300">
 
-* Propósito: Almacenamiento y compartición descentralizada de archivos con incentivos económicos.
-* [Modelo de autorización](#modelo-de-autorización): Pública y permisionada; cualquier usuario puede almacenar datos, pero los mineros de almacenamiento deben cumplir requisitos y pasar verificaciones.
-* [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, gestionada por la comunidad y Protocol Labs, con propuestas y mejoras abiertas.
-* [Modelo de confianza](#modelo-de-confianza): Trustless y parcialmente confiable; la integridad y disponibilidad se garantizan mediante pruebas criptográficas (Proof of Replication, Proof of Spacetime) y reputación de los mineros.
-* [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en DHT (Kademlia) para descubrimiento y localización de recursos, y subredes lógicas para coordinación.
-* Funcionamiento: Los usuarios (clientes) pagan a los mineros de almacenamiento para guardar archivos. Los mineros demuestran periódicamente que almacenan los datos mediante pruebas criptográficas (Proof of Replication y Proof of Spacetime).
-* Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con fragmentación (sharding) y erasure coding; los datos se dividen en fragmentos codificados y se distribuyen entre múltiples mineros.
-* [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; los mineros son independientes, pero existen mecanismos de coordinación y subredes para gestión y auditoría.
-* [Replicación](#técnicas-de-replicación): Basada en erasure coding y redundancia controlada; se almacenan múltiples fragmentos redundantes para garantizar recuperación y disponibilidad ante fallos de nodos.
+  * Propósito: Almacenamiento y compartición descentralizada de archivos con incentivos económicos.
+  * [Modelo de autorización](#modelo-de-autorización): Pública y permisionada; cualquier usuario puede almacenar datos, pero los mineros de almacenamiento deben cumplir requisitos y pasar verificaciones.
+  * [Modelo de gobernanza](#modelo-de-gobernanza): Descentralizada, gestionada por la comunidad y Protocol Labs, con propuestas y mejoras abiertas.
+  * [Modelo de confianza](#modelo-de-confianza): Trustless y parcialmente confiable; la integridad y disponibilidad se garantizan mediante pruebas criptográficas (Proof of Replication, Proof of Spacetime) y reputación de los mineros.
+  * [Tipo principal de red](#clasificación-principal-de-redes-p2p): Estructurada, basada en DHT (Kademlia) para descubrimiento y localización de recursos, y subredes lógicas para coordinación.
+  * Funcionamiento: Los usuarios (clientes) pagan a los mineros de almacenamiento para guardar archivos. Los mineros demuestran periódicamente que almacenan los datos mediante pruebas criptográficas (Proof of Replication y Proof of Spacetime).
+  * Uso de [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p): Almacenamiento distribuido con fragmentación (sharding) y erasure coding; los datos se dividen en fragmentos codificados y se distribuyen entre múltiples mineros.
+  * [Grado de descentralización](#grado-de-descentralización): Parcialmente descentralizada; los mineros son independientes, pero existen mecanismos de coordinación y subredes para gestión y auditoría.
+  * [Replicación](#técnicas-de-replicación): Basada en erasure coding y redundancia controlada; se almacenan múltiples fragmentos redundantes para garantizar recuperación y disponibilidad ante fallos de nodos.
+  * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; los fragmentos pueden sincronizarse con retraso y la disponibilidad depende de la recuperación y verificación periódica mediante pruebas criptográficas.
 
 ## Referencias
 
@@ -1012,10 +1032,12 @@ A continuación se describen algunos ejemplos destacados de redes y nodos P2P, c
 
 ## Aclaración y agradecimiento
 
+La tecnología de las redes P2P realmente es muy compleja, y complicado de digerir, pero es la base de la descentralización, por lo tanto, aunque no seamos expertos, considero importare esta introducción técnica para tener una base, que puede ayudar cuando tengas que abordar un documento técnico complicado de una red P2P.
+
 Agradecimiento a quien encuentre fallos y proponga mejoras.
 
-Este documento tiene cierto enfoque heurístico, quizás en algún momento la información ha podido ser interpretada, pero siempre con el propósito de aclarar, porque ha sido complicado encontrar información de referencia.
+Este documento tiene cierto enfoque heurístico, ha sido complicado encontrar y digerir la información, por lo tanto, disculpas por adelantado si encuentras un error, e igualmente gracias por adelantado si luego propones mejoras.
 
-Hay partes que quizás le falta alguna explicación, pero es asi porque tampoco quiero crear una guía de referencia para crear una red p2p, es un resumen introductorio y en algún momento tengo que dejar de explicar.
+Hay partes que quizás le falta alguna explicación, pero es porque es un resumen introductorio y en algún momento tengo que parar.
 
 Gracias ;).

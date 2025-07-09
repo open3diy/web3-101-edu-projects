@@ -71,8 +71,7 @@ source .venv-web3-edu-projects/bin/activate
 Instalar paquetes necesarios:
 
 ```bash
-pip install notebook ipykernel multiformats graphviz networkx matplotlib pydot ipympl pygraphviz pyvis networkx bokeh networkx
-
+pip install notebook ipykernel multiformats graphviz networkx matplotlib pydot ipympl pygraphviz pyvis networkx bokeh networkx base58
 ```
 
 Instalar extensión de vscode `Jupyter`.

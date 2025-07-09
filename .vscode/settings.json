@@ -10,6 +10,7 @@
         "compartición",
         "computacionalmente",
         "configurarlo",
+        "contrats",
         "criptoeconomía",
         "criptoeconómica",
         "deduplicación",
@@ -21,6 +22,7 @@
         "dinámicamente",
         "direccionar",
         "dockremap",
+        "enruta",
         "enrutados",
         "enrutamiento",
         "Enrutamiento",
@@ -45,6 +47,7 @@
         "Interoperabilidad",
         "ipfs",
         "IPFS",
+        "IPLD",
         "IPNS",
         "jerárquicamente",
         "Kademlia",
@@ -97,5 +100,5 @@
         "webui",
         "Wikipidea"
     ],
-    "cSpell.ignorePaths": ["**/*.py"]
+    "cSpell.ignorePaths": ["**/*.py", "**/*.ipynb"]
 }

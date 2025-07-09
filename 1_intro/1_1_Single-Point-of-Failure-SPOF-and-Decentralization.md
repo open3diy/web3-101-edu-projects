@@ -1,6 +1,6 @@
 # El punto único de fallo (SPOF) y la descentralización
 
-> También puedes este contenido en [el vídeo del canal proyectos web3](https://www.youtube.com/watch?v=h7qadsJrZbY).
+> También puedes ver este contenido en [el vídeo del canal proyectos web3](https://www.youtube.com/watch?v=h7qadsJrZbY).
 
 Hablaremos sobre la necesidad de la descentralización frente al punto único de fallo.
 
@@ -24,13 +24,13 @@ Por esta razón, la descentralización suele aplicarse inicialmente a casos de u
 
 <img src="./assets_1_1/justificarCoste.png" alt="justificar" width="400">
 
-Los casos de uso deben resolver problemas reales, la necesidad por trasformar a un sistema descentralizado debe existir, no debe ser un problema inventando que nadie había pedido, que ninguna comunidad lo apoye y que sólo existe como reclamo.
+Los casos de uso deben resolver problemas reales, la necesidad por trasformar a un sistema descentralizado debe existir, no debe ser un problema inventado que nadie había pedido, que ninguna comunidad lo apoye y que sólo existe como reclamo.
 
 Porque lo cierto es que diseñar e implementar **bien** un sistema descentralizado, que esté consensuado con los participantes de su red y que se mantenga en el tiempo, es costoso debido a su complejidad, como la de tener en cuenta todas las variables del protocolo, las dificultad técnica, costos operativos, etc.
 
 Además, en fases tempranas, la funcionalidad está muy acotada, los participantes deben adaptarse al protocolo y se debe esperar a que evolucione correctamente.
 
-Por estas razones, se aplica cuando los beneficios como transparencia, resilencia y resistencia a la censura lo justifiquen, aunque, en mí opinión, el escenario geopolítico lo justifica...
+Por estas razones, se aplica cuando los beneficios como transparencia, resilencia y resistencia a la censura lo justifiquen, aunque, en mí opinión, el escenario geopolítico lo justifica.
 
 ## El sistema resiliente
 
@@ -40,7 +40,7 @@ En cualquier sistema descentralizado, ya sea un libro contable o un servicio de 
 
 Este sistema descentralizado, sin punto único de fallo, es más [resiliente](https://es.wikipedia.org/wiki/Resiliencia_(inform%C3%A1tica)) que uno centralizado, ya que ante fallos o posibles ataques, siempre que se cumplan las condiciones optimas, se podrá seguir ofreciendo el servicio demandado por parte de cualquier nodo de la red.
 
-Es simple de entender, existiendo varios nodos, ninguno más importante que el otro, todos siguiendo el protocolo, aunque caiga un nodo o varios, el resto que sigan activos darán servicio y esto no se consigue en un sistema centralizado, donde si cae un nodo central que tiene una función especifica, el resto del sistema deja de funcionar.
+Es simple de entender, existiendo varios nodos, ninguno más importante que el otro, todos siguiendo el protocolo, aunque caiga un nodo o varios, el resto que sigan activos darán servicio y esto no se consigue en un sistema centralizado, donde si cae un nodo central que tiene una función específica, el resto del sistema deja de funcionar.
 
 ## Condiciones optimas para un sistema descentralizado
 
@@ -128,7 +128,7 @@ En las fases iniciales de un proyecto, estamos acostumbrados a tolerar cierta ce
 
 <img src="./assets_1_1/contratoInmutable.png" alt="contratoInmutable" width="400">
 
-No nos engallemos, muchos proyectos existen por sus fundadores y esto está bien, los participantes de una red descentralizada, toleran que ciertos aspectos no lo estén, pero lo que nunca puede variar son las condiciones por las que se forma parte de la red.
+No nos engallemos, muchos proyectos existen por sus fundadores y esto está bien. Los participantes de una red descentralizada, toleran que ciertos aspectos no lo estén, pero lo que nunca puede variar son las condiciones por las que se forma parte de la red.
 
 Si las condiciones cambian sin ningún criterio predefinido o consenso, entonces estamos en un sistema centralizado y es precisamente lo que queremos evitar por el punto único de fallo...
 
