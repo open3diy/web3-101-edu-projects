@@ -24,11 +24,9 @@ La solución que aplico es la formación continua, enriquecida y validada con pr
 
 Ver la licencia de [open3diy](https://github.com/open3diy/org/blob/main/LICENSE).
 
-El canal de YouTube [Proyectos web3](https://www.youtube.com/@proyectos-web3) tiene una licencia `Creative Commons de YouTube`.
+El contenido es académico y libre de restricciones de propiedad intelectual, lo que significa que puede usarse o difundirse libremente, incluso con fines comerciales, sin necesidad de atribución ni limitación alguna, conforme a la licencia Creative Commons CC0 1.0 Universal.
 
-El contenido es académico y libre de restricciones de propiedad intelectual, lo que significa que puede usarse o difundirse libremente, pero no puede ser apropiado ni reclamado como propio por ninguna entidad, incluida una empresa.
-
-No se permite el uso comercial del contenido, y cualquier reproducción parcial o completa debe incluir una mención adecuada del canal [Proyectos web3](https://www.youtube.com/@proyectos-web3) o de este repositorio de github.
+Debes considerar que el canal de YouTube [Proyectos web3](https://www.youtube.com/@proyectos-web3) tiene una licencia ya definida de `Creative Commons de YouTube`.
 
 ## Referencias
 

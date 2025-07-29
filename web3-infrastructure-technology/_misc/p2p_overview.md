@@ -160,6 +160,7 @@ Puede ser normalmente:
 * Privada, acceso limitado a entidades previamente autorizadas, suele tener un control centralizado dentro de una organización o grupo.
 * Consorcio, gobernada por un grupo seleccionado de entidades confiables, es un tipo de red privada, pero gestionada por un grupo de entidades (no sólo una).
 * Permisionada, participación permitida a nodos verificados y aprobados; es una red privada que se abre a mas participante bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir.
+  > Una red se considera permisionada, y no verdaderamente pública, cuando existen restricciones que impiden a cualquier usuario operar su propio nodo local, incluso si dichas restricciones no son explícitas o requieren superar barreras adicionales para acceder a la red. En algunos casos, este carácter permisionado puede no ser evidente y puede ser presentado como una red pública por motivos de imagen o marketing.
 * Híbrida, mezcla características de modelos públicos y privados.
 
 #### Estrategias de almacenamiento en redes p2p
@@ -181,19 +182,60 @@ Además, existen otras decisiones que pueden tomarse para optimizar el almacenam
 
 * Fragmentación ([Sharding](https://es.cointelegraph.com/explained/sharding-an-opportunity-for-distributed-scalability)): los datos o el estado de la red se dividen en fragmentos (shards), y cada fragmento es gestionado por un subconjunto de nodos, permitiendo procesar operaciones en paralelo y mejorar la escalabilidad. Ejemplos de sharding en redes P2P incluyen [Ethereum](https://www.bitstamp.net/es/learn/blockchain/what-is-sharding-on-ethereum/), [Polkadot](https://wiki.polkadot.network/docs/learn-parachains), [Near Protocol](hhttps://academy.bit2me.com/que-es-near-protocol/), etc.
 
-### Problemas en redes p2p
+### Desafíos y Vulnerabilidades en Redes P2P
 
 Las redes p2p vienen a resolver principalmente, el problema de la centralización y el punto único de fallo y para ello los nodos deben comunicarse entre iguales siguiendo el protocolo, pero esto también tiene ciertos desafíos que se deben considerar y que podemos resumir como:
 
-#### Problemas de seguridad
+#### Problemas en redes p2p
 
-Una red p2p no está exento de problemas de seguridad, sobre todo si es pública, por lo tanto, se debe considerar que puede existir:
+Estos problemas pueden ser inherentes al diseño descentralizado de las redes P2P y pueden surgir sin intervención maliciosas:
 
-<img src="assets/p2p/securityProblems.png" alt="trustModel" width="400">
+<img src="assets/p2p/p2pProblems.png" alt="trustModel" width="400">
 
-* Fragmentación de la red (network partitioning), donde los nodos están aislados en subgrupos, lo que impide una vista global coherente o sincronización entre ellos. Es sobre todo un problema físico de conectividad
-* Estado paralelo de la red ([forks](https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(blockchain))) o view divergence), donde pueden coexistir versiones distintas, es decir, un conjunto de nodos entienden que exista un estado concreto y otros otro diferente, aunque normalmente el consenso resuelve el problema. Es diferente a la fragmentación de la red, en este caso hay conectividad, no es problema de comunicación, sino de consenso.
-* Ataques que puede recibir una red p2p, como [MITM (Man-in-the-Middle)](https://es.wikipedia.org/wiki/Ataque_de_intermediario), [Sybil](https://academy.bit2me.com/que-es-un-ataque-sybil/), [Eclipse](https://academy.bit2me.com/que-es-ataque-eclipse-eclipse-attack/), [DoS](https://academy.bit2me.com/que-son-ataques-dos/), [Erebus](https://es.cointelegraph.com/explained/erebus-attack-explaining-its-scope) o [ataques a la DHT](https://medium.com/unitychain/dht-attacks-and-defenses-e159b3d1bcf8), y aunque sobre todo se relaciona con blockchain, tenemos ataques como [Replay](https://academy.bit2me.com/que-es-un-ataque-replay/) o [del 51%](https://academy.bit2me.com/ataque-51-bitcoin/).
+* Insuficiente cantidad de nodos: Cuando la red P2P cuenta con pocos nodos activos, se reduce la redundancia y la disponibilidad de los recursos compartidos. Esto puede provocar que ciertos archivos o servicios sean inaccesibles si los pocos nodos que los alojan se desconectan. Además, una baja cantidad de nodos limita la resiliencia ante fallos y ataques, y dificulta el escalado eficiente de la red.
+* Concentración de nodos bajo un mismo control: Si un número significativo de nodos es operado o controlado por los mismos actores, se debilita la descentralización y se incrementa el riesgo de manipulación, censura o recopilación masiva de datos. Esta concentración puede facilitar ataques coordinados (como Sybil o Eclipse), reducir la diversidad de la red y comprometer la confianza en el sistema.
+* Fragmentación de la red (network partitioning): Ocurre cuando los nodos se dividen en subgrupos aislados debido a fallos físicos de conectividad, como cortes de red o fallos de infraestructura. Esto impide una visión global coherente y afecta la sincronización. Por ejemplo, en una red P2P como IPFS, una fragmentación puede dificultar el acceso a ciertos contenidos si los nodos que los alojan están desconectados.
+* Estado paralelo ([forks](https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(blockchain))): Diferentes grupos de nodos pueden tener visiones contradictorias del estado de la red debido a desacuerdos en el consenso. Aunque los mecanismos de consenso suelen resolver estos forks, la divergencia temporal puede causar problemas, especialmente en blockchains como Ethereum, donde un fork puede permitir ataques como el doble gasto si no se resuelve rápidamente.
+* Escalabilidad de la Seguridad (Dificultad de Aplicación de Políticas Uniformes): A medida que la red crece, la aplicación de medidas de seguridad uniformes en todos los nodos se vuelve extremadamente compleja. No hay un punto central para distribuir actualizaciones de seguridad o parches, y cada usuario es responsable de su propia configuración en el nodo, lo que lleva a un ecosistema heterogéneo.
+* Exposición de Direcciones IP (en algunos modelos P2P): En muchos diseños P2P, los nodos necesitan conocer las direcciones IP de otros nodos para establecer conexiones directas. Esto expone las direcciones IP de los usuarios, lo que puede ser utilizado para ataques dirigidos, monitoreo de actividad o deanonymization si no se toman precauciones adicionales (como el uso de proxies o TOR).
+* Complejidad de la Auditoría y Forense: En caso de un incidente de seguridad, la naturaleza distribuida de las redes P2P hace que sea extremadamente difícil realizar una auditoría completa o un análisis forense. No hay registros centralizados, y rastrear el origen de un problema a través de una multitud de nodos efímeros es una tarea monumental.
+
+#### Desafíos derivados de la resistencia a la censura
+
+Si bien la resistencia a la censura es una de las principales virtudes de las redes P2P, esta característica también conlleva efectos secundarios que pueden ser vistos como problemáticos. Más que problemas en sí mismos, son consecuencias inherentes de la descentralización y la falta de control centralizado. Los detractores suelen señalar estos aspectos como contraparte de la libertad que ofrecen las redes P2P:
+
+<img src="assets/p2p/challengesCensorshipResistance.png" alt="trustModel" width="400">
+
+* Falta de filtro de contenido: Al no haber un servidor central que actúe como filtro, el contenido distribuido en una red P2P es en gran medida incontrolado. Esto facilita la proliferación de contenido ilegal, malware o spam, y es un desafío para la moderación.
+* Anonimato y pseudonimato: La naturaleza descentralizada de muchas redes P2P dificulta la identificación real de los usuarios. Si bien esto puede ser una ventaja para la privacidad, también facilita actividades ilícitas y hace más difícil responsabilizar a los actores malintencionados. No hay una autoridad central que verifique identidades.
+* Dificultad para aplicar regulaciones: La ausencia de un punto central de control complica la aplicación de normativas legales o regulatorias, lo que puede generar conflictos con legislaciones locales o internacionales.
+* Persistencia de contenido no deseado: Una vez que un archivo o información se distribuye en una red P2P, puede ser extremadamente difícil eliminarlo por completo, ya que puede estar replicado en múltiples nodos fuera del alcance de cualquier autoridad.
+* Coordinación limitada para la moderación: La descentralización dificulta la organización de esfuerzos coordinados para moderar o eliminar contenido dañino, lo que puede llevar a respuestas lentas o ineficaces ante incidentes.
+
+#### Ataques a la seguridad
+
+Además de los problemas, las redes P2P son vulnerables a ataques intencionales que explotan su diseño descentralizado. Estos incluyen:
+
+<img src="assets/p2p/p2pAttacks.png" alt="trustModel" width="400">
+
+* Man-in-the-Middle ([MITM](https://es.wikipedia.org/wiki/Ataque_de_intermediario)): Un atacante intercepta y potencialmente altera la comunicación entre dos nodos sin que estos lo detecten. Por ejemplo, en una red P2P de mensajería como Tox, un MITM podría modificar mensajes para engañar a los usuarios.
+* [Sybil](https://academy.bit2me.com/que-es-un-ataque-sybil/): Un atacante crea múltiples identidades falsas para influir en la red, manipular el consenso o recopilar información. Este ataque es común en redes de intercambio de archivos como BitTorrent, donde nodos falsos pueden sabotear la distribución de contenido.
+* [Eclipse](https://academy.bit2me.com/que-es-ataque-eclipse-eclipse-attack/): Un nodo es rodeado por nodos maliciosos dentro de la red P2P, controlando toda su información entrante y saliente. En Ethereum, por ejemplo, un ataque Eclipse podría aislar a un nodo para evitar que valide transacciones legítimas.
+* [Erebus](https://es.cointelegraph.com/explained/erebus-attack-explaining-its-scope): Similar a Eclipse, pero opera a nivel de infraestructura, manipulando rutas antes de que el tráfico llegue a la capa P2P. Esto aísla al nodo víctima y controla su percepción de la red.
+* Denial of Service ([DoS](https://academy.bit2me.com/que-son-ataques-dos/)): Ataques que saturan nodos o la red con tráfico basura para interrumpir el servicio. Por ejemplo, un DoS podría colapsar nodos clave en una red de streaming P2P como PeerTube.
+* [Ataques a la DHT](https://medium.com/unitychain/dht-attacks-and-defenses-e159b3d1bcf8): Manipulación o envenenamiento de tablas hash distribuidas para redirigir tráfico, censurar información o dificultar la búsqueda de recursos. En BitTorrent, un ataque a la DHT podría redirigir a los usuarios a contenido malicioso.
+* Envenenamiento (Poisoning): Introducción de datos falsos o corruptos para corromper la información compartida. Por ejemplo, en una red P2P de intercambio de archivos, un atacante podría distribuir archivos falsos con malware.
+* [Replay](https://academy.bit2me.com/que-es-un-ataque-replay/): Un atacante intercepta y retransmite datos válidos previamente enviados —como credenciales de conexión en redes P2P para suplantar un nodo, transacciones durante un hard fork de blockchain para duplicar transferencias en ambas cadenas, o firmas en smart contracts para re-ejecutar funciones sin consentimiento— con el fin de engañar al sistema y lograr una acción o acceso no autorizado.
+
+##### Ataques específicos de blockchain
+
+Cono ataques específicos en redes blockchain podemos encontrar:
+
+<img src="assets/p2p/p2pBlockchainAttack.png" alt="trustModel" width="400">
+
+* Ataque del 51%: Un grupo controla más del 50% del poder de cómputo o participación, permitiendo revertir transacciones o censurar la red. Este ataque afectó redes como Bitcoin Gold en 2018.
+* Doble gasto (Double-spending): Intento de gastar el mismo activo digital más de una vez, explotando forks o retrasos en el consenso.
+* Censura: Nodos o mineros bloquean selectivamente transacciones o bloques, afectando la integridad de la red.
 
 #### Problema de disponibilidad o rotación: Churn
 
@@ -227,11 +269,11 @@ Los problemas de rendimiento en redes p2p surgen principalmente por la naturalez
 
 ### Clasificación principal de redes p2p
 
-Las redes p2p se organizan para buscar y compartir información siguiendo dos topologías lógicas conocidas —o, si se prefiere, con su modelo de [red superpuesta](https://es.wikipedia.org/wiki/Red_superpuesta) (overlay network): [estructuradas y no estructuradas](https://www.geeksforgeeks.org/structured-and-unstructured-peer-to-peer-systems/).
+Las redes p2p se organizan para buscar y compartir información siguiendo dos topologías lógicas conocidas —o, si se prefiere, siguiendo un modelo de [red superpuesta](https://es.wikipedia.org/wiki/Red_superpuesta) (overlay network): estructuradas y no estructuradas.
 
 <img src="assets/p2p/structuresUnstructured.png" alt="strUn" width="300 ">
 
-Elegir entre estructurada o no estructurada, entre otros factores que veremos, principalmente depende de las [características iniciales](#características-de-una-red-p2p) y los [problemas que pueden surgir](#problemas-en-redes-p2p), por ejemplo, si será una red pública o trustless o si se debe seguir una estrategia de almacenamiento que permita la disponibilidad rápida y eficiente del contenido.
+> Elegir entre estructurada o no estructurada, entre otros factores que veremos, principalmente depende de las [características iniciales](#características-de-una-red-p2p) y los [problemas que pueden surgir](#problemas-en-redes-p2p), por ejemplo, si será una red pública o trustless o si se debe seguir una estrategia de almacenamiento, que permita la disponibilidad rápida y eficiente del contenido.
 
 #### Topología estructurada
 
@@ -239,7 +281,7 @@ En la topología estructurada se sigue un patrón definido y determinista, lo qu
 
 En este tipo de redes, existe un mecanismo donde cada nodo (o su conjunto por redundancia) es responsable de almacenar un dato dado. Para ello, se emplean mecanismos de localización, que funcionan como índices distribuidos, los cuales asocian identificadores únicos (por ejemplo, hashes) con la ubicación lógica de los nodos encargados de gestionar el dato dentro de la red.
 
-Para entender mejor estas redes, varemos la solución principal (y casi única en la práctica) de la [DHT](https://es.wikipedia.org/wiki/Tabla_de_hash_distribuida), que es un diccionario tipo clave/valor, con su implementación de [Kademlia](https://es.wikipedia.org/wiki/Kademlia), donde los nodos se organizan según la "distancia" XOR de sus identificadores y el hash del dato buscado.
+Para entender mejor estas redes, varemos la solución principal (y casi única en la práctica) de la [DHT](https://es.wikipedia.org/wiki/Tabla_de_hash_distribuida), que es un diccionario tipo clave/valor, con su implementación de [Kademlia](https://es.wikipedia.org/wiki/Kademlia), donde los nodos se organizan según la "distancia" XOR de sus identificadores y el hash del dato.
 
 > 🤔 Entiendo que no hayas comprendido nada...esta explicación la veremos más en detalle en [los mecanismos de las redes p2p](#️-mecanismos-de-las-redes-p2p).
 
@@ -260,15 +302,13 @@ Y Kademlia - *¿qué topología es?*... Kademlia se considera una red que utiliz
 
 En las topologías no estructuradas, las conexiones entre nodos son aleatorias o sin un patrón definido, lo que las hace más adecuadas para consultas complejas y además es mas optimo para entornos inestables donde los nodos se conectan y desconectan con frecuencia (alto churn). Son redes más resilientes, pero al no existir una estructura lógica que relacione directamente el contenido con nodos específicos, las consultas deben propagarse entre múltiples nodos para localizar la información, aunque lo cierto es que permite consultas más complejas que las estructuradas.
 
-> En redes no estructuradas, no hay un índice distribuido ni nodos responsables predefinidos, por lo que la consulta y localización de nodos ocurre mediante la propagación entre nodos que veremos más adelante en [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas).
-
 En la topología no estructurada se utilizan técnicas de propagación (que forma parte de las [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas)) como [Flooding](https://en.wikipedia.org/wiki/Query_flooding) (malla completa), [Scoped Flooding](https://suzanbayhan.github.io/pdf/2018_wang_understanding_scoped_flooding.pdf) (malla completa) y [Random Walks](https://en.wikipedia.org/wiki/Random_walk) (random). En Web3 predomina [Gossip](https://academy.bit2me.com/que-es-gossip-protocol/) y derivados como [Gossipsub](https://github.com/libp2p/specs/tree/master/pubsub/gossipsub) y [Gossip Epidemic](https://viktoria-karamyshau.medium.com/gossip-epidemic-protocols-b1d44ce50c10) (las tres como malla parcial).
 
 Las topologías mencionadas como malla parcial, malla completa o topología aleatoria se puede representar como:
 
 <img src="assets/p2p/partialMeshFullRandom.png" alt="partMesRan" width="400">
 
-> 🎓 Este es solo un resumen orientativo; el objetivo es ofrecer una visión general, no una explicación exhaustiva, es posible que existan fallos o generalizaciones sobre las topologías ahora explicadas, pero es un tema tan complejo que no merece la pena profundizar mucho más.
+> 🎓 Este es solo un resumen orientativo; el objetivo es ofrecer una visión general, no una explicación exhaustiva, es posible que existan fallos o generalizaciones sobre las topologías ahora explicadas, pero es un tema tan complejo y no es objetivo de este documento profundizar mucho más.
 
 #### Aclaraciones de topología redes
 
@@ -301,9 +341,9 @@ Cuando un nodo se inicia por primera vez, durante el arranque (conocido como boo
 
 Esta conexión inicial continua con el descubrimiento de nodos que veremos a continuación, pero como simplificación, se puede ver en el siguiente ejemplo:
 
-<img src="assets/p2p/p2pBootStrap.gif" alt="bootstrap" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pBootStrap.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
-Inicialmente, el nodo parte de una lista de nodos conocidos, por ejemplo los nodos identificados como 1, 2, 3 y 4 que son nodos semilla, y el proceso consiste en consultar a esos nodos para descubrir otros nuevos, como serían el 10, 14, 25 y 3 30; así sucesivamente con los nuevos nodos para ampliar y actualizar su red de relaciones.
+Inicialmente, el nodo parte de una lista de nodos conocidos, por ejemplo los nodos identificados como 1, 2, 3 y 4 que son nodos semilla, y el proceso consiste en consultar a esos nodos para descubrir otros nuevos, como serían el 10, 14, 25 y 30; así sucesivamente con los nuevos nodos para ampliar y actualizar su red de relaciones.
 
 Además de los nodos semilla, existen diversos mecanismos para el descubrimiento inicial de nodos. Entre ellos se encuentran el uso de [Rendezvous](https://docs.libp2p.io/concepts/discovery-routing/rendezvous/), el DNS seed (que resuelve dominios a direcciones IP de nodos activos), y los servidores de directorio (también llamados *bootstrap servers* o *trackers*), que ofrecen listas centralizadas de nodos disponibles. En redes locales, también se emplea difusión mediante *broadcast* o *multicast*, como [mDNS](https://docs.libp2p.io/concepts/discovery-routing/mdns/), para descubrir nodos cercanos. No obstante, en modelos descentralizados como Web3, predominan los **nodos semilla** para iniciar la conexión a la red.
 
@@ -329,9 +369,11 @@ En Kademlia, la tabla de enrutamiento almacena contactos de otros nodos organiza
 
 > Los buckets empiezan desde 0, es decir, podemos tener desde Bucket 0 a Bucket 1, 2, 3, etc...
 
-Esto aunque es una generalización, nos da una idea de lo que se busca, que es tener un mecanismo para que un nodo solo se relacione con un conjunto de nodos y se basa en "la cercanía", que no deja de ser una operación simple para tener un mismo criterio, pero si quieres entrar en detalle, lo vemos en un ejemplo:
+Si quieres entrar en detalle, lo vemos en un ejemplo:
 
-<img src="assets/p2p/p2pNodeDiscoveryKademlia1-2.gif" alt="p2pNodeDiscoveryKademlia" width="450">
+*Ejemplo en primera ronda:*
+
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryKademlia1-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Inicialmente, un nodo local con id 0b0001 (1) conoce al nodo semilla con ID 0b1000 (8) y lo incluye en el Bucket 3 como el único nodo que conoce.
 
@@ -343,15 +385,16 @@ Esto aunque es una generalización, nos da una idea de lo que se busca, que es t
 
   > Si la posición empieza desde 0 y buscamos de izquierda a derecha, 3 es la posición del último bit 1.
 
-* El nodo realiza una consulta a ese nodo semilla mediante el método FIND_NODE, donde indica como ID objetivo el 0b0001 (1), siendo su propio ID de nodo, y además, se especifica k = 3 (a modo de ejemplo, lo normal seria 20). El nodo consultado devuelve hasta 3 nodos que conoce y que están más cercanos a 1 (0b0001) según la distancia XOR calculado de la siguiente forma:
+* El nodo realiza una consulta a ese nodo semilla mediante el método FIND_NODE, donde indica como ID objetivo el 0b0001 (1), siendo su propio ID de nodo, y además, se especifica k = 3 (a modo de ejemplo, lo normal seria 20) para que el nodo consultado devuelve hasta 3 nodos que conoce y que están más cercanos a 1 (0b0001) según la distancia XOR. El nodo realizará el calculo los nodos que conoce:
 
   ```text
-  0b0001 XOR 0b0011 = 0b0010 (2)
-  0b0001 XOR 0b0010 = 0b0011 (3)
-  0b0001 XOR 0b0111 = 0b0110 (6)
+  0b0001 (1) XOR 0b0011 (3) = 0b0010 (2)
+  0b0001 (1) XOR 0b0010 (2) = 0b0011 (3)
+  0b0001 (1) XOR 0b0110 (6) = 0b0111 (7)
+  0b0001 (1) XOR 0b0111 (7) = 0b0110 (6)
   ```
 
-  Estando los nodos en las siguientes posiciones:
+  Teniendo como resultado, la siguiente lista de 3 nodos ordenados, descartando el más lejano:
 
   * `0b0011` (ID 3) con resultado XOR `0b0010` (2) en posición del bucket 1.
   * `0b0010` (ID 2) con resultado XOR `0b0011` (3) en posición del bucket 1.
@@ -361,9 +404,12 @@ Esto aunque es una generalización, nos da una idea de lo que se busca, que es t
 
   > Aparte de la posición del bucket, como vemos en el ejemplo, en el bucket 1 hay dos nodos y en ese caso el 0b0010 con valor decimal 2 es más cercano que el 0b0011 con valor decimal 3.
 
-<img src="assets/p2p/p2pNodeDiscoveryKademlia2-2.gif" alt="p2pNodeDiscoveryKademlia" width="450">
+* Se debe aclarar que, en esta petición del nodo 1, también el nodo 8 conocen al nodo 1 y lo añaden en su lista de nodos, y esto porque el descubrimiento es reciproco (reciprocal peer discovery).
 
-* En esta petición del nodo 1, también el nodo 8 conocen al nodo 1 y lo añaden en su lista de nodos, y esto porque el descubrimiento es reciproco (reciprocal peer discovery).
+*Ejemplo en segunda ronda:*
+
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryKademlia2-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+
 * En la segunda ronda, con los nuevos nodos descubiertos, se realiza α (alfa) consultas paralelas para buscar más nodos con FIND_NODE, siendo las consultas a los nodos 0b0011 (3) y 0b0010 (2).
 
   > El valor de α (alfa) indica el número máximo de consultas concurrentes por ronda, por ejemplo α = 2, con 2 consultas concurrentes. Por defecto en Kademlia α suele ser entre 2 y 3.
@@ -371,28 +417,40 @@ Esto aunque es una generalización, nos da una idea de lo que se busca, que es t
 * Los nodos consultados responden con los nuevos nodos 0b0100 (4) y 0b0101 (5) y se calcula su posición de Bucket en la Routing table, siendo ambos en el Bucket 2.
 * Y se repite otra ronda con el nodo con ID 7...
 
+Esto aunque es una generalización, nos da una idea de lo que se busca, que es:
+
+* Tener un mecanismo para que un nodo se relacione con un conjunto de nodos concretos y se basa en "la cercanía", que no deja de ser una operación simple para tener un mismo criterio y poder descartar finalmente a los nodos más lejanos.
+  > En Kademlia, la cantidad total de nodos posibles con los que puede relacionarse un nodo dado, está determinada por el tamaño del identificador: con n bits, hay hasta 2ⁿ nodos posibles. Por ejemplo, con identificadores de 4 bits, los nodos van del 0 al 15, permitiendo disponer en la routing table hasta 16 nodos distintos en la red.
+* Agrupar los nodos en buckets facilita y agiliza la búsqueda de nodos cercanos durante el proceso de [enrutamiento](#enrutamiento-routing-en-redes-estructuradas), como se explicará más adelante.
+
 **Redes no estructuradas**.
 
 En redes no estructuradas, el descubrimiento de nodos se basa en la propagación, no es determinista como en las redes estructuradas, e implica una búsqueda probabilística.
 
-El descubrimiento de nodos es una actividad que puede formar parte de las implementaciones de las [técnica de difusión](#técnicas-de-difusión-en-redes-no-estructurabas), como *Gossip* o *Flooding* —aunque ese no sea el propósito principal de dichas técnicas—. También existen otros mecanismos que una red puede utilizar, como [Peer Exchange (PEX)](https://en.wikipedia.org/wiki/Peer_exchange), implementado en BitTorrent.
+El descubrimiento de nodos es una actividad que ocurre como parte de las [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas), como *Gossip* o *Flooding*, aunque inicialmente descubrir nodos no era el objetivo de dichas técnicas. Además, existen otros mecanismos que una red puede emplear, como [Peer Exchange (PEX)](https://en.wikipedia.org/wiki/Peer_exchange), implementado en BitTorrent, entre otros.
 
 Es importante aclarar que, en redes no estructuradas, el descubrimiento de nuevos nodos ocurre principalmente durante la propagación de consultas. Como se verá en [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas), cada vez que se realiza una operación de consulta (R), el nodo consultado puede aprovechar para devolver referencias a otros nodos al solicitante. Sin embargo, también este descubrimiento ocurre al arranque inicial (bootstrap) del nodo o periódicamente como se menciono.
 
 A continuación, veremos un ejemplo tomando como referencia Gossip para explicarlo, pero entendiendo que existen muchas particularidades y esto es una generalización:
 
-<img src="assets/p2p/p2pNodeDiscoveryGossip1-3.gif" alt="p2pNodeDiscoveryGossip" width="450">
+*Ejemplo en primera ronda:*
+
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryGossip1-3.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Inicialmente un nodo consulta a un nodo semilla para conocer otros nodos, y este le responde con los nodos que conoce, por ejemplo, los 6, 2, 3 y 7. Estas consultas pueden ser en paralelo a varios nodos según el fan-out (abanico), que puede se entre 3 y 5, es decir, entre 3 y 5 consultas paralelas.
 
-<img src="assets/p2p/p2pNodeDiscoveryGossip2-3.gif" alt="p2pNodeDiscoveryGossip" width="450">
+*Ejemplo en segunda ronda:*
+
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryGossip2-3.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * El nodo continua consultando a los nodos 6, 2, 3 y 7, y suponiendo que el fan-out es 2, consultaría en una ronda a los nodos 2 y 3, para conocer los nuevos nodos 4 y 5.
 * En esta petición, el nodo 1 también es descubierto por los nodos 2 y 3, quienes lo agregan a su lista de nodos conocidos gracias al descubrimiento recíproco (reciprocal peer discovery).
   > Nota: En la representación anterior, cuando el nodo 1 consulta al 8, igualmente existe un descubrimiento reciproco, se ha omitido para simplificar.
 * En redes no estructuradas como Gossip, este proceso de descubrimiento reciproco es continuo y se denomina diseminación push-based: por ejemplo, el nodo 2 puede enviar comunicaciones push al nodo 1 cada vez que detecta nuevos nodos, manteniendo así actualizada la topología de la red de forma proactiva.
 
-<img src="assets/p2p/p2pNodeDiscoveryGossip3-3.gif" alt="p2pNodeDiscoveryGossip" width="450">
+*Ejemplo intercambio de vecinos:*
+
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryGossip3-3.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Como el nodo 2 ya conoce al nodo 1 gracias al descubrimiento recíproco (siendo el intercambio de vecinos), cuando detecta nuevos nodos o cambios en la topología de la red, puede notificar proactivamente al nodo 1 mediante una comunicación push. Es decir, no espera a que el nodo 1 realice una consulta, sino que le envía la información tan pronto como la tiene disponible, como en este ejemplo, donde comunica la existencia de los nodos 9 y 10.
 
@@ -404,62 +462,122 @@ El enrutamiento ocurre por lo tanto en cualquier momento que sea necesario, seg�
 
 Como vimos en el descubrimiento de nodos, el enrutamiento también busca ser determinista y siguiendo el ejemplo de la DHT Kademlia, se basa en la cercanía XOR entre el ID de un nodo y la key o hash del dato.
 
-> Aunque diferentes nodos inicien una búsqueda, el uso del XOR con la key del dato hace que converjan hacia los mismos nodos cercanos responsables del dato. Es decir, con esto es posible que la misma consulta del mismo key en dos nodos diferentes den como nodos cercanos los mismos o los más cercanos.
+> Aunque diferentes nodos inicien una operación, el uso del XOR con la key del dato hace que converjan hacia los mismos nodos cercanos responsables del dato. Es decir, con esto es posible que los nodos responsables sean siempre un conjunto determinado.
 
 Es complicado entenderlo, asi que lo veremos en un ejemplo:
 
 **En el caso de escribir (W)**.
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRoutingKademlia1-6.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+*Contexto inicial*:
 
-* Inicialmente existe una transacción iniciado desde el propio nodo o realiza por un cliente ligero.
-* En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos como en base a un identificador o key que hace referencia al recurso (normalmente su hash), se realiza una solicitud para buscar o guardar en la DHT. Este recurso puede representar datos como archivos, fragmentos de archivos, metadatos, bloques de datos en una blockchain, direcciones de nodos, o cualquier otro recurso específico que la red P2P esté diseñada para gestionar.
-* El nodo 1, que recibe la petición, localiza en su tabla de enrutamiento sus k nodos más cercanos (en este ejemplo 3), es decir, localiza nodos del Bucket 0, pero como no hay, busca del Bucket 1 (los ID 2 y 3) y luego del Bucket 2 (el ID 7).
+<img src="assets/p2p/p2pRoutingKademlia1-5.png" alt="p2pRoutingKademlia" width="450">
 
-<img src="assets/p2p/p2pRoutingKademlia2-6.gif" alt="p2pNodeDiscoveryKademlia" width="450">
+* Inicialmente existe una transacción iniciada desde el propio nodo, siendo el que podríamos denominar el nodo propietario.
+* En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos como en base a un identificador o key que hace referencia al recurso (normalmente su hash), se realiza una solicitud para guardar en la DHT. Este recurso puede representar datos como archivos, fragmentos de archivos, metadatos, bloques de datos en una blockchain, o cualquier otro recurso específico que la red P2P esté diseñada para gestionar.
+* El nodo 1, que recibe la petición, tiene inicialmente agrupados en buckets los diferentes nodos que conoce, siendo los nodos con:
+  * En bucket 0: no tiene.
+  * En bucket 1: ID 3 (0b0011), ID 2 (0b0010).
+  * En bucket 2: ID 7 (0b0111), ID 4 (0b0100), ID 5 (0b0101).
+  * En bucket 3: ID 8 (0b1000).
 
-* En base a los 3 nodos más cercanos, ahora se calcula la cercanía usando el key del recurso 0b1111 (15), es decir, se realizan las operaciones binarias XOR y se ordena de menor número a mayor para usar los k nodos más cercanos.
+*Calcular cercanía según objetivo (simplificado)*:
 
-  ```text
-  0b0111 XOR 0b1111 = 0b1000 (8) 
-  0b0011 XOR 0b1111 = 0b1100 (12)
-  0b0010 XOR 0b1111 = 0b1101 (13)
-  0b0001 XOR 0b1111 = 0b1110 (14)
-  ```
-  
-  Se debe aclarar que:
-  * Aunque el nodo 0b0111 (7) no era el más cercano según la tabla del nodo local (estaba en el Bucket 2), tras aplicar la operación XOR con la clave del recurso, se convierte en el más cercano. Esto refleja que no se propaga solo hacia nodos vecinos, sino hacia los más cercanos a la key del recurso. Así se evita que todos los datos vayan siempre a los mismos nodos, favoreciendo una distribución más descentralizada y determinista, independientemente del nodo que inicia la consulta.
+Como comentamos se hacen a un conjunto de nodos los responsables del dato y esto se basa en la "cercanía", por lo tanto, en base al key objetivo `0b1111` (15) si lo expresamos de una forma simplificada, consiste en calcular la cercanía de ese key con todos los ID de nodos en la routing table, es decir, la operación sería:
 
-  * El propio nodo que ha recibido la petición, el nodo 1, no forma parte del calculo para determinar la cercanía ya que en la Routing table (tabla de enrutamiento) solo hay relación de otros nodos, no de si mismo.
+```plaintest
+0b0011 XOR 0b1111 = 0b1100 (12)
+0b0010 XOR 0b1111 = 0b1101 (13)
+0b0111 XOR 0b1111 = 0b1000 (8)
+0b0100 XOR 0b1111 = 0b1011 (11)
+0b0101 XOR 0b1111 = 0b1010 (10)
+0b1000 XOR 0b1111 = 0b0111 (7)
+```
 
-<img src="assets/p2p/p2pRoutingKademlia3-6.gif" alt="p2pNodeDiscoveryKademlia" width="450">
+Y claro está ordenados sería:
 
-* Una vez determinados los 3 nodos más cercanos, que son los responsables del dato, el nodo 1 envía a los nodos 2, 3 y 7 el dato a guardar (W) y almacenar (STORE) en la DHT la relación key del dato con el acceso al recurso. Se debe aclarar que:
+```plaintest
+0b1000 XOR 0b1111 = 0b0111 (7)
+0b0111 XOR 0b1111 = 0b1000 (8)
+0b0101 XOR 0b1111 = 0b1010 (10)
+0b0100 XOR 0b1111 = 0b1011 (11)
+0b0011 XOR 0b1111 = 0b1100 (12)
+0b0010 XOR 0b1111 = 0b1101 (13)
+```
+
+Y como sólo queremos 3, porque k = 3, nos quedaríamos los 3 primeros, es decir con: `[0b1000, 0b0111, 0b0101]`
+
+*Calcular cercanía según objetivo (real)*:
+
+Se ha expuesto cómo se calcula la cercanía para entenderlo, pero realmente no es así, es una simplificación, realmente tener los nodos agrupados por buckets sirve para algo, sirve para agilizar este proceso de enrutamiento:
+
+Partiendo de esta información:
+
+```plaintest
+Nodo local: 0b0001 (1)
+Clave objetivo: 0b1111 (15)
+```
+
+Se calcula la distancia entre el ID objetivo `0b1111` (15) y el ID de nodo (que es cómo está ordenada la routing table):
+
+```plaintest
+0b0001 XOR 0b1111 = 0b1110
+```
+
+Este resultado `0b1110`, de derecha a izquierda y empezando de 0, tiene el bit más significativo en la posición 3:
+
+| 3 ◄ | 2 | 1 | 0 |
+| - | - | - | - |
+| 1 | 1 | 1 | 0 |
+
+Sabiendo que es el bucket 3, se localiza en la routing table siendo el único, el nodo `0b1000`.
+
+Como k = 3, aún le faltan 2 nodos, asi que luego va al bucket anterior más cercano al 3, es decir, al bucket 2 y ahora tiene que buscar la cercanía en ese bucket:
+
+```plaintest
+0b0111 XOR 0b1111 = 0b1000 (8)
+0b0100 XOR 0b1111 = 0b1011 (11)
+0b0101 XOR 0b1111 = 0b1010 (10)
+```
+
+Completando finalmente como nodos: `[0b1000,0b0111,0b0101]`, que si lo revisas con el método simplificado, verás que da el mismo resultado, pero claro está, ha costado menos obtenerlo.
+
+Se debe aclarar que:
+
+* Este cálculo determinista de la cercanía, basado en operaciones XOR, asegura que independientemente del nodo y de su tabla de enrutamiento, siempre se elijan los nodos más cercanos a la clave objetivo.
+* El propio nodo que inicia la transacción, el nodo 1, no forma parte del calculo para determinar la cercanía ya que en la Routing table (tabla de enrutamiento) solo hay relación de otros nodos, no de si mismo.
+
+*Realizando el enrutamiento (STORE)*:
+
+<img src="assets/p2p/p2pRoutingKademlia2-5.png" alt="p2pRoutingKademlia" width="450">
+
+* Una vez determinados los 3 nodos más cercanos, que son los responsables del dato, el nodo 1 envía a los nodos 8, 7 y 5 el dato a guardar (W), es decir, la operación STORE en la DHT, indicando la relación key con el acceso al recurso. Se debe aclarar que:
   * El nodo 1 ha recibido la solicitud, pero como ni siquiera está entre los k nodos más cercanos, nunca puede ser responsable del dato y no lo guarda ni almacena.
-  * Los nodos 2, 3 y 7 reciben el dato o recurso a guardar (el payload) y lo almacenan como corresponda, y en la DHT, siendo un índice clave/valor, se guarda normalmente la key (el hash) del dato y el acceso al payload, es decir, en la DHT no se guarda normalmente el dato o payload completo, se puede guardar su URL de recurso o IP del nodo o cualquier referencia para obtener el dato; sí se pueden guardar datos menores, pero tenemos que ver a la DHT como una especie de índice.
+  * Los nodos 8, 7 y 5 reciben el dato o recurso a guardar (el payload) y lo almacenan como corresponda, y en la DHT, siendo un índice clave/valor, se guarda normalmente la key (el hash) del dato y el acceso al payload, es decir, en la DHT no se guarda normalmente el dato o payload completo, se puede guardar su URL de recurso o IP del nodo o cualquier referencia para obtener el dato; sí se pueden guardar datos menores, pero tenemos que ver a la DHT como una especie de índice.
 
 **En el caso de leer (R)**.
 
-<img src="assets/p2p/p2pRoutingKademlia4-6.png" alt="p2pNodeDiscoveryKademlia" width="450">
+<img src="assets/p2p/p2pRoutingKademlia3-5.png" alt="p2pRoutingKademlia" width="450">
 
-* Cuando el nodo 1 consulta a los nodos cercanos, se realizan hasta α (alfa) consultas concurrentes para obtener la información.
+* Cuando el nodo 1 consulta a los nodos cercanos, se realizan hasta α (alfa) consultas concurrentes, FIND_VALUE, indicando el objetivo de key `0b1111` (15) para obtener el valor.
 
   > No existe propagación entre los nodos, el nodo 1 es el único que consulta.
 
-<img src="assets/p2p/p2pRoutingKademlia5-6.gif" alt="p2pNodeDiscoveryKademlia" width="450">
+*Viéndolo en detalle*:
 
-* Por ejemplo el nodo 7, al recibir la petición de consulta, en primer lugar se asegura de nuevo que es un nodo cercano a la key solicitada y luego busca en su DHT la key 0b1111 para devolver el acceso al recurso, como podría ser su propia dirección IP o cualquier otra forma que permite al nodo 1 descargar o acceder al payload del nodo 7.
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRoutingKademlia4-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+
+* Por ejemplo el nodo 7, al recibir la petición de consulta, en primer lugar se asegura de nuevo que es un nodo cercano a la key solicitada y luego busca en su DHT la key `0b1111` para devolver el acceso al recurso, como podría ser su propia dirección IP o cualquier otra forma que permite al nodo 1 descargar o acceder al payload del nodo 7.
 
   > Se asegura que es el nodo cercano aunque parezca redundante por coherencia, es una validación que suele hacer el nodo para asegurar que solo los nodos responsables al recurso lo pueden devolver. Si fuera el caso que no lo es, como veremos a continuación, lo que hará el nodo es buscar los nodos que son mas cercanos para devolver esa información.
 
 **En el caso de leer (R) pero el nodo no es responsable**.
 
-<img src="assets/p2p/p2pRoutingKademlia6-6.gif" alt="p2pNodeDiscoveryKademlia" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRoutingKademlia5-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
-* En este ejemplo, los nodos 2, 3 y 7 son los responsables del recurso, pero en un momento dado se pueden caer uno o varios y el nodo 1 por descarte, podría usar un nodo donde no se escribió el recurso, como podría ser el nodo semilla 8.
-* El nodo 8, recibe la petición, tiene registros en la DHT para otras key, pero no para la key 0b1111 (15) porque no es el responsable del dato.
-* En ese caso, el nodo 8 consultado no puede devolver el acceso al recurso, pero sí los otros nodos que conoce que podrían ser responsables del dato, por lo tanto, inicia el proceso de calcular la cercanía de la key del recurso.
-* Gracias a que este cálculo es determinista haciendo a ciertos nodos responsables de una key de recurso, el nodo 8 es capaz de devolver que los nodos con ID 3 y 2 son los responsables del recurso, como en efecto es, junto al nodo 7; es decir, el calculo de cercanía XOR ha dado los mismos nodos responsables (3 y 2) pese a que para el nodo 8 no eran inicialmente sus nodos más cercanos en la Routing table.
+* En este ejemplo, los nodos 8, 7 y 5 son los responsables del recurso, pero en un momento dado se pueden caer varios nodos y el nodo 1 por descarte, podría usar un nodo donde no se escribió el recurso, como podría ser el nodo 3.
+* El nodo 3, recibe la petición, tiene registros en la DHT para otras key, pero no para la key `0b1111` (15) porque no es el responsable del dato.
+* En ese caso, el nodo 3 consultado no puede devolver el acceso al recurso, pero sí los otros nodos que conoce que podrían ser responsables del dato, por lo tanto, inicia el proceso de calcular la cercanía del key del recurso.
+* Gracias a que este cálculo es determinista, el nodo 3 es capaz de devolver que los nodos con ID 8 y 5 son los responsables del recurso, como en efecto es; es decir, el calculo de cercanía XOR ha dado los mismos nodos responsables independientemente del nodo consultado.
   
 ##### Aclaraciones routing
 
@@ -495,7 +613,7 @@ Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entenderl
 
 **En el caso de escribir (W)**.
 
-<img src="assets/p2p/p2pPropagationGossip1-5.gif" alt="p2pPropagationGossip1-5" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip1-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Inicialmente existe una transacción iniciada desde el propio nodo o de un cliente ligero.
 * En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos en lo que sería una escritura (W), donde se difunde la información desde el nodo 1 hasta el resto de nodos conocidos como el 6, 2, 3 y 5. El k o fan-out (abanico), se refire a la cantidad de peticiones paralelas que se realizan y no se debe confundir con los k-buckets de DHT...
@@ -506,7 +624,7 @@ Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entenderl
 
 **En el caso de leer (R)**.
 
-<img src="assets/p2p/p2pPropagationGossip2-5.gif" alt="p2pPropagationGossip2-5" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip2-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * En la propagación de consulta o Query propagation, la petición que realiza el nodo, en principio, no difiere mucho a la escritura que vimos con anterioridad, es decir, se realiza la petición a los nodos conocidos y estos devolverán el resultado **y adicionalmente** la lista de nodos conocidos, porque no debemos olvidar que la propagación de consulta se usa también para el descubrimiento de nuevos nodos.
 * Se dice que se devuelve el dato, pero igualmente como ocurre en las redes estructuradas, dependiendo de la red puede ser un enlace para descargar el payload, como una IP u otra forma de acceso...
@@ -514,17 +632,17 @@ Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entenderl
 
 **Propagación de consulta First-match**.
 
-<img src="assets/p2p/p2pPropagationGossip3-5.gif" alt="p2pPropagationGossip3-5" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip3-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Si el nodo 3 recibe una petición de consulta y lo tiene disponible, proporciona la respuesta.
 
-<img src="assets/p2p/p2pPropagationGossip4-5.gif" alt="p2pPropagationGossip4-5" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip4-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Si el nodo 3 no tiene el dato, consultará al nodo 5 y continuará hasta encontrarlo o alcanzar el límite de saltos (TTL).
 
 **Propagación de consulta Multi-match**.
 
-<img src="assets/p2p/2pPropagationGossip5-5.gif" alt="p2pPropagationGossip5-5" width="450">
+<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip5-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Si el nodo 3 recibe la petición, continuará propagando la consulta hasta el último salto posible (TTL).
 * La respuesta final que recibe el nodo 1 es la acumulación de todas las respuestas de los nodos que han participado.
@@ -537,12 +655,14 @@ La propagación de consultas puede crecer de forma cuasi-exponencial en los prim
 
 #### Comprobación de conectividad
 
-La comprobación de conectividad en redes P2P es fundamental para asegurar que los nodos están activos y disponibles, y para mantener la topología de la red actualizada. Este proceso varía según el tipo de red:
+La comprobación de conectividad en redes P2P es fundamental no solo para asegurar que los nodos están activos y disponibles, sino también por motivos de seguridad y resiliencia: evita ataques de enrutamiento, reduce la propagación hacia nodos muertos y permite una respuesta efectiva ante cambios dinámicos en la red (churn).
 
-* En redes estructuradas (como DHTs), los nodos realizan comprobaciones periódicas (por ejemplo, mediante mensajes PING/PONG o heartbeats) a los pares registrados en sus tablas de enrutamiento. Esto permite detectar nodos caídos y reemplazarlos por otros, manteniendo la integridad y eficiencia del enrutamiento. Además, estas comprobaciones pueden servir para refrescar la información de los buckets y descubrir nuevos nodos cercanos.
+Este proceso varía según el tipo de red:
+
+* En redes estructuradas (como DHTs), los nodos realizan comprobaciones periódicas (PING/PONG o heartbeats) a los pares en sus tablas de enrutamiento para detectar inactividad y mantener la tabla actualizada. Además, los datos almacenados en la DHT suelen tener un tiempo de vida limitado (TTL); si el nodo propietario del dato —es decir, el que lo publicó inicialmente— no lo vuelve a anunciar (por ejemplo, mediante operaciones STORE), el dato puede desaparecer. Por ello, es común que este nodo lo anuncie periódicamente.
 * En redes no estructuradas, la comprobación de conectividad suele integrarse en los propios mecanismos de propagación, es decir, cuando una operación es solicitada, ya que como vimos, realizar una consulta también supone obtener información de nodos, aunque también hay comprobaciones periódicos que ayudan (por ejemplo, mediante mensajes PING/PONG o heartbeats) a identificar nodos activos y a eliminar de la lista de vecinos aquellos que no responden.
 
-En ambos casos, la comprobación de conectividad es clave para gestionar la rotación de nodos (churn), evitar la propagación de mensajes a nodos inactivos y garantizar la resiliencia y disponibilidad de la red.
+En ambos modelos, la comprobación de conectividad es clave para preservar la salud de la red, gestionar la rotación constante de nodos inactivos (churn) y garantizar la resiliencia y disponibilidad de la red.
 
 #### Establecimiento de la conexión
 
@@ -558,11 +678,11 @@ Igualmente, cuando la comunicación directa entre nodos no es posible debido a q
 
 Un [Relay](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) se utiliza cuando las técnicas como hole punching no son efectivas.
 
-<img src="assets/p2p/p2prelay1-2.gif" alt="p2prelay" width="400">
+<video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2prelay1-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * Cuando otros nodos no pueden acceder al nodo 1 porque está detrás de NATs o firewalls.
 
-<img src="assets/p2p/p2prelay2-2.gif" alt="p2prelay" width="400">
+<video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2prelay2-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
 * El nodo que no puede atender peticiones, sí puede conectarse a otro nodo relay.
 
@@ -637,32 +757,32 @@ Establece el grado de consistencia con el que los datos replicados en los distin
 Existen normalmente los siguientes modelos que una red p2p puede usar:
 
 * Consistencia fuerte (Strong consistency), implica que después de una escritura, todas las lecturas en cualquier nodo reflejan el valor más reciente, por lo tanto, se espera confirmación de los nodos relevantes (como nodos validadores) antes de finalizar la escritura
-  
-  <img src="assets/p2p/p2pStrongConsistency.gif" alt="strong" width="450">
+
+  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pStrongConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
   > En este ejemplo, un dato escrito (W) por el nodo emisor que es cliente, debe ser replicado y luego confirmado por el conjunto de nodos relevantes, como serían los nodos validadores, en este ejemplo solo habría un nodo validador, de color azul.
 
 * Consistencia eventual (Eventual consistency), los nodos se sincronizan con el tiempo, sin garantizar cuándo y no se espera una confirmación de escritura.
 
-   <img src="assets/p2p/p2pEventualConsistency.gif" alt="eventual" width="450">
+   <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pEventualConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
   > En consistencia eventual, no espera confirmación.
 
 * Consistencia de lectura tras escritura (Read-your-writes consistency), es como en consistencia eventual, pero se garantiza que el nodo cliente que escribió el dato, si lo consulta posteriormente lo tendrá disponible. No implica que el cliente siempre vea su dato si otro nodo lo sobrescribió después.
-
-  <img src="assets/p2p/p2pRead-your-writesConsistency.gif" alt="RYW" width="450">
+  
+  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRead-your-writesConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
   > En este ejemplo, el nodo emisor pregunta de forma posterior y se asegura la respuesta correcta gracias a que guardó una caché. No significa que consistencia eventual no lo haga, simplemente aquí se asegura.
 
 * Consistencia causal (Causal consistency), garantiza que los eventos relacionados por causa-efecto se vean en el mismo orden por todos los nodos. Es decir, si un evento A influye en B, todos los nodos deben ver A antes que B.
 
-   <img src="assets/p2p/p2pCausalConsistency.gif" alt="causal" width="450">
+  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pCausalConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
   > Se logra controlando el orden de entrega, en el ejemplo, se entrega C cuando llega porque no tiene una causa y efecto, sin embargo, sólo entrega B si entrego antes A.
 
 * Consistencia secuencial (Sequential consistency), asegura que todas las operaciones se vean en el mismo orden global, aunque ese orden no sea necesariamente el real (cronológico). En causal, solo se respeta el orden entre operaciones que tienen dependencia (causa-efecto), pero en secuencial, todas las operaciones (incluso no relacionadas) deben verse en el mismo orden global por todos los nodos.
 
-  <img src="assets/p2p/p2pSequentialConsistency.gif" alt="secuencial" width="450">
+  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pSequentialConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
   > Se logra controlando el orden de entrega, en el ejemplo, como el orden es A, B y C, asi debe hacerlo el nodo que debe replicar la escritura, incluso aunque en un momento dado podría haber entregado C antes que B.
 
@@ -670,6 +790,28 @@ Existen normalmente los siguientes modelos que una red p2p puede usar:
 
 * En la práctica, las redes P2P rara vez implementan consistencia fuerte debido a sus problemas en rendimiento y disponibilidad, por lo tanto, suelen preferir consistencia eventual.
 * Una red p2p puede seguir varios modelos, si no son contradictorios, por ejemplo, ser causal y eventual, etc.
+
+### Resumen de métodos en Kademlia y patrones de operaciones en Gossip
+
+Tras la explicación sobre redes estructuradas y no estructuradas, presentamos un resumen claro de las principales operaciones RPC en Kademlia y los patrones de operación más comunes en Gossip. Este resumen facilita la comprensión y completa los conceptos expuestos.
+
+**Kademlia**.
+
+En Kademlia, los métodos principales (RPCs) son:
+
+* PING: Verificar si un nodo está activo y disponible en la red. Ejemplo: El nodo A envía un PING al nodo B para comprobar si sigue conectado; si B responde, se considera activo.
+* STORE: Solicitar a un nodo que almacene un par (clave, valor) en su DHT local. Ejemplo: El nodo A quiere guardar el archivo X, calcula su hash como clave y envía un STORE al nodo B para que almacene (hash_X, dirección_dato_X).
+* FIND_NODE: Buscar los nodos más cercanos a un identificador objetivo (ID), útil para localizar responsables de una clave. Ejemplo: El nodo A busca el nodo responsable del ID 0x1234, así que envía FIND_NODE a sus vecinos; cada nodo responde con los contactos más cercanos a 0x1234 que conoce.
+* FIND_VALUE: Buscar el valor asociado a una clave; si el nodo consultado no tiene el valor, responde con los nodos más cercanos a esa clave. Ejemplo: El nodo A busca el archivo con hash 0xABCD. Envía FIND_VALUE a B; si B tiene el archivo, lo devuelve, si no, responde con una lista de nodos más cercanos a 0xABCD.
+
+**Gossip**.
+
+En gossip no hay métodos estándar, pero suelen usarse patrones comunes:
+
+* GOSSIP / PUSH: Enviar datos nuevos a un subconjunto de sus vecinos. Ejemplo: Cuando un nodo recibe un bloque nuevo en una blockchain, lo reenvía automáticamente a 3-5 vecinos seleccionados al azar.
+* PULL: Solicitar periódicamente a sus vecinos si tienen datos nuevos o actualizaciones. Ejemplo: Un nodo pregunta cada cierto tiempo a sus pares si conocen transacciones recientes que él aún no ha recibido.
+* PUSH-PULL: Combina ambos enfoques: Enviar datos nuevos a sus vecinos (push) y también solicitan actualizaciones (pull), mejorando la propagación y reduciendo redundancias. Ejemplo: Al recibir un mensaje, un nodo lo reenvía a sus vecinos y, además, les pregunta si tienen otros mensajes que él no conoce.
+* IHAVE / IWANT (en algunos protocolos): Anunciar a sus vecinos qué datos posee (`IHAVE`), y los vecinos pueden solicitar explícitamente los que les faltan (`IWANT`). Ejemplo: En Gossipsub (libp2p), un nodo anuncia que tiene los bloques A, B y C; los vecinos responden pidiendo solo el bloque B si es el único que no tienen.
 
 ### Clasificación y roles de los nodos
 
@@ -706,7 +848,9 @@ A continuación, listamos estos tipos de nodos como:
 
 Son las diferentes tipos de operaciones que pueden asumir los nodos durante la ejecución del protocolo. Puede ser:
 
-* Nodo emisor (Initiator/Sender), inicia solicitudes o transacciones, como la publicación de datos, envío de mensajes o peticiones de recursos.
+<img src="assets/p2p/p2pOperativeRoles.png" alt="p2pFunctionalsNode" width="450">
+
+* Nodo emisor (Initiator/Sender), inicia solicitudes o transacciones, como la publicación de datos, envío de mensajes o peticiones de recursos. También puede denominarse nodo propietario del dato, especialmente cuando es quien origina o mantiene el recurso en la red.
 * Nodo receptor (Receiver), recibe y procesa solicitudes o datos enviados por otros nodos.
 * Nodo validador (Validator), verifica la validez de transacciones, bloques o datos antes de aceptarlos y propagarlos. Es fundamental en redes blockchain y sistemas que requieren consenso.
 * Nodo replicador (Replicator), se encarga de almacenar y replicar datos para asegurar la disponibilidad y redundancia en la red.

@@ -55,6 +55,8 @@ En cada nodo, sea raíz, intermedios (en su caso) u hoja se identifica con un CI
 
 El archivo se ha fragmentado, no solo porque facilita replicar el contenido en diferentes nodos, lo cierto es que fragmentar siempre es más optimo para distribuir archivos en una red, como puede ser internet. Puedes leer el artículo de `Trust Jamin` al respecto <https://uploadcare.com/blog/handling-large-file-uploads/>.
 
+> Fragmentar archivos en IPFS no solo permite descargas paralelas y deduplicación (por ejemplo, cuando el mismo archivo está presente en varias carpetas), sino que también facilita que un nodo descargue únicamente los bloques (CIDs) que aún no posee. Así, al actualizar un sitio web o un conjunto de datos grande, solo los bloques nuevos o modificados requieren ser transferidos, mientras que los bloques ya existentes pueden ser reutilizados, haciendo la distribución mucho más eficiente.
+
 Como vimos en [jugando con árbol Merkle](../_misc/merkle_playground.ipynb) uno de los propósitos de crear esta estructura es facilitar la posterior Merkle proof en una red trustless. Realmente en IPFS no es para esto, se crea un árbol de Markle como estructura para direccionar el contenido.
 
 IPFS aplica una optimización si un archivo cabe completamente en un bloque (por defecto ≤ 256 KiB), se guarda como un solo nodo raw (datos binarios sin envoltura dag-pb). Esto ahorra espacio y procesamiento.
