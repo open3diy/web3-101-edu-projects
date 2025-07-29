@@ -1,6 +1,7 @@
 -e .
-matplotlib
-networkx
-graphviz
 multiformats
 base58
+graphviz
+pygraphviz
+networkx
+matplotlib
