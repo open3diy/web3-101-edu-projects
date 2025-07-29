@@ -7,3 +7,4 @@ build/
 dist/
 .eggs/
 /web3-infrastructure-technology/_misc/lib/*
+**/__pycache__/
