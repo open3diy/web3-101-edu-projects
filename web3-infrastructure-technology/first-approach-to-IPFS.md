@@ -72,7 +72,7 @@ En IPLD, cada contenido, como un archivo o directorio, es fragmentado (chunks) e
 
 > *Una aclaración sobre la terminología*, un bloque es un conjunto de datos codificados almacenados como unidad mínima. Al deserializarlo, se interpreta como un nodo dentro del grafo de datos enlazados. Comúnmente nos referimos sobre lo mismo llamándolo bloque o nodo.
 
-ℹ️ Para entender mejor que es un CID: puedes acceder a esta práctica de [Jugando con CID](./_first-approach-to-IPFS-attachments/ipfs_cid_playground.ipynb).
+ℹ️ Para entender mejor que es un CID: puedes acceder a esta práctica de [Jugando con CID](./_first-approach-to-IPFS-attachments/ipfs_cid_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_first-approach-to-IPFS-attachments/ipfs_cid_playground.ipynb)).
 
 Por lo tanto, tenemos un contenido que se fragmenta en diferentes bloques o nodos, donde se parte uno raíz, con su CID, el cual enlaza con otros bloques hijos correspondientes, para reconstruir el contenido completo.
 
@@ -88,8 +88,8 @@ Este contenido dividido y organizado en nodos enlazados entre sí, la estructura
 
 ℹ️ Para entender Merkle DAG, aquí tienes estas explicaciones con las que puedes practicar:
 
-* [Jugando con DAG](./_misc/dag_playground.ipynb).
-* [Jugando con árbol Merkle](./_misc/merkle_playground.ipynb).
+* [Jugando con DAG](./_misc/dag_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_misc/dag_playground.ipynb)).
+* [Jugando con árbol Merkle](./_misc/merkle_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_misc/merkle_playground.ipynb)).
 
 🤔 Es confuso de entender que sea un árbol de Merkle y además DAG, cuando un árbol ya es en sí un tipo de DAG, esto es así por dos razones:
 

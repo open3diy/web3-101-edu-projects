@@ -40,9 +40,9 @@ A continuación encontrarás un listado actualizado de todos los contenidos publ
 
 **Conceptos técnicos clave en la web3**:
 
-* [Jugando y entendiendo un árbol de Merkle](./web3-infrastructure-technology/_misc/merkle_playground.ipynb)  
+* [Jugando y entendiendo un árbol de Merkle](./web3-infrastructure-technology/_misc/merkle_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_misc/merkle_playground.ipynb))
   > Permite experimentar con árboles de Merkle para comprender su uso en la verificación de datos y blockchain.
-* [Jugando y entendiendo un DAG](./web3-infrastructure-technology/_misc/dag_playground.ipynb).  
+* [Jugando y entendiendo un DAG](./web3-infrastructure-technology/_misc/dag_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_misc/dag_playground.ipynb)).
   > Ofrece una introducción práctica a los grafos acíclicos dirigidos (DAG) y su relevancia en tecnologías descentralizadas.
 
 ## Licencia

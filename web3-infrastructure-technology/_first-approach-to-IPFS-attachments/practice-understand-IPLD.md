@@ -49,7 +49,7 @@ En cada nodo, sea raíz, intermedios (en su caso) u hoja se identifica con un CI
 
 <img src="./assets/DAGBuilder-pract-IPLD-3.png" alt="param" width="250">
 
-> 🛠️ En CID inspector, si quieres profundizar, dispones del enlace de documentación, especificación y tutorial, que podrás acceder, aunque en el siguiente cuaderno de [jugando con CID](./ipfs_cid_playground.ipynb) intento explicarlo.
+> 🛠️ En CID inspector, si quieres profundizar, dispones del enlace de documentación, especificación y tutorial, que podrás acceder, aunque en el siguiente cuaderno de [jugando con CID](./ipfs_cid_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_first-approach-to-IPFS-attachments/ipfs_cid_playground.ipynb)) intento explicarlo.
 
 **Aclaraciones**.
 
@@ -57,7 +57,7 @@ El archivo se ha fragmentado, no solo porque facilita replicar el contenido en d
 
 > Fragmentar archivos en IPFS no solo permite descargas paralelas y deduplicación (por ejemplo, cuando el mismo archivo está presente en varias carpetas), sino que también facilita que un nodo descargue únicamente los bloques (CIDs) que aún no posee. Así, al actualizar un sitio web o un conjunto de datos grande, solo los bloques nuevos o modificados requieren ser transferidos, mientras que los bloques ya existentes pueden ser reutilizados, haciendo la distribución mucho más eficiente.
 
-Como vimos en [jugando con árbol Merkle](../_misc/merkle_playground.ipynb) uno de los propósitos de crear esta estructura es facilitar la posterior Merkle proof en una red trustless. Realmente en IPFS no es para esto, se crea un árbol de Markle como estructura para direccionar el contenido.
+Como vimos en [jugando con árbol Merkle](../_misc/merkle_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_misc/merkle_playground.ipynb)) uno de los propósitos de crear esta estructura es facilitar la posterior Merkle proof en una red trustless. Realmente en IPFS no es para esto, se crea un árbol de Markle como estructura para direccionar el contenido.
 
 IPFS aplica una optimización si un archivo cabe completamente en un bloque (por defecto ≤ 256 KiB), se guarda como un solo nodo raw (datos binarios sin envoltura dag-pb). Esto ahorra espacio y procesamiento.
 
