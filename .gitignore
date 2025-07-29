@@ -1,0 +1,10 @@
+.venv-web3-edu-projects/**
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+build/
+dist/
+.eggs/
+/web3-infrastructure-technology/_misc/lib/*
+**/__pycache__/

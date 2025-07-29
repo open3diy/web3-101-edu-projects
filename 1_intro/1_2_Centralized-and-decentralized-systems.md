@@ -24,16 +24,25 @@ Pero este sistema no escala muy bien, la demanda de los usuarios o los ataques m
 
 ## Escalabildiad de los sistemas centralizados
 
-<img src="./assets_1_2/Nube-distribuida.gif" alt="nubeDistribuida" width="600">
-
 Así que este sistema centralizado puede ser distribuido, pero la distribución es para escalar mejor, por ejemplo una "nube distribuida" puede tener varios nodos y ofrecer un servicio geolocalizado a sus usuarios.
+
+<img src="./assets_1_2/Nube-distribuida-1.gif" alt="nubeDistribuida" width="600">
+
 Es centralizado y distribuido, donde los diferentes nodos necesitan coordinarse y actualizar su estado con la autoridad central.
+
+<img src="./assets_1_2/Nube-distribuida-2.gif" alt="nubeDistribuida" width="600">
 
 En esta ocasión, cuando Ana envía 5 dólares, usa uno de los nodos delegados más próximos.
 
+<img src="./assets_1_2/Nube-distribuida-3.gif" alt="nubeDistribuida" width="600">
+
 En ese momento el nodo delegado avisa a la autoridad central sobre el pago a Pedro.
 
+<img src="./assets_1_2/Nube-distribuida-4.gif" alt="nubeDistribuida" width="600">
+
 Y la autoridad central y el resto de nodos delegados se sincronizan, con el nuevo estado de saldo de 5 dólares de Pedro.
+
+<img src="./assets_1_2/Nube-distribuida-5.gif" alt="nubeDistribuida" width="600">
 
 Finalmente, Pedro puede consultar su nuevo saldo de 5 dólares usando uno de los nodos que tiene más cercano.
 
