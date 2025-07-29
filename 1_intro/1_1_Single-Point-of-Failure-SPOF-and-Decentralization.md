@@ -1,6 +1,8 @@
 # El punto único de fallo (SPOF) y la descentralización
 
-> También puedes ver este contenido en [el vídeo del canal proyectos web3](https://www.youtube.com/watch?v=h7qadsJrZbY).
+> También puedes ver este contenido en [el vídeo del canal proyectos web3](https://www.youtube.com/watch?v=W_qK0uj8rQo).
+
+
 
 Hablaremos sobre la necesidad de la descentralización frente al punto único de fallo.
 
