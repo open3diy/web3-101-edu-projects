@@ -341,11 +341,7 @@ Cuando un nodo se inicia por primera vez, durante el arranque (conocido como boo
 
 Esta conexión inicial continua con el descubrimiento de nodos que veremos a continuación, pero como simplificación, se puede ver en el siguiente ejemplo:
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pBootStrap.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
-
-
 https://github.com/user-attachments/assets/15d1f200-a030-4278-a5b2-bf88b2e537e2
-
 
 Inicialmente, el nodo parte de una lista de nodos conocidos, por ejemplo los nodos identificados como 1, 2, 3 y 4 que son nodos semilla, y el proceso consiste en consultar a esos nodos para descubrir otros nuevos, como serían el 10, 14, 25 y 30; así sucesivamente con los nuevos nodos para ampliar y actualizar su red de relaciones.
 
@@ -377,7 +373,7 @@ Si quieres entrar en detalle, lo vemos en un ejemplo:
 
 *Ejemplo en primera ronda:*
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryKademlia1-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/233bbec8-5ef3-4f68-a160-0fb1db433dfd
 
 * Inicialmente, un nodo local con id 0b0001 (1) conoce al nodo semilla con ID 0b1000 (8) y lo incluye en el Bucket 3 como el único nodo que conoce.
 
@@ -412,7 +408,8 @@ Si quieres entrar en detalle, lo vemos en un ejemplo:
 
 *Ejemplo en segunda ronda:*
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryKademlia2-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/04acbc7a-144a-4528-baea-a587464622d0
+
 
 * En la segunda ronda, con los nuevos nodos descubiertos, se realiza α (alfa) consultas paralelas para buscar más nodos con FIND_NODE, siendo las consultas a los nodos 0b0011 (3) y 0b0010 (2).
 
@@ -439,13 +436,14 @@ A continuación, veremos un ejemplo tomando como referencia Gossip para explicar
 
 *Ejemplo en primera ronda:*
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryGossip1-3.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/384545fe-5b7f-4097-9c9f-be6032c57748
+
 
 * Inicialmente un nodo consulta a un nodo semilla para conocer otros nodos, y este le responde con los nodos que conoce, por ejemplo, los 6, 2, 3 y 7. Estas consultas pueden ser en paralelo a varios nodos según el fan-out (abanico), que puede se entre 3 y 5, es decir, entre 3 y 5 consultas paralelas.
 
 *Ejemplo en segunda ronda:*
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryGossip2-3.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/69b61fe2-8088-487d-8047-31e4363c80ac
 
 * El nodo continua consultando a los nodos 6, 2, 3 y 7, y suponiendo que el fan-out es 2, consultaría en una ronda a los nodos 2 y 3, para conocer los nuevos nodos 4 y 5.
 * En esta petición, el nodo 1 también es descubierto por los nodos 2 y 3, quienes lo agregan a su lista de nodos conocidos gracias al descubrimiento recíproco (reciprocal peer discovery).
@@ -454,7 +452,8 @@ A continuación, veremos un ejemplo tomando como referencia Gossip para explicar
 
 *Ejemplo intercambio de vecinos:*
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pNodeDiscoveryGossip3-3.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/1da041c8-944d-415b-b8d1-e21abe163f8b
+
 
 * Como el nodo 2 ya conoce al nodo 1 gracias al descubrimiento recíproco (siendo el intercambio de vecinos), cuando detecta nuevos nodos o cambios en la topología de la red, puede notificar proactivamente al nodo 1 mediante una comunicación push. Es decir, no espera a que el nodo 1 realice una consulta, sino que le envía la información tan pronto como la tiene disponible, como en este ejemplo, donde comunica la existencia de los nodos 9 y 10.
 
@@ -568,7 +567,7 @@ Se debe aclarar que:
 
 *Viéndolo en detalle*:
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRoutingKademlia4-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/3fab399e-2cfa-4887-a180-c0b6bebadcb6
 
 * Por ejemplo el nodo 7, al recibir la petición de consulta, en primer lugar se asegura de nuevo que es un nodo cercano a la key solicitada y luego busca en su DHT la key `0b1111` para devolver el acceso al recurso, como podría ser su propia dirección IP o cualquier otra forma que permite al nodo 1 descargar o acceder al payload del nodo 7.
 
@@ -576,7 +575,8 @@ Se debe aclarar que:
 
 **En el caso de leer (R) pero el nodo no es responsable**.
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRoutingKademlia5-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/030f762d-3a4c-470e-98d6-ca8158fcbd31
+
 
 * En este ejemplo, los nodos 8, 7 y 5 son los responsables del recurso, pero en un momento dado se pueden caer varios nodos y el nodo 1 por descarte, podría usar un nodo donde no se escribió el recurso, como podría ser el nodo 3.
 * El nodo 3, recibe la petición, tiene registros en la DHT para otras key, pero no para la key `0b1111` (15) porque no es el responsable del dato.
@@ -617,7 +617,7 @@ Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entenderl
 
 **En el caso de escribir (W)**.
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip1-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/3559679f-0565-4cbb-8731-9b777d0774d2
 
 * Inicialmente existe una transacción iniciada desde el propio nodo o de un cliente ligero.
 * En este ejemplo no veremos cada paso de la transacción (depende de cada red p2p), nos centraremos en lo que sería una escritura (W), donde se difunde la información desde el nodo 1 hasta el resto de nodos conocidos como el 6, 2, 3 y 5. El k o fan-out (abanico), se refire a la cantidad de peticiones paralelas que se realizan y no se debe confundir con los k-buckets de DHT...
@@ -628,7 +628,7 @@ Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entenderl
 
 **En el caso de leer (R)**.
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip2-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/5b70496b-4edb-482f-981e-10439aa5ac84
 
 * En la propagación de consulta o Query propagation, la petición que realiza el nodo, en principio, no difiere mucho a la escritura que vimos con anterioridad, es decir, se realiza la petición a los nodos conocidos y estos devolverán el resultado **y adicionalmente** la lista de nodos conocidos, porque no debemos olvidar que la propagación de consulta se usa también para el descubrimiento de nuevos nodos.
 * Se dice que se devuelve el dato, pero igualmente como ocurre en las redes estructuradas, dependiendo de la red puede ser un enlace para descargar el payload, como una IP u otra forma de acceso...
@@ -636,17 +636,17 @@ Como explicamos, el protocolo que destaca en la Web3 es Gossip, y para entenderl
 
 **Propagación de consulta First-match**.
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip3-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/2cb539b1-a071-4da5-93be-d55e6acd1c64
 
 * Si el nodo 3 recibe una petición de consulta y lo tiene disponible, proporciona la respuesta.
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip4-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/b5f6b93a-7788-4db2-8219-58a40820b30a
 
 * Si el nodo 3 no tiene el dato, consultará al nodo 5 y continuará hasta encontrarlo o alcanzar el límite de saltos (TTL).
 
 **Propagación de consulta Multi-match**.
 
-<video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pPropagationGossip5-5.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/7de09313-e189-456d-bcbd-d21ece7f0ddf
 
 * Si el nodo 3 recibe la petición, continuará propagando la consulta hasta el último salto posible (TTL).
 * La respuesta final que recibe el nodo 1 es la acumulación de todas las respuestas de los nodos que han participado.
@@ -682,11 +682,11 @@ Igualmente, cuando la comunicación directa entre nodos no es posible debido a q
 
 Un [Relay](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) se utiliza cuando las técnicas como hole punching no son efectivas.
 
-<video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2prelay1-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/1e094644-53d9-45d8-b557-54ef89da4327
 
 * Cuando otros nodos no pueden acceder al nodo 1 porque está detrás de NATs o firewalls.
 
-<video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2prelay2-2.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+https://github.com/user-attachments/assets/3fc2eeb1-e80f-4f76-87cd-ff0d0bc65344
 
 * El nodo que no puede atender peticiones, sí puede conectarse a otro nodo relay.
 
@@ -762,31 +762,31 @@ Existen normalmente los siguientes modelos que una red p2p puede usar:
 
 * Consistencia fuerte (Strong consistency), implica que después de una escritura, todas las lecturas en cualquier nodo reflejan el valor más reciente, por lo tanto, se espera confirmación de los nodos relevantes (como nodos validadores) antes de finalizar la escritura
 
-  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pStrongConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+  https://github.com/user-attachments/assets/1625d492-da22-487a-bed9-14b7df863b67
 
   > En este ejemplo, un dato escrito (W) por el nodo emisor que es cliente, debe ser replicado y luego confirmado por el conjunto de nodos relevantes, como serían los nodos validadores, en este ejemplo solo habría un nodo validador, de color azul.
 
 * Consistencia eventual (Eventual consistency), los nodos se sincronizan con el tiempo, sin garantizar cuándo y no se espera una confirmación de escritura.
 
-   <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pEventualConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+  https://github.com/user-attachments/assets/d470620e-c290-45c5-81ab-ffd6d2f70541
 
   > En consistencia eventual, no espera confirmación.
 
 * Consistencia de lectura tras escritura (Read-your-writes consistency), es como en consistencia eventual, pero se garantiza que el nodo cliente que escribió el dato, si lo consulta posteriormente lo tendrá disponible. No implica que el cliente siempre vea su dato si otro nodo lo sobrescribió después.
   
-  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pRead-your-writesConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+  https://github.com/user-attachments/assets/b88b2dd3-32d7-477e-a631-db3d55d56371
 
   > En este ejemplo, el nodo emisor pregunta de forma posterior y se asegura la respuesta correcta gracias a que guardó una caché. No significa que consistencia eventual no lo haga, simplemente aquí se asegura.
 
 * Consistencia causal (Causal consistency), garantiza que los eventos relacionados por causa-efecto se vean en el mismo orden por todos los nodos. Es decir, si un evento A influye en B, todos los nodos deben ver A antes que B.
 
-  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pCausalConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+  https://github.com/user-attachments/assets/ccc6366f-09fe-4088-a623-bc9b2b58a2a2
 
   > Se logra controlando el orden de entrega, en el ejemplo, se entrega C cuando llega porque no tiene una causa y efecto, sin embargo, sólo entrega B si entrego antes A.
 
 * Consistencia secuencial (Sequential consistency), asegura que todas las operaciones se vean en el mismo orden global, aunque ese orden no sea necesariamente el real (cronológico). En causal, solo se respeta el orden entre operaciones que tienen dependencia (causa-efecto), pero en secuencial, todas las operaciones (incluso no relacionadas) deben verse en el mismo orden global por todos los nodos.
 
-  <video controls width="400" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pSequentialConsistency.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
+  https://github.com/user-attachments/assets/a21b72f0-36c0-457e-9010-6bb3670daebc
 
   > Se logra controlando el orden de entrega, en el ejemplo, como el orden es A, B y C, asi debe hacerlo el nodo que debe replicar la escritura, incluso aunque en un momento dado podría haber entregado C antes que B.
 
