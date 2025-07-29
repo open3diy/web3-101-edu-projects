@@ -1,0 +1,6 @@
+-e .
+matplotlib
+networkx
+graphviz
+multiformats
+base58
