@@ -14,11 +14,15 @@ Esto tiene aplicaciones en identidades digitales, economías descentralizadas, a
 
 ## Propósito
 
-**Mi propósito aquí** es la divulgación de la web3 en una serie de vídeos educativos.
+**Mi propósito aquí** es la divulgación de la web3 en una serie de vídeos educativos que podrás ver en el canal de YouTube [Proyectos web3](https://www.youtube.com/@proyectos-web3).
 
 ## Solución
 
 La solución que aplico es la formación continua, enriquecida y validada con prácticas reflejadas en [web3 - 101](https://github.com/open3diy/web3-101/blob/main/README.md), que funciona como el laboratorio del canal.
+
+## Índice de contenido
+
+Aqui puedes ver listado todo el contenido que voy publicando:
 
 ## Licencia
 
