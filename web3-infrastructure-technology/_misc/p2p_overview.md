@@ -343,6 +343,10 @@ Esta conexión inicial continua con el descubrimiento de nodos que veremos a con
 
 <video controls width="450" playbackRate="0.75"><source src="../_misc/assets/p2p/p2pBootStrap.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>
 
+
+https://github.com/user-attachments/assets/15d1f200-a030-4278-a5b2-bf88b2e537e2
+
+
 Inicialmente, el nodo parte de una lista de nodos conocidos, por ejemplo los nodos identificados como 1, 2, 3 y 4 que son nodos semilla, y el proceso consiste en consultar a esos nodos para descubrir otros nuevos, como serían el 10, 14, 25 y 30; así sucesivamente con los nuevos nodos para ampliar y actualizar su red de relaciones.
 
 Además de los nodos semilla, existen diversos mecanismos para el descubrimiento inicial de nodos. Entre ellos se encuentran el uso de [Rendezvous](https://docs.libp2p.io/concepts/discovery-routing/rendezvous/), el DNS seed (que resuelve dominios a direcciones IP de nodos activos), y los servidores de directorio (también llamados *bootstrap servers* o *trackers*), que ofrecen listas centralizadas de nodos disponibles. En redes locales, también se emplea difusión mediante *broadcast* o *multicast*, como [mDNS](https://docs.libp2p.io/concepts/discovery-routing/mdns/), para descubrir nodos cercanos. No obstante, en modelos descentralizados como Web3, predominan los **nodos semilla** para iniciar la conexión a la red.
