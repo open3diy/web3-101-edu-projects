@@ -4,7 +4,21 @@
 
 IPFS (InterPlanetary File System, o Sistema de Archivos Interplanetario) es un sistema descentralizado para compartir contenido que también está descentralizado.
 
-Es un protocolo abierto, debidamente documentado y además una red P2P descentralizada para almacenar y compartir archivos, eliminando la dependencia de servidores centrales. Utiliza el modelo de datos IPLD y CIDs (hashes de contenido) para garantizar integridad, inmutabilidad y deduplicación. Los usuarios pueden fijar (pin) contenido para asegurar su persistencia, y existen servicios y herramientas para facilitar su uso tanto en redes públicas como privadas. IPFS se basa en tecnologías como libp2p, DHT (Kademlia), Bitswap y UnixFS, y permite la publicación de nombres dinámicos mediante IPNS. Es ampliamente adoptado en el ecosistema Web3 para aplicaciones descentralizadas, almacenamiento de archivos, integración con blockchains y distribución de contenido resistente a la censura.
+Es un protocolo abierto, debidamente documentado y además es una red P2P descentralizada, para almacenar y compartir archivos, eliminando la dependencia de servidores centrales.
+
+IPFS sigue la estructura de datos IPLD (Interplanetary Linked Data), y la idea es fragmentar el contenido en bloques más pequeños y enlazarlos entre sí. Esto permite poder distribuir el contenido a lo largo del planeta, hacerlo más descentralizado, siendo más fácil de descargar y verificar, y además permite la deduplicación, es decir, poder reutilizar contenido.
+
+Cada bloque se identifica mediante su CID (Content Identifier), es decir, a través de un hash. Esto permite enlazar cada bloque dentro de la estructura IPLD y, además, garantiza la integridad del contenido que estamos obteniendo.
+
+El acceso a un contenido no se realiza mediante una URL, sino a través de su Content ID, lo que garantiza la integridad del contenido consultado.
+
+Los usuarios pueden fijar (pin) un contenido para asegurar su persistencia en el tiempo mediante servicios externos, o bien pueden utilizar la red descentralizada Filecoin, que a través de incentivos y contratos inteligentes garantiza la permanencia.
+
+Como el CID es inmutable, IPFS permite la publicación de nombres dinámicos mediante [IPNS (InterPlanetary Name System)](https://docs.ipfs.tech/concepts/ipns/) o [DNSLink](https://docs.ipfs.tech/concepts/dnslink/), facilitando la actualización de contenido bajo una misma dirección legible.
+
+IPFS se basa en tecnologías ampliamente reconocidas como [libp2p](https://libp2p.io/), [DHT (Kademlia)](https://docs.ipfs.tech/concepts/dht/), [Bitswap](https://specs.ipfs.tech/bitswap-protocol/) y [UnixFS](https://docs.ipfs.tech/concepts/file-systems/#unix-file-system-unixfs).
+
+Es ampliamente adoptado en el ecosistema Web3 para servir aplicaciones descentralizadas, almacenamiento de archivos, integración con blockchains y distribución de contenido resistente a la censura.
 
 🔗 Si quieres saber qué es IPFS y qué resuelve, accede al siguiente contenido de referencia:
 
@@ -193,6 +207,14 @@ Consiste en la publicación de nombres dinámicos que apuntan a diferentes CIDs 
 
 > 🎓 Como característica de la red, explicaremos este escenario mejor mas adelante.
 
+**Publicar un contenido en DNSLink (DNSLink publishing)**.
+
+<img src="_first-approach-to-IPFS-attachments/assets/DNSLinkScenary.png" alt="ipnsScenary" width="250">
+
+Consiste en asociar un nombre de dominio legible (por ejemplo, `midominio.com`) a un CID de IPFS mediante un registro especial en la configuración DNS del dominio. Esto se logra añadiendo un registro TXT con el formato `dnslink=/ipfs/<CID>` o `dnslink=/ipns/<nombre>`. De este modo, los usuarios pueden acceder al contenido de IPFS usando una dirección web tradicional, facilitando la integración y el acceso desde navegadores y gateways IPFS.
+
+> Práctica que puedes revisar en el laboratorio de la web3 en open3diy, en <https://github.com/open3diy/web3-101/blob/main/IPFS/ipfs-testing-public-and-desktop-node/public-ipfs-node-install.md#vincular-un-nombre-de-dominio-legible-con-un-cid-de-ipfs-con-dnslink>
+
 **Uso como backend de aplicaciones descentralizadas (dApps)**.
 
 <img src="_first-approach-to-IPFS-attachments/assets/dAppIpfsScenary.png" alt="dAppIpfsScenary" width="300">
@@ -259,7 +281,7 @@ Cada dirección multiaddr incluye información como el protocolo de red, el puer
 
 Así, mediante la combinación de PeerId y multiaddr, los nodos pueden descubrirse, autenticarse y establecer conexiones entre sí en la red IPFS.
 
-#### Publicar con IPNS
+#### Publicar con IPNS y DNSLink
 
 Aunque el contenido es identificado por un CID, este puede variar, por eso, es posible relacionarlo a un nombre de dirección pública, lo que sería un [IPNS](https://docs.ipfs.tech/concepts/ipns/) (InterPlanetary Name System).
 
@@ -271,7 +293,7 @@ En un nodo IPFS, además del IPNS basado en el PeerId por defecto, puedes genera
 
 La analogía de IPNS es como crear direcciones de una wallet, en ambos casos se generan en base a la parte pública, son un código ilegible y sirven para autenticar al creador. En realidad si quieres un nombre mas legible para una web, quizás debas crear un [DNSLink](https://docs.ipfs.tech/concepts/dnslink/), que sirve para asociar una dirección DNS a un contenido relacionado a un CID que se publica en un [gateway IPFS](https://docs.ipfs.tech/concepts/ipfs-gateway/), ya sea público o uno propio.
 
-> 🎓 Practica que puedes revisar en el laboratorio de la web3 en open3diy, en <https://github.com/open3diy/web3-101/blob/main/IPFS/ipfs-testing-public-and-desktop-node/public-ipfs-node-install.md#vincular-un-nombre-de-dominio-legible-con-un-cid-de-ipfs-con-dnslink>
+> 🎓 Te recuerdo que es una practica que puedes revisar en el laboratorio de la web3 en open3diy, en <https://github.com/open3diy/web3-101/blob/main/IPFS/ipfs-testing-public-and-desktop-node/public-ipfs-node-install.md#vincular-un-nombre-de-dominio-legible-con-un-cid-de-ipfs-con-dnslink>
 
 ### Descripción técnica de IPFS
 
@@ -546,7 +568,7 @@ En primer lugar, instala IPFS Desktop siguiendo la guía oficial: <https://docs.
 
 En la sección de "Configuración", activa el modo tutor de línea de comandos (CLI):
 
-<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/0_setup_1_configureCLI.png" alt="0_setup_1_configureCLI" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/0_setup_1_configureCLI.png" alt="0_setup_1_configureCLI" width="600">
 
 Esto te mostrará, junto a cada acción realizada en la interfaz gráfica, el comando CLI equivalente, facilitando el aprendizaje y la transición al uso avanzado de IPFS desde la terminal.
 
@@ -554,7 +576,7 @@ Esto te mostrará, junto a cada acción realizada en la interfaz gráfica, el co
 
 Accede al resumen del nodo:
 
-<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/1_status_1_sumary.png" alt="1_status_1_sumary" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/1_status_1_sumary.png" alt="1_status_1_sumary" width="600">
 
 Aquí puedes ver:
 
@@ -566,14 +588,14 @@ Aquí puedes ver:
 
 En "Avanzado", puedes ver detalles adicionales:
 
-<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/1_status_2_swarn.png" alt="1_status_2_swarn" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/1_status_2_swarn.png" alt="1_status_2_swarn" width="600">
 
 * <http://127.0.0.1:8080> es el gateway HTTP local de tu nodo IPFS. A través de esta dirección puedes acceder y visualizar archivos almacenados en IPFS desde tu navegador, utilizando rutas como `http://127.0.0.1:8080/ipfs/<CID>` o `http://127.0.0.1:8080/ipns/<nombre>`.
 * `/ip4/127.0.0.1/tcp/5001` es la dirección de la API HTTP RPC de IPFS. Esta API permite interactuar programáticamente con el nodo, ya sea desde scripts, aplicaciones externas o herramientas como IPFS Desktop y extensiones de navegador. Puedes consultar la [documentación de la API HTTP](https://docs.ipfs.tech/reference/http/api/) para ver todas las operaciones disponibles.
 * En el apartado "Direcciones" se listan todas las direcciones multiaddr en las que tu nodo está escuchando conexiones. Estas direcciones pueden incluir diferentes protocolos de red como TCP, UDP, WebRTC, QUIC, y variantes como `/p2p-circuit` (relay). Si tu nodo detecta direcciones IP públicas, también las mostrará aquí; si solo ves direcciones privadas (por ejemplo, `127.0.0.1` o `192.168.x.x`), es probable que estés detrás de un CGNAT, firewall o NAT restrictivo, lo que puede limitar la conectividad directa con otros nodos. En estos casos, IPFS puede utilizar nodos relay para facilitar la conexión con la red global.
 * Puedes utilizar el comando `ipfs id` en la terminal para ver todas las direcciones multiaddr de tu nodo, junto con información adicional como el PeerId, la clave pública y los protocolos soportados:
 
-  <img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/1_status_3_id_detail.png" alt="1_status_3_id_detail" width="300">
+  <img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/1_status_3_id_detail.png" alt="1_status_3_id_detail" width="600">
 
     > El mecanismo de relay permite que un nodo que se encuentra detrás de un CGNAT o firewall, y por tanto no puede recibir conexiones entrantes directas, se conecte a la red IPFS utilizando un nodo relay persistente mediante la dirección `/p2p-circuit`. De este modo, el nodo relay actúa como intermediario, facilitando la comunicación y el intercambio de datos con el resto de la red.
 
@@ -583,13 +605,13 @@ En "Avanzado", puedes ver detalles adicionales:
 
 Puedes añadir archivos o directorios a tu nodo local de IPFS de forma sencilla:
 
-<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/2_files_import.png" alt="2_files_import" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/2_files_import.png" alt="2_files_import" width="600">
 
 > Puedes importar contenido directamente desde tu disco o referenciarlo utilizando un CID externo. Esto te permite gestionar tanto archivos nuevos como aquellos ya existentes en la red IPFS.
 
 Luego de importar archivos o directorios, puedes realizar diversas operaciones sobre el contenido desde el menú contextual:
 
-<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/2_files_menuActions.png" alt="2_files_menuActions" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/2_files_menuActions.png" alt="2_files_menuActions" width="600">
 
 * **Compartir enlace:** Genera una URL para acceder al contenido a través de un gateway público. Por ejemplo:  
   <https://bafybeigxfjo5awmisnz7lvb37xavfmdfouibwzcybf4dnetpyppvnahdi4.ipfs.web3-101-ipfs.open3diy.org?filename=test1-ipfs.txt>
@@ -620,7 +642,7 @@ Luego de importar archivos o directorios, puedes realizar diversas operaciones s
 
 Puedes explorar cualquier CID de la red IPFS:
 
-<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/3_explore_1_sumary.png" alt="3_explore_1_sumary" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/3_explore_1_sumary.png" alt="3_explore_1_sumary" width="600">
 
 > Esta función es similar a acceder a <https://explore.ipld.io/>. Desde esa web puedes además puedes abrir archivos CAR generados y explorar su estructura IPLD.
 
@@ -628,7 +650,7 @@ La lista de CIDs de ejemplo es estática, es decir, se ha creado manualmente y n
 
 Ejemplo de visualización:
 
-<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/3_explore_2_example.png" alt="3_explore_2_example" width="300">
+<img src="_first-approach-to-IPFS-attachments/assets/ipfsDesktopPractice/3_explore_2_example.png" alt="3_explore_2_example" width="500">
 
 * Los círculos muestran la codificación del CID: DAG-PB y RAW son comunes en archivos/directorios subidos al nodo.
 * DAG-CBOR se utiliza cuando se almacenan estructuras de datos IPLD complejas (por ejemplo, objetos anidados o datos personalizados), ya que garantiza CIDs estables y compactos gracias a su serialización determinista y eficiente.
