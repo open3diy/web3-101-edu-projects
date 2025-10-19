@@ -18,6 +18,13 @@ Igualmente, un sistema descentralizado y rápido puede llegar a ser inseguro, co
 
 En general, un sistema descentralizado suele priorizar la seguridad como requisito mínimo. Por ejemplo, un sistema puede ser descentralizado y suficientemente seguro, o escalable y suficientemente seguro, pero no debería ser escalable, descentralizado e inseguro; esto último carecería de sentido, sobre todo porque, como veremos, los sistemas descentralizados suelen ser atacados.
 
+Las dimensiones de cada vector.. seguridad pero es seguridad de nivel de servicio o de mantener el precio. Descentralizacion, pero de protocolo o gobernanza o de que y escalabildiad de transacciones, etc.
+
+//todo se coconce este ecosistema de varias redes como multichain
+
+//todo falta decir el enfoque de descentralizacion de nodos poderosos, mas veloz, pero nodos fuertes no es descentralizado
+// hacer casos desce vs segu, desce vs esca, segu vs esca
+
 <img src="./assets_1_4/legoWeb3.png" alt="legoWeb3" width="350">
 
 Teniendo en cuenta esta limitación, la solución habitual es crear un ecosistema modular interconectado que se complementa entre sí. Por ejemplo, la red principal de Ethereum prioriza la descentralización y la seguridad, mientras que las cadenas laterales (sidechains) o [las segundas capas](https://academy.bit2me.com/que-son-las-layers-o-capas-en-blockchain/)(como las [Layer 2](https://metlabs.io/layer-2-blockchain-ethereum/) o [Layer 3](https://academy.bit2me.com/que-son-las-layer-3-cadena-bloques-capa/)) se enfocan en la escalabilidad, delegando parte de la seguridad y descentralización a la red principal. Por lo tanto, cada proyecto debe decidir dónde colocar su énfasis para cumplir su propósito dentro de un ecosistema más amplio.
@@ -30,7 +37,7 @@ Estas soluciones modulares permiten crear un sistema interconectado donde las ca
 
 Comprender este enfoque modular es uno de los mayores retos de la Web3: visualizarlo como un conjunto de piezas de lego que se conectan entre sí. Así, la limitación de escalabilidad en un sistema no representa un obstáculo insalvable, ya que siempre puede apoyarse en otros componentes del ecosistema que suplan esa necesidad.
 
-Este enfoque modular culmina en la composabilidad, que se refleja en las aplicaciones descentralizadas que el usuario final utiliza. La composabilidad permite que diferentes protocolos y servicios se integren fácilmente, facilitando la creación de nuevas aplicaciones funcionales desde el principio.
+Este enfoque modular culmina en la composabilidad, que se refleja en las aplicaciones descentralizadas que el usuario final utiliza. La composabilidad permite que diferentes protocolos y servicios del ecosistema se integren fácilmente, facilitando la creación de nuevas aplicaciones funcionales desde el principio.
 
 <img src="./assets_1_4/mundialPC.png" alt="mundialPC" width="350">
 

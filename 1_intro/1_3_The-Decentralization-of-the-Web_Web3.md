@@ -34,6 +34,8 @@ Pero, sobre todo, la Web3 introduce nuevos paradigmas:
 
 * Se sigue la premisa de definir previamente la necesidad del proyecto, el modelo económico y la estructura de la comunidad; es la propuesta de valor la que sirve para atraer a los usuarios. En contraste con el modelo Web2, donde las empresas primero captaban una gran base de usuarios para, posteriormente, monetizarla y definir su modelo de negocio.
 
+* Web3 permite un internet con estado confiable gracias a blockchain, donde Web2 solo lo consigue parcialmente y para sus clientes.
+
 En una fase inicial, la descentralización se impulsa gracias a tecnologías como blockchain, contratos inteligentes, aplicaciones descentralizadas (DApps), la autocustodia de la identidad mediante wallets y, en general, mediante protocolos abiertos. Estos elementos distribuyen el control, eliminan puntos únicos de fallo y favorecen la transparencia, la resiliencia y la resistencia a la censura.
 
   > En 2025 seguimos en esa fase inicial, con avances técnicos importantes pero aún con fuerte dependencia de infraestructuras centralizadas.
@@ -74,13 +76,15 @@ Cada enfoque es relevante para cada necesidad, bitcoin como sistema resiliente n
 
 > En mí opinión, existe cierto fundamentalismo sobre si se debe usar siempre PoW y realmente el debate es innecesario, cada red tiene contextos y necesidades diferentes, es como pensar que necesites siempre un vehículo blindado para ir a hacer la compra, es simplemente absurdo.
 
-## Programación on-chain
+## Programabilidad on-chain
 
 <img src="./assets_1_3/smartContrat.png" alt="smartContrat" width="400">
 
-Bitcoin introdujo la solución pionera de blockchain enfocada en la simplicidad, seguridad e inmutabilidad, con una capacidad de programación limitada mediante Bitcoin Script. Aunque esta funcionalidad se ha ampliado con propuestas como [Taproot](https://academy.bit2me.com/que-es-taproot/) y otros [BIP](https://academy.bit2me.com/que-es-bip-bitcoin/), su diseño deliberadamente restrictivo prioriza la seguridad y la resistencia a la censura sobre la flexibilidad. Esta limitación no es un defecto, sino una elección de diseño. Por eso, para casos que requieren lógica de ejecución compleja, surgieron los contratos inteligentes en la red Ethereum y posteriormente en otras redes de propósito similar, con una máquina virtual [Turing-completa](https://academy.bit2me.com/que-es-turing-completo/) orientada a la programabilidad general, denominada, por lo menos en el ecosistema Ethereum, [EVM](https://academy.bit2me.com/que-es-ethereum-virtual-machine-evm/) (Ethereum Virtual Machine), existiendo variantes equivalentes como la [WASM](https://ewasm.readthedocs.io/en/mkdocs/) en redes más recientes.
+Bitcoin introdujo la solución pionera de blockchain enfocada en la simplicidad, seguridad e inmutabilidad, con una capacidad de programación limitada mediante Bitcoin Script. Aunque esta funcionalidad se ha ampliado con propuestas como [Taproot](https://academy.bit2me.com/que-es-taproot/) y otros [BIP](https://academy.bit2me.com/que-es-bip-bitcoin/), su diseño deliberadamente restrictivo prioriza la seguridad y la resistencia a la censura sobre la flexibilidad. Esta limitación no es un defecto, sino una elección de diseño. Por eso, para casos que requieren lógica de ejecución compleja, surgieron los contratos inteligentes en la red Ethereum y posteriormente en otras redes de propósito similar, con una máquina virtual [Turing-completa](https://academy.bit2me.com/que-es-turing-completo/) (pero limitada por el coste o gas en Ethereum) orientada a la programabilidad general, denominada, por lo menos en el ecosistema Ethereum, [EVM](https://academy.bit2me.com/que-es-ethereum-virtual-machine-evm/) (Ethereum Virtual Machine), existiendo variantes equivalentes como la [WASM](https://ewasm.readthedocs.io/en/mkdocs/) en redes más recientes.
 
-El término "contrato inteligente" puede parecer una etiqueta comercial, pero en realidad describe un programa informático que define reglas de negocio y se ejecuta al recibir una transacción o con una petición remota. Este programa está desplegado en la red de nodos y se ejecuta en la capa de ejecución cuyo resultado es validado posteriormente por la capa de consenso, antes de ser consolidado en el registro inmutable de la blockchain.
+El término “contrato inteligente” puede parecer una etiqueta comercial, pero en realidad describe un programa informático que define reglas de negocio y se ejecuta al recibir una transacción o una petición que no cambia el estado. Cada nodo reproduce la ejecución y, mediante el consenso, la red acuerda el bloque válido, quedando su resultado registrado de forma inmutable en la blockchain.
+
+Pero Ethereum no es solo una cadena de transacciones (como Bitcoin). Ethereum es una máquina de estados descentralizada. Cada bloque solo guarda las transacciones y un resumen del estado final (hash). Los datos completos del estado (saldos y variables de contratos) se mantienen off-chain en los nodos. Este diseño permite ejecutar lógica compleja y crear DApps que van mucho más allá de simples transferencias de valor.
 
 Para quienes vienen del mundo de bases de datos relacionales, la analogía más cercana sería un [procedimiento almacenado](https://es.wikipedia.org/wiki/Procedimiento_almacenado) con interfaz similar a una API RPC, es decir procedural.
 
@@ -92,6 +96,14 @@ Para mitigar este riesgo, se han desarrollado patrones y soluciones como los con
 
 Además, existen mecanismos adicionales como los timelocks, que permiten programar un retraso antes de aplicar cambios importantes, dando tiempo a la comunidad para revisar, auditar y actuar en consecuencia. Por otro lado, la gobernanza descentralizada otorga a los usuarios la capacidad de votar sobre propuestas de actualización o migración de contratos, es decir, aunque el contrato sea inmutable se puede crear otro que corrija el problema, siempre y cuando la comunidad esté de acuerdo. Estos mecanismos ayudan a equilibrar la flexibilidad para corregir errores con la necesidad de mantener la confianza y la transparencia.
 
+//todo recalccar que las transacciones permite tener un historico del estado de internet, maquina de estados?
+
+// todo recalcar ehte introduce gas como comision o coste computacional. evita el DoS
+
+//todo un smart contrat no se autoejecuta, lo inicia otra transaccion o oraculo o servicio off-chain
+
+
+
 ## Aplicaciones descentralizadas (DApps)
 
 <img src="./assets_1_3/DApp.png" alt="DApp" width="400">
@@ -99,6 +111,14 @@ Además, existen mecanismos adicionales como los timelocks, que permiten program
 Una vez que disponemos de un backend on-chain que gestiona las validaciones, la lógica de negocio y el estado, el siguiente paso natural es construir aplicaciones frontend que también sean descentralizadas. Así surgen las DApps: aplicaciones descentralizadas que combinan contratos inteligentes en la blockchain con interfaces accesibles para los usuarios.
 
 Esta definición es algo simplista; el ecosistema es muy amplio y modular, es como un juego de lego, por eso otra utilidad clara de las DApps es la composabilidad, es decir, la capacidad de interactuar con el resto de protocolos y servicios del ecosistema Web3, facilitando la experiencia al usuario.
+
+La composabilidad real ocurre casi al 100% on-chain, porque:
+
+  Los smart contracts son públicos y sin permisos → cualquiera puede llamarlos.
+
+  La lógica de “lego financiero/social” se da al encadenar contratos (Uniswap → Aave → Yearn, etc.).
+
+  El usuario solo interviene para aprobar movimientos de tokens desde su wallet. 
 
 El objetivo es crear aplicaciones, idealmente inmutables, que no dependan de un servidor central. Esto es técnicamente posible utilizando soluciones como IPFS o distribuyendo las aplicaciones en los dispositivos de los usuarios finales.
 
@@ -121,6 +141,12 @@ Gracias a los oráculos descentralizados como Chainlink, las aplicaciones Web3 p
 ## Cuentas y control de acceso
 
 <img src="./assets_1_3/wallet.png" alt="DApp" width="400">
+
+//TODO los contratos tienen ownner y se puede quitar para que sea mas descentralizado
+
+//gassless otra mejora usabilidad
+
+// todo UTXO vs ABM.
 
 Al interactuar con una DApp y su contrato inteligente, surge la necesidad de identificar y autenticar a ambas partes. Por ello, los usuarios disponen de cuentas de su propiedad llamadas EOA (Externally Owned Accounts), mientras que los contratos inteligentes cuentan con CA (Contract Accounts). Ambas cuentas son identificadores únicos, representados por una serie de caracteres alfanuméricos de longitud fija. En el caso de las EOA, pueden asociarse a servicios de nombres de dominio descentralizados, como [ENS](https://ens.domains/), lo que permite mostrar un nombre o marca personal en lugar de un identificador difícil de memorizar. Además, una cuenta puede asociarse a un [DID (Decentralized Identifier)](https://www.w3.org/TR/did-1.0/), facilitando su vinculación con una identidad descentralizada interoperable.
 
@@ -151,6 +177,67 @@ A pesar de su nombre, una wallet es principalmente un contenedor de cuentas que 
 Vemos como en la Web3 existe un cambio de paradigma muy importante respecto a la Web2: el usuario no “inicia sesión” con usuario y contraseña, sino que su identidad está vinculada a una clave privada bajo su propia custodia, lo que garantiza la propiedad y el control. Esto redefine la noción tradicional de identidad y delega la responsabilidad directamente en el usuario. Este es uno de los principales desafíos para la adopción de la Web3; por ello, la recuperación de cuentas mediante una frase semilla o la abstracción de cuentas son aspectos fundamentales.
 
 Aunque la autocustodia puede parecer "incómoda", es crucial entender su importancia frente a la vulneración y el robo de identidades en la Web. La adopción de la autocustodia, apoyada por técnicas de la Web3 como la abstracción de cuentas para mejorar la experiencia de usuario y las [pruebas de conocimiento cero](https://academy.bit2me.com/zkp-zero-knowledge-protocol/), como [ZK ID](https://pse.dev/projects/zk-id), para proteger la privacidad, ofrece una seguridad fundamental donde los mecanismos de autorización centralizados de la Web2 a menudo fallan.
+
+//todo las EOA y CA pueden ejecutar transacciones del contrato, cuando son CA, como oraculos, tiene un calculo mas complejo
+
+## La seguridad criptoeconómica
+
+La seguridad criptoeconómica es uno de los pilares fundamentales de la Web3 y del Internet del valor. En este nuevo paradigma, cada infraestructura, red o aplicación está respaldada por su comunidad y por mecanismos económicos que incentivan la participación y el comportamiento correcto y penalizan las acciones maliciosas.
+
+El objetivo es crear sistemas sostenibles, resilientes y alineados con los intereses de sus participantes.
+
+El token es la herramienta principal para articular estos incentivos. Representa el valor actual y futuro de la red, y cumple varias funciones clave para la participación y gobernanza, aporta  seguridad de la red, en redes como Ethereum, los tokens se utilizan para el staking, un proceso en el que los participantes bloquean sus tokens como garantía para validar transacciones y asegurar la red. Si actúan de forma deshonesta, pueden perder parte o la totalidad de sus tokens, lo que incentiva el comportamiento honesto. Además, soluciones como EigenLayer permiten reutilizar el staking para asegurar aplicaciones adicionales, aumentando la seguridad y la eficiencia del ecosistema.
+
+- **Liquidez y utilidad:** Los tokens también facilitan la creación de pools de liquidez, donde los usuarios aportan pares de tokens (por ejemplo, un token nativo y una stablecoin) para habilitar el intercambio y la operatividad de aplicaciones DeFi. Estos pools permiten a las comunidades crear mercados, incentivar la participación y ofrecer recompensas a quienes contribuyen con liquidez.
+
+- **Modelos económicos diversos:** Existen diferentes tipos de tokens según su función: tokens de utilidad, tokens de gobernanza, tokens de seguridad (security tokens), stablecoins, entre otros. Cada uno responde a necesidades específicas y puede habilitar modelos económicos innovadores, como el acceso a servicios, la representación de activos reales (tokenización), la distribución de beneficios o la financiación de proyectos.
+
+La seguridad criptoeconómica se basa en el diseño de incentivos y penalizaciones que alinean los intereses de los participantes con la salud y sostenibilidad de la red. Los mecanismos de staking, slashing (penalización), gobernanza y liquidez permiten crear sistemas robustos, resistentes a ataques y manipulaciones, y capaces de evolucionar según las necesidades de la comunidad.
+
+incluso aportar seguridad sobre el precio que se mantenga sosteible, motivo que aparecen mecanisos como vote escrow.
+
+hacer stack no solo aporta seguridad a un protocolo, lo aporta a un token.
+
+La seguridad no es solo ataques a una red p2p, lo peude ser al protocolo y al precio del token.
+
+efecto red? se puede capturar valor token futuro, por eso el stake se premia
+
+Si tu proyecto está muy anclado a la infraestructura/red (ej. ENS en Ethereum, o un L2 como Optimism) → tiene sentido usar el token nativo de esa red (ETH) como referencia. Es como una forma de pertenencia, de identidad comunitaria.
+
+Si tu proyecto busca usuarios más generales o externos (juegos, pagos, remesas) → lo natural es usar estables, porque el usuario piensa en dólares/euros y quiere estabilidad.
+
+//todo hablar del token y nft
+
+//todo hablar de como afecta al quemado burn en la seguridad del precio
+
+
+## Casos de uso que habilita Web3
+
+//revisar
+
+Gracias a la escasez digital y al hecho de que la web ahora cuenta con estado en una red neutra y segura, se habilitan nuevos casos de uso en Web3 que antes habrían sido difíciles o imposibles de implementar. Esta combinación permite crear activos digitales únicos, gestionar identidades y reputaciones verificables, automatizar procesos mediante contratos inteligentes y conectar aplicaciones con datos del mundo real de forma transparente y confiable. Así, Web3 abre la puerta a modelos económicos innovadores, mercados globales sin intermediarios y una colaboración más eficiente entre usuarios, empresas y comunidades.
+
+- **Tokenización de activos:** Web3 permite representar activos físicos y digitales como tokens en la blockchain, desde bienes raíces, obras de arte y vehículos, hasta acciones, derechos de autor y materias primas. Esta tokenización facilita la compraventa, el fraccionamiento y la transferencia de propiedad de forma global y sin intermediarios, habilitando mercados más líquidos y accesibles.
+
+- **RWA (Real World Assets):** La integración de activos del mundo real en la blockchain, como inmuebles, bonos, facturas o commodities, permite crear productos financieros innovadores y democratizar el acceso a inversiones que antes estaban reservadas a grandes instituciones.
+
+- **Liquidez de activos digitales:** Protocolos DeFi y pools de liquidez permiten que cualquier usuario aporte activos y reciba recompensas, facilitando el intercambio instantáneo y la creación de mercados globales sin necesidad de bancos o brokers. Esto habilita modelos como el market making automatizado y la provisión de liquidez entre pares.
+
+- **Finanzas descentralizadas (DeFi):** Web3 ha revolucionado el sector financiero con préstamos, créditos, seguros, derivados y stablecoins gestionados por contratos inteligentes. Los usuarios pueden interactuar directamente con estos servicios, sin intermediarios, con total transparencia y control sobre sus fondos.
+
+- **NFTs y propiedad digital:** Los tokens no fungibles (NFTs) permiten certificar la propiedad y autenticidad de activos digitales únicos, como arte, música, coleccionables, entradas a eventos o identidades digitales. Esto habilita nuevos modelos de negocio para creadores y comunidades, y facilita la interoperabilidad entre plataformas. La programabildiad permite cosas como permitir al NFT que cierto porcentajde posteriores ventas, sean recompensadas al creador inicial
+
+- **Gobernanza descentralizada (DAO):** Las organizaciones autónomas descentralizadas permiten que comunidades gestionen proyectos, fondos y decisiones colectivas mediante votaciones transparentes y reglas programadas en contratos inteligentes, eliminando jerarquías tradicionales y fomentando la participación activa.
+
+- **Economía colaborativa y play-to-earn:** Web3 habilita modelos donde los usuarios pueden ganar recompensas por participar en juegos, redes sociales, plataformas educativas o proyectos colaborativos, convirtiéndose en prosumidores y generando valor para el ecosistema.
+
+- **Identidad y reputación digital:** La gestión de identidades descentralizadas (DID) y sistemas de reputación permiten a los usuarios controlar sus datos, demostrar credenciales y construir una reputación verificable en múltiples plataformas, sin depender de proveedores centralizados.
+
+- **Integración IoT y automatización:** Gracias a los oráculos y contratos inteligentes, Web3 permite conectar dispositivos físicos y sensores al mundo digital, automatizando pagos, seguros, logística y procesos industriales de forma segura y transparente.
+
+- Cadena de suministro
+
+Estos casos de uso demuestran cómo Web3 supera las limitaciones de la Web2, habilitando una economía digital más abierta, eficiente y colaborativa, donde la escasez digital y la propiedad verificable son el motor de innovación y nuevas oportunidades.
 
 ## Web3 y el metaverso
 
@@ -196,11 +283,14 @@ La tecnología blockchain, basada en tecnologías abiertas y estándares, se des
 
 En Web3, los usuarios pueden ser proveedores, consumidores o ambos, participando en comunidades, colaborando en proyectos o creando sus propias aplicaciones descentralizadas, lo que permite que sea un entorno realmente neutro y colaborativo.
 
+//todo mierda todo. es el ecosistema la clave para la composabildiad
 Web3, al estar basada en estándares y protocolos abiertos, fomenta la adopción de mejores prácticas y habilita la composabilidad en las aplicaciones. Esto permite que diferentes componentes, servicios y contratos inteligentes se integren y reutilicen fácilmente, acelerando la innovación y el desarrollo de nuevos productos. Este enfoque modular y abierto representa una evolución respecto a la Web2, donde las soluciones suelen ser cerradas y menos interoperables. No obstante, plantea el desafío de mantener un ecosistema cohesionado y eficiente, además de una curva de aprendizaje inicial más alta, lo que dificulta su adopción masiva.
 
 Este modelo cambia las reglas del juego: deja de tratar a los usuarios como productos y redefine modelos de negocio. La participación se vuelve más directa, en la práctica, puedes pagar solo por lo que necesitas y contribuir a definir servicios y productos de manera más precisa.
 
   > Esta característica también impulsa la evolución hacia una economía más eficiente y responsable, alineada con los principios de la industria 4.0. Por ejemplo, permite combatir la obsolescencia programada y evitar la generación de residuos que contaminan nuestro planeta de forma innecesaria.
+
+Web3 redefine los términos de licencia abusivos, como el DRM (Digital Rights Management – Gestión de Derechos Digitales), que tradicionalmente han permitido a las empresas productoras imponer restricciones y prácticas invasivas sobre los usuarios, como el monitoreo y control del uso de contenidos. En contraste, Web3 promueve modelos abiertos y personalizados.
 
 A la Web3 y a las criptomonedas a menudo se les asocia con estafas debido a noticias negativas. Sin embargo, es precisamente su transparencia lo que permite que estas situaciones salgan a la luz; esto constituye una fortaleza, no una debilidad, en comparación con la ocultación que ocurre frecuentemente en el sistema financiero tradicional o en la Web2. Además, el hecho de que puedas conocer estas malas prácticas es, en sí mismo, una oportunidad para corregirlas, algo que no pueden decir otros ecosistemas. Por estas razones, la Web3 representa el avance evolutivo de la web, aunque la resistencia al cambio es innata al ser humano y es natural que veamos un progreso paulatino ante un cambio de paradigma tan profundo.
 
@@ -226,6 +316,8 @@ Cabe añadir y destacar que, si la comunidad no logra resolver sus conflictos in
 
 La Web3 es la evolución natural de Internet, orientada a la descentralización y la autonomía de los usuarios. Gracias a tecnologías como blockchain, contratos inteligentes, wallets de autocustodia y oráculos descentralizados, se redefine la propiedad digital, la identidad y los modelos económicos, devolviendo el control a la comunidad y eliminando intermediarios. Este nuevo paradigma fomenta la transparencia, la resistencia a la censura y la colaboración, permitiendo que los usuarios participen activamente como prosumidores y creadores de valor.
 
-La capacidad de interactuar de forma segura con datos del mundo real mediante oráculos amplía los casos de uso y la utilidad de las aplicaciones Web3, consolidando un ecosistema modular y abierto. Sin embargo, la adopción masiva enfrenta desafíos técnicos, culturales y sociales, así como la necesidad de resolver conflictos internos y mejorar la experiencia de usuario. La transparencia y robustez de Web3 frente a ataques y críticas constituyen una fortaleza, pero su consolidación será gradual y dependerá de la adaptación de la comunidad y de la evolución tecnológica.
+La capacidad de interactuar de forma segura con datos del mundo real mediante oráculos, amplía los casos de uso y la utilidad de las aplicaciones Web3, consolidando un ecosistema modular y abierto. Sin embargo, la adopción masiva enfrenta desafíos técnicos, culturales y sociales, así como la necesidad de resolver conflictos internos y mejorar la experiencia de usuario. La transparencia y robustez de Web3 frente a ataques y críticas constituyen una fortaleza, pero su consolidación será gradual y dependerá de la adaptación de la comunidad y de la evolución tecnológica.
 
-En definitiva, Web3 no busca reemplazar la web actual, sino complementarla y aportar soluciones donde existen limitaciones, impulsando una economía digital más eficiente, colaborativa y sostenible. El reto principal será lograr una transición inclusiva, donde la tecnología y la sociedad evolucionen juntas hacia un ecosistema más abierto y resiliente.
+En definitiva, Web3 busca aportar soluciones allí donde la Web actual presenta limitaciones, impulsando una economía digital más eficiente, colaborativa y sostenible. El principal reto será lograr una transición inclusiva, en la que tecnología y sociedad evolucionen juntas hacia un ecosistema más abierto y resiliente.
+
+---

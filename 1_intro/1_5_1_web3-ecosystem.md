@@ -24,9 +24,19 @@ Muchas de estas redes de segunda y tercera generación, especialmente las monol�
 
   > Tampoco es fácil generalizar. Aunque muchas redes monolíticas enfrentan el desafío de depender de sus equipos fundadores, algunas avanzan hacia modelos de gobernanza más descentralizados. Es fundamental analizar cada caso, ya que existen excepciones y grados muy distintos de descentralización.
 
+//Todo 4º generacion, seguridad mejorada zkproof
+//Todo    - appchains: Cadenas de bloques diseñadas para aplicaciones específicas.
+    - application-specific blockchains: Blockchains específicas para aplicaciones particulares.
+    - custom blockchains: Blockchains personalizadas para ciertas funcionalidades.
+    - vertical blockchains: Blockchains centradas en una industria o función específica
+
+//todo servicios off-chain
+
 Como comentamos, Ethereum evoluciona constantemente para alcanzar la escalabilidad y conectividad y mejorar la experiencia de usuario. Aunque no avanza tan rápido como otras redes de tercera generación, prioriza la seguridad, no solo de la red, sino también en la consolidación de cada paso evolutivo, guiado por una visión clara de lo que debería ser una blockchain abierta y neutral. Por eso, muchos la consideramos como la red de referencia, especialmente en lo que respecta a descentralización y robustez del ecosistema.
 
 Ethereum, para abordar los problemas de escalabilidad y costes, ha impulsado soluciones de segunda capa (Layer 2), como Optimistic Rollups, ZK-Rollups y sidechains. Estas tecnologías permiten procesar transacciones fuera de la cadena principal (Layer 1) y luego consolidar los resultados en ella, lo que incrementa la capacidad de procesamiento y reduce las comisiones. Las Layer 2 alivian la congestión de la red principal y utilizan mecanismos más eficientes, aunque suelen implicar menor grado de descentralización y seguridad. Además, existen propuestas de tercera capa (Layer 3) orientadas a casos de uso específicos y mayor personalización.
+
+  > Si quieres saber qué soluciones de capa 2 (L2) tienen mayor adopción y actividad, puedes consultar [L2Beat](https://l2beat.com/scaling/summary), donde encontrarás un resumen actualizado de las principales redes y su evolución.
 
 Las soluciones de segunda capa (Layer 2) y presumiblemente capa 3 (Layer 3) permiten adaptar la red a casos de uso concretos, ofreciendo flexibilidad y escalabilidad sin sacrificar la seguridad de Ethereum como capa base. Ejemplos destacados de redes Layer 2 son [Optimism](https://optimism.io/), [Arbitrum](https://arbitrum.io/), [StarkNet](https://www.starknet.io/) y [Polygon](https://polygon.technology/), cada una con enfoques técnicos propios para optimizar costes, velocidad y privacidad. Estas redes procesan transacciones fuera de la cadena principal y consolidan los resultados en Ethereum, lo que reduce comisiones y congestión. Aunque dependen de Ethereum para la liquidación y seguridad final, las Layer 2 y 3 (cuando se consoliden) permiten desarrollar aplicaciones especializadas y resolver problemas de escalabilidad, manteniendo la interoperabilidad dentro del ecosistema EVM.
 
@@ -35,6 +45,41 @@ Además, Ethereum se ha consolidado como la principal red de liquidación (settl
 Esta es una reflexión personal e implica tomar posición sobre una solución concreta. Debemos reconocer que, por adopción y comunidad, Bitcoin se ha consolidado como la opción ganadora en su propósito, al igual que Ethereum en su rol como red programable. Si bien depender de una única red puede parecer contrario al ideal de descentralización, en la práctica representa una decisión pragmática para no quedar paralizado ante la amplitud del ecosistema. Esto no descarta otras visiones de la Web3, como un ecosistema compuesto por múltiples redes monolíticas compatibles con la EVM, interconectadas mediante arquitecturas como Polkadot o Cosmos. Es probable que el tiempo y el uso terminen posicionando cada enfoque. Lo que sí parece poco probable es que Ethereum y sus soluciones en capas pierdan su relevancia.
 
   > Siempre hace falta un plan B; cualquier solución con una comunidad fuerte es necesaria en el ecosistema. No se debe malinterpretar la elección personal de Ethereum, con considerar que el resto son innecesarias o poco valiosas.
+
+### Modelos de redes P2P y blockchain
+
+> Te animo a leer más en [introducción a redes p2p](https://github.com/open3diy/web3-101-edu-projects/blob/main/web3-infrastructure-technology/_misc/p2p_overview.md)
+
+En este repositorio nos centramos en redes P2P y, por extensión, en redes blockchain que adoptan un modelo de confianza "trustless". Estas redes suelen ser de autorización pública, aunque existen variantes permisionadas, y emplean modelos de gobernanza descentralizada, como las DAOs, que resultan especialmente útiles en una Web3 abierta. Sin embargo, también existen otros tipos de redes orientadas a empresas, gobiernos u organizaciones, que pueden ser privadas o permisionadas, con gobernanza centralizada o federada. Aunque estos modelos son relevantes, no constituyen el foco principal de este repositorio, al menos en esta fase inicial.
+
+### Modularidad vs Interoperabilidad en el ecosistema Web3
+
+// revisar
+
+Uno de los debates clave en la evolución del ecosistema Web3 es el enfoque entre modularidad y interoperabilidad. Ambos conceptos buscan mejorar la escalabilidad, flexibilidad y conectividad entre redes y aplicaciones, pero lo hacen desde perspectivas diferentes:
+
+- **Interoperabilidad:** Se refiere a la capacidad de diferentes blockchains y sistemas para comunicarse y transferir datos o activos entre sí de forma segura y eficiente. Ejemplo destacado es [Polkadot](https://polkadot.network/), que permite la interconexión de múltiples blockchains (parachains) bajo una arquitectura común, facilitando la transferencia de información y activos entre redes independientes.
+
+- **Modularidad:** Implica diseñar blockchains y sistemas como componentes independientes que pueden combinarse y personalizarse según las necesidades de cada aplicación. [Celestia](https://celestia.org/) es un ejemplo de blockchain modular, separando la capa de consenso y disponibilidad de datos, lo que permite a los desarrolladores crear sus propias cadenas especializadas (appchains) sobre una infraestructura común. En el ecosistema Ethereum, la modularidad se refleja en stacks como [OP Stack](https://stack.optimism.io/), que permiten construir rollups y soluciones personalizadas sobre la base de Ethereum, facilitando la especialización y escalabilidad.
+
+En resumen, la interoperabilidad busca conectar diferentes redes para compartir recursos y liquidez, mientras que la modularidad permite construir soluciones especializadas y adaptables sobre infraestructuras compartidas. Ambos enfoques son complementarios y están impulsando la innovación en Web3, permitiendo la creación de ecosistemas más abiertos, flexibles y escalables.
+
+muchos proyectos “modulares” terminan siendo híbridos: dicen que se especializan pero acaban metiendo todo.
+
+| Categoría                                         | Ejemplos                                                               | Cómo funciona                                                         | En qué se enfocan                                                           | Analogía                                                               |
+| ------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **Monolíticas (L1 “todo en uno”)**                | Bitcoin, Ethereum L1, Solana                                           | Consenso + ejecución + datos en una sola capa                         | Seguridad y simplicidad, pero limitadas en escalabilidad                    | “Un PC donde todo está en la misma torre”                              |
+| **Modulares (L1 + capas especializadas)**         | Celestia, EigenLayer, rollups en Ethereum                              | Separan funciones (datos, ejecución, consenso) en distintas capas     | Escalabilidad y flexibilidad                                                | “Un PC armado por piezas: CPU, GPU, RAM, disco separados”              |
+| **Appchains**                                     | dYdX (Cosmos), DeFi Kingdoms (Avalanche subnet), juegos en Polygon CDK | Blockchain dedicada a una aplicación concreta                         | Personalización, control de la app, rendimiento específico                  | “Un servidor privado para una app”                                     |
+| **Layer 0 (infraestructuras para crear cadenas)** | Polkadot (relay + parachains), Cosmos (SDK + IBC), Avalanche (subnets) | Red base que coordina muchas blockchains (appchains o L1s)            | Interoperabilidad y coordinación                                            | “Una autopista con muchos carriles, cada carril es una cadena”         |
+| **Ethereum + L2**                                 | Optimism, Arbitrum, zkSync, Base                                       | Rollups que se apoyan en Ethereum para seguridad, pero ejecutan fuera | Escalabilidad manteniendo seguridad de Ethereum                             | “Un anexo a un banco central: trámites rápidos fuera, respaldo dentro” |
+| **Stacks (frameworks para crear L2)**             | OP Stack (Optimism), zk Stack (zkSync)                                 | Plantillas para lanzar tu propia L2                                   | Facilitar ecosistema de muchas cadenas conectadas (Superchain, Hyperchains) | “Un kit de Lego para montar tu propia blockchain”                      |
+
+👉 Una forma de no perderse es siempre hacerse dos preguntas antes de estudiar un proyecto:
+
+¿Este proyecto es una red base (L1, L0) o se apoya en otra? ¿se intectonecta en una superchain o que posibildiades hay?
+
+¿Su foco principal es escalabilidad, interoperabilidad o un caso de uso concreto?
 
 ## Ecosistema de infraestructura
 
@@ -130,7 +175,9 @@ Definen estructuras y estándares para la toma de decisiones colectiva sobre el 
 
 ### Protocolos DeFi
 
-Permiten servicios financieros descentralizados como préstamos, trading, derivados y stablecoins, eliminando intermediarios mediante contratos inteligentes. Han evolucionado desde [DeFi 1.0 a 3.0](https://www.gate.com/es/blog/456/DeFi-1.0-to-3.0--What-is-next), incorporando mayor eficiencia, interoperabilidad y nuevos modelos de incentivos. Ejemplos: [Uniswap](https://uniswap.org/), [Aave](https://aave.com/), [MakerDAO](https://makerdao.com/), [Curve](https://curve.fi/).
+Los protocolos DeFi definen un ecosistema más amplio de reglas y estándares para servicios financieros descentralizados, como préstamos, trading, derivados y stablecoins, eliminando intermediarios mediante contratos inteligentes. Los protocolos DeFi han evolucionado desde [DeFi 1.0 a 3.0](https://www.gate.com/es/blog/456/DeFi-1.0-to-3.0--What-is-next), incorporando mayor eficiencia, interoperabilidad y nuevos modelos de incentivos. Ejemplos de protocolos clave: [Aave](https://aave.com/), [MakerDAO](https://makerdao.com/), [Curve](https://curve.fi/).
+
+Es importante distinguir entre protocolos y aplicaciones: mientras que los protocolos establecen las bases técnicas y operativas, muchas aplicaciones como los DEX (intercambios descentralizados) implementan estos protocolos, pero no necesariamente constituyen un protocolo en sí mismas.
 
 ### Protocolos de identidad, reputación y resolución de conflictos
 
@@ -167,9 +214,13 @@ Las DAOs son el modelo organizativo más representativo de Web3. Funcionan media
 - DAOs de servicios: Ofrecen servicios como auditoría, desarrollo o marketing de forma descentralizada. Ejemplo: [RaidGuild](https://www.raidguild.org/).
 - DAOs de grants: Distribuyen ayudas y subvenciones para el desarrollo de ecosistemas, como [Gitcoin Grants](https://grants.gitcoin.co/).
 
-### Fundaciones y laboratorios
+### Formadores, Fundaciones y Laboratorios
 
-Las fundaciones suelen ser entidades sin ánimo de lucro que impulsan el desarrollo de protocolos y comunidades, como la [Ethereum Foundation](https://ethereum.foundation/) o la [Solana Foundation](https://solana.org/foundation). Los laboratorios, como [Consensys](https://consensys.io/) o [Parity Technologies](https://www.parity.io/), desarrollan tecnología y herramientas clave para el ecosistema.
+Las fundaciones y laboratorios desempeñan un papel fundamental en el desarrollo y sostenibilidad del ecosistema Web3. Las fundaciones, como la [Ethereum Foundation](https://ethereum.foundation/) o la [Solana Foundation](https://solana.org/foundation), son entidades sin ánimo de lucro que promueven la investigación, el desarrollo de protocolos y el crecimiento de comunidades abiertas. Los laboratorios, como [Consensys](https://consensys.io/) y [Parity Technologies](https://www.parity.io/), lideran la creación de herramientas, infraestructuras y soluciones técnicas que impulsan la innovación en Web3.
+
+Además, existen iniciativas educativas y comunidades de formadores que facilitan el aprendizaje y la adopción de tecnologías descentralizadas. Ejemplos incluyen [ETHGlobal](https://ethglobal.com/) (hackathons y formación), [Open3DIY](https://open3diy.org/) (comunidad y recursos educativos), y programas de formación impulsados por DAOs, universidades y colectivos independientes.
+
+La colaboración entre fundaciones, laboratorios y comunidades educativas es clave para fortalecer el ecosistema, fomentar la participación y acelerar la adopción de Web3 a nivel global.
 
 ### Empresas y startups
 
@@ -182,6 +233,40 @@ Las comunidades son esenciales en Web3, agrupando usuarios, desarrolladores y en
 ### Agencias y redes de colaboración
 
 Existen agencias y redes que facilitan la colaboración entre diferentes actores del ecosistema, impulsando la interoperabilidad, la educación y la adopción de estándares abiertos. Ejemplo: [Enterprise Ethereum Alliance](https://entethalliance.org/), que fomenta la adopción de Ethereum en empresas mediante estándares y colaboración; Ejemplo: [Ethereum Cat Herders](https://ethereumcatherders.com/), grupo comunitario que coordina la gestión de actualizaciones y educación en Ethereum; Ejemplo: [Ethereum Foundation](https://ethereum.foundation/), fundación sin ánimo de lucro que impulsa el desarrollo y la investigación en el ecosistema Ethereum.
+
+### Gobiernos y compliance
+
+//todo revisar
+
+Aunque Web3 promueve la descentralización y la autonomía, los gobiernos y organismos reguladores juegan un papel cada vez más relevante en el ecosistema. Su participación se centra en establecer marcos legales, normativas de cumplimiento (compliance) y políticas fiscales que afectan tanto a usuarios como a desarrolladores y empresas.
+
+Los gobiernos pueden impulsar la adopción de tecnologías blockchain mediante regulaciones claras, proyectos públicos, emisión de monedas digitales (CBDC) o integración de sistemas de identidad digital. Sin embargo, también pueden limitar la innovación con restricciones excesivas, requisitos de KYC/AML (conoce a tu cliente / prevención de lavado de dinero), o prohibiciones sobre ciertos activos y servicios.
+
+El compliance en Web3 implica cumplir con normativas locales e internacionales sobre privacidad, protección de datos, fiscalidad, prevención de delitos financieros y transparencia. Plataformas y protocolos deben adaptarse a estos requisitos, especialmente si operan en sectores regulados como finanzas, identidad o activos tokenizados.
+
+En la práctica, el equilibrio entre innovación y regulación es clave para el crecimiento sostenible de Web3. La colaboración entre comunidades, empresas y gobiernos puede facilitar la adopción masiva, garantizar la protección de los usuarios y fomentar la confianza en el ecosistema.
+
+### Inversores
+
+//todo revisar
+
+El ecosistema Web3 cuenta con una amplia variedad de inversores, que juegan un papel fundamental en su desarrollo y expansión. Estos actores pueden agruparse en diferentes perfiles según su enfoque, recursos y objetivos:
+
+- **Traders y especuladores:** Participan activamente en mercados de tokens y criptomonedas, buscando rentabilidad a corto plazo mediante trading, arbitraje y estrategias de inversión. Su actividad aporta liquidez y dinamismo, aunque también puede aumentar la volatilidad y el riesgo especulativo.
+
+- **Inversores minoristas:** Usuarios individuales que invierten en proyectos Web3, tokens, NFTs o DAOs, motivados por el potencial de crecimiento, la innovación tecnológica o el interés en comunidades específicas. Su participación es clave para la adopción masiva y la validación de nuevos modelos.
+
+- **Capital riesgo (Venture Capital, VC):** Fondos especializados que financian startups y proyectos Web3 en etapas tempranas, aportando capital, asesoría y conexiones estratégicas. Los VC suelen influir en la dirección de los proyectos y en la consolidación de estándares, acelerando el crecimiento del ecosistema.
+
+- **Fondos institucionales:** Empresas, bancos y fondos de inversión tradicionales que exploran Web3 como nueva clase de activo, diversificando portafolios y participando en rondas de financiación, adquisiciones o asociaciones estratégicas.
+
+- **Inversores ángeles:** Individuos con experiencia y recursos que apoyan proyectos emergentes, aportando capital inicial y mentoría. Su rol es especialmente relevante en la fase de incubación y validación de ideas innovadoras.
+
+- **DAOs de inversión (Venture DAOs):** Organizaciones descentralizadas que agrupan capital colectivo para invertir en proyectos Web3, permitiendo la toma de decisiones democrática y transparente. Ejemplo: [The LAO](https://www.thelao.io/).
+
+- **Comunidades y fondos de grants:** Ecosistemas que distribuyen ayudas y subvenciones para impulsar el desarrollo de aplicaciones, protocolos y soluciones Web3, como [Gitcoin Grants](https://grants.gitcoin.co/).
+
+En conjunto, los inversores son una fuerza motriz que puede acelerar la innovación, pero también influir en la gobernanza, la orientación y la sostenibilidad de los proyectos. Su presencia es clave para el crecimiento del ecosistema, aunque es importante equilibrar sus intereses con los valores de descentralización y participación comunitaria que definen Web3.
 
 ## Ecosistema del stack tecnológico
 
@@ -201,29 +286,47 @@ Si realizas un desarrollo complejo, deberás auditar tu código mediante una ent
 
 ## Ecosistema de aplicaciones descentralizadas: la experiencia de usuario
 
-El ecosistema Web3 es un entorno de capas superpuestas. En su base se encuentran los protocolos e infraestructuras descentralizadas (blockchains, oráculos, almacenamiento). Sobre ellos, se construyen las aplicaciones descentralizadas (DApps), que son la interfaz que interactúa directamente con el usuario final. La potencia de este modelo radica en la composabilidad: la capacidad de que estas DApps integren y combinen múltiples protocolos como si fueran piezas de Lego, para crear servicios complejos e innovadores.
+El ecosistema Web3 es un entorno de capas superpuestas. En su base se encuentran los protocolos e infraestructuras descentralizadas (blockchains, oráculos, almacenamiento, DEFI). Sobre ellos, se construyen las aplicaciones descentralizadas (DApps), que son la interfaz que interactúa directamente con el usuario final.
 
-Esta arquitectura abierta y modular permite una especialización extrema, dando lugar a un vasto y diverso panorama de aplicaciones que podemos agrupar en las siguientes categorías
+La fortaleza fundamental de este modelo reside en la composabilidad, es decir, la capacidad de que las aplicaciones descentralizadas (DApps) integren y combinen diversos protocolos como módulos interoperables. Esta característica permite construir servicios complejos e innovadores a partir de componentes existentes, facilitando el desarrollo ágil y la evolución del ecosistema.
 
-Esta lista es una simplificación de un ecosistema en explosión constante, cualquier comunidad puede identificar una necesidad y, aprovechando los protocolos base existentes, crear una aplicación especializada para resolverla. Esta innovación compositiva y permisionada es lo que garantiza que el panorama de aplicaciones seguirá expandiéndose y evolucionando más allá de las categorías aquí descritas.
+Esta arquitectura abierta y modular permite una especialización muy amplia, dando lugar a un vasto y diverso panorama de aplicaciones que podemos agrupar en categorías.
+
+Dispones de buscadores de aplicaciones que pueden ayudarte a determinar las categorías posibles y, además, conocer casos de uso en [Alchemy DApps](https://www.alchemy.com/dapps), [DAppRadar](https://dappradar.com/) o, más centrados en DeFi, como [DefiPrime](https://defiprime.com/), entre otros.
+
+A continuación, a modo de ejemplo, se muestra una lista de categorías de aplicaciones y ejemplos. Esta lista es una simplificación; cualquier comunidad puede identificar una necesidad y, aprovechando los protocolos base existentes, crear una aplicación especializada para resolverla.
 
 ### Finanzas Descentralizadas (DeFi)
 
-Réplicas descentralizadas de servicios financieros tradicionales (préstamos, trading, seguros) y nuevos modelos imposibles en Web2.
+Soluciones financieras descentralizadas, basados en protocolos DEFI, que replican servicios tradicionales como préstamos, intercambio de activos y seguros, etc.
+
+Muchos ejemplos los vemos ya como protocolos, como [Aave](https://aave.com/), [MakerDAO](https://makerdao.com/), [Curve](https://curve.fi/) pero podemos ampliar la lista con:
 
 - Intercambios Descentralizados (DEXs): [Uniswap](https://uniswap.org/), [PancakeSwap](https://pancakeswap.finance/), [dYdX](https://dydx.exchange/)
 - Mercados de Préstamos: [Aave](https://aave.com/), [Compound](https://compound.finance/)
 - Staking y Derivados de Rendimiento: [Lido](https://lido.fi/), [Rocket Pool](https://rocketpool.net/)
-- Stablecoins: [DAI](https://makerdao.com/), [USDC](https://www.circle.com/)
 - Seguros: [Nexus Mutual](https://nexusmutual.io/), [InsureAce](https://insureace.io/)
 
-### Juegos y Entretenimiento (GameFi & Entertainment)
+### Juegos y Finanzas (GameFi)
 
-Experiencias interactivas donde los jugadores tienen verdadera propiedad sobre sus activos in-game (NFTs) y pueden ser recompensados económicamente.
+Videojuegos que se combinan con incentivos económicos, permitiendo a los jugadores poseer, intercambiar y monetizar activos digitales (NFTs) obtenidos en el juego.
 
 - Videojuegos Play-to-Earn: [Axie Infinity](https://axieinfinity.com/), [Gods Unchained](https://godsunchained.com/)
-- Metaversos y Mundos Virtuales: [Decentraland](https://decentraland.org/), [The Sandbox](https://sandbox.game/)
-- Plataformas de Coleccionables: [NBA Top Shot](https://nbatopshot.com/)
+- Juegos de cartas y estrategia: [Splinterlands](https://splinterlands.com/)
+- Plataformas de gaming NFT: [Immutable X](https://www.immutable.com/)
+- Mercados de activos in-game: [Fractal](https://fractal.is/)
+
+### Coleccionables de NFT
+
+Los coleccionables de NFT representan activos digitales únicos, como tarjetas, arte, objetos de juego o memorabilia (cosas memorables), que pueden ser adquiridos, intercambiados y verificados en blockchain. Este sector ha impulsado la adopción masiva de Web3 al ofrecer experiencias de propiedad digital y comunidades activas en torno a colecciones.
+
+Plataformas de Coleccionables son: [OpenSea](https://opensea.io/), [Rarible](https://rarible.com/), [NBA Top Shot](https://nbatopshot.com/), [Sorare](https://sorare.com/), [CryptoKitties](https://www.cryptokitties.co/), [Autograph](https://autograph.io/)
+
+### Metaversos y mundos virtuales
+
+Como vimos, los metaversos y mundos virtuales permiten a los usuarios explorar, construir y socializar en mundos digitales abiertos, impulsando nuevas formas de interacción, creatividad y economía digital.
+
+En el ecosistema Web3 podemos encontrar entre otros [Decentraland](https://decentraland.org/), [The Sandbox](https://sandbox.game/), [Somnium Space](https://somniumspace.com/), [Voxels](https://www.voxels.com/), [Spatial](https://spatial.io/), [OnCyber](https://oncyber.io/), etc..
 
 ### Redes Sociales y Creación de Contenido (SocialFi & Creator Economy)
 
