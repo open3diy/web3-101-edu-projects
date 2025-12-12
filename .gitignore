@@ -7,5 +7,5 @@ __pycache__/
 build/
 dist/
 .eggs/
-/web3-infrastructure-technology/_misc/lib/*
+/infrastructure/miscelanea/lib/*
 **/__pycache__/
