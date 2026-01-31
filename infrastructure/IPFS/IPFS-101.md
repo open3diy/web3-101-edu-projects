@@ -25,9 +25,19 @@ Es ampliamente adoptado en el ecosistema Web3 para servir aplicaciones descentra
 * <https://docs.ipfs.tech/concepts/what-is-ipfs>.
 * <https://docs.ipfs.tech/concepts/ipfs-solves>.
 
+## ¿Por qué nace IPFS?
+
+La motivación detrás de la creación de IPFS fue abordar problemas fundamentales en la arquitectura de la web convencional. La web tradicional depende en gran medida de un modelo de servidor-cliente, donde los datos están centralizados en servidores específicos. Esto puede conducir a problemas como:
+
+* **Puntos únicos de falla**: Si un servidor central cae, todo el contenido alojado en él se vuelve inaccesible.
+* **Censura**: Los gobiernos o entidades centralizadas pueden bloquear o eliminar contenido fácilmente.
+* **Dependencia significativa de la infraestructura centralizada**: La concentración de datos en pocos proveedores genera vulnerabilidades y limitaciones de escalabilidad.
+
+Con IPFS, Juan Benet propuso un enfoque radicalmente diferente: un sistema de archivos distribuido y descentralizado basado en la tecnología peer-to-peer y en la idea de contenido direccionable mediante un hash único (CID). Al organizar la información de esta manera, IPFS buscaba mejorar la eficiencia, la resistencia a la censura y la velocidad de recuperación de datos en comparación con los métodos tradicionales.
+
 ## Ficha de la solución
 
-El fundador es [Protocol Labs](https://www.protocol.ai/>), pero IPFS es una [solución abierta](https://docs.ipfs.tech/concepts/faq/#ipfs-and-protocol-labs).
+IPFS fue concebido por **Juan Benet**, un emprendedor y científico de la computación, quien fundó [Protocol Labs](https://www.protocol.ai/>) en 2014 con la visión de construir protocolos de código abierto para mejorar la forma en que la información se almacena y se comparte en la era digital. IPFS es una [solución abierta](https://docs.ipfs.tech/concepts/faq/#ipfs-and-protocol-labs).
 
   > Protocol Labs también impulsa iniciativas relacionadas, como el laboratorio de innovación [Probelab](https://probelab.io/), [libp2p](https://libp2p.io/) y [Filecoin](https://filecoin.io/),
 
@@ -50,8 +60,22 @@ Podemos resumir los principales casos de uso principales de IPFS en:
 * Web descentralizada, el caso de uso más natural para IPFS, donde los sitios Web se sirven sin servidores centrales.
 * Almacenamiento de archivos para dApps o smart contracts o servicios multimedia, etc., considerando que el contenido es público y es necesario cifrarlo si se requiere privacidad.
 * Representación de datos de Ethereum usando el modelo IPLD, por ejemplo, el proyecto [go-ipld-eth-import](https://github.com/ipfs/go-ipld-eth-import) permite explorar la blockchain de Ethereum como un grafo de datos interconectados.
+* Gestión de versiones de datos: Debido a que cada cambio en un archivo genera un nuevo CID, IPFS facilita la gestión de versiones, permitiendo acceder y verificar versiones anteriores de archivos de manera eficiente.
+* Aplicaciones en redes desconectadas o con conectividad limitada: IPFS es útil en entornos donde la conectividad a Internet es limitada o intermitente, ya que los nodos locales pueden almacenar y servir contenido, permitiendo el acceso incluso en condiciones de red adversas.
+* Almacenamiento de datos en IoT (Internet de las Cosas): IPFS se puede utilizar para almacenar y distribuir datos generados por dispositivos IoT de manera descentralizada, proporcionando mayor eficiencia y resistencia.
+* Archivos autenticados y no modificables: Debido a la naturaleza de los CIDs únicos y la estructura descentralizada, IPFS se puede utilizar para crear sistemas de archivos inmutables y autenticados, donde la integridad de los archivos se puede verificar de manera eficiente.
 
 > Puedes comparar IPFS con otros sistemas con propósitos parecidos, tal como indica su web <https://docs.ipfs.tech/concepts/comparisons/#comparing-the-key-features-of-other-solutions-to-ipfs>.
+
+## Proyectos blockchain que usan IPFS
+
+Diversos proyectos blockchain han integrado IPFS en sus arquitecturas para aprovechar sus capacidades de almacenamiento descentralizado:
+
+* **Filecoin**: Utiliza IPFS para crear un mercado descentralizado de almacenamiento en la nube. Los usuarios pueden vender y comprar espacio de almacenamiento utilizando la criptomoneda FIL. IPFS actúa como el sistema subyacente para el almacenamiento de datos.
+* **Ethereum Swarm**: Parte del ecosistema Ethereum, se centra en proporcionar almacenamiento descentralizado para la blockchain de Ethereum. Swarm utiliza IPFS como una de sus opciones de almacenamiento para permitir la distribución eficiente de datos.
+* **Arweave**: Plataforma blockchain que utiliza IPFS para abordar el problema de la perdurabilidad de los datos en la web. Arweave almacena de forma descentralizada los datos en la red IPFS, asegurando la permanencia a largo plazo de la información.
+* **Decentraland**: Proyecto de realidad virtual basado en Ethereum que utiliza IPFS para almacenar contenido como imágenes y archivos 3D. Esto permite a los usuarios acceder y cargar contenido directamente desde la red IPFS.
+* **Aragon**: Plataforma para la creación y gestión de organizaciones descentralizadas (DAOs) que utiliza IPFS para almacenar documentos y archivos relacionados con las DAOs. Esto asegura la disponibilidad y resistencia de la información asociada con las decisiones tomadas en la plataforma.
 
 ## Los principios de IPFS
 
@@ -496,6 +520,24 @@ Estas son las medidas que se suelen aplicar en la red de IPFS respecto a la segu
 
 Recuerda que la fortaleza principal de IPFS es el Content ID (CID), que garantiza la integridad de todo el contenido que visualizas: puedes estar seguro de que el archivo o recurso es exactamente el que corresponde a ese CID y no otro. Sin embargo, IPFS no proporciona un mecanismo para autenticar o verificar la autoría de un CID; esa relación entre el CID y el contenido que ves debe establecerse a través de fuentes externas, como dominios web oficiales, redes sociales verificadas o canales de comunicación confiables. Estas fuentes son las que te permiten asociar un CID concreto con el origen legítimo del contenido.
 
+## Ventajas y desventajas de IPFS
+
+### Ventajas
+
+* **Descentralización**: IPFS ofrece un modelo descentralizado de almacenamiento y distribución de contenido, eliminando la dependencia de servidores centralizados y proporcionando mayor resistencia y redundancia.
+* **Eficiencia de red**: Al utilizar el enrutamiento basado en DHT (Tabla de Hash Distribuida), IPFS puede facilitar la distribución eficiente de contenido a través de la red, reduciendo la latencia y mejorando la velocidad de acceso a los datos.
+* **Almacenamiento permanente**: La estructura de IPFS, con su sistema de CID único y descentralización, contribuye a la permanencia de los datos a lo largo del tiempo, evitando problemas asociados con la pérdida de datos o la alteración no autorizada.
+* **Resistencia a la censura**: Debido a su naturaleza distribuida, IPFS es resistente a la censura, ya que no hay un único punto de control. Esto puede ser beneficioso en entornos donde la censura es una preocupación.
+* **Integración con blockchain**: IPFS se integra bien con muchas blockchains, y proyectos como Filecoin utilizan IPFS para gestionar el almacenamiento descentralizado de datos.
+
+### Desventajas
+
+* **Adopción completa**: Aunque ha ganado tracción, IPFS aún no ha sido adoptado masivamente en todos los rincones de la web. La adopción completa podría llevar tiempo debido a la necesidad de cambios en la infraestructura existente.
+* **Complejidad de uso**: Para los usuarios no técnicos, IPFS puede parecer complejo en comparación con las soluciones de almacenamiento tradicionales. La adopción masiva puede depender de interfaces de usuario más amigables.
+* **Consumo de recursos**: La ejecución de un nodo IPFS puede consumir recursos significativos, especialmente en términos de almacenamiento y ancho de banda. Esto podría ser un obstáculo para los dispositivos con recursos limitados.
+* **Responsabilidad de conocer el CID correcto**: Aunque IPFS garantiza la integridad del contenido mediante el CID, no autentica la autoría ni verifica que un CID específico provenga de una fuente legítima. Los usuarios deben obtener el CID correcto a través de fuentes confiables (dominios verificados, registros on-chain, canales oficiales). IPFS asegura que el contenido del CID es íntegro, pero delega en otras capas (como blockchain) o en el usuario la responsabilidad de verificar que ese CID corresponde al contenido esperado.
+* **Desafíos de escalabilidad**: A medida que IPFS crece, pueden surgir desafíos de escalabilidad en términos de gestión de la red y recursos necesarios para mantener la eficiencia.
+
 ## Las implementaciones de IPFS
 
 Una implementación es el software que ejecuta el protocolo IPFS.
@@ -535,7 +577,8 @@ Otros navegadores, como Opera, han anunciado soporte experimental o parcial para
 
 Un nodo IPFS es [configurable](https://github.com/ipfs/kubo/blob/master/docs/config.md) y permite adaptar su funcionamiento a distintas necesidades. Sus capacidades se agrupan en varias áreas clave:
 
-**Interfaz y acceso externo:**  
+**Interfaz y acceso externo**:
+
 IPFS expone una API HTTP que permite a aplicaciones externas interactuar con el nodo, siendo utilizada principalmente por la interfaz web de administración y por herramientas de gestión de clústeres.
 
 Además, el nodo puede funcionar como un gateway HTTP, facilitando el acceso a los archivos de IPFS desde navegadores web y aplicaciones de usuario final. Las direcciones y puertos de la API, gateway y red p2p (Swarm) son configurables.

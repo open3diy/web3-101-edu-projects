@@ -1,6 +1,7 @@
 ---
 applyTo: "**"
 ---
+
 # Project general coding standards
 
 ## Naming Conventions
@@ -57,3 +58,9 @@ docs: update README with setup instructions
 - Limit the subject line to 72 characters.
 - Separate subject from body with a blank line.
 - Reference issues and pull requests when relevant.
+
+## Markdown docs
+
+For additional guidance, refer to the `copilot-instructions-docs.md` file located in the `.github` directory. This file contains detailed examples and explanations for applying these standards effectively.
+
+---

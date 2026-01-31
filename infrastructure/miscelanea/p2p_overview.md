@@ -6,65 +6,23 @@ Las redes peer-to-peer (P2P) permiten que los nodos se comuniquen y colaboren di
 
 Los nodos pueden asumir distintos roles (semilla, completo, ligero, coordinador, relay, etc.) y especializarse en funciones como almacenamiento, validación o auditoría. Para escalar, se usan técnicas como sharding (fragmentación en subredes coordinadas). Los principales retos de las redes P2P son la seguridad, la disponibilidad (churn), el rendimiento y la consistencia de los datos. Ejemplos conocidos incluyen BitTorrent, Bitcoin, Ethereum, IPFS y Filecoin.
 
-## Visión inicial de redes de nodos
+## Fundamentos de redes de computadoras
 
-<img src="assets/p2p/netHosts.png" alt="notHosts" width="250">
+> 📄 Puedes ir a revisar para tener algo de contexto los [fundamentos de redes de computadoras y comunicación entre nodos](computer-networks-and-node-communication.md)
 
-🌐 Como visión inicial, conviene resumir qué son las redes de nodos, para luego centrarnos en las redes P2P, introduciendo sus características principales.
+### Capas de red en P2P
 
-En el contexto de internet, en el estudio de las [redes de computadoras](https://es.wikipedia.org/wiki/Red_de_computadoras) (dentro de la [ciencia de redes](https://es.wikipedia.org/wiki/Ciencia_de_redes)), existen dispositivos que son [nodos](https://es.wikipedia.org/wiki/Nodo_(inform%C3%A1tica)), es decir, pueden enviar y recibir información, y gracias a que disponen de una dirección pública, como la [IP](https://es.wikipedia.org/wiki/Protocolo_de_Internet), generalmente en un [nombre de dominio](https://es.wikipedia.org/wiki/Nombre_de_dominio) registrado en un [DNS](https://es.wikipedia.org/wiki/Sistema_de_nombres_de_dominio), pueden conocerse; o pueden comunicase sin conocerse en una [difusión amplia](https://es.wikipedia.org/wiki/Difusi%C3%B3n_amplia).
+Las redes P2P operan sobre el [modelo OSI](https://es.wikipedia.org/wiki/Modelo_OSI) de 7 capas, siendo relevante comprender en qué nivel actúan:
 
-> Debido a la limitada cantidad de direcciones IPv4, lo normal es que muchos de estos nodos, que acceden mediante un [ISP](https://es.wikipedia.org/wiki/Proveedor_de_servicios_de_internet), solo puedan usar su IP para hacer peticiones-respuestas, pero no para recibir conexiones entrantes, ya que están detrás de un [CGNAT](https://es.wikipedia.org/wiki/Carrier_Grade_NAT).
+<img src="assets/p2p/osiLayers.png" alt="osiLayers" width="400">
 
-Algunos de esos nodos actúan como [host](https://es.wikipedia.org/wiki/Host) o anfitriones de servicios, y cuando es continuado, se denominan [servidores](https://es.wikipedia.org/wiki/Servidor) que suelen estar en [centros de datos](https://es.wikipedia.org/wiki/Centro_de_procesamiento_de_datos).
+* **Capa 7 (Aplicación)**: Es donde operan los protocolos P2P como BitTorrent, IPFS, o las aplicaciones blockchain. Aquí se implementa la lógica de descubrimiento de nodos, enrutamiento de mensajes y gestión de contenido.
+* **Capa 4 (Transporte)**: Los protocolos P2P se apoyan en TCP o UDP:
+  * **TCP**: Orientado a conexión, garantiza entrega ordenada y fiable. Usado en transferencias de archivos donde la integridad es crítica.
+  * **UDP**: Sin conexión, más rápido pero sin garantías de entrega. Preferido para descubrimiento de nodos y comunicación en tiempo real donde la velocidad es más importante que la fiabilidad.
+* **Capa 3 (Red)**: IP (Internet Protocol) maneja el direccionamiento y enrutamiento de paquetes entre hosts.
 
-> 💡O en tu propio hogar o negocio si decides participar en una red lo mas descentralizada posible.
-
-⚠️ Es importante no confundir un host con un dominio. Un host es un dispositivo o servidor que ejecuta servicios y aplicaciones en la red, mientras que un dominio es simplemente un nombre legible (por ejemplo, ejemplo.com) registrado en el DNS para facilitar el acceso. El dominio suele apuntar a la dirección IP del host y, en muchos casos, el acceso se gestiona a través de un proxy inverso que enruta las peticiones al servicio adecuado dentro del host, o incluso a múltiples hosts o clústeres distribuidos.
-
-En los servidores se alojan los [servicios](https://es.wikipedia.org/wiki/Daemon_(inform%C3%A1tica)), compuestos por [aplicaciones](https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_inform%C3%A1tica) y [componentes](https://es.wikipedia.org/wiki/Componente_de_software) contenidos en [servidores de aplicaciones](https://es.wikipedia.org/wiki/Servidor_de_aplicaciones), que implementan funciones específicas para atender peticiones de otros nodos en la red.
-
-Servidores de aplicaciones, donde pasamos de contenedores pesados y modulares a aplicaciones autocontenidas y, finalmente, a binarios independientes, reduciendo la dependencia del entorno de ejecución.
-
-Y servicios, que se pueden ofrecer a clientes, bajo términos de licencia, en lo que se denomina la nube y que pueden seguir un modelo como [SaaS (Software as a Service)](https://es.wikipedia.org/wiki/Software_como_servicio), o puede ser [On Premise](https://en.wikipedia.org/wiki/On-premises_software) si se entrega para la infraestructura cliente.
-
-Y aplicaciones que pueden seguir una arquitectura de [microservicios](https://es.wikipedia.org/wiki/Arquitectura_de_microservicios), o ser una [SPA](https://en.wikipedia.org/wiki/Single-page_application) siguiendo un patrón [BFF](https://bff-patterns.com/), o una [dApp](https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_descentralizada),o un [gateway](https://es.wikipedia.org/wiki/Puerta_de_enlace), [proxy](https://es.wikipedia.org/wiki/Servidor_proxy), [VPN](https://es.wikipedia.org/wiki/Red_privada_virtual), o [API REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional), servidor [GraphQL](https://es.wikipedia.org/wiki/GraphQL), o un [servicio de mensajería](https://es.wikipedia.org/wiki/Mensajer%C3%ADa_instant%C3%A1nea), sistema de [autorización](https://es.wikipedia.org/wiki/OAuth), [orquestador de tareas](https://es.wikipedia.org/wiki/Motor_de_flujo_de_trabajo), o un nodo P2P, [un indexador de blockchain](https://www.alchemy.com/overviews/blockchain-indexer) o incluso un servicio de almacenamiento distribuido como IPFS, etc...
-
-Estos servidores se ejecutan sobre un [sistema operativo](https://es.wikipedia.org/wiki/Sistema_operativo), utilizando uno o varios [puertos](https://es.wikipedia.org/wiki/Puerto_de_red) locales para abrir [sockets](https://es.wikipedia.org/wiki/Socket_de_Internet) con el resto de nodos para establecer comunicación.
-
-💬 Comunicación a través de protocolos, según [OSI](https://es.wikipedia.org/wiki/Modelo_OSI), que tiene niveles, como el de aplicación, por ejemplo con [HTTP](https://en.wikipedia.org/wiki/HTTP), [gRPC](https://es.wikipedia.org/wiki/GRPC), [JSON-RPC](https://en.wikipedia.org/wiki/JSON-RPC), [WebSocket](https://es.wikipedia.org/wiki/WebSocket) o [MQTT](https://en.wikipedia.org/wiki/MQTT), etc, que puede operar sobre otro protocolo de aplicación de seguridad como [TLS](https://es.wikipedia.org/wiki/Seguridad_de_la_capa_de_transporte) y que en general operan sobre servicios de transporte como [TCP](https://es.wikipedia.org/wiki/Protocolo_de_control_de_transmisi%C3%B3n) para conexiones confiables o [UDP](https://es.wikipedia.org/wiki/Protocolo_de_datagramas_de_usuario) para transmisiones rápidas sin garantías o [QUIC](https://es.wikipedia.org/wiki/QUIC) un protocolo actual que usa UDP, que es confiable y rápido. Estos, a su vez, se encapsulan en paquetes IP ([IPv4](https://es.wikipedia.org/wiki/IPv4)/[IPv6](https://es.wikipedia.org/wiki/IPv6)), que son enrutados por la red física.
-
-Red física que tiene una topología, denominada [topología física](https://es.wikipedia.org/wiki/Topolog%C3%ADa_de_red), que normalmente conocemos como de estrella, bus, anillo, malla, árbol o híbrida, etc.
-
-Y quizás podemos generalizar que la topología física predominante en Internet es una malla parcial, pero eso no es relevante. Lo importante es que los nodos de una red pueden interconectarse entre sí, y si no es posible, existen técnicas como [NAT traversal](https://es.wikipedia.org/wiki/NAT_traversal) y [relay](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) para facilitar la conexión a través de routers, cortafuegos o CGNAT .
-
-Protocolos de comunicación que siguen un estilo de interacción que puede ser [procedural](https://en.wikipedia.org/wiki/Remote_procedure_call), es decir llamar a una función remota como si fuera local, donde desataca JSON-RPC; orientado a recursos HTTP como un API Rest; o [declarativo](https://en.wikipedia.org/wiki/Declarative_programming) como GraphQL, donde a modo de query declaras qué consulta realizar necesitas y el propio motor del API ofrece el resultado.
-
-Y donde se siguen [patrones de comunicación de mensajes](https://en.wikipedia.org/wiki/Messaging_pattern), donde podemos ver algunos:
-
-<img src="assets/p2p/msgPatterns.png" alt="msgPatterns" width="500">
-
-Y si los describimos son:
-
-* [Request/Response](https://en.wikipedia.org/wiki/Request%E2%80%93response): un nodo, pide y otro responde, como puede ser en HTTP o el resto de protocolos de aplicación.
-* [Publish/Subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern): ideal para peticiones asíncronas, un nodo publica, otros suscritos reciben como puede ser [MQTT](https://en.wikipedia.org/wiki/MQTT).
-* Streaming: datos enviados continuamente, como puede ser [RTSP](https://es.wikipedia.org/wiki/Protocolo_de_transmisi%C3%B3n_en_tiempo_real), [WebRTC](https://es.wikipedia.org/wiki/WebRTC) o [SRT](https://en.wikipedia.org/wiki/Secure_Reliable_Transport).
-* [Polling](https://es.wikipedia.org/wiki/Polling): el cliente consulta periódicamente si hay datos.
-* [Event-driven](https://en.wikipedia.org/wiki/Event-driven_architecture): los datos se envían como reacción a eventos.
-* Pull / Push: donde en el modelo pull, el nodo emisor transmite la carga útil (payload) solo cuando otro nodo la solicita. En cambio, en push, el emisor envía la carga útil de forma proactiva, sin solicitud previa. Esto no debe confundirse con la topología cliente-servidor, la asincronía en las respuestas, ni con el simple hecho de que siempre haya transmisión de datos en la capa de transporte; nos referimos específicamente a cómo se gestiona la entrega de la carga útil.
-* Y otros muchos más...
-
-📨 Sobre la comunicación del nodo, si puede enviar y además recibir un mensaje, se le considera [doble o duplex](https://es.wikipedia.org/wiki/D%C3%BAplex_(telecomunicaciones)), y además si es simultaneo Full-duplex, si no puede ser al mismo tiempo Half-duplex y si es en un único sentido Simplex.
-
-Mensaje que se considera la carga útil ([payload](https://es.wikipedia.org/wiki/Carga_%C3%BAtil_(inform%C3%A1tica))) de la comunicación porque aunque en el [Handshake](https://es.wikipedia.org/wiki/Establecimiento_de_comunicaci%C3%B3n) hay mucha información transmitida, no es el propósito del intercambio.
-
-🫱🏻‍🫲🏽 Además, un conjunto de nodos puede organizarse para ejecutar funciones específicas, como ocurre en la [computación distribuida](https://es.wikipedia.org/wiki/Computaci%C3%B3n_distribuida). Esta abarca distintos modelos: el modelo cliente-servidor con coordinación central; los [clúster](https://es.wikipedia.org/wiki/Cl%C3%BAster_de_computadoras) —donde los nodos cooperan como un único sistema lógico, usualmente con coordinación central y, en muchos casos, compartiendo estado o almacenamiento.— o en [grid computing](https://es.wikipedia.org/wiki/Computaci%C3%B3n_en_malla), donde varios nodos colaboran de forma coordinada para resolver tareas, pudiendo ser centralizado o descentralizado según el diseño. También existen enfoques como el [edge computing](https://en.wikipedia.org/wiki/Edge_computing), que acerca el procesamiento al nodo cliente para reducir latencia. Finalmente, si no se requiere coordinación centralizada, se puede optar arquitectura de redes peer-to-peer (P2P).
-
-Estos nodos organizados pueden estar tightly coupled (fuertemente acoplados), con memoria o estado compartido y baja latencia; o loosely coupled (débilmente acoplados), siendo más independientes, sin memoria compartida directa, con mayor latencia y mayor heterogeneidad."
-
-Y estos nodos organizados se conectan para comunicarse, siguiendo una estructura o enlace que se conoce como [topología lógica](https://techriders.tajamar.es/topologia-fisica-vs-topologia-logica/) e igualmente tenemos de nuevo, como topología, Cliente-Servidor o Cliente-Servidor Distribuido, en redes centralizadas, P2P (peer-to-peer) en redes descentralizadas o Multicast/broadcast en redes de [difusión](https://es.wikipedia.org/wiki/Difusi%C3%B3n_amplia) o streaming, anillo, etc...
-
-> ∞ E igualmente, podríamos indicar que las aplicaciones siguen [estilos arquitectónicos](https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/monolitico#), donde en concreto pueden seguir un [patrón de diseño](https://es.wikipedia.org/wiki/Patr%C3%B3n_de_dise%C3%B1o), siendo una solución más flexible o adaptarse en concreto a un [protocolo](https://www.imagar.com/blog-desarrollo-web/que-es-el-protocolo-en-informatica/), como muchos de los que [vemos en internet](https://es.wikipedia.org/wiki/Familia_de_protocolos_de_internet) y etc, etc, pero no es posible explicar todo 🤯, asi que acabamos aquí...
+La elección entre TCP y UDP afecta directamente al rendimiento y fiabilidad de la red P2P. Por ejemplo, DHT como Kademlia suele usar UDP para consultas rápidas de descubrimiento, mientras que la transferencia de bloques en blockchain usa TCP para garantizar integridad.
 
 ## Redes entre pares - peer-to-peer o p2p
 
@@ -79,6 +37,30 @@ Suelen funcionar mediante un protocolo o varios subprotocolos, implementado en u
 Si lo vemos de forma menos abstracta, podemos ver el ejemplo de [BitTorrent](https://es.wikipedia.org/wiki/BitTorrent), donde cada persona instala un programa en su PC, que sería un nodo. Cuando quieres un archivo, tu programa busca otros usuarios (otros nodos) que ya tienen partes de ese archivo para descargar varias partes a la vez, que ese sería el propósito de la red.
 Al mismo tiempo, tú también compartes las partes que ya tienes con otros, sin depender de un servidor central.
 
+### Libp2p: Framework modular para redes P2P
+
+[Libp2p](https://libp2p.io/) es un framework de red modular que proporciona los componentes fundamentales para construir aplicaciones P2P. Desarrollado originalmente para IPFS, se ha convertido en el estándar de facto para implementar redes P2P en Web3.
+
+**Arquitectura modular de libp2p:**
+
+* **Transport**: Abstracción sobre protocolos de transporte (TCP, UDP, WebSockets, QUIC). Permite que una aplicación funcione sobre múltiples transportes simultáneamente.
+* **Security**: Capa de cifrado y autenticación (TLS, Noise Protocol). Garantiza comunicación segura entre peers.
+* **Stream Multiplexing**: Permite múltiples streams lógicos sobre una única conexión física (yamux, mplex).
+* **Peer Discovery**: Mecanismos para encontrar otros nodos (mDNS, DHT, Rendezvous).
+* **Peer Routing**: DHT (Kademlia) para localizar peers y contenido distribuido.
+* **NAT Traversal**: Circuit Relay y hole punching para conectividad detrás de NAT.
+* **Pub/Sub**: Protocolo Gossipsub para mensajería distribuida.
+* **Content Routing**: Localización de contenido usando DHT o delegates.
+
+**Ventajas de libp2p:**
+
+* **Portabilidad**: Funciona en navegadores, servidores, móviles y dispositivos IoT.
+* **Interoperabilidad**: Implementaciones en múltiples lenguajes (Go, Rust, JavaScript, etc.).
+* **Flexibilidad**: Componentes intercambiables según necesidades.
+* **Usado por**: IPFS, Filecoin, Ethereum 2.0, Polkadot, Substrate.
+
+Libp2p abstrae la complejidad de la red P2P, permitiendo a los desarrolladores enfocarse en la lógica de aplicación en lugar de problemas de conectividad y descubrimiento.
+
 Que una red P2P sea entre iguales facilita un diseño descentralizado, lo que la hace muy relevante en la Web3. Sin embargo, en la práctica, Web3 adopta lo que sea necesario para ofrecer la funcionalidad requerida, incluso soluciones centralizadas, ya que debe mantenerse un equilibrio entre descentralización, seguridad y escalabilidad.
 
 > 💡 En esta definición, no tenemos que confundir redes p2p con blockchain, ya que no es lo mismo y spoiler, blockchain es una estructura de datos diseñada para operar como libro contable distribuido (ledger) en redes P2P, donde existe un consenso, es decir, que opere en una red p2p, no implica que sean lo mismo, simplemente blockchain opera sobre una red p2p y suele confundirse.
@@ -91,7 +73,7 @@ Existen propiedades o cualidades que definen una red p2p y que podemos enumerar.
 
 #### Modelo de gobernanza
 
-El modelo de gobernanza en una red p2p o sistema distribuido define cómo se toman las decisiones clave sobre la evolución del protocolo, la actualización de reglas y la resolución de conflictos. La gobernanza determina quién tiene autoridad para proponer, aprobar o rechazar cambios, y cómo se implementan estos cambios en la red. Dependiendo del propósito y del grado de descentralización (que veremos mas adelante), existen diferentes enfoques de gobernanza, cada uno con sus ventajas y limitaciones.
+El modelo de gobernanza en una red p2p o sistema distribuido define cómo se toman las decisiones clave sobre la evolución del protocolo, la actualización de reglas y la resolución de conflictos. La gobernanza determina quién tiene autoridad para proponer, aprobar o rechazar cambios, y cómo se implementan estos cambios en la red. Dependiendo del propósito y del grado de descentralización (que veremos más adelante), existen diferentes enfoques de gobernanza, cada uno con sus ventajas y limitaciones.
 
 <img src="assets/p2p/governanceModel.png" alt="governanceModel" width="450">
 
@@ -119,6 +101,8 @@ Como aspecto en la gobernanza no debemos olvidar los mecanismos por los que se l
 
 Define cuánto control está distribuido entre los nodos de la red y si existen jerarquías, lo que influye en la escalabilidad y facilidad de diseño.
 
+  > El [Coeficiente de Nakamoto](https://www.nervos.org/knowledge-base/what_is_nakamoto_coefficient_(explainCKBot)) es una métrica que cuantifica el grado de descentralización midiendo el número mínimo de entidades que necesitarían coludirse para controlar la red.
+
 <img src="assets/p2p/levelofDecentralization.png" alt="trustModel" width="400 ">
 
 Puede ser normalmente:
@@ -139,7 +123,7 @@ Normalmente, un mayor grado de centralización suele buscar:
 * Control más sencillo (gobernanza y actualizaciones).
 * Seguridad operativa (menos superficie de ataque si los nodos son confiables).
 
-  > Mas seguridad operativa, pero menor descentralización y menor resilencia al existir punto único de falla.
+  > Más seguridad operativa, pero menor descentralización y menor resiliencia al existir punto único de falla.
 
 * Menor complejidad de consenso (menos nodos que coordinar).
 
@@ -156,7 +140,7 @@ Puede ser normalmente:
 * Parcialmente confiable (Partially trusted), combina nodos confiables con nodos anónimos o no verificados, aplicando confianza selectiva. Usa mecanismos criptográficos y validación, pero permite ciertos roles privilegiados o relaciones basadas en confianza. Por ejemplo, [Lightning Network](https://es.wikipedia.org/wiki/Lightning_Network) (sobre Bitcoin):
 * Confianza híbrida (Hybrid trust), combina modelos trustless y trusted, donde algunas funciones dependen de nodos confiables o autoridades, y otras se descentralizan mediante consenso y criptografía. Ejemplo [Ripple](https://es.wikipedia.org/wiki/Ripple_Labs,_Inc.), donde usa un conjunto confiable de nodos validadores (UNL), pero con comunicación P2P.
 
-  > La diferencia entre Partially trusted e Hybrid trust, en la primera se reconoce que en ciertos nodos se puede confiar más por su propia naturaleza, en la segunda combina explícitamente componentes o mecanismos centralizados, asi que se puede decir que más que una diferencia es evolucionar de un grado de descentralización de mayor a menor.
+  > La diferencia entre Partially trusted e Hybrid trust, en la primera se reconoce que en ciertos nodos se puede confiar más por su propia naturaleza, en la segunda combina explícitamente componentes o mecanismos centralizados, así que se puede decir que más que una diferencia es evolucionar de un grado de descentralización de mayor a menor.
 
 #### Modelo de autorización
 
@@ -169,7 +153,7 @@ Puede ser normalmente:
 * Pública, cualquier participante puede unirse y participar sin restricciones, es abierta a nuevos participantes.
 * Privada, acceso limitado a entidades previamente autorizadas, suele tener un control centralizado dentro de una organización o grupo.
 * Consorcio, gobernada por un grupo seleccionado de entidades confiables, es un tipo de red privada, pero gestionada por un grupo de entidades (no sólo una).
-* Permisionada, participación permitida a nodos verificados y aprobados; es una red privada que se abre a mas participante bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir.
+* Permisionada, participación permitida a nodos verificados y aprobados; es una red privada que se abre a más participantes bajo unas condiciones. Además define roles o permisos específicos, por ejemplo, unos nodos pueden leer solamente y otros escribir.
   > Una red se considera permisionada, y no verdaderamente pública, cuando existen restricciones que impiden a cualquier usuario operar su propio nodo local, incluso si dichas restricciones no son explícitas o requieren superar barreras adicionales para acceder a la red. En algunos casos, este carácter permisionado puede no ser evidente y puede ser presentado como una red pública por motivos de imagen o marketing.
 * Híbrida, mezcla características de modelos públicos y privados.
 
@@ -265,6 +249,7 @@ Si queremos ser específicos en ataques particulares:
 * Front-running / MEV (Miner Extractable Value): Un actor observa transacciones pendientes en el mempool y ejecuta otra antes o después para beneficiarse del orden de ejecución. Es común en exchanges descentralizados.
 * Sandwich attack: Tipo específico de ataque MEV donde un atacante detecta una transacción pendiente de swap en un DEX y coloca dos transacciones propias: una justo antes (comprando el token) y otra justo después (vendiéndolo), aprovechando el deslizamiento de precio causado por la transacción de la víctima para obtener ganancias. El atacante paga gas fees elevadas para asegurar el orden de ejecución.
 * Timestamp manipulation: Mineros o validadores alteran ligeramente las marcas de tiempo de los bloques para obtener ventajas en contratos dependientes del tiempo (por ejemplo, loterías o subastas).
+* Warp Time Attack (Ataque de Manipulación Temporal): Ataque específico de blockchains PoS donde los atacantes manipulan los relojes del sistema para crear bloques con timestamps incorrectos, afectando el consenso de la red. Al controlar un número significativo de validadores y manipular sus timestamps, pueden acelerar el tiempo de la blockchain, permitiendo adelantar épocas, modificar la selección de validadores o explotar mecanismos dependientes del tiempo. Este ataque es particularmente relevante en protocolos que confían en timestamps de bloques para funciones críticas de consenso.
 * Short address attack: Manipulación de la longitud de datos en una transacción para alterar cómo se interpretan los parámetros del contrato. Actualmente mitigado por los clientes modernos de Ethereum.
 * WalletMultiSig: Vulnerabilidad en contratos multifirma donde un atacante puede explotar fallos en la lógica de validación de firmas para ejecutar transacciones sin el número requerido de aprobaciones, o manipular la lista de firmantes autorizados.
 * Ice-Phishing: Técnica donde un atacante engaña al usuario para que firme una transacción de aprobación (`approve`) legítima que otorga permisos al atacante para gastar tokens del usuario. A diferencia del phishing tradicional, no requiere revelar claves privadas, solo firmar una transacción aparentemente inofensiva.
@@ -297,12 +282,23 @@ Los problemas de rendimiento en redes p2p surgen principalmente por la naturalez
 
 <img src="assets/p2p/p2pPerformaceProblems.png" alt="p2pPerformaceProblems" width="500">
 
-* Latencia elevada, la comunicación entre nodos puede requerir múltiples saltos, aumentando el tiempo de respuesta, especialmente en redes globales o con topologías no estructuradas (que veremos mas adelante).
+* Latencia elevada, la comunicación entre nodos puede requerir múltiples saltos, aumentando el tiempo de respuesta, especialmente en redes globales o con topologías no estructuradas (que veremos más adelante).
+  * **Métrica típica**: Bitcoin ~10 segundos para propagación global de un bloque, Ethereum ~500ms.
 * Ancho de banda limitado, los nodos pueden tener conexiones lentas o asimétricas, lo que afecta la velocidad de propagación de datos y la eficiencia general de la red.
-* Sobrecarga de mensajes, protocolos de difusión como flooding o gossip (que veremos mas adelante) pueden generar un gran volumen de mensajes redundantes, saturando la red y los recursos de los nodos.
+  * **Requisitos típicos**: Bitcoin full node ~500GB almacenamiento + ~200GB/mes ancho de banda, Ethereum ~1TB + ~1TB/mes.
+* Sobrecarga de mensajes, protocolos de difusión como flooding o gossip (que veremos más adelante) pueden generar un gran volumen de mensajes redundantes, saturando la red y los recursos de los nodos.
+  * **Trade-off**: Mayor redundancia (más mensajes) = mayor fiabilidad pero menor eficiencia.
 * Desbalance de carga, algunos nodos pueden recibir más solicitudes o almacenar más datos que otros, provocando cuellos de botella y afectando la disponibilidad.
 * Escalabilidad, a medida que la red crece, mantener la eficiencia en la búsqueda, el [enrutamiento](#enrutamiento-routing-en-redes-estructuradas) y la replicación de datos se vuelve más complejo.
+  * **Throughput**: Bitcoin ~7 TPS, Ethereum ~15-30 TPS, Solana ~2,000-3,000 TPS (con mayor centralización).
 * Sincronización y consistencia, mantener datos consistentes entre nodos distribuidos puede requerir mecanismos costosos en términos de comunicación y procesamiento.
+
+**Métricas de rendimiento en redes P2P:**
+
+* **Latencia de propagación**: Tiempo que tarda un mensaje en alcanzar todos los nodos.
+* **Throughput (rendimiento)**: Número de transacciones o mensajes procesados por segundo (TPS).
+* **Overhead de red**: Porcentaje de ancho de banda dedicado a mensajes de protocolo vs datos útiles.
+* **Tiempo de sincronización**: Tiempo que tarda un nuevo nodo en sincronizar el estado completo de la red.
 
 > Muchos de estos problemas son solventados, como los de seguridad, aplicando soluciones menos descentralizadas. Es decir, el trilema siempre se aplica cotejando descentralización con seguridad y escalabilidad.
 
@@ -339,7 +335,7 @@ Y Kademlia - *¿qué topología es?*... Kademlia se considera una red que utiliz
 
 #### Topología no estructurada
 
-En las topologías no estructuradas, las conexiones entre nodos son aleatorias o sin un patrón definido, lo que las hace más adecuadas para consultas complejas y además es mas optimo para entornos inestables donde los nodos se conectan y desconectan con frecuencia (alto churn). Son redes más resilientes, pero al no existir una estructura lógica que relacione directamente el contenido con nodos específicos, las consultas deben propagarse entre múltiples nodos para localizar la información, aunque lo cierto es que permite consultas más complejas que las estructuradas.
+En las topologías no estructuradas, las conexiones entre nodos son aleatorias o sin un patrón definido, lo que las hace más adecuadas para consultas complejas y además es más óptimo para entornos inestables donde los nodos se conectan y desconectan con frecuencia (alto churn). Son redes más resilientes, pero al no existir una estructura lógica que relacione directamente el contenido con nodos específicos, las consultas deben propagarse entre múltiples nodos para localizar la información, aunque lo cierto es que permite consultas más complejas que las estructuradas.
 
 En la topología no estructurada se utilizan técnicas de propagación (que forma parte de las [técnicas de difusión](#técnicas-de-difusión-en-redes-no-estructurabas)) como [Flooding](https://en.wikipedia.org/wiki/Query_flooding) (malla completa), [Scoped Flooding](https://suzanbayhan.github.io/pdf/2018_wang_understanding_scoped_flooding.pdf) (malla completa) y [Random Walks](https://en.wikipedia.org/wiki/Random_walk) (random). En Web3 predomina [Gossip](https://academy.bit2me.com/que-es-gossip-protocol/) y derivados como [Gossipsub](https://github.com/libp2p/specs/tree/master/pubsub/gossipsub) y [Gossip Epidemic](https://viktoria-karamyshau.medium.com/gossip-epidemic-protocols-b1d44ce50c10) (las tres como malla parcial).
 
@@ -351,7 +347,7 @@ Las topologías mencionadas como malla parcial, malla completa o topología alea
 
 #### Aclaraciones de topología redes
 
-**¿Cuando se usa una red no estructurada o estructurada?**
+**¿Cuándo se usa una red no estructurada o estructurada?**
 
 Depende principalmente del propósito de la red, definido inicialmente al establecer sus características. Por ejemplo, una red pública, con alto grado de descentralización y posiblemente alto churn, que requiera resiliencia y tiene que ser más simple, será no estructurada; mientras que una red más estable, escalable y con bajo churn, donde la eficiencia sea clave, optará por una topología estructurada, pero exigirá un diseño más complejo que permita consultas simples y directas.
 
@@ -406,7 +402,7 @@ La "cercanía entre nodos" permite que las consultas sean deterministas, es deci
 
 En Kademlia, la tabla de enrutamiento almacena contactos de otros nodos organizados según su distancia XOR respecto al nodo local. Estos contactos se agrupan en estructuras llamadas k-buckets (del inglés bucket, que en este contexto equivale a 'cubeta'), donde cada bucket contiene hasta k nodos a una determinada distancia. Por convención, k suele ser 20.
 
-> Los buckets empiezan desde 0, es decir, podemos tener desde Bucket 0 a Bucket 1, 2, 3, etc...
+> Los buckets empiezan desde 0, es decir, podemos tener desde Bucket 0 a Bucket 1, 2, 3, etc.
 
 Si quieres entrar en detalle, lo vemos en un ejemplo:
 
@@ -506,7 +502,7 @@ Como vimos en el descubrimiento de nodos, el enrutamiento también busca ser det
 
 > Aunque diferentes nodos inicien una operación, el uso del XOR con la key del dato hace que converjan hacia los mismos nodos cercanos responsables del dato. Es decir, con esto es posible que los nodos responsables sean siempre un conjunto determinado.
 
-Es complicado entenderlo, asi que lo veremos en un ejemplo:
+Es complicado entenderlo, así que lo veremos en un ejemplo:
 
 **En el caso de escribir (W)**.
 
@@ -573,7 +569,7 @@ Este resultado `0b1110`, de derecha a izquierda y empezando de 0, tiene el bit m
 
 Sabiendo que es el bucket 3, se localiza en la routing table siendo el único, el nodo `0b1000`.
 
-Como k = 3, aún le faltan 2 nodos, asi que luego va al bucket anterior más cercano al 3, es decir, al bucket 2 y ahora tiene que buscar la cercanía en ese bucket:
+Como k = 3, aún le faltan 2 nodos, así que luego va al bucket anterior más cercano al 3, es decir, al bucket 2 y ahora tiene que buscar la cercanía en ese bucket:
 
 ```plaintest
 0b0111 XOR 0b1111 = 0b1000 (8)
@@ -610,7 +606,7 @@ https://github.com/user-attachments/assets/3fab399e-2cfa-4887-a180-c0b6bebadcb6
 
 * Por ejemplo el nodo 7, al recibir la petición de consulta, en primer lugar se asegura de nuevo que es un nodo cercano a la key solicitada y luego busca en su DHT la key `0b1111` para devolver el acceso al recurso, como podría ser su propia dirección IP o cualquier otra forma que permite al nodo 1 descargar o acceder al payload del nodo 7.
 
-  > Se asegura que es el nodo cercano aunque parezca redundante por coherencia, es una validación que suele hacer el nodo para asegurar que solo los nodos responsables al recurso lo pueden devolver. Si fuera el caso que no lo es, como veremos a continuación, lo que hará el nodo es buscar los nodos que son mas cercanos para devolver esa información.
+  > Se asegura que es el nodo cercano aunque parezca redundante por coherencia, es una validación que suele hacer el nodo para asegurar que solo los nodos responsables al recurso lo pueden devolver. Si fuera el caso que no lo es, como veremos a continuación, lo que hará el nodo es buscar los nodos que son más cercanos para devolver esa información.
 
 **En el caso de leer (R) pero el nodo no es responsable**.
 
@@ -630,7 +626,7 @@ El concepto de DHT se refiere a una tabla hash distribuida que permite localizar
 
 **¿La búsqueda de un dato es exponencial si el nodo no lo encuentra?**
 
-Si el nodo consultado no es responsable del dato, consultará a otro y asi sucesivamente, podemos pensar que esto no es optimo, pero no es una consulta exponencial, es logarítmica, en concreto se le denomina tiempo logarítmico.
+Si el nodo consultado no es responsable del dato, consultará a otro y así sucesivamente, podemos pensar que esto no es óptimo, pero no es una consulta exponencial, es logarítmica, en concreto se le denomina tiempo logarítmico.
 
 El tiempo logarítmico significa que el número de pasos crece como log₂(N), es decir, muy lentamente en relación al tamaño de la red.
 
@@ -719,6 +715,39 @@ Este proceso puede incluir el uso de comunicación cifrada ([TLS](https://es.wik
 
 Igualmente, cuando la comunicación directa entre nodos no es posible debido a que alguno de ellos está detrás de un NAT o firewall, se emplean técnicas de [NAT traversal](https://es.wikipedia.org/wiki/NAT_traversal), como el [UDP hole punching](https://en.wikipedia.org/wiki/UDP_hole_punching). Estas técnicas permiten que los nodos establezcan conexiones entrantes a pesar de las restricciones impuestas por el NAT, facilitando la entrada y participación en la red incluso cuando otros nodos no pueden acceder directamente a ellos. Si estas técnicas no resultan efectivas, se recurre al uso de nodos relay como intermediarios para asegurar la conectividad.
 
+##### NAT Traversal y el problema de CGNAT
+
+El **NAT (Network Address Translation)** es una técnica que permite a múltiples dispositivos en una red privada compartir una única dirección IP pública. Esto crea un problema para las redes P2P: los nodos detrás de NAT no son directamente accesibles desde Internet.
+
+**CGNAT (Carrier-Grade NAT)** agrava este problema:
+
+* **Definición**: Es un NAT implementado a nivel de proveedor de internet (ISP), donde múltiples usuarios (incluso hogares enteros) comparten la misma IP pública.
+* **Problema para P2P**: 
+  * Los nodos detrás de CGNAT no tienen control sobre el NAT (a diferencia del NAT doméstico donde puedes abrir puertos).
+  * Dificulta extremadamente las conexiones entrantes directas.
+  * Dos nodos ambos detrás de CGNAT no pueden conectarse directamente entre sí sin ayuda externa.
+
+**Técnicas de NAT Traversal:**
+
+* **STUN (Session Traversal Utilities for NAT)**: Servidor que ayuda a un nodo a descubrir su IP pública y el tipo de NAT que tiene.
+* **TURN (Traversal Using Relays around NAT)**: Servidor relay que retransmite tráfico cuando la conexión directa es imposible.
+* **UDP Hole Punching**: Técnica donde ambos nodos intentan conectarse simultáneamente, "abriendo agujeros" en sus respectivos NATs:
+  1. Nodo A y B contactan a un servidor de rendez-vous (coordinador).
+  2. El servidor les informa de la IP:puerto público del otro.
+  3. Ambos envían paquetes UDP simultáneamente al otro.
+  4. Si el timing es correcto, los NATs permiten el paso al creer que la conexión fue iniciada desde dentro.
+
+**Soluciones en redes P2P modernas:**
+
+* **Libp2p Circuit Relay**: Protocolo donde un nodo accesible actúa de intermediario.
+* **AutoNAT**: Detección automática de accesibilidad del nodo.
+* **Hole Punching directo**: Implementado en libp2p, BitTorrent, etc.
+* **Servidores bootstrap con IPs públicas**: Actúan como puntos de encuentro iniciales.
+
+**Impacto en descentralización:**
+
+CGNAT fuerza a muchos nodos a depender de relays o nodos con IPs públicas, introduciendo cierto grado de centralización parcial. Por ello, mantener nodos con IPs públicas (servidores, VPS) es crucial para la salud de redes P2P descentralizadas.
+
 Un [Relay](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) se utiliza cuando las técnicas como hole punching no son efectivas.
 
 https://github.com/user-attachments/assets/1e094644-53d9-45d8-b557-54ef89da4327
@@ -755,7 +784,7 @@ Este proceso es independiente del establecimiento de la conexión y se enfoca ex
 
 #### Técnicas de replicación
 
-En una red p2p, hemos visto que se consideran una serie de características según su propósito de la red y entre ellas esta la [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p), siendo la principal un almacenamiento distribuido, que permite mejorar la disponibilidad, balanceo de carga y resilencia, donde se puede aplicar algunas estrategias, algo centralizadas como servidores de índices o fragmentación (sharding).
+En una red p2p, hemos visto que se consideran una serie de características según su propósito de la red y entre ellas está la [estrategia de almacenamiento](#estrategias-de-almacenamiento-en-redes-p2p), siendo la principal un almacenamiento distribuido, que permite mejorar la disponibilidad, balanceo de carga y resiliencia, donde se puede aplicar algunas estrategias, algo centralizadas como servidores de índices o fragmentación (sharding).
 
 Vemos que el almacenamiento distribuido se ve condicionado por dos topológicas de redes principales, las estructuradas, basado en DHT y las no estructuradas, donde ante una operación en las estructuradas se trabaja con enrutamiento y en las no estructuradas con la replicación, que es una técnica de difusión.
 
@@ -827,7 +856,7 @@ Existen normalmente los siguientes modelos que una red p2p puede usar:
 
   https://github.com/user-attachments/assets/a21b72f0-36c0-457e-9010-6bb3670daebc
 
-  > Se logra controlando el orden de entrega, en el ejemplo, como el orden es A, B y C, asi debe hacerlo el nodo que debe replicar la escritura, incluso aunque en un momento dado podría haber entregado C antes que B.
+  > Se logra controlando el orden de entrega, en el ejemplo, como el orden es A, B y C, así debe hacerlo el nodo que debe replicar la escritura, incluso aunque en un momento dado podría haber entregado C antes que B.
 
 **Aclaraciones**:
 
@@ -921,6 +950,63 @@ Son aquellos nodos o incluso servidores que facilitan el funcionamiento básico 
 * Nodo relay, intermedia la transmisión de mensajes o datos entre nodos que no pueden establecer conexión directa, por ejemplo, cuando alguno está detrás de un NAT o firewall, o también puede actuar como relay entre subredes o shards para facilitar la comunicación y sincronización entre ellas.
 * Servidor de directorios o índices centralizados, ofrece un punto de descubrimiento o consulta para que los nodos encuentren recursos, pares o contenidos dentro de la red. Aunque introduce centralización, mejora la eficiencia inicial del acceso.
 * Servidor DNS semilla (seed DNS), proporciona una lista inicial de nodos conocidos (habitualmente nodos completos o bootstrap) para facilitar la incorporación de nuevos participantes. Suelen ser usados en redes como Bitcoin al inicio de la conexión.
+
+#### Nodos RPC en redes blockchain
+
+En redes blockchain P2P, los **nodos RPC** (Remote Procedure Call) son nodos que exponen endpoints mediante el protocolo JSON-RPC, permitiendo que aplicaciones externas (dApps, wallets, exploradores de bloques) interactúen con la red sin necesidad de ejecutar un nodo completo localmente.
+
+**Funcionamiento:**
+
+Un nodo RPC actúa como **gateway** entre clientes externos y la red blockchain. Recibe peticiones mediante JSON-RPC sobre HTTP/WebSocket, procesa las solicitudes consultando el estado de la blockchain, y devuelve respuestas estructuradas. Las operaciones típicas incluyen:
+
+* Consultar saldo de cuentas (`eth_getBalance`)
+* Enviar transacciones firmadas (`eth_sendRawTransaction`)
+* Leer datos de contratos inteligentes (`eth_call`)
+* Obtener información de bloques (`eth_getBlockByNumber`)
+* Suscribirse a eventos en tiempo real (mediante WebSocket)
+
+**Tipos de nodos RPC:**
+
+* **Nodo RPC completo (Full RPC node)**: Ejecuta un nodo completo de la blockchain, mantiene el estado actual y puede validar transacciones. Ofrece funcionalidad completa pero requiere sincronización constante.
+* **Nodo RPC archive (Archive node)**: Almacena todo el historial de estados de la blockchain desde el génesis, permitiendo consultas históricas. Requiere enormes recursos de almacenamiento (varios TB en Ethereum).
+* **Nodo RPC ligero**: Actúa como proxy hacia nodos completos, ofreciendo endpoints RPC sin almacenar toda la blockchain.
+
+**Proveedores de servicios RPC:**
+
+Ejecutar un nodo RPC propio requiere infraestructura significativa (hardware, ancho de banda, mantenimiento). Por ello, existen **proveedores de nodos RPC como servicio**, que ofrecen endpoints públicos o privados:
+
+* **Públicos gratuitos**: Endpoints abiertos con limitaciones de tasa (rate limits), disponibilidad no garantizada, compartidos entre muchos usuarios. Ejemplos: endpoints públicos de Ethereum Foundation, Polygon, BSC.
+* **Privados de pago**: Servicios como [Infura](https://www.infura.io/), [Alchemy](https://www.alchemy.com/), [QuickNode](https://www.quicknode.com/), [Ankr](https://www.ankr.com/) ofrecen endpoints dedicados con:
+  * Mayor disponibilidad y SLA garantizado
+  * Rate limits más altos
+  * Soporte para múltiples redes blockchain
+  * Funcionalidades adicionales (APIs mejoradas, webhooks, análisis)
+  * Seguridad (autenticación, endpoints privados)
+
+**Ventajas de usar servicios RPC:**
+
+* **Reducción de costos**: Evita inversión en hardware y mantenimiento de nodos propios
+* **Simplicidad**: Integración rápida mediante endpoints HTTP
+* **Escalabilidad**: Infraestructura gestionada que escala automáticamente
+* **Multi-cadena**: Acceso a múltiples blockchains desde un único proveedor
+
+**Desventajas y riesgos:**
+
+* **Centralización**: Dependencia de proveedores centralizados (punto único de fallo)
+* **Privacidad**: El proveedor puede rastrear direcciones y patrones de uso
+* **Confianza**: Hay que confiar en que el proveedor devuelve datos correctos (aunque se pueden verificar mediante pruebas criptográficas)
+* **Disponibilidad**: Riesgo de caídas del servicio o cambios en términos de uso
+* **Censura**: Proveedores pueden bloquear ciertas transacciones o direcciones
+
+**Alternativas descentralizadas:**
+
+Para mitigar la centralización, surgen soluciones descentralizadas de nodos RPC:
+
+* **The Graph**: Indexación descentralizada de datos blockchain mediante subgrafos
+* **Pocket Network**: Red P2P de nodos RPC donde múltiples operadores proporcionan endpoints
+* **Chainstack**: Infraestructura distribuida de nodos gestionados
+
+> 💡 Para dApps críticas o que valoran la descentralización, se recomienda usar múltiples proveedores RPC o combinación de servicios centralizados con nodos propios para redundancia.
 
 ### Dominios funcionales
 
@@ -1225,6 +1311,265 @@ Los propios nodos disponen un módulo relay que permite coordinar el sharding, a
   * [Replicación](#técnicas-de-replicación): Basada en erasure coding y redundancia controlada; se almacenan múltiples fragmentos redundantes para garantizar recuperación y disponibilidad ante fallos de nodos.
   * [Modelo de consistencia](#modelos-de-consistencia): Consistencia eventual; los fragmentos pueden sincronizarse con retraso y la disponibilidad depende de la recuperación y verificación periódica mediante pruebas criptográficas.
 
+## Operaciones avanzadas en redes P2P
+
+### Propagación de transacciones
+
+La propagación de transacciones es el proceso mediante el cual una nueva transacción (o cualquier mensaje importante) se difunde desde su nodo de origen hasta todos los nodos de la red. Este mecanismo es fundamental en blockchains y otras redes P2P donde la información debe distribuirse rápidamente.
+
+**Flujo típico en blockchain (ejemplo Bitcoin/Ethereum):**
+
+1. **Creación**: Un usuario crea una transacción localmente y la firma con su clave privada.
+2. **Envío inicial**: La transacción se envía a uno o varios nodos de la red (típicamente el nodo del usuario o un nodo público).
+3. **Validación inicial**: El nodo receptor valida la transacción (firma correcta, fondos suficientes, formato válido).
+4. **Difusión (Gossip)**: El nodo agrega la transacción a su mempool y la propaga a sus peers conectados.
+5. **Propagación recursiva**: Cada nodo que recibe la transacción repite el proceso: valida, agrega a mempool, propaga.
+6. **Filtrado de duplicados**: Los nodos mantienen un registro temporal de transacciones ya vistas para evitar repropagación innecesaria.
+7. **Inclusión en bloque**: Un minero/validador selecciona transacciones de su mempool para incluirlas en un bloque.
+8. **Propagación de bloques**: El bloque se propaga de forma similar, pero con mayor prioridad y optimizaciones.
+
+**Técnicas de optimización:**
+
+* **Inv/GetData (Bitcoin)**: En lugar de enviar transacciones completas, se envían inventarios (hashes) y los nodos solicitan solo las que no tienen.
+* **Compact Block Relay**: Envía bloques comprimidos usando referencias a transacciones ya conocidas.
+* **Transaction Cut-through**: Elimina transacciones intermedias cuando se puede simplificar el resultado.
+* **Fee-based priority**: Transacciones con fees más altas se propagan primero.
+
+**Métricas típicas:**
+
+* **Bitcoin**: ~95% de nodos alcanzados en 10-15 segundos.
+* **Ethereum**: ~99% de nodos en 2-3 segundos (gracias a bloques más frecuentes y Gossip optimizado).
+
+**Desafíos:**
+
+* **Spam**: Transacciones inválidas que saturan la red.
+* **Timing attacks**: Análisis de propagación para deanonimizar usuarios.
+* **Selfish mining**: Retener bloques para obtener ventaja competitiva.
+
+### Sincronización de nodos
+
+La sincronización es el proceso mediante el cual un nodo nuevo o desactualizado obtiene el estado completo de la red. Es uno de los mayores desafíos en redes P2P con estado global, como blockchains.
+
+**Tipos de sincronización:**
+
+**1. Full Sync (Sincronización completa)**:
+
+* Descarga y valida todos los bloques desde el génesis.
+* **Ventajas**: Máxima seguridad, valida toda la historia.
+* **Desventajas**: Muy lento (días/semanas), requiere mucho almacenamiento.
+* **Ejemplo Bitcoin**: ~500GB, puede tardar días dependiendo del hardware.
+
+**2. Fast Sync / Snap Sync**:
+
+* Descarga estados intermedios verificados, solo valida bloques recientes.
+* **Ventajas**: Mucho más rápido (horas en lugar de días).
+* **Desventajas**: Requiere confiar en checkpoints o mayoría de peers.
+* **Ejemplo Ethereum**: Descarga estado actual y valida desde un punto reciente.
+
+**3. Light Sync (Sincronización ligera)**:
+
+* Solo descarga cabeceras de bloques, valida usando pruebas criptográficas (Merkle proofs).
+* **Ventajas**: Muy rápido, bajo almacenamiento.
+* **Desventajas**: Depende de nodos completos para datos, menor seguridad.
+* **Ejemplo**: SPV (Simplified Payment Verification) en Bitcoin.
+
+**4. Warp Sync**:
+
+* Descarga snapshots del estado verificados por consenso.
+* **Ejemplo**: Usado en Parity/OpenEthereum.
+
+**Proceso típico de sincronización (Full Sync en Bitcoin):**
+
+1. **Conexión a peers**: El nodo se conecta a varios nodos conocidos (bootstrap).
+2. **Headers first**: Descarga todas las cabeceras de bloques (ligeras, rápidas).
+3. **Validación de headers**: Verifica la cadena de Proof-of-Work.
+4. **Descarga de bloques**: Descarga bloques completos en paralelo desde múltiples peers.
+5. **Validación**: Valida cada transacción y actualiza el UTXO set.
+6. **Catch-up**: Una vez sincronizado, escucha nuevos bloques en tiempo real.
+
+**Desafíos:**
+
+* **Ancho de banda**: Descargar cientos de GB consume tiempo y datos.
+* **Verificación**: Validar millones de transacciones es computacionalmente costoso.
+* **State growth**: El estado crece constantemente (problema en Ethereum).
+* **Peers maliciosos**: Pueden enviar datos falsos o lentos.
+
+**Soluciones modernas:**
+
+* **Incremental Sync**: Sincronizar en segundo plano mientras se usa la red.
+* **Checkpoints**: Puntos verificados para acelerar validación.
+* **State pruning**: Eliminar estados antiguos innecesarios.
+* **Weak subjectivity**: En PoS, confiar en checkpoints recientes de la comunidad.
+
+### Peer Selection (Selección de peers)
+
+La selección de peers es el proceso mediante el cual un nodo decide con qué otros nodos conectarse y mantener conexiones activas. Una estrategia adecuada es crucial para rendimiento, seguridad y descentralización.
+
+**Objetivos de la selección de peers:**
+
+* **Diversidad geográfica**: Evitar concentración en una región (reduce latencia global, resiste censura).
+* **Reputación**: Preferir nodos confiables y con buen comportamiento histórico.
+* **Baja latencia**: Conectar a nodos cercanos reduce tiempo de propagación.
+* **Resistencia a ataques**: Evitar que un atacante rodee al nodo (ataque Eclipse).
+* **Balance de carga**: Distribuir conexiones para no sobrecargar nodos populares.
+
+**Estrategias comunes:**
+
+**1. Conexiones fijas vs dinámicas**:
+
+* **Fijas**: Lista preconfigurada de nodos de confianza (bootstrap nodes).
+* **Dinámicas**: Descubrimiento y conexión a nodos nuevos continuamente.
+* **Mixta** (más común): Algunas conexiones fijas + mayoría dinámicas.
+
+**2. Incoming vs Outgoing**:
+
+* **Outgoing (salientes)**: El nodo inicia la conexión. Mayor control, más seguro.
+* **Incoming (entrantes)**: Otros nodos se conectan a ti. Ayuda a la red, pero menos control.
+* **Balance típico**: Bitcoin mantiene 8 outgoing + hasta 117 incoming.
+
+**3. Criterios de selección**:
+
+* **Diversidad de IP**: Limitar conexiones por subnet (/16 o /24) para evitar Sybil.
+* **Latencia**: Medir ping y preferir nodos rápidos.
+* **Tiempo de uptime**: Preferir nodos estables y con historial.
+* **Servicios ofrecidos**: Algunos nodos ofrecen servicios adicionales (full blocks, historical data).
+* **Distribución geográfica**: Usar GeoIP para diversificar regiones.
+
+**4. Rotación de peers**:
+
+* **Reemplazo periódico**: Desconectar peers lentos o inactivos y buscar nuevos.
+* **Peer scoring**: Asignar puntuación basada en comportamiento (latencia, datos válidos, disponibilidad).
+* **Eviction**: Desconectar peers con peor puntuación cuando se alcanza el límite de conexiones.
+
+**Ejemplos prácticos:**
+
+**Bitcoin**:
+
+* 8 conexiones outgoing fijas.
+* Hasta 117 incoming permitidas.
+* Eviction basada en latencia y comportamiento.
+* Protección anti-Eclipse: diversidad de /16 subnets.
+
+**Ethereum**:
+
+* 25 peers por defecto (mix de outgoing/incoming).
+* Usa DHT (Kademlia) para descubrimiento continuo.
+* Peer scoring basado en latencia y datos correctos.
+
+**Libp2p**:
+
+* Configurable según aplicación.
+* Soporta múltiples estrategias de scoring.
+* Protección contra Sybil mediante peer IDs criptográficos.
+
+**Desafíos:**
+
+* **Ataque Eclipse**: Atacante rodea al nodo con peers maliciosos.
+* **Ataque Sybil**: Atacante crea muchos nodos falsos.
+* **Centralización**: Tendencia a conectarse a nodos populares crea hubs.
+* **Churn**: Nodos que entran/salen constantemente complican la selección.
+
+**Mitigaciones:**
+
+* Limitar conexiones por subnet.
+* Preferir peers con historial probado.
+* Rotación periódica de conexiones.
+* Mantener lista de peers confiables (anchor peers).
+
+### Unicast vs Broadcast en redes P2P
+
+La comunicación en redes puede clasificarse según cuántos destinatarios reciben un mensaje. En el contexto P2P, entender estas diferencias es clave para diseñar protocolos eficientes.
+
+**Tipos de comunicación:**
+
+<img src="assets/p2p/unicastBroadcastMulticast.png" alt="unicastBroadcastMulticast" width="500">
+
+**1. Unicast (Uno a uno)**:
+
+* **Definición**: Envío de datos de un nodo a otro nodo específico.
+* **Uso en P2P**: 
+  * Transferencia directa de archivos entre dos peers.
+  * Consultas DHT específicas (FIND_NODE, FIND_VALUE).
+  * Establecimiento de conexiones TCP.
+* **Ventajas**: 
+  * Eficiente en ancho de banda.
+  * Privado (solo emisor y receptor conocen el contenido).
+  * Control preciso sobre destinatario.
+* **Desventajas**:
+  * No escala para distribuir información a muchos nodos.
+* **Ejemplo**: En BitTorrent, descargar un chunk específico de un peer.
+
+**2. Broadcast (Uno a todos)**:
+
+* **Definición**: Envío de datos desde un nodo a todos los nodos de la red o subred.
+* **Uso en P2P**:
+  * Propagación de transacciones en blockchain.
+  * Descubrimiento de nodos en LAN (mDNS).
+  * Flooding en redes no estructuradas.
+* **Ventajas**:
+  * Garantiza que todos los nodos reciban el mensaje.
+  * Útil para eventos críticos o información global.
+* **Desventajas**:
+  * **Ineficiente**: Genera mucho tráfico redundante.
+  * **No escala**: En redes grandes, colapsa el ancho de banda.
+  * **Storm broadcast**: Puede causar tormentas de mensajes si no se controla.
+* **Ejemplo**: Anuncio de nuevo bloque en una blockchain pequeña.
+
+**3. Multicast (Uno a grupo)**:
+
+* **Definición**: Envío de datos desde un nodo a un grupo específico de nodos.
+* **Uso en P2P**:
+  * Propagación eficiente en grupos de interés (topics en pub/sub).
+  * Gossipsub usa multicast selectivo.
+* **Ventajas**:
+  * Más eficiente que broadcast.
+  * Permite segmentación por interés.
+* **Desventajas**:
+  * Requiere gestión de grupos.
+  * No todos los routers soportan multicast IP.
+* **Ejemplo**: Pub/Sub en libp2p (solo nodos suscritos a un topic reciben mensajes).
+
+**4. Anycast (Uno al más cercano)**:
+
+* **Definición**: Envío a cualquier nodo de un grupo, típicamente el más cercano.
+* **Uso en P2P**:
+  * Consultas DHT (encontrar cualquier nodo que tenga el dato).
+  * Conectarse a cualquier bootstrap node disponible.
+* **Ventajas**:
+  * Reduce latencia (se conecta al más cercano).
+  * Balanceo de carga automático.
+* **Ejemplo**: Resolver un hash en IPFS (cualquier nodo con el contenido sirve).
+
+**Comparativa en contexto P2P**:
+
+* **Unicast**: 1 destinatario específico | Alta eficiencia | Alta escalabilidad | Caso de uso: Transferencia directa, consultas DHT.
+* **Broadcast**: Todos los nodos | Baja eficiencia | Baja escalabilidad | Caso de uso: Flooding, descubrimiento local.
+* **Multicast**: Grupo de nodos | Eficiencia media | Escalabilidad media | Caso de uso: Gossip, pub/sub por topics.
+* **Anycast**: 1 nodo del grupo | Alta eficiencia | Alta escalabilidad | Caso de uso: DHT lookups, load balancing.
+
+**Protocolos P2P y su estrategia**:
+
+* **BitTorrent**: Principalmente unicast (peer-to-peer chunks) + multicast ligero (tracker announces).
+* **Bitcoin**: Gossip (pseudo-broadcast controlado) para transacciones/bloques + unicast para sincronización.
+* **Ethereum**: Gossip (multicast selectivo) para propagación rápida.
+* **IPFS**: Anycast (DHT queries) + unicast (transferencia de bloques).
+* **Gossipsub (libp2p)**: Multicast selectivo con control de redundancia.
+
+**Trade-offs clave:**
+
+* **Broadcast puro** es simple pero no escala → Se usa **Gossip** como alternativa escalable.
+* **Unicast** es eficiente pero lento para distribuir información → Combinado con **multicast** en protocolos híbridos.
+* **Anycast** es ideal para lookups pero no para entregas garantizadas a todos.
+
+**Recomendación general:**
+
+En redes P2P modernas, **Gossip** (multicast controlado) es el estándar para propagación porque:
+
+* Evita la ineficiencia del broadcast total.
+* Garantiza alta probabilidad de alcance completo.
+* Permite control de redundancia (fan-out, TTL).
+* Escala mejor que broadcast puro.
+
 ## Referencias
 
 * Las referencias sobre todo son semanas de consultas a chatgpt y deepseek.
@@ -1243,3 +1588,5 @@ Este documento tiene cierto enfoque heurístico, ha sido complicado encontrar y 
 Hay partes que quizás le falta alguna explicación, pero es porque es un resumen introductorio y en algún momento tengo que parar.
 
 Gracias ;).
+
+---
