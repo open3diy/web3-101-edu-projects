@@ -150,6 +150,3 @@ Esta multiplicidad de equipos y lenguajes es lo que hace que el roadmap avance "
 La gobernanza técnica de clientes opera mediante coordinación social y económica, no mediante autoridad central. Cuando un hard fork se aproxima, los equipos de clientes se sincronizan mediante llamadas públicas semanales ([All Core Devs](https://github.com/ethereum/pm/)), especificaciones compartidas en GitHub y testnets comunes donde se valida compatibilidad. Si un cliente mayoritario introduce un cambio incompatible, la comunidad de validadores puede simplemente no actualizar o migrar a clientes minoritarios, forzando correcciones sin necesidad de gobernanza formal. Este balance de poder distribuido es lo que garantiza que ningún equipo individual pueda capturar el protocolo.
 
 Para comprender la importancia teórica de esta diversidad, consultar ["On the Importance of Client Diversity for Ethereum's Security"](https://mirror.xyz/jmcook.eth/S7ONEka_0RgtKTZ3-dakPmAHQNPvuj15nh0YGKPFriA) de Josh Csik. Para seguir las métricas actuales de distribución de clientes en la red, revisar [clientdiversity.org](https://clientdiversity.org/), sitio mantenido por la comunidad que monitorea en tiempo real qué porcentaje de nodos ejecuta cada implementación.
-
-
----
