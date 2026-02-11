@@ -52,6 +52,7 @@ Esta categoría agrupa a los proveedores que ofrecen acceso a nodos blockchain c
 **Ejemplos**:
 
 - [Alchemy](https://www.alchemy.com/): Es una de las plataformas de infraestructura Web3 líderes. Proporciona acceso a nodos súper rápidos y fiables, APIs para obtener datos de la blockchain (como historiales de transacciones o balances) y herramientas de monitorización.
+- [Moralis](https://moralis.com/): Plataforma integral que proporciona APIs unificadas para acceder a datos de más de 50 blockchains. Ofrece APIs especializadas para wallets, tokens, NFTs, DeFi y precios, además de Streams para monitoreo en tiempo real de eventos blockchain. Utilizado por proyectos como MetaMask, Ledger y Blockchain.com, procesando más de 2 billones de requests mensuales.
 - [QuickNode](https://www.quicknode.com/): Similar to Alchemy, QuickNode offers fast and reliable access to blockchain nodes for over 20 different chains. They provide a powerful API, analytics tools, and a marketplace for add-ons.
 - [Tatum](https://tatum.io/): Es una plataforma que acelera el desarrollo de aplicaciones blockchain con una API unificada para más de 40 protocolos. Ofrece funcionalidades no-code para la creación de NFTs y tokens.
 

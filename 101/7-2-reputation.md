@@ -2,9 +2,81 @@
 
 La reputación en Web3 representa uno de los cambios paradigmáticos más importantes en la construcción de sistemas de confianza descentralizados. A diferencia de los sistemas tradicionales donde la reputación está controlada por plataformas centralizadas que pueden manipular, censurar o eliminar nuestro historial sin previo aviso, Web3 propone un modelo donde cada usuario es dueño de su identidad digital y de las credenciales que acumula a lo largo de su participación en el ecosistema.
 
-> **Nota sobre identidad**: Este documento se enfoca en sistemas de reputación verificable on-chain. Para fundamentos conceptuales de identidad descentralizada, DIDs, Verifiable Credentials, y arquitectura de attestations, consulta [Identidad Web3](7-1-identity.md). Para detalles técnicos de protocolos DID y arquitectura EAS, consulta [DID Protocols](../infrastructure/did-protocols.md) y [Attestation Infrastructure](../infrastructure/attestation-infrastructure.md).
-
 El concepto fundamental detrás de la reputación Web3 es la creación de lo que Vitalik Buterin y otros investigadores denominan "juicio colectivo programable". Esta idea, explorada en profundidad en el paper [Decentralized Society: Finding Web3's Soul](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763), plantea que la gobernanza efectiva no puede depender únicamente del capital financiero (tokens), sino que debe incorporar métricas de participación histórica y reputación verificable.
+
+## Soulbound Tokens: credenciales vinculadas permanentemente
+
+Los Soulbound Tokens (SBTs) representan otra aproximación fundamental para implementar atestaciones que son públicas y permanente en Web3, propuesta formalmente por Vitalik Buterin, E. Glen Weyl y Puja Ohlhaver en su paper de 2022 ["Decentralized Society: Finding Web3's Soul"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763). La visión detrás de los SBTs es crear una infraestructura de identidad y reputación que capture la riqueza de las relaciones sociales y compromisos del mundo real en el ecosistema blockchain.
+
+El concepto toma su nombre del videojuego World of Warcraft, donde los "soulbound items" son objetos que quedan permanentemente vinculados a un personaje y no pueden transferirse ni venderse. En Web3, esta misma lógica se aplica a tokens que representan credenciales, afiliaciones, compromisos o logros que no deberían poder comercializarse porque su valor radica precisamente en su vinculación auténtica con una identidad específica.
+
+**Características fundamentales de los SBTs**:
+
+La no-transferibilidad es la propiedad definitoria de los SBTs. A diferencia de los NFTs tradicionales que pueden venderse o transferirse libremente, un SBT queda vinculado permanentemente a la dirección que lo recibió inicialmente. Esta característica es crucial para credenciales cuyo valor depende de su autenticidad: un diploma universitario no tiene valor si puede comprarse en un mercado secundario; una certificación profesional pierde sentido si quien la posee no es quien completó la formación.
+
+Los SBTs son públicamente verificables y residen on-chain como tokens siguiendo estándares como [ERC-5192](https://eips.ethereum.org/EIPS/eip-5192), que define interfaces para tokens no transferibles. Cualquiera puede consultar la blockchain y ver qué SBTs posee una dirección específica, permitiendo verificación instantánea sin intermediarios. Esta transparencia pública contrasta con las Verifiable Credentials que típicamente se almacenan off-chain bajo control del usuario.
+
+La composabilidad on-chain permite que smart contracts lean y reaccionen a la presencia o ausencia de SBTs específicos. Por ejemplo, un protocolo de gobernanza podría otorgar peso de voto adicional a direcciones que posean SBTs de participación en eventos comunitarios, o un lending protocol podría ofrecer tasas preferenciales a usuarios con SBTs de buen historial crediticio emitidos por otros protocolos.
+
+**El concepto de "Soul" en DeSoc**:
+
+En la visión de Buterin y coautores, las direcciones Ethereum que acumulan SBTs se convierten en "Souls" o almas digitales que representan identidades sociales complejas. Una Soul no es simplemente una dirección con tokens, sino un conjunto verificable de relaciones, afiliaciones, credenciales y compromisos que construyen una identidad social rica y multidimensional.
+
+Las Souls pueden representar tanto personas como instituciones. Tu Soul personal acumula SBTs emitidos por universidades que certifican tu educación, empleadores que confirman tu experiencia laboral, DAOs que reconocen tus contribuciones, y comunidades que validan tu participación. Simultáneamente, las instituciones también tienen Souls: una universidad tiene su propia identidad verificable mediante SBTs emitidos por organismos acreditadores, gobiernos, o asociaciones académicas.
+
+Esta red de Souls interconectadas mediante SBTs crea lo que los autores llaman "Decentralized Society" (DeSoc): un ecosistema donde la confianza emerge de redes verificables de relaciones y afiliaciones, no de autoridades centrales ni de riqueza financiera acumulada. En DeSoc, tu reputación y capacidades se demuestran mediante el grafo de credenciales que otros han emitido sobre ti, creando resistencia natural a ataques Sybil y manipulación.
+
+**Casos de uso donde los SBTs son especialmente apropiados**:
+
+Las credenciales educativas son el caso de uso más directo. Una universidad emite un SBT a tu dirección certificando tu graduación. Este token permanece vinculado a tu identidad para siempre, verificable instantáneamente por empleadores o programas de postgrado sin necesidad de transcripciones físicas ni llamadas de verificación. La imposibilidad de transferir el SBT garantiza que quien lo posee realmente completó los estudios.
+
+Las membresías en organizaciones se benefician de la no-transferibilidad. Un SBT de membresía en una DAO prestigiosa tiene valor precisamente porque demuestra que tú específicamente fuiste aceptado y participaste activamente, no porque lo compraste en un marketplace. Estos SBTs pueden incluir metadata sobre roles específicos, duración de participación, o contribuciones realizadas.
+
+Las certificaciones profesionales y licencias encuentran representación natural como SBTs. Una certificación AWS, una licencia médica, o un certificado de auditor de smart contracts pueden emitirse como SBTs verificables on-chain, creando portabilidad sin depender de bases de datos centralizadas de cada emisor.
+
+**Recuperación y gestión de Souls**:
+
+Un desafío crítico de los SBTs es la recuperación de identidad cuando pierdes acceso a tu wallet. Si tus credenciales más importantes están vinculadas permanentemente a una dirección cuyas claves privadas perdiste, has perdido efectivamente tu identidad digital completa.
+
+El paper de DeSoc propone mecanismos de recuperación social donde un conjunto de "guardianes" (otras Souls de confianza) pueden aprobar colectivamente la migración de tus SBTs a una nueva dirección. Este modelo se asemeja a la recuperación social implementada en Smart Contract Wallets con Account Abstraction, pero aplicado específicamente a la identidad representada por SBTs.
+
+Otra aproximación es que los emisores mantengan capacidad de re-emitir SBTs a direcciones alternativas previa verificación off-chain de identidad, aunque esto introduce elementos de centralización que algunos consideran contrarios al espíritu de DeSoc.
+
+**SBTs y resistencia a ataques Sybil**:
+
+Una aplicación poderosa de los SBTs es prevenir ataques Sybil en gobernanza y distribuciones de tokens. Crear múltiples direcciones Ethereum es trivial, pero acumular SBTs auténticos emitidos por instituciones diversas a lo largo del tiempo es extremadamente difícil para atacantes.
+
+Un sistema de votación podría requerir que participantes posean cierta combinación de SBTs (educación universitaria + participación en DAOs + historial de contribuciones open source) para calificar, estableciendo barreras que identidades falsas no pueden superar fácilmente. Esto es más robusto que simplemente requerir tenencia de tokens, que puede comprarse, o que pruebas biométricas centralizadas como Worldcoin.
+
+Sin embargo, este enfoque introduce riesgos de exclusión: quienes no tienen acceso a educación formal o participación previa en ecosistemas Web3 quedan excluidos, perpetuando desigualdades existentes. El diseño de sistemas de SBTs debe balancear resistencia a Sybil con inclusividad.
+
+**Advertencia crítica sobre privacidad**:
+
+Es fundamental distinguir entre datos intrínsecamente públicos y datos privados. Los SBTs son excelentes para credenciales públicas (haber asistido a una conferencia, haber votado en una DAO), pero nunca deben utilizarse para información personal sensible (títulos médicos, direcciones físicas, historial crediticio) a menos que utilicen envoltorios de privacidad como Zero-Knowledge Proofs. Emitir un SBT plano con datos personales en una blockchain pública equivale a publicar esos datos en la primera plana de un periódico: es irreversible y visible para siempre.
+
+**Sismo y ZK Badges: privacidad para SBTs**:
+
+Uno de los mayores desafíos de los SBTs públicos es la privacidad: si tu wallet acumula todos tus datos médicos, financieros y sociales públicamente, te conviertes en un libro abierto. Proyectos como [Sismo](https://www.sismo.io/) introdujeron el concepto de ZK Badges (insignias basadas en conocimiento cero) para resolver esto.
+
+Sismo permite a los usuarios agregar sus identidades (conectar su cuenta de Twitter, GitHub y varias wallets de Ethereum) en una bóveda segura (Data Vault) y generar pruebas de conocimiento cero. Con estas pruebas, el usuario puede acuñar un SBT (el Badge) en una dirección nueva y limpia que certifica un hecho (ej. "soy contribuidor de Ethereum" o "tengo un Cryptopunk") sin revelar cuál es la dirección de origen ni vincular públicamente ambas identidades. Esto permite disfrutar de los beneficios de reputación de los SBTs manteniendo la privacidad del historial del usuario.
+
+**Estado actual de adopción**:
+
+A diferencia de las Verifiable Credentials que tienen estándares W3C maduros y múltiples implementaciones, los SBTs están en etapas más tempranas de estandarización y adopción. [ERC-5192](https://eips.ethereum.org/EIPS/eip-5192) define la interfaz básica para tokens no transferibles, pero el ecosistema aún está explorando patrones óptimos de emisión, revocación, y recuperación.
+
+Proyectos como [Nouns DAO](https://nouns.wtf/) experimentan con membresías representadas como SBTs, y plataformas educativas Web3 emiten certificaciones de completación como tokens no transferibles. Sin embargo, la adopción mainstream de SBTs como infraestructura de identidad estándar aún no ha ocurrido, en parte debido a que el concepto es más reciente y los tooling son menos maduros que para sistemas de attestations o Verifiable Credentials.
+
+## Proof of Attendance Protocol (POAP): credenciales de participación
+
+Un componente esencial de la identidad en Web3 es nuestro historial: no solo quiénes somos, sino dónde hemos estado. [Proof of Attendance Protocol (POAP)](https://poap.xyz/) captura esta dimensión emitiendo tokens NFT coleccionables que certifican tu asistencia a eventos físicos o virtuales.
+
+Desde una perspectiva técnica estricta, los POAPs son NFTs estándar (ERC-721) y, por tanto, **son transferibles**. Esto los diferencia de los Soulbound Tokens (SBTs) y de las Attestations de EAS. Sin embargo, en la práctica social, la comunidad los trata "como si fueran" intransferibles: comprar un POAP de un evento al que no fuiste se considera socialmente inútil, ya que la credencial vale por demostrar *tu* vivencia, no tu poder adquisitivo.
+
+Esta tensión entre la "posibilidad técnica de transferir" y la "intención social de no hacerlo" fue precisamente una de las inspiraciones para el desarrollo de los SBTs reales (ERC-5192), que fuerzan esta restricción a nivel de código.
+
+Los POAPs siguen siendo muy populares como una capa más ligera y "gamificada" de identidad (veremos más en la sección de [reputación](7-2-reputation.md)), ideal para comunidades que quieren reconocer la participación de sus miembros sin la rigidez de una certificación académica o un documento de identidad oficial.
+
+
 
 La fórmula conceptual que describe este nuevo paradigma es:
 
