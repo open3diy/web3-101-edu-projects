@@ -14,7 +14,7 @@ Esto tiene aplicaciones en identidades digitales, economías descentralizadas, a
 
 ## Propósito
 
-**Mi propósito aquí** es la divulgación de la web3 en una serie de vídeos educativos que podrás ver en el canal de YouTube [Proyectos web3](https://www.youtube.com/@proyectos-web3).
+**Mi propósito aquí** es la divulgación de la Web3 mediante una serie de contenidos que podrás ver aquí mismo y con vídeos educativos en el canal de YouTube [Proyectos web3](https://www.youtube.com/@proyectos-web3).
 
 ## Solución
 
@@ -33,16 +33,16 @@ A continuación encontrarás un listado actualizado de todos los contenidos publ
 
 **La tecnología de la web3**:
 
-* [Introducción a redes P2P](./web3-infrastructure-technology/_misc/p2p_overview.md)  
+* [Introducción a redes P2P](./infrastructure/miscelanea/p2p_overview.md)  
   > Presenta los conceptos básicos de las redes peer-to-peer y su importancia en la infraestructura de la web3.
-* [Primera aproximación a IPFS](./web3-infrastructure-technology/first-approach-to-IPFS.md).  
+* [Primera aproximación a IPFS](./infrastructure/first-approach-to-IPFS.md).  
   > Primera presentación y práctica con IPFS (InterPlanetary File System), siendo un protocolo y red para almacenar y compartir contenido de forma descentralizada. Es clave en la web3 para el almacenamiento distribuido y resistente a la censura.
 
 **Conceptos técnicos clave en la web3**:
 
-* [Jugando y entendiendo un árbol de Merkle](./web3-infrastructure-technology/_misc/merkle_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_misc/merkle_playground.ipynb))
+* [Jugando y entendiendo un árbol de Merkle](./infrastructure/miscelanea/merkle_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=infrastructure/miscelanea/merkle_playground.ipynb))
   > Permite experimentar con árboles de Merkle para comprender su uso en la verificación de datos y blockchain.
-* [Jugando y entendiendo un DAG](./web3-infrastructure-technology/_misc/dag_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=web3-infrastructure-technology/_misc/dag_playground.ipynb)).
+* [Jugando y entendiendo un DAG](./infrastructure/miscelanea/dag_playground.ipynb) ([![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open3diy/web3-101-edu-projects/main?filepath=infrastructure/miscelanea/dag_playground.ipynb)).
   > Ofrece una introducción práctica a los grafos acíclicos dirigidos (DAG) y su relevancia en tecnologías descentralizadas.
 
 ## Licencia
@@ -69,26 +69,26 @@ Es necesario instalar previamente:
   sudo apt install python3 python3-dev python3-venv
   ```
 
-* Graphviz y PyGraphviz:
+* Graphviz y PyGraphviz son necesarios para que los notebooks funcionen correctamente y puedan mostrar las visualizaciones educativas:
 
   ```bash
   sudo apt install graphviz libgraphviz-dev pkg-config
   ```
 
-* nvm: <https://github.com/nvm-sh/nvm>.
+* nvm: <https://github.com/nvm-sh/nvm> herramienta que permite instalar y gestionar múltiples versiones de Node.js en tu sistema. Es útil para mantener la compatibilidad con diferentes proyectos que requieren distintas versiones de Node.js.
 
 **Entorno virtual python**.
 
 Se creará un entorno virtual de python propio al repositorio, siguiendo los siguientes pasos.
 
 ```bash
-python3 -m venv .venv-web3-edu-projects
+python3 -m venv .venv
 ```
 
 Al abrir vscode normalmente se activa el entorno virtual, pero si no es el caso, en terminal para activarlo:
 
 ```bash
-source .venv-web3-edu-projects/bin/activate
+source .venv/bin/activate
 ```
 
 Instalar paquetes necesarios:
@@ -98,15 +98,6 @@ pip install notebook ipykernel multiformats graphviz networkx matplotlib pydot i
 ```
 
 Instalar extensión de vscode `Jupyter`.
-
-### Iniciar vscode
-
-Desde la carpeta del proyecto, abrir terminal y ejecutar:
-
-```bash
-nvm use
-code .
-```
 
 ## Notas adicionales
 

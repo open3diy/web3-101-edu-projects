@@ -1,4 +1,5 @@
 .venv-web3-edu-projects/**
+.venv/**
 __pycache__/
 *.py[cod]
 *.pyo
@@ -6,5 +7,5 @@ __pycache__/
 build/
 dist/
 .eggs/
-/web3-infrastructure-technology/_misc/lib/*
+/infrastructure/miscelanea/lib/*
 **/__pycache__/
