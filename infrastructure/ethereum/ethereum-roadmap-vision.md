@@ -26,15 +26,17 @@ La Unión: Simboliza la fusión de dos cadenas (PoW y PoS) en una sola, unifican
 
 Enfocado en el mecanismo de consenso. Su hito principal fue la transición de Proof of Work (PoW) a Proof of Stake (PoS), completada en septiembre de 2022. Esta transición no solo redujo el consumo energético en un 99.95%, sino que también estableció las bases para mejoras futuras en escalabilidad. Bajo PoS, los validadores reemplazan a los mineros, bloqueando ETH como garantía económica en lugar de resolver puzzles computacionales intensivos. Este cambio fundamental permite la implementación de técnicas como el sharding, que serían incompatibles con PoW.
 
-Para comprender la teoría económica detrás de PoS, consultar el paper ["Casper the Friendly Finality Gadget"](https://arxiv.org/abs/1710.09437) de Buterin y Griffith. Documentación oficial sobre The Merge disponible en [ethereum.org/en/roadmap/merge](https://ethereum.org/en/roadmap/merge/).
-
 **The Surge**:
 
 El Impulso: Representa la oleada masiva de escalabilidad que transformará el throughput de la red.
 
 Centrado en la escalabilidad masiva. El objetivo es alcanzar más de 100.000 transacciones por segundo (TPS) utilizando estrategias como Rollups y Sharding. Para contextualizar esta meta: Ethereum procesa actualmente alrededor de 15-30 TPS en la L1, mientras que Visa maneja aproximadamente 1.700 TPS en promedio. Los Rollups son soluciones de L2 que ejecutan transacciones fuera de la cadena principal pero heredan su seguridad, agrupando cientos de transacciones en una única transacción L1. El Sharding, por su parte, divide la red en múltiples cadenas paralelas (shards) que procesan transacciones simultáneamente.
 
-Documentación oficial de The Surge en [ethereum.org/en/roadmap/scaling](https://ethereum.org/en/roadmap/scaling/). Para especificaciones técnicas de Danksharding, consultar la [propuesta de investigación](https://notes.ethereum.org/@dankrad/new_sharding) de Dankrad Feist.
+**The Verge**:
+
+El Límite: Marca la frontera hacia la verificación ultra-ligera, el límite de lo técnicamente posible para que sea la red más descentralizada.
+
+Busca facilitar la verificación de la red. La meta es que validar la cadena sea tan ligero computacionalmente que pueda realizarse desde un teléfono móvil o reloj inteligente. Actualmente, ejecutar un nodo completo de Ethereum requiere varios terabytes de almacenamiento y sincronización constante. Una de los soluciones, como los Verkle Trees, son estructuras de datos criptográficas que permiten probar la inclusión de datos con pruebas mucho más pequeñas que los Merkle Trees actuales, reduciendo los requisitos de almacenamiento y ancho de banda. Esta tecnología habilita la "verificación sin estado" (stateless verification), donde un nodo puede validar bloques sin almacenar el estado completo de la blockchain.
 
 **The Scourge**:
 
@@ -42,30 +44,17 @@ El Azote: Denota la lucha contra el MEV, un "azote" que amenaza la descentraliza
 
 Dedicado a la resistencia a la censura y la descentralización económica. Busca evitar que los validadores o los constructores de bloques acumulen demasiado poder mediante la extracción de MEV (Maximal Extractable Value). El MEV representa el beneficio que un validador puede obtener al reordenar, incluir o excluir transacciones dentro de un bloque. Por ejemplo, un validador podría detectar una operación de intercambio grande en un exchange descentralizado y ejecutar su propia operación justo antes (front-running) para beneficiarse del cambio de precio resultante. Esta práctica, aunque técnicamente posible, genera inequidad y puede incentivar la centralización del poder de validación.
 
-Para comprender MEV en profundidad, consultar ["Flash Boys 2.0: Frontrunning in Decentralized Exchanges"](https://arxiv.org/abs/1904.05234). Documentación de The Scourge y PBS disponible en [ethereum.org/en/roadmap/pbs](https://ethereum.org/en/roadmap/pbs/). El repositorio de investigación sobre PBS está en [ethereum/research](https://github.com/ethereum/research/tree/master/papers).
-
-**The Verge**:
-
-El Límite: Marca la frontera hacia la verificación ultra-ligera, el límite de lo técnicamente posible para que sea la red más descentralizada.
-
-Busca facilitar la verificación de la red. La meta es que validar la cadena sea tan ligero computacionalmente que pueda realizarse desde un teléfono móvil o reloj inteligente. Actualmente, ejecutar un nodo completo de Ethereum requiere varios terabytes de almacenamiento y sincronización constante. Los Verkle Trees son estructuras de datos criptográficas que permiten probar la inclusión de datos con pruebas mucho más pequeñas que los Merkle Trees actuales, reduciendo los requisitos de almacenamiento y ancho de banda. Esta tecnología habilita la "verificación sin estado" (stateless verification), donde un nodo puede validar bloques sin almacenar el estado completo de la blockchain.
-
-Especificación técnica de Verkle Trees en [EIP-6800](https://eips.ethereum.org/EIPS/eip-6800). Documentación oficial de The Verge en [ethereum.org/en/roadmap/verkle-trees](https://ethereum.org/en/roadmap/verkle-trees/). Para la teoría matemática detrás de Verkle Trees, consultar el paper ["Verkle Trees"](https://math.mit.edu/research/highschool/primes/materials/2018/Kuszmaul.pdf) de John Kuszmaul.
-
 **The Purge**:
 
 La Purga: Describe la limpieza de datos históricos innecesarios que congestionan la red.
 
 Enfocado en la limpieza y eficiencia del protocolo. Trata de eliminar datos históricos innecesarios para evitar que los requisitos de almacenamiento de los nodos crezcan indefinidamente. Con el tiempo, la blockchain de Ethereum acumula gigabytes de datos antiguos que la mayoría de las aplicaciones nunca consultan. The Purge propone mecanismos como la "expiración de historia" donde los nodos solo mantienen datos recientes (por ejemplo, del último año), mientras que los datos históricos se archivan en sistemas especializados accesibles para quienes los necesiten pero no requeridos para la operación normal de la red.
 
-Propuesta de History Expiry en [EIP-4444](https://eips.ethereum.org/EIPS/eip-4444). Documentación de The Purge disponible en [ethereum.org/en/roadmap/statelessness](https://ethereum.org/en/roadmap/statelessness/). Para contexto sobre reducción del estado, ver el análisis de Vitalik sobre [State Expiry and Statelessness](https://notes.ethereum.org/@vbuterin/state_expiry_eip).
-
 **The Splurge**:
 
 El Derroche: Agrupa todas las demás mejoras "extras" que no encajan en las categorías anteriores.
 
-Categoría para mejoras generales, mantenimiento y ajustes finos esenciales, como la optimización de la Ethereum Virtual Machine (EVM). Incluye investigación en nuevos opcodes, mejoras de rendimiento en la ejecución de contratos inteligentes y compatibilidad con tecnologías emergentes. Por ejemplo, se investiga cómo integrar primitivas criptográficas resistentes a computadoras cuánticas directamente en el protocolo, o cómo optimizar los costos de gas para operaciones específicas que actualmente resultan prohibitivamente caras.
-Especificación de la EVM en el [Yellow Paper de Ethereum](https://ethereum.github.io/yellowpaper/paper.pdf). Propuestas de mejora a la EVM se rastrean en [EIPs oficiales](https://eips.ethereum.org/). Para investigación sobre criptografía post-cuántica, consultar [NIST Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography) y su relevancia para blockchain discutida en [ethresear.ch](https://ethresear.ch/t/post-quantum-security/8469).
+Categoría para mejoras generales, la experiencia de usuario, mantenimiento y ajustes finos esenciales, como la optimización de la Ethereum Virtual Machine (EVM). Incluye investigación en nuevos opcodes, mejoras de rendimiento en la ejecución de contratos inteligentes y compatibilidad con tecnologías emergentes. Por ejemplo, se investiga cómo integrar primitivas criptográficas resistentes a computadoras cuánticas directamente en el protocolo, o cómo optimizar los costos de gas para operaciones específicas que actualmente resultan prohibitivamente caras.
 
 ### Las Actualizaciones (The Hard Forks)
 
@@ -93,7 +82,7 @@ Combinación de Deneb y Cancun. Parte crucial de The Surge, introdujo el concept
 
 **Pectra (Mayo 2025)**:
 
-Experiencia de Usuario y Consolidación. Avances en The Splurge (la experiencia de usuario, encajaría en el alarde), avance en The Verge (explorar límites de la red) y The Surge (escalabilidad / impulso).
+Experiencia de Usuario y Consolidación. Avances en The Splurge (la experiencia de usuario), avance en The Verge (explorar límites de la red) y The Surge (escalabilidad / impulso).
 
 Combinación de Prague y Electra, representa un avance fundamental en tres frentes complementarios que transforman tanto la experiencia de usuario como la economía de validación. El primer frente introduce [Account Abstraction](https://ethereum.org/en/roadmap/account-abstraction/) mediante el [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), permitiendo que las direcciones tradicionales (EOA) deleguen funcionalidades a contratos inteligentes sin migrar fondos. Esta capacidad es la base técnica que habilita la experiencia unificada o [Chain Abstraction](https://www.binance.com/en/academy/articles/what-is-chain-abstraction), donde los usuarios interactúan con múltiples redes sin gestionar manualmente las complejidades de cada una.
 
@@ -104,12 +93,15 @@ El tercer frente profundiza el trabajo iniciado en Dencun al expandir la capacid
 
 **Fusaka (Diciembre 2025)**:
 
-Descentralización a Escala. The Surge (escalabilidad) avanzado.
+Descentralización a Escala. The Surge (escalabilidad avanzada) y The Verge (verificación ligera para nodos pequeños).
 
-Fusión de Fulu y Osaka. Introduce tres mejoras técnicas para escalar blobs sin comprometer descentralización:
-PeerDAS (Peer Data Availability Sampling): Cuando escales de 6 a 16+ blobs por bloque, descargar gigabytes completos expulsaría validadores caseros. Con PeerDAS, cada nodo toma muestras aleatorias pequeñas. Si suficientes nodos obtienen sus muestras exitosamente, matemáticamente se garantiza disponibilidad total. Tu laptop con WiFi doméstica valida tan confiablemente como un servidor dedicado.
-BPO Forks (Blob Parameter Only forks): Antes de Fusaka, ajustar capacidad de blobs ante picos de demanda requería meses coordinando un hard fork completo. BPO habilita ajustes mediante actualizaciones ligeras que toman semanas. Es un "dial de emergencia" que responde a demanda real sin esperar el próximo upgrade mayor.
-Expansión de gas limits: El límite por bloque crece de 45M a 60M de gas, pero con tope de 16.7M por transacción individual. Esto previene ataques DoS donde un contrato monopoliza recursos mientras da más espacio general para transacciones normales.
+Fusión de Fulu y Osaka, implementada en diciembre de 2025, introdujo tres mejoras técnicas complementarias que simultáneamente expanden la capacidad de escalabilidad mientras reducen las barreras de entrada para operar nodos validadores.
+
+La primera mejora, PeerDAS (Peer Data Availability Sampling), contribuye simultáneamente a The Surge y The Verge al resolver un problema crítico de escalabilidad sin excluir a operadores pequeños. Al expandir de 6 a 16+ blobs por bloque, descargar y verificar gigabytes completos de datos expulsaría a los validadores con hardware doméstico. PeerDAS permite que cada nodo tome muestras aleatorias pequeñas de los datos. Si suficientes nodos obtienen exitosamente sus muestras correspondientes, queda matemáticamente garantizada la disponibilidad total de los datos. Esto significa que un validador operando desde una laptop con conexión WiFi doméstica puede validar tan confiablemente como uno ejecutando en un servidor dedicado de alta capacidad, democratizando la participación en el consenso.
+
+La segunda mejora, BPO Forks (Blob Parameter Only forks), proporciona agilidad operacional ante cambios en la demanda. Antes de Fusaka, ajustar la capacidad de blobs requería meses de coordinación para ejecutar un hard fork completo del protocolo. BPO habilita ajustes mediante actualizaciones ligeras que pueden implementarse en semanas. Funciona como un "dial de emergencia" que responde a demanda real sin necesidad de esperar el próximo upgrade mayor planificado.
+
+La tercera mejora expande los límites de gas por bloque, aumentando de 45M a 60M de gas. Sin embargo, mantiene un tope de 16.7M de gas por transacción individual. Esta combinación previene ataques de denegación de servicio donde un único contrato malicioso monopolice los recursos computacionales del bloque, mientras proporciona más espacio general para el procesamiento de transacciones normales.
 
 **Glamsterdam (2026+)**:.
 
@@ -121,23 +113,43 @@ Combinación de Glarus y Amsterdam. Mientras tú envías una transacción espera
 
 ## El Motor de la Innovación: Quiénes Construyen el Roadmap
 
-El roadmap no avanza por inercia, sino gracias al trabajo coordinado de [grupos de investigación especializados dentro de la Ethereum Foundation y la comunidad extendida](https://ethereum.org/community/research/). Este modelo de gobernanza técnica distribuida, donde múltiples equipos independientes contribuyen a un objetivo común, es una característica distintiva de Ethereum que contrasta con blockchains más centralizadas. Cada grupo tiene un enfoque que alimenta las distintas categorías:
+El roadmap de Ethereum no emerge de una autoridad central, sino de un ecosistema descentralizado de investigación donde múltiples actores con diferentes especializaciones colaboran hacia objetivos compartidos. En el centro de esta red se encuentra la [Ethereum Foundation](https://ethereum.foundation/) (EF), una organización sin ánimo de lucro que coordina e impulsa la investigación fundamental del protocolo, pero que opera bajo un modelo deliberadamente no jerárquico. La EF mantiene [grupos de investigación especializados](https://ethereum.org/community/research/) que publican sus hallazgos abiertamente para que cualquier equipo pueda implementarlos, criticarlos o mejorarlos.
+
+Sin embargo, la EF no trabaja aislada. El desarrollo de Ethereum incluye contribuciones críticas de empresas como [ConsenSys](https://consensys.io/) (que mantiene clientes como Teku y Besu), [Paradigm](https://www.paradigm.xyz/) (que financia investigación en MEV y desarrolla Reth), equipos de L2s como [Offchain Labs](https://offchainlabs.com/) (Arbitrum) y [Optimism](https://www.optimism.io/) que presionan por mejoras en disponibilidad de datos, investigadores independientes que publican en [ethresear.ch](https://ethresear.ch/), y académicos de universidades como Stanford y MIT que validan formalmente los mecanismos propuestos. Este modelo distribuido asegura que ninguna entidad pueda capturar la dirección técnica del protocolo.
+
+Cada una de las seis líneas de investigación del roadmap (The Merge, The Surge, The Verge, The Scourge, The Purge, The Splurge) avanza gracias a la especialización complementaria de estos grupos. A continuación se detalla cómo los principales equipos de investigación de la EF se mapean con las distintas categorías del roadmap, aunque es importante notar que muchos grupos contribuyen transversalmente a múltiples objetivos debido a la naturaleza interconectada de los desafíos técnicos:
 
 **[Privacy & Scaling Explorations (PSE)](https://pse.dev/)**:
 
-Este laboratorio explora las fronteras de la Criptografía Programable con una misión clara: hacer que la privacidad y la escalabilidad sean compatibles en una red pública. Su trabajo busca resolver paradojas cotidianas mediante matemáticas avanzadas: ¿cómo demostrar que tienes derecho a entrar a un lugar sin revelar tu identidad? ¿Cómo verificar que un cálculo es correcto sin ver los datos privados que lo generaron? En la práctica, esto se traduce en herramientas para **Identidad Digital** (como demostrar que eres un humano único basándose en un pasaporte real, pero sin revelar tus datos personales), **Votación Privada** (donde se cuenta el voto pero se protege matemáticamente al votante) y mecanismos de privacidad financiera (conceptualmente similares a las *stealth addresses*). A nivel de red, investigan cómo "comprimir" la verificación de la blockchain para que dispositivos cotidianos, como un teléfono móvil, puedan validar la seguridad de la red sin descargar terabytes de información. Su enfoque va más allá de ocultar datos; se trata de permitir la verificación pública sin comprometer la privacidad individual.
+The Verge, The Surge.
+
+Este laboratorio explora las fronteras de la criptografía aplicada con una misión dual: habilitar la verificación ultra-ligera de la red (The Verge) y potenciar la escalabilidad mediante técnicas avanzadas de privacidad (The Surge). Su trabajo en Zero-Knowledge Proofs (ZKPs) es fundamental para permitir que dispositivos con recursos limitados, como teléfonos móviles, verifiquen la validez de la blockchain sin descargar terabytes de datos. Técnicamente, esto se logra mediante circuitos criptográficos que comprimen la verificación del estado completo de Ethereum en pruebas de apenas kilobytes.
+
+En el frente de escalabilidad, PSE investiga cómo los ZK-Rollups pueden procesar transacciones fuera de la L1 mientras generan pruebas matemáticas compactas que demuestran su validez. Además, desarrollan soluciones de privacidad como las *stealth addresses* (direcciones temporales que protegen la identidad del receptor) y sistemas de identidad descentralizada donde se puede demostrar atributos específicos, por ejemplo que eres mayor de edad o resides en cierto país, sin revelar tu identidad completa. Su trabajo se materializa en herramientas concretas: [zkEVM](https://www.pse.dev/projects/zkevm) para ejecutar contratos inteligentes con privacidad, [Semaphore](https://semaphore.pse.dev/) para votaciones anónimas verificables, y [TLSNotary](https://tlsnotary.org/) para demostrar datos de APIs web sin exponer credenciales.
 
 **[Robust Incentives Group (RIG)](https://efdn.notion.site/Robust-Incentives-Group-RIG-Homepage-802339956f2745a5964d8461c5ccef02)**:
 
-Se encarga de la teoría de juegos y la economía del protocolo. Su trabajo es crítico para The Scourge, diseñando mecanismos que alineen los incentivos individuales con el bienestar colectivo de la red. Por ejemplo, RIG analiza escenarios donde un validador podría obtener mayor ganancia comportándose maliciosamente (como censurando transacciones específicas a cambio de sobornos) y diseña penalizaciones económicas (slashing) que hacen que tales comportamientos sean financieramente irracionales. También investigan dinámicas de coalición: ¿qué pasa si grupos de validadores coordinan para extraer MEV conjuntamente? ¿Cómo asegurar que incluso con coordinación, el sistema permanezca resistente a la censura?
+The Scourge, The Merge.
+
+Se dedica a la teoría de juegos y el diseño de mecanismos económicos que alinean incentivos individuales con la seguridad colectiva. Su contribución a The Scourge es central: analizar cómo la extracción de MEV (Maximal Extractable Value) concentra poder económico y diseñar contramedidas como ePBS (enshrined Proposer-Builder Separation), que redistribuye esos beneficios entre todos los validadores en lugar de permitir que unos pocos se especialicen en arbitraje sofisticado.
+
+Para The Merge, RIG fue fundamental en el diseño de la curva de emisión de recompensas de staking y las penalizaciones (slashing) que garantizan que atacar la red sea económicamente suicida. Modelan escenarios adversariales: ¿qué pasa si un grupo controla el 33% del stake? ¿Y el 51%? ¿Cuánto deberían perder económicamente para que la coordinación maliciosa sea irracional incluso con beneficios de MEV? Su trabajo combina matemáticas formales con simulaciones computacionales de comportamiento estratégico, produciendo modelos que predicen cómo actores racionales reaccionarán ante cambios en las reglas del protocolo.
 
 **[Consensus R&D](https://github.com/ethereum/consensus-specs)**:
 
-Centrados en el corazón del protocolo, especifican cómo los nodos se ponen de acuerdo sobre el estado de la blockchain. Son los arquitectos principales detrás de The Merge y The Surge (incluyendo PeerDAS), asegurando que la base de la red pueda escalar sin comprometer la finalidad o la seguridad. Este equipo debe resolver problemas fundamentales de sistemas distribuidos: ¿cómo garantizar que todos los nodos honestos eventualmente converjan al mismo estado incluso con nodos maliciosos o fallidos en la red? ¿Cómo minimizar la latencia de confirmación sin sacrificar garantías de seguridad? Su trabajo se basa en décadas de investigación académica en consenso distribuido, adaptando teoremas clásicos como el de [CAP](https://groups.csail.mit.edu/tds/papers/Gilbert/Brewer2.pdf) y el [FLP Impossibility Theorem](https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf) al contexto específico de blockchain.
+The Merge, The Surge.
+
+Este equipo especifica el corazón del protocolo: cómo miles de nodos distribuidos globalmente convergen a un acuerdo sobre el estado de la blockchain sin autoridad central. Fueron los arquitectos principales de The Merge, diseñando el mecanismo completo de Proof of Stake que reemplazó a la minería. Esto incluyó definir cómo se seleccionan validadores pseudoaleatoriamente para proponer bloques, cómo se agregan las firmas de cientos de validadores en cada época mediante [BLS signature aggregation](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-04), y cómo se penaliza matemáticamente a validadores que intenten crear bifurcaciones maliciosas.
+
+Para The Surge, Consensus R&D desarrolla el Data Availability Sampling (DAS) que permite escalar la red sin expulsar a validadores con hardware modesto. PeerDAS, implementado en Fusaka, es su solución para que cada nodo solo verifique muestras aleatorias pequeñas de los datos mientras se mantiene garantía criptográfica de disponibilidad total. Además, investigan mejoras como Single Slot Finality (SSF), que reduciría el tiempo de confirmación final de transacciones de ~15 minutos actuales a un único slot de 12 segundos, aproximando Ethereum a la experiencia de redes de pago tradicionales sin comprometer descentralización. Su trabajo se basa en adaptar décadas de investigación académica en consenso distribuido, particularmente teoremas como [CAP](https://groups.csail.mit.edu/tds/papers/Gilbert/Brewer2.pdf) y [FLP Impossibility](https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf), al contexto específico de blockchain pública económicamente incentivada.
 
 **[Cryptography Research](https://crypto.ethereum.org/)**:
 
-Dedican sus esfuerzos a las matemáticas avanzadas necesarias para el futuro, como los Verkle Trees para clientes ligeros y la seguridad post-cuántica. Los Verkle Trees combinan árboles de Merkle con compromisos vectoriales, reduciendo el tamaño de las pruebas de aproximadamente 3KB (en Merkle Trees) a menos de 200 bytes. Esto es crucial porque cada nodo debe transmitir y verificar estas pruebas constantemente. Respecto a seguridad post-cuántica, aunque las computadoras cuánticas aún no amenazan Ethereum hoy, se estima que en 10-15 años podrían romper los algoritmos criptográficos actuales (como ECDSA usado para firmas). El equipo investiga la migración gradual a algoritmos resistentes a ataques cuánticos, asegurando que Ethereum permanezca seguro en el futuro a largo plazo.
+The Verge, The Purge, The Splurge.
+
+Este grupo se enfoca en las matemáticas avanzadas que definen el futuro a largo plazo del protocolo. Su contribución clave para The Verge son los Verkle Trees, estructuras de datos criptográficas que reemplazan los Merkle Trees actuales. La diferencia técnica es significativa: mientras que demostrar que una cuenta existe en un Merkle Tree requiere una prueba de ~3KB (que crece logarítmicamente con el tamaño del estado), un Verkle Tree reduce esto a menos de 200 bytes mediante el uso de compromisos vectoriales basados en [KZG polynomial commitments](https://dankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.html). Esta reducción es fundamental para habilitar "stateless clients" que validan bloques sin almacenar el estado completo de la blockchain.
+
+Para The Purge, investigan mecanismos de expiración del estado que permitan archivar datos antiguos sin comprometer la verificabilidad histórica, reduciendo los requisitos de almacenamiento de nodos que actualmente superan los 1TB. En The Splurge, trabajan en seguridad post-cuántica, preparando la migración de ECDSA (el algoritmo de firmas actual vulnerable a computadoras cuánticas) a alternativas resistentes como [Dilithium](https://pq-crystals.org/dilithium/) o [SPHINCS+](https://sphincs.org/). Aunque las computadoras cuánticas prácticas están estimadas para dentro de 10-15 años, las transacciones firmadas hoy podrían ser vulnerables en el futuro mediante "ataques de cosecha" (harvest now, decrypt later), donde un adversario almacena datos cifrados esperando tecnología futura para romperlos. El equipo también desarrolla primitivas criptográficas optimizadas para la EVM, como operaciones nativas para curvas elípticas más eficientes que las actuales, reduciendo los costos de gas de operaciones criptográficas avanzadas usadas en ZK-Rollups y esquemas de privacidad.
 
 ### La Diversidad de Clientes como Pilar de Descentralización
 
