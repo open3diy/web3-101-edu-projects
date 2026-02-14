@@ -46,7 +46,7 @@ Para comprender MEV en profundidad, consultar ["Flash Boys 2.0: Frontrunning in 
 
 **The Verge**:
 
-El Límite: Marca la frontera hacia la verificación ultra-ligera, el límite de lo técnicamente posible.
+El Límite: Marca la frontera hacia la verificación ultra-ligera, el límite de lo técnicamente posible para que sea la red más descentralizada.
 
 Busca facilitar la verificación de la red. La meta es que validar la cadena sea tan ligero computacionalmente que pueda realizarse desde un teléfono móvil o reloj inteligente. Actualmente, ejecutar un nodo completo de Ethereum requiere varios terabytes de almacenamiento y sincronización constante. Los Verkle Trees son estructuras de datos criptográficas que permiten probar la inclusión de datos con pruebas mucho más pequeñas que los Merkle Trees actuales, reduciendo los requisitos de almacenamiento y ancho de banda. Esta tecnología habilita la "verificación sin estado" (stateless verification), donde un nodo puede validar bloques sin almacenar el estado completo de la blockchain.
 
@@ -87,15 +87,15 @@ Combinación de Shanghai y Capella. Fue el hito final de The Merge, permitiendo 
 
 **Dencun (Marzo 2024)**:
 
-Abaratando las L2. El inicio de The Surge.
+Abaratando las L2. El inicio de The Surge (el impulso).
 
 Combinación de Deneb y Cancun. Parte crucial de The Surge, introdujo el concepto de "blobs" de datos efímeros mediante el [EIP-4844 (Proto-Danksharding)](https://eips.ethereum.org/EIPS/eip-4844). Los blobs son espacios de datos temporales adjuntos a los bloques que expiran después de aproximadamente 18 días. Antes de Dencun, las redes L2 debían publicar todos sus datos de transacciones permanentemente en la L1, pagando altos costos de gas. Con los blobs, los costos de las L2 se redujeron hasta un 90%, haciendo que transacciones que antes costaban varios dólares ahora cuesten centavos. Los datos aún están disponibles el tiempo suficiente para que cualquiera pueda verificar la validez de las transacciones L2, pero no ocupan espacio permanente en la blockchain.
 
 **Pectra (Mayo 2025)**:
 
-Experiencia de Usuario y Consolidación. Avance en The Verge (experiencia de usuario) y The Surge (optimización de la red).
+Experiencia de Usuario y Consolidación. Avances en The Splurge (la experiencia de usuario, encajaría en el alarde), avance en The Verge (explorar límites de la red) y The Surge (escalabilidad / impulso).
 
-Combinación de Prague y Electra, representa un avance fundamental en tres frentes complementarios que transforman tanto la experiencia de usuario como la economía de validación. El primer frente introduce [Account Abstraction](https://ethereum.org/en/roadmap/account-abstraction/) mediante el [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), permitiendo que las direcciones tradicionales (EOA) deleguen funcionalidades a contratos inteligentes sin migrar fondos. Esta capacidad es la base técnica que habilita [Chain Abstraction](https://www.binance.com/en/academy/articles/what-is-chain-abstraction), donde los usuarios interactúan con múltiples redes sin gestionar manualmente las complejidades de cada una.
+Combinación de Prague y Electra, representa un avance fundamental en tres frentes complementarios que transforman tanto la experiencia de usuario como la economía de validación. El primer frente introduce [Account Abstraction](https://ethereum.org/en/roadmap/account-abstraction/) mediante el [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702), permitiendo que las direcciones tradicionales (EOA) deleguen funcionalidades a contratos inteligentes sin migrar fondos. Esta capacidad es la base técnica que habilita la experiencia unificada o [Chain Abstraction](https://www.binance.com/en/academy/articles/what-is-chain-abstraction), donde los usuarios interactúan con múltiples redes sin gestionar manualmente las complejidades de cada una.
 
 El segundo frente aborda la eficiencia operacional para validadores mediante el aumento del balance efectivo máximo. En lugar del límite histórico de 32 ETH por validador (que obligaba a operadores grandes a fragmentar su capital en cientos de instancias separadas), los stakers pueden ahora depositar hasta 2048 ETH en un único validador y recibir recompensas proporcionales sobre todo el balance, simplificando drásticamente la gestión institucional.
 Sin embargo, esta mejora abre un debate económico crítico vinculado a The Scourge: con ~28% del ETH en staking y [Lido Finance](https://lido.fi/) (el protocolo de liquid staking dominante) controlando ~30% de ese total, existe riesgo de centralización de consenso y reducción de liquidez circulante. La comunidad técnica debate activamente ajustar la curva de emisión (reducir recompensas base o implementar techos de staking dinámicos) para equilibrar seguridad sin incentivar concentración excesiva en pocas entidades. Este debate, documentado en [Ethereum Magicians](https://ethereum-magicians.org/t/eip-reduce-eth-issuance-by-limiting-the-max-effective-balance-to-1-eth/18985) y [ethresear.ch](https://ethresear.ch/t/staking-equilibrium/20394), reconoce que la descentralización económica es tan vital como la técnica para la resiliencia del protocolo. Las métricas actuales pueden consultarse en [rated.network](https://www.rated.network/).
@@ -104,7 +104,7 @@ El tercer frente profundiza el trabajo iniciado en Dencun al expandir la capacid
 
 **Fusaka (Diciembre 2025)**:
 
-Descentralización a Escala. The Surge avanzado.
+Descentralización a Escala. The Surge (escalabilidad) avanzado.
 
 Fusión de Fulu y Osaka. Introduce tres mejoras técnicas para escalar blobs sin comprometer descentralización:
 PeerDAS (Peer Data Availability Sampling): Cuando escales de 6 a 16+ blobs por bloque, descargar gigabytes completos expulsaría validadores caseros. Con PeerDAS, cada nodo toma muestras aleatorias pequeñas. Si suficientes nodos obtienen sus muestras exitosamente, matemáticamente se garantiza disponibilidad total. Tu laptop con WiFi doméstica valida tan confiablemente como un servidor dedicado.
@@ -113,10 +113,11 @@ Expansión de gas limits: El límite por bloque crece de 45M a 60M de gas, pero 
 
 **Glamsterdam (2026+)**:.
 
-Validación sin Privilegios. The Scourge y Rendimiento L1
+Validación sin Privilegios. The Scourge (el azote).
 
-Combinación de Glarus y Amsterdam. Mientras tú envías una transacción esperando que se ejecute al precio que viste en pantalla, hay actores con acceso privilegiado reordenando operaciones para extraer valor de tu intercambio antes de que se confirme. Este problema, conocido como MEV (Maximal Extractable Value), concentra beneficios en validadores técnicamente sofisticados que pueden permitirse infraestructura especializada. Glamsterdam ataca esta inequidad desde dos ángulos: redistribuyendo esos beneficios entre todos los validadores mediante ePBS, y reduciendo la carga computacional con BALs para que más personas puedan validar sin hardware costoso.
-ePBS (enshrined Proposer-Builder Separation) institucionaliza la separación de roles: unos construyen bloques optimizados compitiendo por ofrecer la mejor comisión, y los validadores regulares simplemente eligen cuál bloque incluir, recibiendo su parte sin necesitar conocimiento técnico avanzado. Las BALs (Block-level Access Lists) permiten declarar anticipadamente qué datos se necesitarán, evitando que los nodos desperdicien tiempo buscándolos en el momento crítico de validación. El resultado práctico: validar se vuelve más accesible económicamente y tus transacciones sufren menos arbitraje invisible.
+Combinación de Glarus y Amsterdam. Mientras tú envías una transacción esperando que se ejecute al precio que viste en pantalla, hay actores con acceso privilegiado reordenando operaciones para extraer valor de tu intercambio antes de que se confirme. Este problema, conocido como MEV (Maximal Extractable Value), concentra beneficios en validadores técnicamente sofisticados que pueden permitirse infraestructura especializada. Glamsterdam ataca esta inequidad desde dos ángulos: redistribuyendo esos beneficios entre todos los validadores mediante [ePBS](https://eips.ethereum.org/EIPS/eip-7732), y reduciendo la carga computacional con BALs para que más personas puedan validar sin hardware costoso.
+
+> ePBS (enshrined Proposer-Builder Separation) institucionaliza la separación de roles: unos construyen bloques optimizados compitiendo por ofrecer la mejor comisión, y los validadores regulares simplemente eligen cuál bloque incluir, recibiendo su parte sin necesitar conocimiento técnico avanzado. Las BALs (Block-level Access Lists) permiten declarar anticipadamente qué datos se necesitarán, evitando que los nodos desperdicien tiempo buscándolos en el momento crítico de validación. El resultado práctico: validar se vuelve más accesible económicamente y tus transacciones sufren menos arbitraje invisible.
 
 ## El Motor de la Innovación: Quiénes Construyen el Roadmap
 
