@@ -32,7 +32,7 @@ Centrado en la escalabilidad masiva. El objetivo es alcanzar más de 100.000 tra
 
 **The Verge**:
 
-El Límite: Marca la frontera hacia la verificación ultra-ligera, el límite de lo técnicamente posible para que sea la red más descentralizada.
+El Límite: Marca la frontera hacia la verificación ultra-ligera, el límite de lo técnicamente posible para los participantes de la red que permite que sea más descentralizada.
 
 Busca facilitar la verificación de la red. La meta es que validar la cadena sea tan ligero computacionalmente que pueda realizarse desde un teléfono móvil o reloj inteligente. Actualmente, ejecutar un nodo completo de Ethereum requiere varios terabytes de almacenamiento y sincronización constante. Una de los soluciones, como los Verkle Trees, son estructuras de datos criptográficas que permiten probar la inclusión de datos con pruebas mucho más pequeñas que los Merkle Trees actuales, reduciendo los requisitos de almacenamiento y ancho de banda. Esta tecnología habilita la "verificación sin estado" (stateless verification), donde un nodo puede validar bloques sin almacenar el estado completo de la blockchain.
 
