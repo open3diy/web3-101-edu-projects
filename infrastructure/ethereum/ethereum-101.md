@@ -152,7 +152,15 @@ Aunque los contratos son inmutables por diseño, en la práctica existen patrone
 
 La capacidad de crear "tokens" es una de las innovaciones más poderosas de Ethereum. La tokenización es el proceso de convertir derechos sobre un activo en una ficha digital (token) en una blockchain. Estos tokens se gestionan mediante contratos inteligentes y pueden representar desde una moneda (tokens fungibles) hasta un objeto de colección único (tokens no fungibles).
 
-La estandarización a través de Propuestas de Mejora de Ethereum (EIPs) ha sido clave para la interoperabilidad, permitiendo que wallets, exchanges y otras DApps interactúen con cualquier token que siga las reglas. Los estándares más importantes son:
+La estandarización ha sido clave para la interoperabilidad del ecosistema Ethereum. Este proceso se articula a través de un sistema formal de propuestas que cualquier persona puede presentar, debatir e implementar.
+
+**EIP (Ethereum Improvement Proposal)**: es el mecanismo principal de gobernanza técnica de Ethereum. Un [EIP](https://eips.ethereum.org/) es un documento formal que propone un cambio en el protocolo, una nueva funcionalidad, un proceso o un estándar de la red. Cualquier desarrollador puede abrir un EIP siguiendo una plantilla establecida; después pasa por revisión de la comunidad y, si alcanza consenso, se incluye en una actualización de red. Los EIPs cubren desde cambios al mecanismo de consenso (como EIP-1559 que introdujo la quema de tarifas base) hasta mejoras de infraestructura o experiencia de usuario.
+
+**ERC (Ethereum Request for Comments)**: es una categoría específica de EIP orientada a definir estándares a nivel de aplicación. Mientras que un EIP puede proponer un cambio en el propio protocolo de Ethereum, un ERC define interfaces y convenciones que los contratos inteligentes deben seguir para ser interoperables entre sí. El nombre proviene de la tradición de los RFCs de Internet. Cuando un ERC es aceptado, cualquier wallet, exchange o DApp puede interactuar con cualquier contrato que lo implemente sin necesidad de adaptaciones adicionales.
+
+**RIP (Rollup Improvement Proposal)**: es una categoría más reciente creada a medida que las soluciones Layer 2 se convirtieron en parte central de la estrategia de escalabilidad de Ethereum. Los [RIPs](https://github.com/ethereum/RIPs) proponen estándares y mejoras específicas para el ecosistema de Rollups, como interfaces comunes entre diferentes L2, mecanismos de interoperabilidad cross-rollup o convenciones de secuenciación. Su existencia refleja la madurez del ecosistema de capas 2 como una capa de ejecución paralela con sus propias necesidades de estandarización.
+
+Los estándares de token más importantes, todos definidos mediante ERCs, son:
 
 ### ERC-20: El Estándar para Tokens Fungibles
 

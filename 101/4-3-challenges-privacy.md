@@ -18,7 +18,7 @@ Esta transparencia habilita casos de uso que serían imposibles en sistemas trad
 
 En el ecosistema [DeFi](https://ethereum.org/es/defi/), los contratos inteligentes son auditables públicamente, las reglas de los protocolos son transparentes, y cualquier interacción puede ser verificada. Esto genera confianza sin necesidad de intermediarios y permite la composabilidad que caracteriza a Web3.
 
-En sistemas de reputación y gobernanza, la transparencia permite verificar trayectorias, contribuciones y comportamientos de forma objetiva. Puedes demostrar tu historial de participación en DAOs, tus contribuciones a proyectos open source mediante NFTs de asistencia a eventos ([POAPs](https://poap.xyz/)), o tu reputación como trader sin depender de instituciones centralizadas que certifiquen tu identidad.
+En sistemas de reputación y gobernanza, la transparencia permite verificar trayectorias, contribuciones y comportamientos de forma objetiva. Puedes demostrar tu historial de participación en DAOs, tus contribuciones a proyectos open source mediante NFTs de asistencia a eventos ([POAPs](https://poap.xyz/)), credenciales no transferibles vinculadas a tu wallet ([Soulbound Tokens o SBTs](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763)), o attestations verificables on-chain emitidas por terceros ([EAS](https://attest.org/)), todo ello sin depender de instituciones centralizadas que certifiquen tu identidad.
 
 En auditorías y cumplimiento regulatorio, la transparencia facilita que proyectos demuestren públicamente que cumplen con reglas establecidas, que fondos están respaldados adecuadamente, o que operaciones son legítimas sin requerir intermediarios de confianza.
 
@@ -40,6 +40,18 @@ Para empresas, publicar toda la actividad comercial expone estrategias, proveedo
 
 Es fundamental diferenciar entre contextos públicos donde la transparencia es deseable (gobernanza, reputación, auditoría de fondos públicos) y contextos privados donde la confidencialidad es legítima (pagos personales, información médica, estrategias comerciales sensibles).
 
+## Identidad y atributos privados: DIDs y VCs
+
+Cuando hablamos de privacidad, es posible que pensemos no solo en saldos o movimientos, sino en nuestros atributos personales como edad, identificadores o nombres legales, pero en realidad Web3 y Ethereum ya han resuelto esto: las wallets de identidad basadas en [Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/) y [Verifiable Credentials (VCs)](https://www.w3.org/TR/vc-data-model/), estándares formalizados por el W3C.
+
+En este modelo, tú controlas una wallet de identidad que almacena credenciales emitidas por terceros: una institución educativa que certifica tu título, un gobierno que avala tu mayoría de edad, o una organización que acredita tu membresía. Cuando necesitas demostrar un atributo ante un servicio, no lo revelas directamente. En su lugar, puedes combinar estas credenciales con ZK Proofs para demostrar únicamente lo que necesitas. Por ejemplo, probar que eres mayor de edad sin revelar tu fecha de nacimiento exacta, o demostrar que perteneces a cierto grupo sin revelar tu identidad completa.
+
+Sin embargo, es importante entender los límites de este enfoque. Los DIDs y las VCs resuelven el problema de la identidad y los atributos off-chain: quién eres, qué credenciales tienes, qué afirmaciones puedes demostrar sobre ti mismo. Lo que no resuelven es el problema de la transparencia on-chain que hemos descrito a lo largo de este capítulo y es realmente el problema a resolver en Web3.
+
+Si usas Privado ID para demostrar de forma privada que cumples ciertos requisitos para acceder a un protocolo DeFi, habrás protegido tu identidad en ese paso concreto. Pero todas las transacciones que realices después en ese protocolo seguirán siendo públicas y rastreables. El historial de actividad on-chain de tu wallet, los volúmenes que mueves, las estrategias que ejecutas, los contratos con los que interactúas: nada de eso queda oculto por el hecho de haber autenticado tu identidad de forma privada. Y sobre todo no queda oculto si pueden correlacionar off-chain algún atributo de estos con tu dirección.
+
+La distinción es fundamental: los sistemas de identidad descentralizada con privacidad resuelven "quién eres sin revelarlo", pero no resuelven "qué haces sin que se vea". Son soluciones complementarias que operan en capas diferentes. Si tu preocupación principal es que nadie sepa que estás moviendo cierta cantidad de fondos o interactuando con ciertos contratos, un sistema de credenciales privadas no te ayuda en ese aspecto.
+
 ## Privacidad selectiva: la solución práctica
 
 La estrategia más pragmática no es hacer que blockchain sea privada por defecto, sino proporcionar herramientas para privacidad selectiva según el contexto. En la práctica, los usuarios pueden gestionar su privacidad mediante una estrategia simple: usar diferentes wallets para diferentes propósitos.
@@ -52,25 +64,25 @@ Esta separación de contextos es similar a cómo usamos redes sociales: puedes t
 
 ## El avance hacia herramientas de privacidad en Ethereum
 
-El ecosistema Ethereum trabaja activamente en desarrollar herramientas que permitan privacidad selectiva donde sea necesaria, sin comprometer la transparencia verificable que caracteriza al sistema. No se trata de abandonar la transparencia, sino de añadir opciones de confidencialidad para casos de uso que lo requieran.
+Si la privacidad selectiva usando diferentes cuentas no nos gusta evidentemente porque dispersa nuestra identidad, podemos estar tranquilos en parte, porque el ecosistema Ethereum trabaja activamente en desarrollar herramientas que permitan privacidad selectiva donde sea necesaria en nuestra cuenta, sin comprometer la transparencia verificable que caracteriza al sistema. No se trata de abandonar la transparencia, sino de añadir opciones de confidencialidad para casos de uso que lo requieran.
 
-La [Ethereum Foundation](https://ethereum.foundation/) ha lanzado el [Privacy and Scaling Explorations Team](https://pse.dev/), un equipo dedicado a investigar y desarrollar tecnologías de privacidad. Este grupo coordina investigación en criptografía avanzada, stealth addresses (direcciones sigilosas), herramientas de identidad preservando privacidad y sistemas de pagos privados.
+La [Ethereum Foundation](https://ethereum.foundation/) ha lanzado el [Privacy Stewards of Ethereum (PSE)](https://pse.dev/), un equipo dedicado a investigar y desarrollar tecnologías de privacidad. Este grupo coordina investigación en criptografía avanzada, stealth addresses (direcciones sigilosas), herramientas de identidad preservando privacidad y sistemas de pagos privados.
+
+Sin embargo, estas tecnologías aún están en desarrollo y [no ofrecen anonimato completo](https://arxiv.org/abs/2308.01703). Los análisis académicos muestran que las implementaciones actuales de stealth addresses pueden ser vulnerables a ataques de correlación bajo ciertas condiciones. La investigación continúa para fortalecer estas garantías.
 
 Existe una [hoja de ruta de privacidad para Ethereum](https://ethereum-magicians.org/t/a-maximally-simple-l1-privacy-roadmap/23459) que describe mejoras incrementales: privacidad de pagos mediante pruebas de conocimiento cero, anonimización parcial de direcciones, privacidad en el nivel de red para proteger metadatos de transacciones, y mecanismos para que los usuarios puedan controlar qué información revelan.
 
 La estrategia no es hacer que todo sea privado por defecto, sino proporcionar herramientas para que los usuarios y aplicaciones puedan elegir el nivel de privacidad apropiado según sus necesidades. Esto permite mantener la transparencia verificable donde es necesaria (por ejemplo, en auditorías de contratos DeFi) mientras se protege la confidencialidad donde importa (como en pagos personales).
 
-## Tecnologías de privacidad: ZK Proofs y más allá
+**Tecnologías de privacidad: ZK Proofs y más allá**:
 
-La tecnología que hace posible este equilibrio son las pruebas de conocimiento cero (Zero-Knowledge Proofs o ZK Proofs). Estas pruebas criptográficas permiten demostrar que una afirmación es verdadera sin revelar la información subyacente que la sustenta.
+Tenemos que aclarar que las tecnologías de ZK Proofs son tanto herramientas de privacidad como de escalabilidad y depende del contexto entenderás como tal. La tecnología de pruebas de conocimiento cero (Zero-Knowledge Proofs o ZK Proofs) son pruebas criptográficas que permiten demostrar que una afirmación es verdadera sin revelar la información subyacente que la sustenta. Es eso, no implica privacidad en el diseño.
 
-Por ejemplo, puedes demostrar que tienes fondos suficientes para una transacción sin revelar cuánto tienes exactamente. O puedes probar que cumples ciertos criterios de elegibilidad para un servicio sin exponer todos tus datos personales. O puedes verificar que una transacción es válida sin revelar el emisor, receptor o cantidad transferida.
+Al respecto existen dos líneas principales en Ethereum:
 
-Las ZK Proofs no son ciencia ficción; ya están siendo utilizadas en producción. Redes de capa 2 como [StarkNet](https://www.starknet.io/) y [zkSync](https://zksync.io/) las utilizan para escalabilidad, pero la misma tecnología puede aplicarse para privacidad. Protocolos como [Aztec Network](https://aztec.network/) están construyendo infraestructura específicamente orientada a privacidad programable en contratos inteligentes.
+Redes de capa 2 orientadas a privacidad usando ZK como [Aztec Network](https://aztec.network/) están construyendo infraestructura específicamente orientada a este modelo: privacidad programable en contratos inteligentes donde las transacciones son verificables pero opacos sus detalles.
 
-Las stealth addresses (direcciones sigilosas) son otra tecnología prometedora. Permiten que alguien te envíe fondos a una dirección pública, pero solo tú puedes detectar y gastar esos fondos en una dirección derivada que no está vinculada públicamente con tu identidad. Esto rompe la cadena de rastreabilidad sin requerir intermediarios centralizados.
-
-Sin embargo, estas tecnologías aún están en desarrollo y [no ofrecen anonimato completo](https://arxiv.org/abs/2308.01703). Los análisis académicos muestran que las implementaciones actuales de stealth addresses pueden ser vulnerables a ataques de correlación bajo ciertas condiciones. La investigación continúa para fortalecer estas garantías.
+En los **ZK-rollups de escalabilidad** (como [StarkNet](https://www.starknet.io/) o [zkSync](https://zksync.io/), y el zkEVM que la propia Ethereum Foundation tiene en su hoja de ruta), el proof demuestra que un conjunto de transacciones son válidas sin que los nodos tengan que re-ejecutarlas. Esto reduce la carga computacional. Sin embargo, los datos concretos siguen existiendo: o se publican en L1, o viven en la propia L2. En ningún caso desaparecen. El proof comprime la verificación, pero no oculta nada. La actividad sigue siendo completamente legible para quien acceda a esos datos.
 
 ## Mixers y privacidad regulada: el caso Tornado Cash
 
@@ -78,7 +90,7 @@ Dentro de las herramientas de privacidad más controvertidas están los mixers o
 
 El funcionamiento es conceptualmente simple: múltiples usuarios depositan fondos en un pool común, y luego pueden retirar esos fondos a direcciones completamente nuevas que no están vinculadas públicamente con sus direcciones originales. La mezcla de fondos dificulta rastrear qué salida corresponde a qué entrada.
 
-[Tornado Cash](https://tornado.cash/) fue el mixer más prominente en Ethereum, utilizando pruebas de conocimiento cero para garantizar que los depósitos y retiros no pudieran correlacionarse. Sin embargo, en agosto de 2022, la [Oficina de Control de Activos Extranjeros de EE.UU. (OFAC) sancionó Tornado Cash](https://home.treasury.gov/news/press-releases/jy0916), argumentando que había sido utilizado para lavar fondos robados en hackeos de criptomonedas.
+[Tornado Cash](https://tornado.cash/) fue el mixer más prominente en Ethereum, utilizando pruebas de conocimiento cero para garantizar que los depósitos y retiros no pudieran correlacionarse. Sin embargo, en agosto de 2022, la Oficina de Control de Activos Extranjeros de EE.UU. (OFAC) [añadió Tornado Cash a su lista de entidades sancionadas](https://home.treasury.gov/news/press-releases/jy0916), prohibiendo a cualquier empresa estadounidense interactuar con él, argumentando que había sido utilizado para lavar fondos robados en hackeos de criptomonedas.
 
 OFAC es la agencia del Departamento del Tesoro estadounidense encargada de administrar sanciones económicas. Añadir direcciones de Tornado Cash a su lista de Specially Designated Nationals (SDN) significa que cualquier empresa estadounidense o que opere con clientes de EE.UU. está legalmente prohibida de procesar transacciones que involucren esas direcciones, bajo riesgo de multas millonarias y cargos criminales. Esta obligación legal de "OFAC compliance" es lo que impulsa a los exchanges centralizados a implementar sistemas agresivos de listas negras y análisis de blockchain.
 
@@ -102,6 +114,8 @@ Los exchanges pueden bloquear tus depósitos sin previo aviso, congelar tu cuent
 
 Este fenómeno crea un incentivo perverso: mientras más personas usen herramientas de privacidad legítimas, más direcciones quedan "manchadas" en las listas negras, lo que aumenta el riesgo de censura para usuarios ordinarios. La transparencia de blockchain, combinada con análisis automatizado y listas negras, genera un sistema de vigilancia y censura financiera que no existía en el sistema financiero tradicional con la misma escala y permanencia.
 
+> Uno se pregunta si aquí en España o cualquier país, si no podríamos usar dinero que viene de la corrupción o narcotráfico o explotación, tampoco podríamos ingresarlo al banco. Es evidente que sí podemos y es también evidente que es un caso de discriminación más de los sistemas tradicionales.
+
 No hay apelación, no hay debido proceso, y la "culpa por asociación" es automática e inmutable en el historial de la blockchain. Esto representa un riesgo real para la fungibilidad del dinero: no todos los ETH o BTC son iguales si algunos están "manchados" y otros no.
 
 ## El estado actual: privacidad parcial y en construcción
@@ -110,30 +124,43 @@ Entonces, ¿ofrece Ethereum privacidad hoy? La respuesta honesta es: parcialment
 
 Por defecto, Ethereum es completamente transparente. Todas las transacciones estándar son públicas y rastreables. Si usas tu wallet de la forma más común, tu actividad es visible para cualquiera.
 
-Existen herramientas y técnicas para mejorar tu privacidad (stealth addresses experimentales, utilizar múltiples wallets, mezclar fondos mediante servicios residuales no sancionados), pero todas tienen limitaciones, fricción de uso y riesgos regulatorios. No hay una solución integrada, fácil de usar y completamente segura disponible para el usuario promedio.
+Existen herramientas y técnicas para mejorar tu privacidad (stealth addresses experimentales, utilizar múltiples wallets, mezclar fondos mediante servicios residuales no sancionados, o operar en redes L2 orientadas a privacidad como [Aztec Network](https://aztec.network/)), pero todas tienen limitaciones, fricción de uso y riesgos regulatorios. No hay una solución integrada, fácil de usar y completamente segura disponible para el usuario promedio.
 
 Para casos de uso empresariales que requieren confidencialidad fuerte, las soluciones actuales suelen ser blockchains privadas o permisionadas (como [Hyperledger Fabric](https://www.hyperledger.org/use/fabric) o [Quorum](https://consensys.net/quorum/)), que sacrifican apertura y descentralización a cambio de control sobre quién puede ver qué información. Estas soluciones no forman parte del ecosistema Web3 público que discutimos en este repositorio.
 
 El [camino hacia la privacidad nativa en Ethereum](https://ethresear.ch/t/ethereum-privacy-the-road-to-self-sovereignty/22115) es largo y requiere cambios profundos en protocolos, estándares y herramientas. La hoja de ruta existe, la investigación avanza, pero no podemos afirmar que la privacidad esté garantizada o resuelta hoy.
 
-## Reflexión: transparencia y privacidad nuevo paradigma
+## Reflexión: transparencia y privacidad, un nuevo paradigma
 
-La aparente tensión entre transparencia y privacidad en blockchain se resuelve cambiando la perspectiva: no se trata de elegir entre una u otra, sino de reconocer que ambas son valiosas en diferentes contextos.
+Con este panorama, la solución más deseable sería que el equipo [PSE](https://pse.dev/) consiga integrar herramientas de privacidad directamente en el protocolo Ethereum. Es posible navegar en un ecosistema de apps para cada caso de uso, unos con mejor privacidad que otros, por ejemplo usando Aztec para ciertas operaciones. Gracias a la experiencia unificada o Account Abstraction suavizar parte de la experiencia de usuario, no sería necesario navegar entre redes, pero la fragmentación no desaparece del todo. La privacidad nativa a nivel de protocolo eliminaría esa fricción de raíz.
 
-La transparencia no es un defecto que corregir, sino la característica que habilita reputación verificable, auditoría independiente y confianza sin intermediarios. Al mismo tiempo, existen contextos legítimos donde la confidencialidad es necesaria. La solución es proporcionar herramientas de privacidad selectiva donde sea apropiado.
+Web3 requiere hoy un nivel de responsabilidad y criterio que no puede esperarse del usuario medio. Es comparable a Linux en sus primeros años: una herramienta poderosa para quien sabe usarla, pero no necesariamente para todos. Quizás no tenga que serlo todavía. Web3 puede entenderse como un espacio donde convivimos entre el mundo tradicional y la cadena, eligiendo deliberadamente qué exponemos y qué no. Para algunos, exponer su actividad económica no solo no es un problema sino una señal de reputación, una forma de demostrar trayectoria verificable, como el developer que expone que gana 50K al año como parte de su reputación. Para otros, la exposición es un riesgo inaceptable y simplemente solo entraran en Web con el patrimonio mínimo que desean exponer.
 
-El futuro de blockchain será un sistema donde los usuarios puedan elegir conscientemente el nivel de exposición apropiado para cada contexto. Transparencia verificable donde construir reputación pública, privacidad fuerte donde proteger información sensible.
+En todo esto, hay un problema estructural que las soluciones técnicas no pueden resolver por sí solas: cuando los marcos regulatorios obligan a correlacionar direcciones con identidad real, exponen a los usuarios a riesgos que van más allá de la privacidad financiera. Web3 dispone del modelo correcto con DIDs y VCs para gestionar atributos de identidad bajo el control del usuario, pero ese modelo choca de frente con regulaciones ineptas que exigen identificación directa. El resultado es que la puerta que la tecnología cierra, la legislación la vuelve a abrir para delincuentes. Problemas que exponemos en [el desafio de la integración off-chain](4-4-challenges-off-chain-integration.md).
 
-Sin embargo, vale la pena considerar que quizás blockchain esté modelando implícitamente un mundo con menor desigualdad económica, donde la transparencia de tus transacciones no sea tan problemática. Si eres un desarrollador competente, ya es público que ganas un rango salarial determinado. Si compras arte digital por 10K, esa compra pública también construye tu reputación y estatus en la comunidad. La transparencia radical funciona mejor en ecosistemas donde las disparidades extremas de riqueza no son la norma.
+La discriminación basada en perfil económico es otro ángulo del problema. En un sistema donde toda la actividad es pública y rastreable, el historial on-chain puede usarse contra el usuario de formas que no existen en el sistema financiero tradicional, donde los datos también existen pero están más fragmentados y son menos accesibles. Dicho esto, la reputación verificable también tiene valor: en ciertos contextos, demostrar un historial de actividad puede ser una ventaja, no una vulnerabilidad.
 
-Esto no significa que multimillonarios no puedan usar blockchain, simplemente que la exposición pública de su actividad es parte del modelo. Si eres Elon Musk, el mundo ya sabe que tienes más de 10M. La diferencia es que en blockchain, esa riqueza es verificable y trazable, no opaca y gestionada por intermediarios privados. Quizás ese sea precisamente el punto: un sistema donde la acumulación y el flujo de valor sean más transparentes y auditables públicamente.
+Lo que queda claro es que Web3 es hoy un espacio de emprendedores y adoptadores tempranos. Pero para que llegue a ser un espacio retail, son precisamente ellos quienes tienen que usar Web3 y dar feedback para que se adapte a sus necesidades; si no lo hacen, Web3 simplemente no será un espacio retail.
 
-Como participantes del ecosistema Web3, debemos reconocer que la transparencia no es neutral respecto al tipo de sociedad que construimos. Puede favorecer contextos donde las desigualdades extremas son más visibles y cuestionables, donde la reputación se construye sobre contribuciones verificables y no sobre certificaciones opacas de instituciones centralizadas.
+Lo que hoy parece más probable es que Web3 no sea un ecosistema uniforme sino un conjunto de capas especializadas accesibles mediante apps dentro de un marco de experiencia unificada, de forma similar a como funciona el móvil o la web actual: una app para gaming donde el valor económico en juego es limitado y la transparencia no plantea riesgos graves, una app de DeFi on-chain donde el pseudoanonimato es suficiente mientras no haya conversión a fiat, y una app institucional, representada por protocolos de RWA o redes como [Polygon](https://polygon.technology/), donde la regulación exige KYC completo porque los activos subyacentes son instrumentos financieros regulados. Pareciese que se fragmenta la experiencia de usuario, porque elegirías una app para privacidad, otra para jugar, otra para finanzas, pero es exactamente como haces hoy cuando navegas entre apps en el móvil sin que esto se perciba como fragmentación problemática. La diferencia importante es que en Web3 el salto entre estas capas puede dejar rastro on-chain y crear puntos de correlación que en el mundo móvil no existen: cuando cambias de Gmail a tu app bancaria, nadie puede rastrear esa transición en una cadena pública. Ese es el reto de orquestación real: que las garantías de privacidad de cada capa no se anulen en entre ellas. Y es precisamente ahí, en esos puntos de transición entre capas, donde la experiencia unificada y la abstracción de cadena cruzada (cross-chain / Account Abstraction) tienen su mayor desafío: no basta con ocultar la complejidad técnica al usuario, hay que hacerlo sin crear nuevos vectores de correlación en el proceso.
 
-Además, blockchain no tiene que ser necesariamente el lugar donde viven todos tus datos. Puede funcionar como una capa de liquidación final donde solo publicas resúmenes criptográficos (hashes) que certifican la existencia y validez de información que mantienes privada off-chain. Existen enfoques arquitectónicos diversos para equilibrar transparencia y privacidad: información completamente on-chain que maximiza composabilidad pero expone todo públicamente (como attestations de EAS registradas on-chain que cualquier contrato puede leer), credenciales off-chain bajo control del usuario que priorizan privacidad pero sacrifican composabilidad directa con smart contracts (como Verifiable Credentials del estándar W3C), o sistemas híbridos donde publicas hashes on-chain que certifican datos privados mantenidos off-chain. La elección entre estos enfoques no es binaria: depende del caso de uso específico y los trade-offs que estés dispuesto a aceptar entre privacidad, composabilidad, costo y descentralización. Para profundizar en estos sistemas de identidad y atestaciones, consulta [Identidad Web3](./7-1-identity.md).
+## Referencias
 
-Por tanto, no deberías descartar blockchain pública automáticamente si tu proyecto requiere cierta confidencialidad. La pregunta no es "¿transparencia total o privacidad total?", sino "¿qué información necesita ser pública y verificable, y qué puede permanecer privada mientras mantienes pruebas criptográficas de su validez?"
-
-Si tu proyecto requiere confidencialidad fuerte hoy, las blockchains públicas actuales probablemente no sean la solución apropiada. Si aceptas la transparencia como característica del sistema, puedes aprovechar el ecosistema de aplicaciones y componibilidad que ofrece Web3, entendiendo tanto sus posibilidades como sus limitaciones e implicaciones sociales.
+- [Privacidad en Ethereum — documentación oficial](https://ethereum.org/es/privacy/)
+- [Vitalik Buterin: Why I support privacy (2025)](https://vitalik.eth.limo/general/2025/04/14/privacy.html)
+- [Blockchain Privacy and Regulatory Compliance — artículo académico (ScienceDirect)](https://www.sciencedirect.com/science/article/pii/S2096720923000519)
+- [Privacy Stewards of Ethereum (PSE) — Ethereum Foundation](https://pse.dev/)
+- [Hoja de ruta de privacidad para Ethereum L1](https://ethereum-magicians.org/t/a-maximally-simple-l1-privacy-roadmap/23459)
+- [Ethereum privacy: the road to self-sovereignty — ethresear.ch](https://ethresear.ch/t/ethereum-privacy-the-road-to-self-sovereignty/22115)
+- [An Analysis of Privacy in Stealth Address Schemes — análisis académico sobre vulnerabilidades (arXiv)](https://arxiv.org/abs/2308.01703)
+- [Aztec Network — L2 de privacidad programable](https://aztec.network/)
+- [Sanción de OFAC a Tornado Cash (agosto 2022)](https://home.treasury.gov/news/press-releases/jy0916)
+- [Condena al cofundador de Tornado Cash — Bitdefender](https://www.bitdefender.com/en-gb/blog/hotforsecurity/tornado-cash-crypto-mixer-co-founder-sentenced-to-five-years-in-prison)
+- [Arresto de los fundadores de Samourai Wallet — Observatorio Blockchain](https://observatorioblockchain.com/ciberseguridad/eeuu-cierra-samourai-wallet-y-detiene-a-sus-fundadores-por-lavado-de-dinero/)
+- [Chainalysis — análisis de blockchain](https://www.chainalysis.com/)
+- [Elliptic — análisis de blockchain](https://www.elliptic.co/)
+- [TRM Labs — análisis de blockchain](https://www.trmlabs.com/)
+- [Polygon — red L2 con enfoque institucional](https://polygon.technology/)
+- [Radical transparency — Wikipedia](https://en.wikipedia.org/wiki/Radical_transparency)
 
 ---

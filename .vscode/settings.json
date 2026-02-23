@@ -136,5 +136,10 @@
         "webui",
         "Wikipidea"
     ],
-    "cSpell.ignorePaths": ["**/*.py", "**/*.ipynb"]
+    "cSpell.ignorePaths": ["**/*.py", "**/*.ipynb"],
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Always use Conventional Commits format: <type>[optional scope]: <description>. Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert. Use imperative mood ('add' not 'added'). Max 72 chars subject line. Separate subject from body with blank line."
+        }
+    ]
 }

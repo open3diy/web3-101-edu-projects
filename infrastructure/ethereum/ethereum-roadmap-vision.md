@@ -62,7 +62,7 @@ Sin embargo, la EF no trabaja aislada. El desarrollo de Ethereum incluye contrib
 
 Cada una de las seis líneas de investigación del roadmap (The Merge, The Surge, The Verge, The Scourge, The Purge, The Splurge) avanza gracias a la especialización complementaria de estos grupos. A continuación se detalla cómo los principales equipos de investigación de la EF se mapean con las distintas categorías del roadmap, aunque es importante notar que muchos grupos contribuyen transversalmente a múltiples objetivos debido a la naturaleza interconectada de los desafíos técnicos:
 
-**[Privacy & Scaling Explorations (PSE)](https://pse.dev/)**:
+**[Privacy Stewards of Ethereum (PSE)](https://pse.dev/)**:
 
 The Verge, The Surge.
 
