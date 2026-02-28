@@ -1,43 +1,40 @@
 # Reputación Web3
 
-Ya hemos visto en [identidad Web3](7-1-identity.md) como esta se forma en base a la reputación, lo que nos define se basa sobre todo en qué hemos participado, eventos o insignias, igualmente en nuestro grafo social, en proyectos que hemos participado, ..
+Ya hemos visto en [identidad Web3](7-1-identity.md) cómo la identidad se forma en base a atributos que crean un perfil sobre nosotros. Lo que nos define se basa sobre todo en qué hemos participado: eventos e insignias, nuestro grafo social, proyectos en los que hemos contribuido.
 
-La reputación en web3 determina mucho mas de lo que tenemos, dice lo que somos, y es un concepto fundamental para la gobernanza efectiva en DAO o participacion en .. no es solo los tokens que possemos, plutocracia, habla de lo que somos, si somos humanos reales, si estamos activos, algo muy relevante en muchas decisiones de DAO.
+La reputación en Web3 determina mucho más de lo que tenemos: dice lo que somos. Es un concepto fundamental para la gobernanza efectiva en DAOs y para la participación en el ecosistema, porque no es solo los tokens que poseemos —lo que reduciría todo a una plutocracia— sino también si somos humanos reales y si estamos activos, algo muy relevante en muchas decisiones colectivas.
 
-El concepto fundamental detrás de la reputación Web3 es la creación de lo que Vitalik Buterin y otros investigadores denominan "juicio colectivo programable". Esta idea, explorada en profundidad en el paper [Decentralized Society: Finding Web3's Soul](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763), plantea que ..
+El concepto fundamental detrás de la reputación Web3 es la creación de lo que Vitalik Buterin y otros investigadores denominan "juicio colectivo programable". Esta idea, explorada en profundidad en el paper [Decentralized Society: Finding Web3's Soul](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763), plantea que la confianza y la coordinación social pueden codificarse on-chain sin depender de autoridades centrales.
 
+Como participante en este ecosistema emergente, cada interacción on-chain que haces, cada credencial que ganas, cada contribución que realizas, no solo construye tu reputación personal sino que también ayuda a definir qué significa reputación en el futuro descentralizado que estamos construyendo juntos.
 
-Como participante en este ecosistema emergente, cada interacción on-chain que haces, cada credencial que ganas, cada contribution que realizas, no solo construye tu reputación personal sino que también ayuda a definir qué significa reputación en el futuro descentralizado que estamos construyendo juntos.
+Ya vimos los conceptos clave y las primitivas técnicas con las que la reputación cobra vida: los SBTs, los POAPs y cómo las atestaciones como EAS permiten portarlos entre aplicaciones. Aquí explicaremos estos elementos con más detalle y hablaremos sobre todo de los mecanismos para construir nuestra propia reputación.
 
-Ya vimos los conceptos clave, las primiticas tecnicas con las que la reputacion viven, vimos los SBTs o POAP que .. y además como las atestaciones como EAS ayudan a poder portarlas para aplicaciones, aqui explicaramos un poco más detalle, pero sobre todo hablaremos en mecanismos para crear nuestra reputacion.
-
-Igualmente como es posible
-
-## Visión de la reputacion
+## Visión de la Reputación
 
 La reputación Web3 representa uno de los experimentos socio-técnicos más ambiciosos de nuestra era. Estamos intentando construir sistemas de confianza y coordinación que funcionan globalmente sin autoridades centrales, que resisten censura y manipulación, y que empoderan individuos en lugar de corporations.
 
-El camino está lleno de desafíos técnicos sin resolver, dilemas éticos complejos, y incertidumbre regulatoria. Pero el potencial es transformador: un mundo donde tu reputación es portátil, verificable, y verdaderamente tuya. Donde contribution importa tanto como capital. Donde trust se construye mediante acciones verificables, no mediante intermediarios que pueden manipular o censurar.
+El camino está lleno de desafíos técnicos sin resolver, dilemas éticos complejos, y incertidumbre regulatoria. Pero el potencial es transformador: un mundo donde tu reputación es portátil, verificable, y verdaderamente tuya. Donde la contribución importa tanto como el capital. Donde la confianza se construye mediante acciones verificables, no mediante intermediarios que pueden manipular o censurar.
 
 Si los sistemas de reputación Web3 tienen éxito, podrían transformar fundamentalmente cómo funciona la coordinación humana a escala global.
 
 **Reputación como Capital Social Tokenizable**:
 
-En lugar de capital financiero siendo la única forma de participar en economía, la reputación se convierte en asset igualmente valioso y liquid. Alguien sin dinero pero con excelente reputación on-chain puede acceder a capital, oportunidades y influence.
+En lugar de capital financiero siendo la única forma de participar en economía, la reputación se convierte en un activo igualmente valioso y líquido. Alguien sin dinero pero con excelente reputación on-chain puede acceder a capital, oportunidades e influencia.
 
-Esto podría democratizar acceso dramáticamente. Un desarrollador talentoso en Nigeria con reputación on-chain verificable tiene las mismas oportunidades que uno en Silicon Valley. Una artista en Indonesia puede construir audiencia global basándose puramente en la calidad de su trabajo verificable on-chain.
+Podría democratizar el acceso de forma significativa. Un desarrollador talentoso en Nigeria con reputación on-chain verificable tiene las mismas oportunidades que uno en Silicon Valley. Una artista en Indonesia puede construir audiencia global basándose puramente en la calidad de su trabajo verificable on-chain.
 
-**Gobernanza Global Post-Plutocratica**:
+**Gobernanza Global Post-Plutocrática**:
 
-Los sistemas de votación puramente financieros (one dollar = one vote) concentran poder en manos de los más ricos. Los sistemas de reputación permiten modelos más sofisticados donde expertise, participación histórica, y contribution importan tanto como capital.
+Los sistemas de votación puramente financieros (one dollar, one vote) concentran poder en manos de los más ricos. Los sistemas de reputación permiten modelos más sofisticados donde el expertise, la participación histórica y la contribución importan tanto como el capital.
 
-Esto podría permitir gobernanza global efectiva de recursos comunes digitales. Internet mismo, protocolos de infraestructura, y bienes públicos digitales podrían ser governed por comunidades usando reputación + tokens en lugar de solo corporaciones o gobiernos.
+Esto podría permitir que las DAOs gobiernen recursos digitales compartidos —como protocolos open source o fondos de bienes públicos— de forma más justa y legítima: quien más ha contribuido y participado tiene más peso en las decisiones, no solo quien más capital ha invertido.
 
 **Identidad Universal Portable**:
 
 Tu reputación on-chain se convierte en tu identidad universal que llevas a través de todas las plataformas, aplicaciones, y contextos. En lugar de crear perfiles nuevos en cada aplicación, simplemente conectas tu wallet y toda tu reputación relevante es inmediatamente visible y verificable.
 
-Esto reduce friction dramáticamente. No más CVs, no más entrevistas repetitivas, no más probar las mismas cosas una y otra vez. Tu historial on-chain habla por sí mismo.
+Esto reduce la fricción drásticamente. No más CVs, no más entrevistas repetitivas, no más probar las mismas cosas una y otra vez. Tu historial on-chain habla por sí mismo.
 
 **Fin de la Economía de Reputación Extractiva**:
 
@@ -47,59 +44,81 @@ Web3 invierte esto: tú posees completamente tu reputación y las plataformas so
 
 Esto podría crear economía digital más justa donde el valor se acumula en usuarios que generan contenido y construyen comunidades, no en plataformas que meramente intermedian.
 
-## Desafíos Sociales y Legales
+## Riesgos y Desafíos
 
-**Herencia y Transferencia de Reputación**:
+Los sistemas de reputación Web3 heredan las tensiones propias de blockchain: lo que los hace robustos también los hace problemáticos. Comprender estos límites es parte esencial de cualquier diseño o uso responsable.
 
-Cuando alguien muere, ¿qué pasa con su reputación on-chain? ¿Es heredable como otros activos digitales? ¿Debería serlo?
+### Tensiones Técnicas
 
-La respuesta probablemente es no para reputación basada en habilidades y participación personal (que muere con la persona), pero sí para reputación financiera que afecta activos heredables. Si tenías un préstamo outstanding garantizado por tu reputación, tus herederos podrían necesitar acceso a esa credencial para liquidar la deuda.
+**Inmutabilidad del error**:
 
-Este problema apenas está comenzando a explorarse legalmente. Los primeros casos de corte probablemente ocurrirán en próximos años mientras early adopters de Web3 envejecen y planean sucesión.
+La inmutabilidad que da valor a blockchain también convierte un error en permanente. Una attestation falsa o maliciosa queda registrada para siempre, visible a cualquier protocolo futuro. El caso de [Tornado Cash](https://tornado.cash) lo ilustra: tras las sanciones del gobierno de Estados Unidos, plataformas marcaron automáticamente como sospechosas todas las direcciones que alguna vez interactuaron con el protocolo, incluyendo usuarios con fines legítimos. Las soluciones parciales —fechas de caducidad, contra-attestations, sistemas de apelación— existen, pero ninguna es perfecta porque toda intervención humana reintroduce subjetividad. El [W3C trabaja en estándares de credenciales verificables](https://www.w3.org/TR/vc-data-model/) con mecanismos de disputa, pero su adopción en Web3 es aún limitada.
 
-**Regulación y Derecho al Olvido**:
+**Privacidad versus transparencia**:
 
-El GDPR europeo garantiza "derecho al olvido" donde puedes exigir que organizaciones borren tus datos personales. Esto choca frontalmente con inmutabilidad de blockchain.
+Verificabilidad requiere transparencia; privacidad requiere ocultamiento. Las zero-knowledge proofs resuelven este dilema permitiendo probar atributos sin revelar el historial completo, pero implementarlas para lógica de reputación específica exige expertise criptográfica avanzada. Proyectos como [Sismo](https://sismo.io) abstrae parte de esa complejidad, y redes como [zkSync](https://zksync.io) acercan ZK a nivel de infraestructura, aunque la adopción masiva aún está madura.
 
-La solución probablemente involucra arquitecturas híbridas donde datos identificables personalmente se almacenan off-chain con referencias on-chain, permitiendo compliance con GDPR mientras mantiene verificabilidad de credenciales.
+**Fragmentación e interoperabilidad**:
 
-Alternativamente, sistemas totalmente basados en ZK donde se pueden probar atributos sin exponer datos personales podrían evitar conflictos regulatorios. Si nunca se revelan datos identificables personalmente, no hay nada que olvidar.
+El ecosistema actual tiene docenas de sistemas incompatibles: el score de Gitcoin Passport no se traduce al de Galxe, los badges de Otterspace no son reconocidos donde solo aceptan POAPs. Es como tener cinco CVs en formatos distintos que ningún empleador puede leer juntos. Iniciativas como EIP-4973 para SBTs y el [Ethereum Attestation Service](https://attest.sh) avanzan en estandarización, pero cada plataforma tiene incentivos para crear lock-in. La [Decentralized Society paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763) de Vitalik Buterin anticipa que emergerá un protocolo dominante —como TCP/IP para internet— pero ese futuro todavía está lejano.
 
-Gobiernos están empezando a regular identidad digital. La [eIDAS regulation](https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation) de la Unión Europea intenta crear framework para identidades digitales que podría eventualmente incorporar o chocar con sistemas Web3.
+**Bootstrapping y el problema del huevo-gallina**:
 
-**Discriminación Algorítmica y Fairness**:
+Sin reputación previa no se accede a oportunidades; sin oportunidades no se construye reputación. Gitcoin ofreció grants iniciales para romper ese círculo; RabbitHole diseñó quests accesibles sin requisitos previos. No hay consenso sobre la mejor práctica, y el problema se agrava en regiones con baja adopción Web3 donde incluso obtener verificación en BrightID requiere conexiones sociales on-chain que aún no existen.
 
-A medida que reputación se usa para decisiones económicas significativas, surge preocupación sobre fairness y bias algorítmico. Si algoritmos de reputación correlacionan accidentalmente con raza, género, o geografía, podrían perpetuar desigualdades existentes.
+### Manipulación y Confianza
 
-Por ejemplo, si tener ENS domain otorga puntos de reputación pero ENS domains son caros y primariamente owned por usuarios de países ricos, esto crea bias geográfico sistemático contra usuarios de economías emergentes.
+Cualquier sistema de incentivos suficientemente valioso será atacado. Los ataques Sybil sofisticados —compra de cuentas antiguas, manipulación de grafos sociales, scripting de comportamiento humano— ya superan filtros básicos. [Proof of Humanity](https://www.proofofhumanity.id) representa el extremo más seguro (video de verificación y depósito económico), pero a costa de usabilidad.
 
-Audit y fairness testing de algoritmos de reputación se convertirá en disciplina importante. Organizaciones como [AI Now Institute](https://ainowinstitute.org) que estudian fairness de algoritmos de IA tradicionales necesitarán equivalentes enfocados en reputación Web3.
+**Farming reputacional**:
 
-**Sistemas Híbridos de Credibilidad**:
+Distinto de los ataques Sybil, el farming usa identidades legítimas con intención manipuladora: votar propuestas sin leerlas, completar quests mecánicamente, o intercambiar attestations dentro de grupos cerrados. Detectarlo es difícil porque externamente parece participación genuina. Algunas contramedidas: el *reputation decay* —scores que decaen si no se mantienen activamente— y el scoring no-lineal donde las primeras contribuciones valen proporcionalmente mucho más que las siguientes, desincentivando el volumen vacío.
 
-El futuro probablemente no es reemplazo completo de instituciones tradicionales sino híbridos donde credenciales Web3 complementan credenciales tradicionales.
+**Mercados negros de credenciales**:
 
-Universidades podrían emitir diplomas tanto en papel como on-chain. Empleadores podrían solicitar tanto CVs tradicionales como direcciones ENS. Bancos podrían considerar tanto credit scores tradicionales como reputación DeFi on-chain.
+Aunque los SBTs no son transferibles, nada impide vender la wallet completa que los contiene. Ya existen mercados underground de "aged wallets" con historial y credenciales por cientos o miles de dólares. La respuesta pasa por verificaciones periódicas de control activo, detección de patrones de uso anómalos y credenciales multifactor, aunque cuanto más valiosa se vuelve la reputación, mayor el incentivo para atacarla.
 
-Esta convergencia está comenzando. [MIT Digital Credentials](https://digitalcredentials.mit.edu) emite diplomas verificables on-chain que complementan diplomas físicos. Algunos bancos neo están experimentando con incorporar actividad DeFi verificable en decisiones de lending.
+### Inclusión y Accesibilidad
 
-## Elemetnos de la reputacion
+La reputación Web3 promete democratizar el acceso, pero puede crear nuevas exclusiones. Construir historial on-chain requiere internet confiable, dispositivos compatibles y conocimiento técnico básico. Los mecanismos de verificación suelen asumir cuentas Web2 antiguas —Google, GitHub, Twitter— que alguien recién conectado en una región emergente simplemente no tiene. Los gas fees en períodos de congestión en Ethereum pueden llegar a $50–100 por transacción, lo que hace imposible participar para economías con salarios bajos. Las soluciones Layer 2 reducen esos costos a centavos, y Account Abstraction —implementado por proyectos como [Biconomy](https://www.biconomy.io)— permite que terceros paguen el gas en nombre del usuario, eliminando esa barrera potencialmente de forma completa.
+
+La mayoría de documentación, tutoriales y comunidades Web3 operan en inglés, creando ventaja sistemática para sus hablantes nativos. Organizaciones como [Bankless Africa](https://banklessafrica.com) y comunidades regionales responden con programas localizados, pero la velocidad de innovación hace difícil mantener el contenido actualizado en otros idiomas.
+
+### Implicaciones Legales y Regulatorias
+
+Los sistemas de reputación Web3 operan en un vacío legal: las regulaciones vigentes no contemplan sistemas descentralizados e inmutables.
+
+**GDPR y el derecho al olvido**:
+
+El GDPR europeo garantiza el derecho a borrar datos personales, lo que choca directamente con la inmutabilidad de blockchain: revocar una attestation solo añade nueva información, pero la original permanece visible para siempre. La salida más viable es una arquitectura híbrida donde los datos personales se almacenan off-chain y solo el hash va on-chain, permitiendo "eliminar" los datos subyacentes manteniendo la verificabilidad. La [European Blockchain Observatory](https://www.eublockchainforum.eu) ha documentado esta tensión sin resoluciones definitivas. La [regulación eIDAS](https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation) de la UE intenta crear un framework de identidad digital que eventualmente podría converger o colisionar con estos sistemas.
+
+**Responsabilidad, jurisdicción y discriminación algorítmica**:
+
+¿Quién responde si una attestation fraudulenta causa daño económico a un tercero que confió en ella? ¿Demandas a `0x1234...5678`? La jurisprudencia no existe aún. Algunas organizaciones exploran seguros descentralizados donde los emisores de attestations depositan colateral confiscable en caso de fraude, creando incentivos económicos alineados. El problema se multiplica con la jurisdicción: una attestation emitida por una DAO en las Islas Caimán, sobre alguien en Brasil, consumida por un protocolo en Singapur —¿qué ley aplica? La [Algorithmic Accountability Act](https://www.congress.gov/bill/117th-congress/house-bill/6580) propuesta en Estados Unidos requeriría auditorías de algoritmos que afectan decisiones importantes, lo que podría aplicarse a scoring de reputación, aunque el enforcement en sistemas sin propietario claro seguiría siendo un reto. El camino más probable es la coexistencia de tres vías: extensión de regulación tradicional (con efectividad limitada), auto-regulación mediante estándares como los de la [DIF](https://identity.foundation), y nuevos frameworks diseñados específicamente para sistemas descentralizados.
+
+### Reputación para Agentes de IA
+
+A medida que los agentes de IA se vuelven capaces de ejecutar transacciones autónomas, necesitarán identidades on-chain propias —probablemente wallets controladas por el propio agente— y sistemas de reputación que reflejen su historial: fiabilidad en tareas completadas, rendimiento en DeFi, calidad de colaboración con humanos y otros agentes.
+
+El riesgo más inmediato es la escala: un actor malicioso puede desplegar miles de agentes en segundos, haciendo los ataques Sybil cualitativamente diferentes a los humanos. Los mecanismos de Proof of Personhood no aplican aquí; se necesitan modelos como *Proof of Compute* o *Proof of Cost* que hagan el ataque económicamente inviable. Si además la mayoría de agentes son controlados por pocas corporaciones, la concentración de poder de voto y económico en sus propietarios replica la centralización que Web3 busca evitar. La pregunta de responsabilidad —¿quién rinde cuentas cuando un agente con alta reputación explota un protocolo?— no tiene respuesta legal hoy. La reputación descentralizada será la herramienta principal para distinguir agentes beneficiosos de maliciosos en la economía futura entre humanos y máquinas.
+
+### El Futuro: Sistemas Híbridos
+
+Lo más probable no es que la reputación Web3 reemplace a las instituciones tradicionales, sino que las complemente. Universidades como el [MIT ya emiten diplomas verificables on-chain](https://digitalcredentials.mit.edu) junto a los físicos. Bancos neo experimentan con incorporar historial DeFi en decisiones de crédito. Empleadores podrían combinar CVs tradicionales con historial ENS. Esta convergencia es gradual y desigual entre jurisdicciones, pero señala la dirección: credenciales portables, verificables y controladas por el usuario, que coexisten con el sistema establecido en lugar de sustituirlo abruptamente.
+
+## Elementos de la Reputación
 
 ### Soulbound Tokens: Arquitectura y Características Técnicas
 
 Los Soulbound Tokens (SBTs) representan la innovación técnica que hace posible la reputación on-chain no transferible. El concepto fue popularizado por Vitalik Buterin, Glen Weyl y Puja Ohlhaver en el paper [Decentralized Society: Finding Web3's Soul](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763), donde proponen tokens que están permanentemente vinculados a una dirección específica y no pueden ser vendidos o transferidos.
 
-**El problema de la transferibilidad**: En el ecosistema actual de NFTs (tokens no fungibles), todo es transferible. Si tienes un NFT que representa que completaste un curso de Solidity avanzado, podrías venderlo a alguien que no tiene esos conocimientos. Esto destruye completamente el valor de las credenciales digitales. Los SBTs solucionan esto eliminando la posibilidad de transferencia a nivel de contrato, haciendo que las credenciales sean intrínsecamente no comercializables.
+**El problema de la transferibilidad**:
+
+En el ecosistema actual de NFTs (tokens no fungibles), todo es transferible. Si tienes un NFT que representa que completaste un curso de Solidity avanzado, podrías venderlo a alguien que no tiene esos conocimientos. Esto destruye completamente el valor de las credenciales digitales. Los SBTs solucionan esto eliminando la posibilidad de transferencia a nivel de contrato, haciendo que las credenciales sean intrínsecamente no comercializables.
 
 **Características técnicas de los SBTs**:
 
-1. **No-Transferibilidad**: Implementada a nivel de smart contract, no simplemente por convención social. El contrato rechaza activamente cualquier intento de transferencia.
-
-2. **Emisión verificable**: Cada SBT registra on-chain quién lo emitió (issuer), a quién (recipient), cuándo (timestamp), y opcionalmente metadata sobre qué representa.
-
-3. **Revocabilidad**: El emisor puede revocar el SBT si las circunstancias cambian (ej. un empleado deja la empresa, un estudiante es expulsado). La revocación queda registrada pero el token histórico persiste como evidencia de que alguna vez existió.
-
-4. **Composabilidad**: Smart contracts pueden consultar qué SBTs posee una dirección y condicionar acceso, permisos o funcionalidad basándose en esa información.
+La no-transferibilidad está implementada a nivel de smart contract, no simplemente por convención social: el contrato rechaza activamente cualquier intento de transferencia. Cada SBT registra on-chain quién lo emitió (issuer), a quién (recipient), cuándo (timestamp), y opcionalmente metadata sobre qué representa. El emisor puede revocar el SBT si las circunstancias cambian —como cuando un empleado deja la empresa o un estudiante es expulsado—; la revocación queda registrada pero el token histórico persiste como evidencia de que alguna vez existió. Por último, la composabilidad permite que smart contracts consulten qué SBTs posee una dirección y condicionen acceso, permisos o funcionalidad basándose en esa información.
 
 **El concepto de "Soul" (Alma)**:
 
@@ -113,22 +132,27 @@ La implementación técnica se está estandarizando a través del [EIP-4973 (Acc
 
 **Casos de uso prácticos**:
 
-- **Credenciales educativas**: Un SBT que certifica tu participación como desarrollador core en un protocolo DeFi durante dos años. Este badge es tuyo y solo tuyo, representa tu trabajo verificable y no puede ser vendido ni transferido.
-- **Membresías organizacionales**: DAOs emiten SBTs a miembros activos, permitiendo votación ponderada por contribuciones históricas en lugar de solo capital invertido.
-- **Historial laboral verificable**: Empresas emiten SBTs certificando roles, duración, y responsabilidades de empleados, creando un currículum on-chain inmutable.
-- **Certificaciones profesionales**: Entidades acreditadoras emiten SBTs por completar cursos, auditorías, o certificaciones que no pueden ser falsificadas ni transferidas.
+Las credenciales educativas son uno de los ejemplos más claros: un SBT puede certificar la participación como desarrollador core en un protocolo DeFi durante dos años, de forma irrepetible y no transferible. Las DAOs pueden emitir SBTs a miembros activos para ponderar la votación según historial de contribuciones, en lugar de basarla solo en capital invertido. Las empresas pueden emitir SBTs certificando roles, duración y responsabilidades de empleados, creando un currículum on-chain inmutable. Y las entidades acreditadoras pueden utilizarlos para certificaciones profesionales que no pueden ser falsificadas ni cedidas.
 
 **El desafío de la recuperación**:
 
-El problema más crítico con SBTs es la recuperación ante pérdida o compromiso de claves privadas. Si pierdes acceso a tu wallet, pierdes toda tu Soul (tu identidad social completa acumulada durante años). Las soluciones propuestas incluyen:
+El problema más crítico con SBTs es la recuperación ante pérdida o compromiso de claves privadas. Si pierdes acceso a tu wallet, pierdes toda tu Soul: la identidad social completa acumulada durante años. Las soluciones propuestas son cuatro.
 
-1. **Recuperación social**: Tus contactos de confianza (guardianes) pueden votar para transferir tus SBTs a una nueva dirección si demuestras que la anterior fue comprometida o perdida.
+**Recuperación social**:
 
-2. **Re-emisión por emisores**: Los emisores originales (universidades, empleadores, DAOs) pueden re-emitir SBTs a tu nueva dirección tras verificar tu identidad mediante procesos fuera de cadena.
+Tus contactos de confianza (guardianes) pueden votar para transferir tus SBTs a una nueva dirección si demuestras que la anterior fue comprometida o perdida.
 
-3. **Time-locks y actualizaciones periódicas**: SBTs con expiración que requieren renovación activa, reduciendo el daño de una wallet comprometida antigua.
+**Re-emisión por emisores**:
 
-4. **Wallets jerárquicas**: Smart contract wallets que permiten rotar claves de firma sin cambiar la dirección pública, manteniendo la continuidad de la Soul.
+Los emisores originales (universidades, empleadores, DAOs) pueden re-emitir SBTs a tu nueva dirección tras verificar tu identidad mediante procesos fuera de cadena.
+
+**Time-locks y actualizaciones periódicas**:
+
+SBTs con expiración que requieren renovación activa, reduciendo el daño de una wallet comprometida antigua.
+
+**Wallets jerárquicas**:
+
+Smart contract wallets que permiten rotar claves de firma sin cambiar la dirección pública, manteniendo la continuidad de la Soul.
 
 Ninguna solución es perfecta. La recuperación social introduce vectores de ataque (colusión de guardianes). La re-emisión centraliza confianza en los emisores. Los time-locks crean fricción para usuarios legítimos. Este sigue siendo un área activa de investigación.
 
@@ -140,19 +164,19 @@ Ninguna solución es perfecta. La recuperación social introduce vectores de ata
 
 **Privacidad y SBTs públicos vs privados**:
 
-Un desafío fundamental es que SBTs públicos on-chain exponen toda tu historia profesional, educativa y social. Esto puede no ser deseable. Soluciones emergentes:
+Un desafío fundamental es que los SBTs públicos on-chain exponen toda tu historia profesional, educativa y social, lo que puede no ser deseable. Las soluciones emergentes abordan esto desde distintos ángulos.
 
-- **Zero-Knowledge SBTs**: Proyectos como [Sismo](https://sismo.io) permiten probar posesión de SBTs sin revelar qué SBTs específicos tienes, usando ZK-proofs.
-- **SBTs encriptados**: Metadata del SBT se almacena encriptada off-chain (IPFS, Arweave), solo el hash on-chain. Solo tú y verificadores autorizados pueden descifrar el contenido.
-- **Disclosure selectivo**: Arquitecturas que permiten revelar solo subconjuntos de tus SBTs según contexto, manteniendo el resto privado.
+**Zero-Knowledge SBTs**:
 
-**Noox**:
+Proyectos como [Sismo](https://sismo.io) permiten probar la posesión de SBTs sin revelar qué SBTs específicos tienes, usando ZK-proofs.
 
-[Noox](https://noox.world) automatiza la emisión de SBTs basándose en logros on-chain detectados algorítmicamente. No necesitas reclamar manualmente tus badges, Noox los detecta automáticamente monitoreando la blockchain.
+**SBTs encriptados**:
 
-Por ejemplo, si eres uno de los primeros 100 usuarios en interactuar con un nuevo protocolo, automáticamente recibirás el badge "Early Adopter". Si mantienes una posición de liquidez en Uniswap V3 durante 365 días sin cerrarla, recibes el badge "Diamond Hands LP". Si participas en gobernanza de 10 DAOs diferentes, recibes "DAO Citizen".
+La metadata del SBT se almacena encriptada off-chain (en IPFS o Arweave), con solo el hash registrado on-chain. Solo el titular y los verificadores autorizados pueden descifrar el contenido.
 
-Noox tiene cientos de badges diferentes cubriendo DeFi, NFTs, DAOs, gaming, y más. Los badges son no transferibles (verdaderos SBTs) y representan logros que genuinamente completaste. Tu colección Noox se convierte en un currículum visual de tu actividad on-chain.
+**Disclosure selectivo**:
+
+Arquitecturas que permiten revelar solo subconjuntos de tus SBTs según el contexto, manteniendo el resto privado.
 
 ### POAP (Proof of Attendance Protocol)
 
@@ -160,30 +184,18 @@ Noox tiene cientos de badges diferentes cubriendo DeFi, NFTs, DAOs, gaming, y m�
 
 **Arquitectura técnica**:
 
-Los POAPs son NFTs ERC-721 emitidos en xDai chain (ahora Gnosis Chain) para gas costs mínimos. Cada POAP tiene:
-- **Token ID único**: Identificador numérico global único
-- **Event ID**: Vincula todos los POAPs emitidos para un mismo evento
-- **Metadata**: Imagen del artwork, nombre del evento, fecha, descripción, ciudad
-- **Timestamp on-chain**: Momento exacto de emisión registrado en blockchain
+Los POAPs son NFTs ERC-721 emitidos en xDai chain (ahora Gnosis Chain) para minimizar los costos de gas. Cada POAP contiene un identificador numérico global único, un Event ID que vincula todos los tokens de un mismo evento, metadata con imagen, nombre, fecha, descripción y ciudad, y el timestamp exacto de emisión registrado en blockchain.
 
-El smart contract POAP permite al organizador del evento acuñar (mint) badges y distribuirlos mediante:
-1. **Claim codes**: Enlaces secretos únicos por asistente (https://poap.xyz/claim/ABC123)
-2. **QR codes en persona**: Escaneas QR durante el evento, conectas wallet, reclamas POAP
-3. **Delivery directo**: Organizador mints y envía POAPs directamente a direcciones conocidas
-4. **Website gated**: Visitas URL del evento, demuestras asistencia, reclamas POAP
+El smart contract POAP permite al organizador acuñar badges y distribuirlos de varias formas: mediante claim codes (enlaces secretos únicos por asistente), QR codes escaneados en persona durante el evento, envío directo a direcciones conocidas, o a través de una URL del evento donde el asistente demuestra su presencia y reclama el token.
 
 **Distribución y prevención de farming**:
 
-POAPs enfrentan tension entre accesibilidad y prevención de abuso. Métodos para prevenir que usuarios farmeen POAPs sin asistir genuinamente:
-
-- **Time-gated claims**: Claim codes solo funcionan durante el evento o poco después, previniendo distribución viral post-facto
-- **Geolocation gated**: Ciertos POAPs requieren estar físicamente en la ubicación del evento (verificado via GPS)
-- **Secret codes anunciados en vivo**: Organizador revela claim code verbalmente durante conferencia, solo asistentes presentes lo obtienen
-- **Límites por dirección**: Un wallet solo puede reclamar un POAP específico, previniendo farming con múltiples transacciones
+Los POAPs enfrentan una tensión constante entre accesibilidad y prevención del abuso. Para evitar que usuarios acumulen POAPs sin asistir genuinamente se utilizan varias técnicas: los claim codes con ventana temporal solo funcionan durante el evento o poco después; ciertos POAPs requieren verificación de geolocalización; los códigos secretos anunciados verbalmente durante la conferencia solo pueden obtenerlos quienes están presentes; y la restricción por dirección impide reclamar el mismo POAP más de una vez.
 
 **Caso de uso: Conferencias y meetups**:
 
 [ETHDenver](https://www.ethdenver.com) emite POAPs únicos por:
+
 - Asistencia general (todos los asistentes)
 - Workshops específicos
 - Side events y after parties
@@ -193,51 +205,69 @@ Un asistente podría coleccionar 10+ POAPs diferentes durante un evento multi-d�
 
 **Caso de uso: Comunidades online y participación continua**:
 
-DAOs y protocolos emiten POAPs para participación virtual:
-- **AMAs (Ask Me Anything)**: Únete al Twitter Space o stream, reclama POAP
-- **Governance**: Vota en propuesta, recibe POAP automáticamente (on-chain proof)
-- **Discord events**: Participa en community call, modera resa otorga POAP manualmente
-- **Content contributions**: Escribe artículo/tutorial para la DAO, recibe POAP de "Content Contributor"
+DAOs y protocolos emiten POAPs para muy distintos tipos de participación virtual: unirte a un AMA en Twitter Space, votar en una propuesta de gobernanza —con emisión automática como prueba on-chain—, participar en una community call de Discord, o contribuir con artículos o tutoriales recibiendo el badge de "Content Contributor".
 
 [Bankless](https://www.bankless.com) emite POAPs semanales a holders de su NFT membership que asisten a podcast livestreams, creando engagement medible y recompensado.
 
 **POAPs y reputación componible**:
 
-POAPs funcionan como señales de reputación social en múltiples contextos:
+POAPs funcionan como señales de reputación social en múltiples contextos.
 
-1. **Access gating con Guild.xyz**: [Guild.xyz](https://guild.xyz) permite crear sistemas de membresía donde poseer POAPs específicos desbloquea beneficios. Ejemplo: "Para acceder a canal #core-contributor en Discord, debes poseer POAP de asistencia a los 3 últimos community calls + POAP de completar onboarding".
+**Access gating con Guild.xyz**:
 
-2. **Voting power en DAOs**: Protocolos pueden ponderar votos según POAPs poseídos. Ejemplo: 1 token = 1 voto base, pero +0.5 votos por cada POAP de eventos oficiales del protocolo. Esto reconoce participación histórica sin requerirla como prerequisito absoluto.
+[Guild.xyz](https://guild.xyz) permite crear sistemas de membresía donde poseer POAPs específicos desbloquea beneficios. Por ejemplo: "Para acceder al canal #core-contributor en Discord, debes poseer el POAP de asistencia a los últimos 3 community calls y el POAP de onboarding completado".
 
-3. **Lending DeFi con POAPs como colateral social**: Protocolos experimentales como [Cred Protocol](https://www.credprotocol.com) consideran POAPs como señales de riesgo crediticio. Una colección robusta de POAPs de eventos Ethereum (indicando participación genuina y probablemente hodling a largo plazo) puede calificar para mejores términos de préstamo o menores requisitos de colateralización.
+**Voting power en DAOs**:
 
-4. **NFT mints prioritarios**: Proyectos NFT dan early access o precios reducidos a holders de POAPs relevantes. Un proyecto de arte generativo podría dar whitelist a holders del POAP de NFT.NYC, asumiendo que son coleccionistas genuinos vs bots.
+Los protocolos pueden ponderar votos según los POAPs que posee cada participante. Por ejemplo, 1 token equivale a 1 voto base, pero cada POAP de eventos oficiales del protocolo suma 0.5 votos adicionales. Esto reconoce la participación histórica sin exigirla como requisito absoluto.
+
+**Lending DeFi con POAPs como colateral social**:
+
+Protocolos experimentales como [Cred Protocol](https://www.credprotocol.com) consideran los POAPs como señales de riesgo crediticio. Una colección robusta de POAPs de eventos Ethereum —que indica participación genuina y probablemente hodling a largo plazo— puede calificar para mejores términos de préstamo o menores requisitos de colateralización.
+
+**NFT mints prioritarios**:
+
+Proyectos NFT ofrecen early access o precios reducidos a holders de POAPs relevantes. Un proyecto de arte generativo podría dar whitelist a holders del POAP de NFT.NYC, asumiendo que son coleccionistas genuinos y no bots.
 
 **Visualización y gamificación**:
 
-[POAP.fun](https://poap.fun), [POAP Gallery](https://poap.gallery), y integraciones en [DeBank](https://debank.com) permiten visualizar colecciones de POAPs de forma atractiva. Tu colección se convierte en:
-- **Diario visual**: Mapa temporal de eventos donde has estado
-- **Network proof**: Demuestras conexiones con comunidades específicas
-- **Status symbol**: POAPs raros de eventos históricos (Devcon 1, primer ETHDenver) son badges de OG status
+[POAP.fun](https://poap.fun), [POAP Gallery](https://poap.gallery), y integraciones en [DeBank](https://debank.com) permiten visualizar colecciones de POAPs de forma atractiva. Tu colección se convierte en un diario visual: un mapa temporal de eventos donde has estado, una prueba de conexiones con comunidades específicas, y en ocasiones un símbolo de estatus. Los POAPs de eventos históricos como Devcon 1 o el primer ETHDenver son el equivalente on-chain de las insignias de los primeros adoptadores.
 
 Algunos POAPs se vuelven altamente valorados como coleccionables. Aunque técnicamente no son transferibles (siguen en el wallet original), existe mercado secundario informal donde usuarios venden wallets completas con POAPs raros, o acuerdan "transferir" mediante burning y re-minting coordinado con organización.
 
 **Limitaciones y críticas**:
 
-❌ **Gaming mediante proxy attendance**: Usuarios pagan a otros para asistir físicamente y escanear POAPs con sus wallets, comprando prueba de asistencia falsa. Difícil de prevenir sin verificación biométrica invasiva.
+**Gaming mediante proxy attendance**:
 
-❌ **Spam de POAPs**: Cualquiera puede crear evento POAP y spam distribuir a miles de wallets sin consentimiento. Tu colección puede llenarse de POAPs irrelevantes que no solicitaste.
+Usuarios pagan a terceros para asistir físicamente y escanear POAPs con sus wallets, comprando prueba de asistencia falsa. Es difícil de prevenir sin verificación biométrica invasiva.
 
-❌ **Falta de contexto**: Un POAP prueba que estuviste en un evento, pero no cuánto participaste ni qué aprendiste. Asistir pasivamente a 100 conferencias puede dar más POAPs que contribuir activamente a un solo proyecto.
+**Spam de POAPs**:
 
-❌ **Centralización de plataforma**: Aunque los POAPs son NFTs on-chain, el ecosistema depende de la plataforma POAP.xyz para artwork hosting, metadata, y curación. Si la empresa desaparece, la infraestructura de visualización y descubrimiento sufre.
+Cualquiera puede crear un evento POAP y distribuirlo masivamente a miles de wallets sin consentimiento. La colección puede llenarse de POAPs irrelevantes que no solicitaste.
+
+**Falta de contexto**:
+
+Un POAP prueba que estuviste en un evento, pero no cuánto participaste ni qué aprendiste. Asistir pasivamente a 100 conferencias puede generar más POAPs que contribuir activamente a un solo proyecto.
+
+**Centralización de plataforma**:
+
+Aunque los POAPs son NFTs on-chain, el ecosistema depende de POAP.xyz para el hosting del artwork, metadata y curación. Si la empresa desaparece, la infraestructura de visualización y descubrimiento se ve comprometida.
 
 **Evolución futura**:
 
-POAPs están evolucionando hacia "Proof of Action" más que solo "Proof of Attendance". Variantes incluyen:
-- **Interactive POAPs**: Reclamas POAP inicial por asistencia, pero unlockeas artwork mejorado completando quiz post-evento demostrando que realmente aprendiste
-- **Milestone POAPs**: POAPs que evolucionan visualmente al alcanzar hitos (asiste a 5 eventos → badge bronze, 10 → silver, 25 → gold)
-- **Composable POAPs**: Holding cierta combinación de POAPs desbloquea claim de un POAP especial (tienes los 5 POAPs de ETHGlobal 2024 → reclamas "ETHGlobal 2024 Circuit Completionist")
+Los POAPs están evolucionando hacia "Proof of Action" más que solo "Proof of Attendance".
+
+**Interactive POAPs**:
+
+El usuario reclama el POAP inicial por asistencia, pero puede desbloquear un artwork mejorado completando un quiz post-evento que demuestra haber aprendido el contenido.
+
+**Milestone POAPs**:
+
+Tokens que evolucionan visualmente al alcanzar hitos: asistir a 5 eventos otorga badge bronze, a 10 silver, a 25 gold.
+
+**Composable POAPs**:
+
+Poseer una combinación específica de POAPs desbloquea el claim de uno especial: tener los 5 POAPs de ETHGlobal 2024 permite reclamar el "ETHGlobal 2024 Circuit Completionist".
 
 ## Mecanismos de Construcción de Reputación
 
@@ -251,17 +281,17 @@ Un ejemplo concreto es [RabbitHole](https://rabbithole.gg), una plataforma donde
 
 El artículo de CoinDesk sobre [Reputation Mining](https://www.coindesk.com/sponsored-content/reputation-mining-builds-new-trust-via-web-3) explora cómo este mecanismo está creando nuevas formas de confianza verificable que no dependen de autoridades centrales.
 
-## 7. Guía Práctica para Construir Reputación
+## Guía Práctica para Construir Reputación
 
 Esta sección proporciona pasos concretos y accionables para usuarios que quieren comenzar a construir su reputación Web3, organizados por nivel de experiencia.
 
-### 7.1 Configuración Inicial
+### Configuración Inicial
 
 El primer paso para cualquier usuario es establecer las fundaciones básicas de identidad y seguridad antes de comenzar a acumular reputación verificable.
 
-Crear y Asegurar tu Wallet:
+**Crear y asegurar tu wallet**:
 
-Tu wallet es literalmente tu identidad en Web3, así que la seguridad es paramount. Para propósitos de construcción de reputación a largo plazo, necesitas una wallet que planeas mantener por años, no una temporal para experimentación.
+Tu wallet es literalmente tu identidad en Web3, por lo que la seguridad es fundamental. Para propósitos de construcción de reputación a largo plazo, necesitas una wallet que planeas mantener por años, no una temporal para experimentación.
 
 [MetaMask](https://metamask.io) sigue siendo la opción más compatible con prácticamente todas las aplicaciones Web3. Alternativamente, [Rainbow Wallet](https://rainbow.me) ofrece mejor UX especialmente en móvil, y [Coinbase Wallet](https://www.coinbase.com/wallet) es ideal si ya usas el exchange de Coinbase.
 
@@ -269,13 +299,13 @@ Lo crítico es el seed phrase (frase semilla de 12 o 24 palabras). Escríbelo en
 
 Un error común es crear múltiples wallets y fragmentar tu reputación. Idealmente, usa una sola dirección para todas tus actividades públicas (puedes usar otras para privacidad financiera, pero tu reputación debería consolidarse en una identidad principal).
 
-Establecer tu Identidad On-Chain:
+**Establecer tu identidad on-chain**:
 
 Registra un nombre [ENS (Ethereum Name Service)](https://ens.domains) para tu wallet. En lugar de compartir 0x1234...5678, puedes compartir tusername.eth, que es mucho más memorable y profesional. El costo es aproximadamente $5-20 por año dependiendo de la longitud del nombre.
 
 Tu nombre ENS se convierte en tu identidad portable. Puedes configurarlo como tu nombre primario en Lens Protocol, Twitter (mostrándolo en tu bio), y prácticamente cualquier aplicación Web3. Algunos empleadores en Web3 literalmente piden tu ENS en lugar de CV tradicional.
 
-Conectar Gitcoin Passport:
+**Conectar Gitcoin Passport**:
 
 Visita [passport.gitcoin.co](https://passport.gitcoin.co) y conecta tu wallet. Comienza vinculando las fuentes más fáciles: cuenta de Google, cuenta de Twitter (si tiene más de 6 meses de antigüedad), y cualquier cuenta de redes sociales que tengas.
 
@@ -283,17 +313,17 @@ El objetivo inicial es alcanzar score de 15-20 puntos, que es el mínimo para se
 
 Si tu score inicial es bajo porque eres nuevo en crypto, enfócate en los stamps que puedes obtener sin inversión: verificación de cuentas sociales existentes, participación en BrightID (requiere una videollamada de 5 minutos), y completar tu perfil ENS.
 
-Crear Perfil Social en Lens:
+**Crear perfil social en Lens**:
 
 Visita [claim.lens.xyz](https://claim.lens.xyz) para verificar si calificas para un handle Lens gratuito. Si no, puedes comprar uno en marketplaces secundarios por aproximadamente $10-30. Tu perfil Lens se convierte en tu identidad social portable en Web3.
 
 Configura tu perfil con información real: foto de perfil, bio describiendo tus intereses, y enlaces a tus otras presencias online. Comienza siguiendo proyectos y personas relevantes a tus intereses. No necesitas postear constantemente, pero tener un perfil establecido muestra que estás realmente participando en el ecosistema, no solo farming.
 
-### 7.2 Construcción Activa de Reputación
+### Construcción Activa de Reputación
 
 Una vez establecidas las bases, comienza a participar activamente en el ecosistema para acumular credenciales verificables.
 
-Completar Quests Educativas:
+**Completar quests educativas**:
 
 [RabbitHole](https://rabbithole.gg) y [Layer3](https://layer3.xyz) ofrecen quests para principiantes que no requieren capital significativo. Comienza con quests de "onboarding" que te enseñan conceptos básicos como usar swaps en Uniswap, conectar a diferentes L2s, o interactuar con protocolos de staking.
 
@@ -301,7 +331,7 @@ Estrategia recomendada: no farmees quests aleatoriamente solo por recompensas. E
 
 Por ejemplo, si te interesa DeFi, completa todas las quests relacionadas con AMMs, lending, y yield farming. Si te interesa gobernanza, enfócate en quests de DAO participation y voting. Esta especialización hace que tus credenciales sean más valiosas que un perfil genérico que hizo todo superficialmente.
 
-Participar en Protocolos DeFi:
+**Participar en protocolos DeFi**:
 
 Aún con capital modesto (incluso $50-100), puedes comenzar a construir historial DeFi verificable. Usa L2s como [Arbitrum](https://arbitrum.io) o [Optimism](https://www.optimism.io) donde los fees son mínimos.
 
@@ -309,15 +339,15 @@ Opciones de bajo riesgo para principiantes incluyen proveer liquidez en stableco
 
 Lo importante no es el monto sino la consistencia y diversidad. Es mejor usar 5 protocolos diferentes con $20 cada uno durante 6 meses que hacer una transacción única de $100 y nunca volver. El historial de participación sostenida es lo que construye reputación.
 
-Coleccionar POAPs:
+**Coleccionar POAPs**:
 
 Asiste a eventos virtuales de Web3 y colecciona POAPs. [POAP.fun](https://poap.fun) lista eventos upcoming con distribución de POAPs. Participa en Twitter Spaces de proyectos que te interesan, meetups virtuales de comunidades, y webinars educativos.
 
-Los POAPs más valiosos vienen de eventos con alta barrier to entry, no distribuciones masivas. Un POAP de presentar en ETHDenver vale más reputacionalmente que un POAP de unirte a un server de Discord. Prioriza calidad sobre cantidad.
+Los POAPs más valiosos provienen de eventos con alta barrera de entrada, no de distribuciones masivas. Un POAP de presentar en ETHDenver vale más reputacionalmente que un POAP de unirte a un server de Discord. Prioriza calidad sobre cantidad.
 
 Algunos POAPs históricos se vuelven coleccionables valiosos (POAPs de los primeros eventos de Ethereum, por ejemplo), pero no deberías coleccionar por valor financiero sino por construcción de reputación genuina.
 
-Contribuir a DAOs:
+**Contribuir a DAOs**:
 
 Encuentra una DAO alineada con tus intereses y comienza a contribuir. No necesitas ser desarrollador; DAOs necesitan diseñadores, escritores, community managers, traductores, y muchos otros roles.
 
@@ -325,7 +355,7 @@ Encuentra una DAO alineada con tus intereses y comienza a contribuir. No necesit
 
 Cada contribución bien completada típicamente resulta en un POAP, badge de Otterspace, o SBT que certifica tu trabajo. Acumula 5-10 de estos en una DAO específica y empiezas a ser reconocido como contribuidor genuino, no turista.
 
-Participar en Gobernanza:
+**Participar en gobernanza**:
 
 Votar en propuestas de gobernanza de protocolos que usas es crucial para reputación. No necesitas holdings masivos de governance tokens; muchos protocolos permiten participar mediante delegation (puedes votar con tokens delegados a ti por otros).
 
@@ -333,11 +363,11 @@ Votar en propuestas de gobernanza de protocolos que usas es crucial para reputac
 
 Participación consistente en gobernanza (votando en 10+ propuestas durante varios meses) es una señal fuerte de que no eres un holder especulativo sino un participante comprometido del ecosistema.
 
-### 7.3 Roadmap de Progresión
+### Roadmap de Progresión
 
 Esta sección proporciona hitos concretos organizados por timeline realista.
 
-Primeras 4 Semanas - Fundaciones:
+**Primeras 4 semanas — Fundaciones**:
 
 Al final del primer mes, deberías tener tu infraestructura básica completa. Esto incluye wallet segura con seed phrase respaldado, nombre ENS registrado y configurado, Gitcoin Passport con score mínimo de 15 puntos, perfil Lens creado y básicamente configurado, y tus primeros 3-5 POAPs de eventos virtuales.
 
@@ -345,7 +375,7 @@ También deberías haber completado al menos 3 quests en RabbitHole o Layer3, in
 
 El objetivo no es impresionar a nadie todavía sino establecer presencia verificable que no parezca cuenta nueva creada ayer. Muchos filtros anti-Sybil simplemente verifican antigüedad básica de la cuenta.
 
-Meses 2-3 - Participación Activa:
+**Meses 2-3 — Participación activa**:
 
 Durante este período, profundiza tu participación. Incrementa tu Gitcoin Passport score a 25+ añadiendo stamps más difíciles como verificación de BrightID, holdings históricos de tokens, y participación en Gitcoin Grants.
 
@@ -355,7 +385,7 @@ Haz tu primera contribución sustancial a una DAO (completar un bounty, escribir
 
 Tu wallet debería mostrar interacciones regulares con 5-7 protocolos diferentes distribuidas a lo largo de estos meses, no transacciones en ráfagas cortas que parecen farming.
 
-Meses 4-6 - Especialización y Profundidad:
+**Meses 4-6 — Especialización y profundidad**:
 
 En esta fase, tu reputación comienza a tener valor real. Deberías tener Gitcoin Passport score de 30+, lo que te califica para prácticamente cualquier airdrop o programa selectivo.
 
@@ -365,7 +395,7 @@ Tu portfolio DeFi debería ser diversificado: experiencia con AMMs, lending, sta
 
 Comienza a ser activo en Lens publicando insights sobre protocolos que usas, compartiendo experiencias, o contribuyendo a discusiones técnicas. Tu perfil social complementa tu actividad on-chain.
 
-Más Allá de 6 Meses - Reputación Establecida:
+**Más allá de 6 meses — Reputación establecida**:
 
 Con 6+ meses de participación consistente, tu reputación tiene peso real. Deberías tener Humanity Score de 35+, portfolio diversificado de 10+ protocolos usados regularmente, colección de 30+ POAPs curados (no spam), SBTs y badges de múltiples contribuciones verificables, y perfil Lens con actividad regular y seguidores genuinos.
 
@@ -373,11 +403,11 @@ En este punto, calificas para oportunidades reales: préstamos subcolateralizado
 
 Algunos usuarios en este nivel comienzan a recibir ofertas laborales directas basándose en su reputación on-chain visible, o son invitados a participar en programas selectivos de aceleradores y grants.
 
-### 7.4 Ejemplos de Perfiles Reales
+### Ejemplos de Perfiles Reales
 
 Para ilustrar cómo se ve reputación construida exitosamente, analicemos perfiles anonymizados de usuarios reales.
 
-El Trader DeFi Experimentado:
+**El trader DeFi experimentado**:
 
 Este perfil muestra 600+ transacciones on-chain distribuidas a lo largo de 18 meses. Interacciones con 20+ protocolos DeFi diferentes incluyendo Uniswap, Aave, Compound, Curve, Convex, y protocols más nicho. Proveyó liquidez continuamente durante 12+ meses en varios pools, acumulando más de $100,000 en volumen total (no necesariamente de capital propio, sino volumen generado).
 
@@ -385,7 +415,7 @@ Gitcoin Passport score de 38 puntos con stamps de prácticamente todas las categ
 
 Resultado medible: accedió a beta cerrado de [Spectral Finance](https://www.spectral.finance) para préstamos subcolateralizados, calificó para airdrop de [dYdX](https://dydx.exchange) recibiendo $2,000+, y fue reclutado como liquidity manager para una nueva DAO de DeFi.
 
-La Contribuidora de DAO Prolífica:
+**La contribuidora de DAO prolífica**:
 
 Perfil con menos actividad DeFi (50 transacciones totales) pero profunda participación en gobernanza y construcción comunitaria. Contribuidora activa en 4 DAOs diferentes con badges de Otterspace en todas: Gitcoin, MakerDAO, ENS, y Optimism.
 
@@ -395,7 +425,7 @@ Gitcoin Passport score de 32 puntos. Perfil Lens muy activo con 1,200 seguidores
 
 Resultado medible: ofreció posición full-time como Governance Lead en protocol importante con salario de $120k + equity, reconocida públicamente por Vitalik Buterin en Twitter por sus contribuciones a gobernanza descentralizada.
 
-El Desarrollador Open Source:
+**El desarrollador open source**:
 
 Wallet con relativamente pocas transacciones (150 total) pero cada una significativa. Deployó 12 smart contracts en mainnet, varios auditados por firmas reconocidas. Contribuidor verificado en GitHub con 2,000+ commits a repositorios Web3 (verificable mediante [GitPOAP](https://www.gitpoap.io)).
 
@@ -420,7 +450,7 @@ Los sistemas de reputación pueden servir cuatro propósitos principales, cada u
 
 Los sistemas de incentivos usan reputación para distribuir recompensas de forma más justa. Un programa de airdrops podría ponderar distribución basándose en scores de reputación en lugar de solo token holdings, previniendo que ballenas dominen completamente.
 
-La gobernanza ponderada combina reputación con holdings de tokens para votación. Como vimos con Optimism, esto previene plutocracia pura mientras mantiene skin in the game económico.
+La gobernanza ponderada combina reputación con holdings de tokens para la votación. Como vimos con Optimism, esto previene la plutocracia pura al tiempo que mantiene el compromiso económico de los participantes.
 
 La reducción de riesgo usa reputación para identificar actores maliciosos o comportamiento sospechoso. Marketplaces descentralizados podrían usar reputación de vendedores para proteger compradores.
 
@@ -442,7 +472,7 @@ Datos on-chain puros proporcionan máxima verificabilidad y resistencia a censur
 
 Datos off-chain permiten incorporar actividad en GitHub, Twitter, Discord, o bases de datos propietarias. Esto amplía scope dramáticamente pero requiere oráculos confiables. [Chainlink Functions](https://chain.link/functions) puede ayudar a traer datos off-chain on-chain de forma descentralizada, pero siempre introduce un punto de confianza.
 
-La arquitectura híbrida óptima usa datos on-chain como base primaria y complementa con datos off-chain verificados mediante attestations de terceros confiables. Por ejemplo, Gitcoin Passport usa transacciones on-chain directamente pero consumé attestations de proveedores de identidad para datos sociales.
+La arquitectura híbrida óptima usa datos on-chain como base primaria y complementa con datos off-chain verificados mediante attestations de terceros confiables. Por ejemplo, Gitcoin Passport usa transacciones on-chain directamente pero consume attestations de proveedores de identidad para datos sociales.
 
 **Elegir Protocolos de Infraestructura**:
 
@@ -506,15 +536,15 @@ Implementa estándares abiertos como DIDs del W3C para identidades en lugar de i
 
 ## Futuro de la Reputación Web3
 
-**Reputación para Agentes de IA**:
+### Reputación para Agentes de IA
 
-Con el rise de agentes de IA autónomos que ejecutan transacciones on-chain, surge la necesidad de reputación para entidades no-humanas. Un agente de IA que gestiona un fondo de inversión DeFi necesitará construir reputación basándose en su track record de decisiones.
+Con el surgimiento de agentes de IA autónomos que ejecutan transacciones on-chain, surge la necesidad de reputación para entidades no-humanas. Un agente de IA que gestiona un fondo de inversión DeFi necesitará construir reputación basándose en su track record de decisiones.
 
 Esto es fundamentalmente diferente de reputación humana porque los agentes pueden ser copiados infinitamente. La solución probablemente involucre vincular agentes de IA a identidades humanas responsables (el desarrollador o DAO que lo controla) mediante attestations en cadena de responsabilidad.
 
-[Autonolas](https://www.autonolas.network) está explorando este espacio con agentes autónomos que tienen identidades on-chain y acumulan reputación mediante sus acciones. Veremos emergence de "credit scores" para agentes de IA que determinan cuánto capital la comunidad está dispuesta a confiarles.
+[Autonolas](https://www.autonolas.network) está explorando este espacio con agentes autónomos que tienen identidades on-chain y acumulan reputación mediante sus acciones. Surgirán "credit scores" para agentes de IA que determinen cuánto capital la comunidad está dispuesta a confiarles.
 
-**Sistemas de Karma Dinámicos y Contextuales**:
+### Sistemas de Karma Dinámicos y Contextuales
 
 Los sistemas actuales usan pesos fijos: proveer liquidez vale X puntos, votar vale Y puntos. Los sistemas futuros usarán algoritmos adaptativos donde los pesos cambian basándose en comportamiento agregado de la cohorte.
 
@@ -522,7 +552,7 @@ Si el 90% de usuarios están farmeando un tipo específico de actividad, el algo
 
 [Orange Protocol](https://www.orangeprotocol.io) experimenta con modelos contextuales donde tu reputación es diferente en cada comunidad basándose en comportamientos específicos valorados por esa comunidad, en lugar de un score global único.
 
-**Mercados de Predicción Reputacional**:
+### Mercados de Predicción Reputacional
 
 Imagina poder apostar sobre el futuro comportamiento de una dirección basándote en su reputación histórica. Esto crearía mercados líquidos donde la reputación tiene precio explícito descubrible.
 
@@ -530,21 +560,21 @@ Por ejemplo, podrías apostar que una dirección con alta reputación DeFi no ha
 
 Esto crea incentivos económicos directos para mantener buena reputación: tu reputación literalmente tiene valor de mercado que puedes perder por comportamiento malicioso. Protocolos como [Augur](https://augur.net) o [Polymarket](https://polymarket.com) podrían evolucionar para incluir markets de reputación.
 
-**Proof of Being y Biometría Descentralizada**:
+### Proof of Being y Biometría Descentralizada
 
 El mayor desafío sin resolver de reputación es Proof of Personhood definitivo. Worldcoin representa un enfoque mediante biometría centralizada, pero la comunidad busca alternativas descentralizadas.
 
 Tecnologías emergentes como [Proof of Humanity](https://www.proofofhumanity.id) combinan video verificación, depósitos económicos, y arbitraje descentralizado. [Idena](https://idena.io) usa validation puzzles síncronos. Futuros sistemas podrían usar análisis de comportamiento on-chain sofisticado para detectar patrones que son prácticamente imposibles de replicar por bots a escala.
 
-El objetivo final es sistema que definitivamente distingue humanos únicos de Sybils sin require sacrifice de privacidad extremo.
+El objetivo final es un sistema que distinga definitivamente humanos únicos de Sybils sin requerir un sacrificio extremo de privacidad.
 
-**Integración Cross-Chain Universal**:
+### Integración Cross-Chain Universal
 
 Actualmente, reputación está mayormente fragmentada por chain. Tu actividad en Ethereum no se refleja automáticamente en Polygon o Solana. El futuro requiere agregación cross-chain transparente.
 
 Protocolos como [LayerZero](https://layerzero.network) y [Axelar](https://axelar.network) están construyendo infraestructura de mensajería cross-chain que podría permitir que attestations emitidas en una chain sean verificables en cualquier otra.
 
-Veremos emergence de "reputation oracles" que agregan datos de múltiples chains en scores unificados. Tu reputación total incorporaría actividad en Ethereum, Polygon, Arbitrum, Solana, y cualquier otra chain donde participas.
+Surgirán "reputation oracles" que agregan datos de múltiples chains en scores unificados. Tu reputación total incorporaría actividad en Ethereum, Polygon, Arbitrum, Solana, y cualquier otra chain donde participas.
 
 ## Referencias
 
