@@ -4,11 +4,7 @@
 
 ### 1.4 Mecanismos de Construcción de Reputación
 
-### 1.2 Infraestructura de Datos
 
-[Ceramic Network](https://ceramic.network) proporciona almacenamiento descentralizado de datos mutables de identidad que pueden actualizarse manteniendo un identificador persistente. Esto es crucial para perfiles y datos de reputación que evolucionan con el tiempo.
-
-[The Graph](https://thegraph.com) permite indexación eficiente de datos on-chain mediante subgraphs que procesan eventos de smart contracts, haciendo trivial consultar información histórica compleja como attestations de EAS, POAPs recibidos, o votaciones en DAOs.
 
 ## 2. Infraestructura y Estándares Técnicos
 
@@ -26,7 +22,7 @@ Los estándares técnicos aseguran interoperabilidad y permiten que diferentes i
 
 **ERC-6551 Token Bound Accounts**: Revoluciona el concepto de reputación vinculada a NFTs permitiendo que cada NFT tenga su propia wallet/cuenta inteligente. Esto transforma NFTs de simples activos digitales a identidades completas capaces de acumular reputación propia, poseer otros tokens y NFTs, y ejecutar transacciones. Un SBT de identidad profesional implementado con ERC-6551 puede acumular POAPs, badges de logros, y attestations directamente, creando un perfil de reputación portable y componible. [Tokenbound](https://tokenbound.org) lidera la implementación con casos de uso en gaming (avatares con inventarios y logros acumulados), identidad profesional (perfiles NFT que poseen certificaciones), y membresías DAO (NFTs de membresía con historial de votación y contribuciones). La ventaja crítica es que toda la reputación asociada se mueve con el NFT si es transferible, permitiendo mercados secundarios de identidades establecidas mientras se mantiene la integridad del historial reputacional.
 
-**EIP-4844 Proto-Danksharding**: Reduce drásticamente costos de publicar attestations on-chain mediante blobs de datos temporales, haciendo viable reputación granular on-chain.
+
 
 ## 3. Arquitectura de Sistemas de Reputación
 

@@ -379,4 +379,38 @@ La idea central es que el usuario deposita sus activos en una bóveda (vault) ge
 
 Ideal para usuarios o protocolos que buscan maximizar rendimientos en DeFi sin dedicar tiempo a gestionar estrategias manualmente. Especialmente útil cuando se tiene capital que genera rendimientos pasivos pero se quiere optimizar su rentabilidad sin la complejidad de operar directamente en múltiples protocolos. También es valioso para proyectos que necesitan gestionar tesorerías de forma eficiente, maximizando el valor de sus reservas mientras mantienen liquidez disponible.
 
+## Plataformas multi-categoría
+
+Algunas plataformas no encajan en una única categoría porque integran varias capas de infraestructura en un solo stack. En lugar de forzarlas dentro de una categoría concreta, conviene entenderlas como stacks completos de ejecución onchain, donde la wallet, la automatización y la orquestación DeFi forman parte de un producto cohesionado.
+
+### [Biconomy](https://www.biconomy.io/)
+
+Biconomy comenzó en 2019 como una solución de meta-transacciones (relayers gasless) y ha evolucionado hasta convertirse en una plataforma de ejecución onchain completa. Su propuesta es ofrecer experiencia Web2 en aplicaciones Web3, eliminando la fricción del gas, la gestión de múltiples chains y la complejidad de la firma de transacciones.
+
+Su arquitectura se articula alrededor de tres componentes principales que cubren categorías distintas de este documento. En el plano de WaaS, ofrece **Nexus**, su smart account propia compatible con [ERC-7579](https://eips.ethereum.org/EIPS/eip-7579), que es la más eficiente en gas del mercado con un 25% menos de coste que alternativas. Nexus incluye arquitectura modular para instalar módulos de recuperación, límites de gasto o session keys, y funciona tanto con wallets EOA (vía EIP-7702) como con smart accounts propias.
+
+En el plano de AaaS, Biconomy introduce el **MEE (Modular Execution Environment)**, que va más allá de ERC-4337. Con MEE, el usuario firma una sola vez y el sistema ejecuta operaciones encadenadas en múltiples chains, gestionando bridges, orden de ejecución y gas de forma automática. Esto incluye ejecución condicional basada en oráculos de precio, TWAPs y otras lógicas complejas que los keepers tradicionales no pueden orquestar de forma composable.
+
+Las **Smart Sessions** son el mecanismo que conecta WaaS con AaaS: permiten delegar permisos de ejecución scoped a agentes (bots, estrategias automatizadas, agentes de IA) con límites precisos por contrato, función y monto, sin requerir firmas adicionales del usuario en cada operación. Un agente puede, por ejemplo, rebalancear fondos entre AAVE, Morpho y Yearn, pero únicamente con USDC y con un techo de 10.000 USDC, sin ningún acceso fuera de esos parámetros.
+
+Finalmente, en el plano de orquestación DeFi, la **Supertransaction API** ofrece swaps cross-chain con routing óptimo entre DEXs, zaps de un clic para entrar o salir de vaults y mercados de lending, y acceso unificado a más de 200 protocolos a través de una sola API REST, sin necesidad de escribir contratos ni gestionar encodings.
+
+**Ventajas**:
+
+- Stack completo: combina smart accounts, gasless, automatización y orquestación DeFi en una sola integración.
+- Una firma, múltiples chains: el usuario no gestiona bridges ni secuenciación de transacciones entre redes.
+- Compatibilidad universal: funciona con EOAs existentes (MetaMask, Rabby), wallets embebidas (Privy, Dynamic) e institucionales (Fireblocks, Safe), sin migración.
+- Smart Sessions para agentes: delega ejecución autónoma con políticas de seguridad on-chain, ideal para estrategias DeFi automatizadas y agentes de IA.
+- Eficiencia de gas: Nexus reduce coste por transacción frente a otras smart accounts.
+
+**Desventajas**:
+
+- Complejidad del stack: la amplitud de capacidades implica una curva de aprendizaje mayor que soluciones de una sola categoría.
+- Dependencia del proveedor: el MEE y el bundler son infraestructura centralizada de Biconomy; una interrupción afecta a todas las capas simultáneamente.
+- Madurez del ecosistema: aunque battle-tested con 70M+ transacciones, el MEE y las Smart Sessions son componentes más recientes con menor historial en producción.
+
+**Cuándo usar**:
+
+Cuando se necesita construir una dApp con experiencia de usuario sin fricciones y con lógica de ejecución compleja: onboarding sin gas, operaciones multi-step en múltiples chains con una sola firma del usuario, o delegación de ejecución a agentes autónomos con límites de seguridad precisos. Es especialmente relevante para aplicaciones DeFi avanzadas, juegos onchain y cualquier producto que quiera eliminar todas las barreras técnicas de la blockchain para el usuario final.
+
 ---

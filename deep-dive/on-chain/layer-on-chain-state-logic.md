@@ -1,6 +1,8 @@
 # Nueva capa de arquitectura de software: lógica de estado on-chain
 
-La lógica de estado on‑chain es una nueva capa donde los smart contracts consolidan acuerdos y registran transacciones de forma replicada, transparente e inmutable. Se ejecutan por transacciones iniciadas por cuentas externas y aportan transparencia, auditabilidad, resiliencia y propiedad/portabilidad de datos; sus principales trade‑offs son coste, latencia y privacidad. No toda la lógica debe moverse on‑chain: diseñar una arquitectura híbrida (on‑chain para validaciones críticas y estados finales; off‑chain para cálculos, UX y datos sensibles). Para adoptar esta capa en una empresa: avanzar con pilotos controlados, auditorías, gestión segura de claves y uso de servicios BaaS cuando convenga.
+La lógica de estado on‑chain es una nueva capa donde los smart contracts consolidan acuerdos y registran transacciones de forma replicada, transparente e inmutable. Se ejecutan por transacciones iniciadas por cuentas externas y aportan transparencia, auditabilidad, resiliencia y propiedad/portabilidad de datos; sus principales trade‑offs son coste, latencia y privacidad.
+
+No toda la lógica debe moverse on‑chain: diseñar una arquitectura híbrida (on‑chain para validaciones críticas y estados finales; off‑chain para cálculos, UX y datos sensibles). Para adoptar esta capa en una empresa: avanzar con pilotos controlados, auditorías, gestión segura de claves y uso de servicios BaaS cuando convenga.
 
 Con el surgimiento de los smart contracts, se introduce una nueva abstracción en el diseño de sistemas: una capa lógica dedicada a la gestión de acuerdos entre partes. En esta capa, las transacciones se registran y su estado final queda disponible para ser consultado y verificado, aportando transparencia y confianza en el proceso.
 
