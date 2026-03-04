@@ -1,18 +1,16 @@
 # Nueva capa de arquitectura de software: lógica de estado on-chain
 
-La lógica de estado on‑chain es una nueva capa donde los smart contracts consolidan acuerdos y registran transacciones de forma replicada, transparente e inmutable. Se ejecutan por transacciones iniciadas por cuentas externas y aportan transparencia, auditabilidad, resiliencia y propiedad/portabilidad de datos; sus principales trade‑offs son coste, latencia y privacidad.
+La lógica de estado on-chain es una nueva capa donde los acuerdos se consolidan de forma inmutable y verificable. Sus atributos más relevantes son la transparencia, la resiliencia, propiedad y portabilidad de los datos por parte del usuario; sus principales trade-offs son coste, latencia y privacidad limitada.
 
-No toda la lógica debe moverse on‑chain: diseñar una arquitectura híbrida (on‑chain para validaciones críticas y estados finales; off‑chain para cálculos, UX y datos sensibles). Para adoptar esta capa en una empresa: avanzar con pilotos controlados, auditorías, gestión segura de claves y uso de servicios BaaS cuando convenga.
+Esto es posible gracias a una red descentralizada de nodos que alcanza consenso sobre el estado global, registrando cada transición en la estructura de datos que comúnmente se conoce como blockchain.
 
-Con el surgimiento de los smart contracts, se introduce una nueva abstracción en el diseño de sistemas: una capa lógica dedicada a la gestión de acuerdos entre partes. En esta capa, las transacciones se registran y su estado final queda disponible para ser consultado y verificado, aportando transparencia y confianza en el proceso.
+> Este concepto redefine la autoridad y la confianza en el software. Ya no se confía en un servidor, sino en una red que verifica, ejecuta y certifica acuerdos mediante código.
 
-> Este nuevo concepto redefine la autoridad y confianza en el software. Ya no se confía en un servidor, sino en una red que verifica, ejecuta y certifica acuerdos mediante código.
+No toda la lógica debe vivir on-chain. El enfoque más pragmático es una arquitectura híbrida: la cadena gestiona validaciones críticas y estados finales, mientras la lógica sensible, los cálculos complejos y la UX permanecen off-chain. Para adoptar esta capa en una organización, lo razonable es avanzar con pilotos controlados, auditorías de contratos, gestión segura de claves y el uso de servicios [BaaS](https://observatorioblockchain.com/blockchain/que-es-blockchain-como-servicio-baas-y-cual-es-uso-empresarial/) cuando convenga.
 
-Un smart contract es el lugar donde se codifican las condiciones que debe cumplir un acuerdo. Para una transacción dada, puede ejecutarse automáticamente uno o varios smart contracts, considerados como una secuencia de promesas que deben confirmarse. Desde un punto de vista técnico, un contrato puede recibir una transacción, validar condiciones, revertir la transacción o invocar otro contrato, todo de forma automática según la lógica implementada. Si alguna condición no se cumple, el contrato puede revertir la operación o seguir flujos alternativos definidos en el código.
+Redes como Ethereum actúan como un gran ordenador distribuido, lento pero seguro. Las piezas de software que definen la lógica de esas transiciones son los smart contracts: el lugar donde se codifican las condiciones de un acuerdo. Son en esencia máquinas de estado distribuidas, donde toda transición del estado global es desencadenada por una transacción firmada por una cuenta externa ([EOA](https://www.binance.com/es/academy/glossary/externally-owned-account-eoa)). Los smart contracts encadenan esas transiciones como una secuencia de promesas; cada una puede validar condiciones, invocar otros contratos o revertir la operación completa si algo falla. Esta mecánica da lugar a la **lógica de estado on-chain** como nueva capa en la arquitectura de software.
 
-Estas condiciones se ejecutan automáticamente y es importante aclarar una confusión común: las condiciones se ejecutan automáticamente, pero los smart contracts no se inician por sí solos. Su ejecución surge de una transacción, originada por una cuenta externa (EOA). La lógica interna del contrato se ejecuta de forma determinista, pero el inicio siempre viene dado, ya sea de un usuario o de una infraestructura off-chain que interactúa con la cadena.
-
-Esta lógica basada en promesas y condiciones consensuadas introduce una nueva capa en la arquitectura de software: la **lógica de estado on-chain**. A diferencia de la lógica de negocio tradicional, que suele residir en un backend centralizado, esta capa opera sobre una red de nodos descentralizados que deben alcanzar consenso sobre la ejecución y el estado único de cada transacción. Esto aporta mayor seguridad y resiliencia, superando las limitaciones de las arquitecturas convencionales. El principal trade-off es una menor velocidad y el hecho de que las transacciones son inmutables y públicas; aunque existe seudoanonimato, la privacidad real es limitada.
+Conviene aclarar una confusión frecuente: aunque la lógica del contrato se ejecuta de forma automática y determinista, los smart contracts no se inician solos. Siempre hay una transacción EOA en el origen, ya provenga de un usuario directamente o de una infraestructura off-chain que interactúa con la cadena.
 
 ## Comparación con la arquitectura tradicional
 
@@ -37,7 +35,7 @@ No debe albergar toda la lógica de negocio por razones de coste, latencia y pri
 
 - Validación de condiciones críticas como acuerdos, votaciones o reglas de acceso.
 - Definición de consecuencias en caso de cumplimiento o incumplimiento.
-- Registro inmutable de eventos o evidencias como hashes, firmas o marcas de tiempo.
+- Registro de evidencias verificables: desde compromisos criptográficos básicos hasta pruebas de conocimiento cero ([ZK proofs](https://ethereum.org/es/zero-knowledge-proofs/)) que permiten demostrar que una condición se cumple sin revelar los datos subyacentes.
 - Registros contables tokenizados: representación on‑chain de activos fungibles (p. ej. ERC‑20) y no fungibles (p. ej. ERC‑721), que actúan como tokens, llaves o pruebas de propiedad y habilitan operaciones en aplicaciones de terceros dentro de la red.
 
 ## Hacia una arquitectura híbrida

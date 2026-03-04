@@ -6,24 +6,6 @@
 
 
 
-## 2. Infraestructura y Estándares Técnicos
-
-### 2.1 Grafos Sociales Descentralizados
-
-[Lens Protocol](https://lens.xyz) trata todo como NFTs componibles: perfiles, follows y contenido están on-chain y son verificables. Esto permite probar seguidores reales y la calidad de interacciones sociales. [Farcaster](https://www.farcaster.xyz) adopta arquitectura híbrida con identidades on-chain pero contenido off-chain, optimizando costos mientras preserva verificabilidad de lo esencial.
-
-### 2.2 Estándares Técnicos
-
-Los estándares técnicos aseguran interoperabilidad y permiten que diferentes implementaciones trabajen juntas de forma predecible.
-
-**EIP-4973 Account-Bound Tokens**: Formaliza SBTs con mecanismos de aceptación por el receptor (previene spam) y revocación por el emisor. [Noox](https://noox.world) lo utiliza para achievements on-chain verificables.
-
-**EIP-4337 Account Abstraction**: Permite wallets con lógica personalizable basada en reputación, como transacciones que requieren scores mínimos o permisos automáticos para miembros con badges específicos. [Safe](https://safe.global) implementa configuraciones multisig variables según reputación.
-
-**ERC-6551 Token Bound Accounts**: Revoluciona el concepto de reputación vinculada a NFTs permitiendo que cada NFT tenga su propia wallet/cuenta inteligente. Esto transforma NFTs de simples activos digitales a identidades completas capaces de acumular reputación propia, poseer otros tokens y NFTs, y ejecutar transacciones. Un SBT de identidad profesional implementado con ERC-6551 puede acumular POAPs, badges de logros, y attestations directamente, creando un perfil de reputación portable y componible. [Tokenbound](https://tokenbound.org) lidera la implementación con casos de uso en gaming (avatares con inventarios y logros acumulados), identidad profesional (perfiles NFT que poseen certificaciones), y membresías DAO (NFTs de membresía con historial de votación y contribuciones). La ventaja crítica es que toda la reputación asociada se mueve con el NFT si es transferible, permitiendo mercados secundarios de identidades establecidas mientras se mantiene la integridad del historial reputacional.
-
-
-
 ## 3. Arquitectura de Sistemas de Reputación
 
 Construir un sistema de reputación efectivo requiere entender cómo diferentes capas de tecnología se integran para crear una solución completa. La arquitectura típica sigue un modelo de capas donde cada nivel abstrae la complejidad del nivel inferior y proporciona servicios al nivel superior.
@@ -116,97 +98,7 @@ Las fechas de caducidad son importantes para la higiene del sistema. Una attesta
 
 Finalmente, los esquemas de atestación reutilizables permiten que comunidades converjan en estándares comunes. En lugar de que cada institución educativa cree su propio formato de diploma digital, todos pueden usar el mismo schema subyacente, facilitando interoperabilidad y reconocimiento automático.
 
-## 4. Casos de Uso
 
-Los sistemas de reputación Web3 no son construcciones teóricas, sino que están resolviendo problemas reales en múltiples dominios. Cada caso de uso demuestra cómo la reputación verificable puede transformar industrias y crear oportunidades que eran imposibles en sistemas centralizados.
-
-### 4.1 Finanzas Descentralizadas (DeFi)
-
-El caso de uso más impactante financieramente para reputación Web3 es la democratización del acceso al crédito. En el sistema financiero tradicional, si tienes mal crédito o vives en un país sin infraestructura crediticia robusta, simplemente no puedes acceder a préstamos razonables. En DeFi actual, el problema es diferente pero igualmente limitante: necesitas sobre-colateralizar dramáticamente.
-
-Para obtener un préstamo de $10,000 en [Aave](https://aave.com) o [Compound](https://compound.finance), necesitas depositar quizás $15,000 en colateral. Esto hace que DeFi sea inaccesible para quien más necesita préstamos: gente que no tiene capital inicial significativo.
-
-La reputación on-chain cambia esta ecuación. Imagina que has estado participando en DeFi durante dos años. Has tomado préstamos cinco veces y los has repagado todos a tiempo. Has provisto liquidez en Uniswap acumulando $50,000 en volumen. Participas activamente en gobernanza de Compound. Todo esto está verificable on-chain.
-
-Protocolos experimentales como [ARCx](https://arcx.money) (ahora descontinuado pero pionero) y [Spectral Finance](https://www.spectral.finance) han explorado crear credit scores on-chain que permiten préstamos sub-colateralizados.
-
-Spectral Finance implementa un sistema sofisticado de credit scoring que analiza múltiples dimensiones de comportamiento DeFi verificable. El score agrega tu ratio de repago de préstamos históricos, antigüedad de la wallet (wallets más antiguas tienen más contexto histórico), diversidad de protocolos utilizados (indica experiencia genuina versus farming focalizado), patrón de holdings (volatilidad versus estabilidad), y participación en gobernanza (señal de compromiso long-term).
-
-El algoritmo de Spectral utiliza machine learning entrenado sobre millones de transacciones on-chain para identificar patrones que correlacionan con probabilidad de repago. Por ejemplo, usuarios que mantienen stablecoins consistentemente, participan en múltiples protocolos, y tienen historial de no liquidaciones tienden a ser más confiables. El score se actualiza dinámicamente conforme tu comportamiento on-chain evoluciona, creando un sistema de reputación crediticia verdaderamente vivo.
-
-Este enfoque de reputation oracle permite que protocolos de lending ofrezcan términos diferenciados. Un usuario con alto Spectral score podría calificar para ratios de colateralización de 110% en lugar del 150% estándar, desbloqueando eficiencia de capital significativa. El sistema crea incentivos para comportamiento responsable on-chain, donde cada préstamo repagado mejora tu reputación y acceso futuro a capital.
-
-[Ethos Network](https://www.ethos.network) lleva esto más allá con un marketplace de credibilidad donde otros usuarios pueden "vouchar" por ti apostando su propia reputación. Si yo voucho por ti y tú haces default en un préstamo, mi score también baja. Esto crea incentivos alineados para que solo vouches por gente que realmente conoces y confías.
-
-El resultado podría ser revolucionario: alguien en Argentina o Nigeria con excelente comportamiento DeFi pero cero historial crediticio tradicional podría acceder a un préstamo al 8% anual en lugar del 200% que cargan los prestamistas locales informales. Y todo esto sin entrevistas, papeles, o burocracia, simplemente basándose en su historial verificable on-chain.
-
-Un ejemplo específico: imagina que María ha provisto liquidez en Curve durante 18 meses sin interrupciones, votado en 30 propuestas de gobernanza, y completado su Gitcoin Passport con un score de 35. Un protocolo de préstamos podría ofrecerle un préstamo de $5,000 con solo $6,000 de colateral (ratio 120% en lugar del 150% estándar), ahorrándole $1,500 en capital inmovilizado. La diferencia se cubre mediante un seguro comunitario financiado por otros usuarios con alta reputación.
-
-### 4.2 Gobernanza de DAOs
-
-Las DAOs enfrentan un problema existencial: la plutocracia del token-vote. En la mayoría de DAOs, un voto equivale a un token, lo que significa que las ballenas ricas pueden controlar completamente las decisiones, independientemente de su conocimiento del protocolo o compromiso a largo plazo. La reputación on-chain ofrece mecanismos para abordar este problema mediante sistemas híbridos que combinan poder económico (tokens) con participación verificable y contribuciones históricas.
-
-[Optimism](https://www.optimism.io) fue pionero en abordar este problema con su sistema de delegación bicameral. Además del voto por tokens, Optimism tiene la Citizens' House donde el poder de voto se basa en citizenship badges (SBTs) otorgados a contribuidores verificados del ecosistema. No puedes comprar estos badges, solo ganarlos mediante contribuciones sustanciales. En la ronda 3 de RetroPGF, Optimism distribuyó 30 millones de dólares a proyectos basándose en votos de ciudadanos que demostraron contribuciones verificables.
-
-[MakerDAO](https://makerdao.com) experimenta con un modelo híbrido donde ciertos tipos de votaciones requieren no solo holdings de MKR sino también participación histórica mínima. Para votar en cambios críticos de parámetros del sistema, necesitas haber votado en al menos diez propuestas previas y mantener tus tokens por más de 90 días. Esto previene ataques de gobernanza donde alguien compra tokens solo para una votación específica.
-
-Para una exploración más profunda de los mecanismos de gobernanza DAO, modelos de votación (Quadratic Voting, Conviction Voting, etc.) y arquitecturas organizativas, consulta el documento [8-3-DAO.md](8-3-DAO.md) que analiza extensamente estos temas.
-
-### 4.3 Identidad Profesional y Educación
-
-El concepto "tu wallet es tu currículum" representa un cambio fundamental en cómo demostramos competencias y logros profesionales. En lugar de CVs que pueden ser embellecidos y credenciales de papel que pueden ser falsificadas, tu dirección Ethereum se convierte en un registro verificable e inmutable de tu trayectoria profesional.
-
-[RabbitHole](https://rabbithole.gg) y [Layer3](https://layer3.xyz) están construyendo este futuro mediante "learn-to-earn" on-chain. Completas quests que requieren interactuar realmente con protocolos DeFi, smart contracts, o aplicaciones Web3. Por ejemplo, una quest podría ser "crear un par de liquidez en Uniswap V3 con un rango de precio específico". Para completarla, debes realmente entender cómo funciona Uniswap V3.
-
-Al completar la quest, recibes tanto recompensas en tokens como un SBT que certifica que completaste ese desafío específico. Acumula 50 SBTs relacionados con DeFi y cualquier protocolo puede verificar instantáneamente que tienes experiencia práctica demostrable.
-
-[Noox](https://noox.world) automatiza la emisión de achievements basándose en comportamiento on-chain. Si eres uno de los primeros 1,000 usuarios de un nuevo protocolo, automáticamente recibes un badge de "early adopter". Si provees liquidez durante 365 días consecutivos, obtienes el badge de "diamond hands LP". Estos badges son discoverable por cualquier empleador o protocolo.
-
-**Ecosistemas de Aprendizaje Incentivado**:
-
-Plataformas como [LERN360](https://lern360.com) están expandiendo el modelo learn-to-earn mediante ecosistemas completos con tokenomics integrada. A diferencia de las quests puntuales de RabbitHole o Layer3, LERN360 propone rutas de aprendizaje personalizadas donde el progreso educativo se incentiva con tokens $LERN, creando economías educativas sostenibles. Estos modelos reconocen que el aprendizaje Web3 no es lineal sino adaptativo a las necesidades y ritmos individuales.
-
-Paralelamente, instituciones educativas tradicionales experimentan con pilotos blockchain. [MIT](https://mitsloan.mit.edu) emitió diplomas digitales usando blockchain en 2017. Universidades como [University of Nicosia](https://www.unic.ac.cy) en Chipre emiten certificados académicos como NFTs verificables. Politécnicos en Europa y América Latina están ejecutando programas piloto donde estudiantes acumulan credenciales on-chain por proyectos prácticos, creando portfolios verificables antes de graduarse. El estudiante posee completamente su credencial y puede probarla a cualquier empleador sin necesidad de que la universidad esté involucrada.
-
-La convergencia de aprendizaje incentivado y credenciales académicas formales sugiere un futuro donde la educación Web3 combina gamificación, compensación económica por aprendizaje demostrado, y reconocimiento institucional, todo verificable on-chain. Para explorar más sobre modelos educativos y desarrollo de habilidades en Web3, consulta el documento sobre aprendizaje continuo en el ecosistema.
-
-Caso práctico: Ana es desarrolladora Solidity buscando trabajo en un protocolo DeFi importante. En lugar de enviar un CV tradicional, comparte su dirección ENS. El empleador ve:
-
-- 15 smart contracts deployados en mainnet con auditorías de Code4rena
-- Badge de ganador del ETH Global hackathon 2024
-- SBT de completar el programa de seguridad de OpenZeppelin
-- 500+ contribuciones a repositorios Web3 verificadas on-chain
-- Participación activa en gobernanza de 5 DAOs diferentes
-
-Todo verificable en minutos sin entrevistas técnicas extensas. Ana consigue una oferta porque su reputación on-chain habla por sí misma.
-
-### 4.4 Prevención de Sybil Attacks y Distribución Justa
-
-El problema Sybil es omnipresente en Web3: un atacante crea miles de direcciones falsas para manipular votaciones, farmear airdrops, o inflar métricas artificialmente. La reputación on-chain es la defensa más efectiva contra esto.
-
-[Gitcoin Grants](https://grants.gitcoin.co) enfrenta este problema directamente. Los grants son financiados mediante quadratic funding, donde pequeñas contribuciones de muchas personas reciben más matching funds que grandes contribuciones de pocas personas. Esto incentiva crear miles de cuentas falsas que contribuyen $1 cada una.
-
-La solución de Gitcoin es requerir un Humanity Score mínimo de [Gitcoin Passport](https://passport.gitcoin.co) para que tus contribuciones cuenten para quadratic funding. Alcanzar un score de 20+ requiere verificar múltiples aspectos de tu identidad: cuenta de Google, Twitter verificado con antigüedad, ENS domain, participación en BrightID, holdings históricos de ETH, etc.
-
-Crear mil cuentas falsas con score 20+ cada una es económicamente inviable. Tendrías que comprar mil domains ENS ($5,000+), crear mil cuentas de Google y Twitter con antigüedad y actividad realista (imposible a escala), y conseguir verificación BrightID para todas (requiere interacciones humanas reales). El costo excede ampliamente cualquier beneficio potencial de farmearlo.
-
-[Optimism](https://www.optimism.io) usó criterios similares para su airdrop de 2022. En lugar de simplemente airdropear a cualquier dirección que haya usado Optimism, implementaron criterios compuestos:
-
-- Repetidas interacciones durante múltiples meses (no solo una transacción)
-- Actividad en Ethereum mainnet antes de usar Optimism (prueba de usuario genuino)
-- Interacción con múltiples protocolos diferentes (no comportamiento bot repetitivo)
-- No recibir fondos exclusivamente desde exchanges (indica cuenta real no farm)
-
-El resultado fue que usuarios reales recibieron cantidades significativas (promedio 700 OP tokens), mientras que farms Sybil identificados fueron excluidos, ahorrando millones en tokens que de otro modo se habrían desperdiciado en atacantes.
-
-Caso específico: un proyecto de NFT genera artwork generativo y quiere distribuir 10,000 NFTs gratis a la comunidad. Sin protección anti-Sybil, botters reclamarían todos los NFTs en segundos mediante scripts automatizados y luego los venderían. Con reputación:
-
-- Requieren Gitcoin Passport score > 15
-- Verifican que la wallet tiene al menos 6 meses de antigüedad
-- Chequean participación en al menos 3 protocolos diferentes
-- Dan prioridad a holders de POAPs de eventos comunitarios relevantes
-
-Resultado: 90% de los NFTs van a humanos reales que realmente apreciarán el arte, solo 10% a farmers sofisticados, comparado con 95%+ que irían a bots sin estas medidas.
 
 ## 5. Herramientas y Plataformas
 

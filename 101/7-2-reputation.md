@@ -82,7 +82,7 @@ La forma más directa de manipularlo es crear muchas identidades falsas para acu
 
 Para reducir este comportamiento, algunos sistemas aplican un principio sencillo: la reputación pierde valor si no se mantiene activa, o bien las ultimas acciones cuentan más que las repetidas, de modo que acumular en masa resulte menos rentable. Estas medidas dificultan el abuso, pero no lo eliminan del todo.
 
-Hay además un problema de fondo que ninguna regla técnica sobre "intransferibilidad" puede resolver: aunque credenciales como los SBTs no se puedan mover de una cuenta a otra, **la cuenta entera puede cambiar de dueño**. Por un lado, existen mercados informales oscuros donde se compran y venden llaves privadas de wallets antiguas con reputación acumulada por miles de dólares. Por otro lado, como explicaremos en su propia sección, la llegada de estándares como el **ERC-6551 (Token Bound Accounts)** estandariza esto: al permitir que un NFT controle una wallet, toda la reputación de esa wallet queda atrapada dentro de un activo intercambiable. Puedes vender legalmente en un mercado abierto tu "NFT de perfil" con todos sus diplomas y reputación dentro. Esta financiarización de la identidad significa que, cuanto más valiosa e influyente se vuelve la reputación en Web3, mayor es el incentivo económico para empaquetarla, venderla o manipularla.
+Hay además un problema de fondo que ninguna regla técnica sobre "intransferibilidad" puede resolver: aunque credenciales como los SBTs no se puedan mover de una cuenta a otra, **la cuenta entera puede cambiar de dueño**. Por un lado, existen mercados informales oscuros donde se compran y venden llaves privadas de wallets antiguas con reputación acumulada por miles de dólares. El estándar [ERC-6551](https://eips.ethereum.org/EIPS/eip-6551) (*Token Bound Accounts*) amplifica este vector de forma indirecta: al permitir que cualquier NFT tenga su propia smart contract wallet, crea una cuenta secundaria que puede acumular tokens, credenciales y SBTs bajo ese NFT como contenedor raíz. Esto tiene valor genuino para casos como personajes de juegos con inventario verificable o carteras temáticas de activos relacionados, pero introduce una consecuencia directa para la reputación: transferir el NFT raíz transfiere automáticamente toda su wallet asociada y, con ella, cada credencial acumulada dentro. Lo que el contrato declara intransferible a nivel individual se vuelve indirectamente vendible a través del NFT que lo contiene. La solución de diseño es simple pero exige disciplina por parte del emisor: las credenciales de reputación deben emitirse siempre a la dirección principal del usuario —su EOA o su smart contract wallet—, nunca a una token-bound account derivada de un NFT. ERC-6551 no es en sí mismo el problema; el problema es emitir reputación a una dirección cuyo control puede transferirse junto con el token que la originó.
 
 ### Inclusión y Exclusión Estructural
 
@@ -151,19 +151,6 @@ Su valor no está en el token en sí sino en lo que otros hacen con él. [Guild.
 **Limitaciones**:
 
 Un POAP prueba presencia física o virtual, no comprensión ni contribución real: asistir pasivamente a cien conferencias genera más tokens que contribuir a fondo en un solo proyecto. El gaming más difícil de frenar es pagar a alguien para que escanee el QR en tu lugar. Y aunque los tokens son on-chain, el artwork y la metadata dependen de la infraestructura centralizada de POAP.xyz. La dirección en la que evoluciona el formato —POAPs que desbloquean capas adicionales al completar un quiz, o que progresan visualmente al alcanzar hitos de participación— intenta precisamente responder a esa crítica: pasar de "proof of attendance" a algo más cercano a "proof of action".
-
-### ERC-6551 (Token Bound Accounts): La Reputación del Avatar
-
-Hasta ahora, en este documento hemos asumido que la reputación se vincula a tu cuenta principal (tu wallet). Tú, como usuario, recibes los POAPs participando en eventos y acumulas *attestations* por tu trabajo.
-
-El estándar **ERC-6551 (Token Bound Accounts o TBA)** introduce un giro conceptual muy potente: **permite que un NFT tenga su propia wallet**. 
-
-Para entenderlo de forma sencilla: imagina que tienes un NFT que representa tu personaje en un juego o tu credencial vitalicia de una comunidad. Con este estándar, ese "personaje" adquiere su propia dirección en la blockchain. A partir de ese momento, cuando haces una tarea para una DAO usando ese personaje, es el NFT (y no tu wallet personal) quien recibe el pago, el POAP o el *Soulbound Token* (SBT) que certifica el logro. **La reputación ya no te pertenece a ti como individuo, le pertenece al activo digital.**
-
-Esto aporta dos dimensiones indispensables que cambian las reglas del juego:
-
-1. **Identidades separadas y portables:** Puedes "compartimentar" tu vida digital sin gestionar docenas de contraseñas. Un NFT puede ser tu perfil profesional (acumulando certificaciones formales) y otro NFT distinto puede ser tu perfil de *gamer* (acumulando torneos). Lo más interesante es que si alguna vez sospechas que tu wallet principal ha sido comprometida por un hacker, o simplemente quieres usar un nuevo software de seguridad, puedes simplemente enviar estos NFTs a tu nueva wallet. Tu reputación viaja empaquetada con el NFT; un cambio de llaves no significa perder tu identidad.
-2. **Transferibilidad de la reputación (El vacío legal):** Los *Soulbound Tokens* (SBTs) nacieron para no poder moverse; si estudiaste algo, no le puedes vender tu diploma a otra persona. Sin embargo, ERC-6551 crea un vacío legal (un *loophole*): si tu diploma (SBT) se envía a la wallet interna de tu NFT, el diploma sigue sin poder moverse de ahí... pero **tú sí puedes vender el NFT completo en un mercado como OpenSea**. Le acabas de vender a un tercero un "personaje" que ya incluye años de reputación intachable, credenciales y acceso a zonas exclusivas. Esto formaliza la compra y venta de historial.
 
 ### Grafo Social y Web of Trust
 
@@ -283,7 +270,7 @@ Durante este período, profundiza tu participación para demostrar constancia. T
 
 - **Holdings históricos**: Conservar ciertos tokens en tu billetera durante varios meses para probar que tu cuenta no se creó ayer.
 - **Bienes públicos**: Donar pequeñas cantidades a proyectos comunitarios (como Gitcoin Grants).
-- **Verificación de humanidad**: Usar herramientas como [BrightID](https://www.brightid.org/) para certificar que eres una persona única.
+- **Verificación de humanidad**: Si aún no completaste el stamp de [BrightID](https://www.brightid.org/) en la fase anterior (la videollamada de 5 minutos), este es el momento de hacerlo. Existen otras opciones igualmente válidas como stamp en Gitcoin Passport: [Proof of Humanity](https://www.proofofhumanity.id) requiere grabar un vídeo público y depositar una pequeña cantidad de ETH como garantía; [Idena](https://idena.io) te pide conectarte a una sesión de verificación sincronizada a una hora fija junto a otros usuarios. Las tres funciones tienen el mismo propósito —certificar que eres una persona única y real— pero BrightID es la más rápida y sin coste económico, por eso es la opción recomendada para empezar.
 
 Completa al menos 10 quests adicionales enfocadas en áreas específicas de interés. Colecciona 15-20 POAPs total, priorizando eventos de comunidades donde realmente quieres involucrarte a largo plazo.
 
@@ -341,123 +328,79 @@ Gitcoin Passport score relativamente modesto de 25 puntos (no prioriza stamps so
 
 Resultado medible: múltiples ofertas de trabajo de protocolos tier-1 sin aplicar formalmente, grants de $50k+ de Ethereum Foundation para investigación, invitado a advisory boards de nuevos protocolos.
 
-## Implementación para Proyectos y Builders
+## Implementación para dev
 
 Esta sección está dirigida a desarrolladores, product managers y founders que quieren implementar sistemas de reputación en sus propios protocolos o aplicaciones.
 
-### Definir Objetivos y Casos de Uso
+### Definir objetivos y casos de uso
 
-Antes de implementar cualquier infraestructura técnica, necesitas claridad absoluta sobre por qué estás implementando reputación y qué problemas específicos resuelve.
+Antes de tocar código, necesitas saber exactamente qué problema resuelve la reputación en tu protocolo. Sin esa claridad, acabarás midiendo cosas que no importan o creando incentivos contradictorios.
 
-**Identificar el Propósito Principal**:
+Los cuatro casos de uso con más tracción real son los siguientes. En DeFi, la reputación permite reducir el colateral exigido en préstamos: protocolos como [Spectral Finance](https://www.spectral.finance) analizan el historial on-chain —préstamos repagados, antigüedad de wallet, diversidad de protocolos usados— para ofrecer ratios de colateralización más bajos a quienes demuestran comportamiento responsable. En gobernanza de DAOs, sirve para escapar de la plutocracia pura: [Optimism](https://www.optimism.io) usa citizenship badges no transferibles para dar peso de voto a contribuidores verificados, independientemente de cuántos tokens posean. En distribución de airdrops y quadratic funding, [Gitcoin](https://grants.gitcoin.co) exige un Humanity Score mínimo para que las contribuciones cuenten, haciendo económicamente inviable crear miles de cuentas falsas. Y en identidad profesional, la dirección [ENS](https://ens.domains) actúa como currículum verificable: contratos deployados, hackathons ganados, auditorías superadas, todo comprobable en segundos.
 
-Los sistemas de reputación pueden servir cuatro propósitos principales, cada uno con requisitos técnicos diferentes. El control de acceso usa reputación para determinar quién puede usar tu protocolo o acceder a features específicos. Por ejemplo, un protocolo de préstamos podría requerir Gitcoin Passport score mínimo de 20 para acceder a préstamos subcolateralizados.
+Una vez identificado tu caso de uso, define qué comportamientos quieres incentivar y cuáles quieres desincentivar. Esta decisión es más importante que cualquier elección técnica posterior. Si quieres participación genuina en gobernanza, no basta con contar votos: deberías requerir consistencia temporal (haber votado en al menos tres de las últimas cinco propuestas, no solo en las controvertidas). Si quieres proveedores de liquidez a largo plazo, importa la duración continuada, no el volumen puntual. El criterio que elijas define qué tipo de comportamiento se vuelve racional optimizar, y los usuarios siempre optimizarán lo que midas.
 
-Los sistemas de incentivos usan reputación para distribuir recompensas de forma más justa. Un programa de airdrops podría ponderar distribución basándose en scores de reputación en lugar de solo token holdings, previniendo que ballenas dominen completamente.
+### Herramientas y arquitectura
 
-La gobernanza ponderada combina reputación con holdings de tokens para la votación. Como vimos con Optimism, esto previene la plutocracia pura al tiempo que mantiene el compromiso económico de los participantes.
+Las herramientas descritas en la sección anterior —EAS, POAPs, grafos sociales— son también tu stack de implementación. Aquí la pregunta práctica es cómo combinarlas y qué añadir para cerrar el sistema.
 
-La reducción de riesgo usa reputación para identificar actores maliciosos o comportamiento sospechoso. Marketplaces descentralizados podrían usar reputación de vendedores para proteger compradores.
+La primera decisión es dónde viven los datos. Los datos on-chain ofrecen máxima verificabilidad pero están limitados a lo que ocurre en la blockchain. Para incorporar actividad externa —GitHub, Discord, formularios de contribución— necesitas attestations emitidas por un tercero confiable que actúe de puente, o bien [Chainlink Functions](https://chain.link/functions) para traer datos off-chain de forma descentralizada, asumiendo que siempre introduces un punto de confianza adicional. La arquitectura que mejor funciona en producción combina ambas: datos on-chain como base objetiva y attestations EAS para todo lo que requiere juicio humano externo.
 
-Define tu propósito primario claramente porque determina qué tipos de datos de reputación son relevantes y cómo deben ponderarse.
+Para almacenar datos de perfil mutables —una bio, preferencias, configuración de privacidad— sin cambiar el identificador del usuario, [Ceramic Network](https://ceramic.network) proporciona almacenamiento descentralizado vinculado a DIDs. Y para que las consultas de reputación histórica sean instantáneas sin escanear toda la cadena, lo estándar es desplegar un subgraph en [The Graph](https://thegraph.com) que indexe los eventos relevantes de tu contrato o los de EAS. En cualquier caso, el principio de diseño es el mismo: nunca encierres la reputación de un usuario en una base de datos propia de tu aplicación. Si tu protocolo desaparece, las credenciales deben sobrevivir; EAS y Ceramic existen precisamente para eso.
 
-**Mapear Comportamientos Deseados**:
+El diseño de schemas en EAS merece atención especial. El error habitual es crear un schema cerrado tipo "contribuidor de MiDAO" que nadie más puede reutilizar. Lo correcto es diseñar schemas genéricos y componibles: un schema "DAOContribution" con campos para dirección de DAO, tipo de contribución, timestamp y enlace a prueba de trabajo puede ser adoptado por cualquier organización, y cualquier aplicación que lo reconozca puede agregar automáticamente el historial completo de un usuario a través de múltiples DAOs. La interoperabilidad real depende de esta decisión de diseño, no de la tecnología.
 
-Especifica exactamente qué comportamientos quieres incentivar. Si quieres participación en gobernanza, ¿valoras más la cantidad de votos o la calidad del análisis? Si quieres proveedores de liquidez a largo plazo, ¿cómo defines "largo plazo" y cómo prevenir gaming mediante pools de rotación?
+### Cómo debe evolucionar la reputación en el tiempo
 
-Crea una tabla que mapee comportamientos específicos a rewards de reputación específicos. Por ejemplo, votar en propuesta de gobernanza = +5 puntos de reputación, pero solo si votaste en al menos 3 de las últimas 5 propuestas (previene voto selectivo solo en propuestas controvertidas).
+Hay dos errores de diseño opuestos que destruyen un sistema de reputación antes de que madure. El primero es tratar la puntuación como un contador que solo sube: en pocos meses, los primeros usuarios acumulan tanta ventaja histórica que los nuevos no pueden competir aunque sean más activos hoy. La puntuación deja de medir quién contribuye ahora y se convierte en un certificado de quién llegó antes. El segundo error es diseñar un sistema que se puede saturar a ráfagas: un usuario detecta que votar en propuestas da puntos, vota en 200 propuestas en un fin de semana sin leerlas, llega al máximo posible y deja de participar. En el ecosistema se llama a esto *farming* —cosechar recompensas de forma mecánica y oportunista, sin ninguna intención genuina—, y cualquier sistema mal diseñado lo incentiva sin quererlo.
 
-### Seleccionar Fuentes de Datos y Arquitectura
+Los tres mecanismos que se describen a continuación existen precisamente para evitar ambas trampas: la acumulación con pesos y topes, la degradación por inactividad y la revocación por mal comportamiento.
 
-Una vez definidos los objetivos, decide qué datos consumir y cómo estructurar tu sistema.
+**Acumulación con pesos y topes**:
 
-**On-Chain versus Off-Chain**:
+La acumulación (*accumulation*) es el proceso por el que las acciones de un usuario suman puntos a su reputación. El diseño más básico asigna un peso diferente a cada tipo de acción según el valor real que aporta al protocolo. Proveer liquidez durante un mes completo —manteniendo capital bloqueado y asumiendo riesgo real— debería valer más que emitir un voto en un clic. Definir esos pesos es una decisión de negocio, no técnica: dice qué comportamientos considera valiosos el protocolo.
 
-Datos on-chain puros proporcionan máxima verificabilidad y resistencia a censura pero están limitados a transacciones blockchain. Esto funciona bien si tu reputación se basa exclusivamente en comportamiento on-chain como provision de liquidez, votaciones, o uso de smart contracts.
+El problema es que sin límites, la acumulación invita al *farming*. La solución es el tope (*cap*): un límite máximo de puntos que una misma acción puede aportar en total. Si solo las primeras 50 votaciones otorgan puntos, votar 500 veces en un día no sirve de nada. El incentivo a participar sigue existiendo, pero el incentivo a participar sin criterio desaparece.
 
-Datos off-chain permiten incorporar actividad en GitHub, Twitter, Discord, o bases de datos propietarias. Esto amplía scope dramáticamente pero requiere oráculos confiables. [Chainlink Functions](https://chain.link/functions) puede ayudar a traer datos off-chain on-chain de forma descentralizada, pero siempre introduce un punto de confianza.
+El complemento natural del tope es el multiplicador por consistencia: el mismo comportamiento vale más si se mantiene en el tiempo que si se concentra en una ráfaga. Votar en diez propuestas a lo largo de seis meses podría valer el doble que votar en diez propuestas en una semana. Esto premia la participación sostenida frente al oportunismo puntual.
 
-La arquitectura híbrida óptima usa datos on-chain como base primaria y complementa con datos off-chain verificados mediante attestations de terceros confiables. Por ejemplo, Gitcoin Passport usa transacciones on-chain directamente pero consume attestations de proveedores de identidad para datos sociales.
+**Degradación por inactividad**:
 
-**Elegir Protocolos de Infraestructura**:
+La degradación (*decay*, que en física describe cómo una señal pierde intensidad con el tiempo si no se renueva) es el mecanismo inverso: la puntuación disminuye progresivamente cuando el usuario deja de participar. Resuelve el problema del historial obsoleto: si alguien fue muy activo en 2023 pero lleva dieciocho meses sin aparecer, su puntuación alta sigue pesando en cualquier votación ponderada por reputación, desplazando a participantes que están presentes todos los días.
 
-Para attestations, [Ethereum Attestation Service](https://attest.sh) es la opción estándar. Permite crear schemas personalizados y emitir attestations on-chain o off-chain. La ventaja es interoperabilidad: attestations emitidas mediante EAS pueden ser consumidas por otras aplicaciones.
+La forma más limpia de implementarlo es no modificar la puntuación almacenada, sino calcular en el momento de la consulta una puntuación efectiva que descuenta el tiempo transcurrido desde la última actividad. El dato guardado en la cadena no cambia —evitar escrituras innecesarias reduce el coste de gas—, pero el valor que ve cualquier aplicación refleja la realidad actual del usuario. Cuando vuelve a participar, su actividad actualiza el punto de referencia y detiene la degradación.
 
-Para almacenamiento de datos de identidad, [Ceramic Network](https://ceramic.network) proporciona almacenamiento descentralizado de datos mutables vinculados a DIDs. Esto permite que usuarios actualicen sus perfiles sin cambiar identificadores.
+El mismo principio aplica a los puntos negativos. Un usuario penalizado que lleva años comportándose bien debería poder recuperar reputación progresivamente. La asimetría razonable es que los puntos negativos se degraden más despacio que los positivos: quien se portó mal tarda más en recuperar el nivel anterior, pero si mantiene buen comportamiento el tiempo suficiente, eventualmente lo consigue.
 
-Para indexación y queries eficientes, deploy un subgraph en [The Graph](https://thegraph.com) que indexe eventos relevantes de tu contrato o consume datos de EAS. Esto hace que consultar reputación histórica sea instantáneo en lugar de require escanear toda la blockchain.
+**Revocación y penalidades proporcionadas**:
 
-**Diseño de Schemas**:
+La revocación es retirar reputación ya asignada cuando se verifica comportamiento malicioso, no simplemente cuando se sospecha. Puede ser automática —si el contrato detecta una violación objetiva, como un intento de doble voto— o gobernada —mediante una propuesta que la DAO aprueba colectivamente—.
 
-Si usas EAS, diseña schemas de attestation cuidadosamente. Un schema bien diseñado es reutilizable y componible. Por ejemplo, en lugar de crear un schema específico "contribuidor de MiDAO", crea un schema genérico "DAOContribution" con campos para: dirección de DAO, tipo de contribución, timestamp, monto de compensación, y enlace a prueba de trabajo.
+Las penalidades deben ser proporcionales para que el sistema se perciba como justo. El spam de propuestas es molesto pero no destructivo: un descuento pequeño es suficiente. Un intento documentado de explotar el contrato es un ataque directo al protocolo: resetear la puntuación e imponer un período de bloqueo durante el cual no se puede acumular reputación nueva es una respuesta razonable.
 
-Este schema puede ser usado por cualquier DAO, creando un estándar emergente. Aplicaciones de agregación pueden reconocer el patrón y visualizar contribuciones de todas las DAOs que usan este schema.
-
-### Implementar Mecanismos de Actualización y Decay
-
-La reputación no debe ser estática; debe evolucionar basándose en comportamiento continuo.
-
-**Acumulación de Reputación**:
-
-Define reglas claras sobre cómo crece la reputación. Usa sistemas de puntos donde diferentes acciones otorgan diferentes cantidades. Proveer liquidez durante 30 días podría valer 10 puntos, votar en una propuesta 2 puntos, referir un nuevo usuario verificado 5 puntos.
-
-Considera multiplicadores por consistencia. El mismo comportamiento repetido durante meses debería valer más que actividad explosiva de corto plazo. Por ejemplo, votar en 10 propuestas a lo largo de 6 meses podría valer 30 puntos, mientras que votar en 10 propuestas en una semana solo vale 15 puntos.
-
-Implementa caps para prevenir farming infinito. Quizás solo las primeras 50 votaciones otorgan puntos, previniendo que usuarios simplemente voten en todo sin análisis.
-
-**Decay y Degradación**:
-
-La reputación debería decaer con inactividad para mantener scores actualizados. Un score de gobernanza de hace 2 años cuando alguien era activo pero ha estado ausente desde entonces no refleja participación actual.
-
-Implementa decay temporal: por ejemplo, 5% de decay por mes de inactividad. Esto significa que mantener reputación alta requiere participación sostenida. Alternativamente, usa fechas de expiración en attestations individuales que deben ser renovadas periódicamente.
-
-El decay también debería aplicarse a comportamiento negativo. Un mal actor que se rehabilita mediante años de buen comportamiento eventualmente debería poder recuperar reputación. Considera que eventos negativos decaigan más lento que eventos positivos, pero que eventualmente desaparezcan.
-
-**Revocación y Penalidades**:
-
-Implementa mecanismos para revocar reputación cuando comportamiento malicioso es verificado. Esto podría ser automated (si smart contract detecta violación de reglas) o governed (mediante votación de la comunidad).
-
-Las penalidades deberían ser proporcionales. Spam podría resultar en -10 puntos. Intento de exploit de contrato podría resultar en ban completo con score reducido a cero. Provee transparencia: cuando reputación es penalizada, registra la razón on-chain para accountability.
-
-### Preservar Privacidad y Permitir Portabilidad
-
-Estos dos principios son cruciales para sistemas de reputación éticos y sostenibles.
-
-**Implementar Selective Disclosure**:
-
-Los usuarios deberían poder probar aspectos específicos de su reputación sin revelar todo su historial. Esto requiere zero-knowledge proofs, que es técnicamente complejo pero cada vez más accesible.
-
-[Sismo](https://sismo.io) proporciona SDK que permite integrar ZK proofs de reputación. Podrías implementar sistema donde usuarios prueban "mi Gitcoin Passport score es > 25" sin revelar su score exacto o qué stamps específicamente tienen.
-
-Para casos de uso menos sensibles, permite que usuarios configuren qué partes de su perfil son públicas versus privadas. Quizás muestran su score agregado pero ocultan breakdown específico de fuentes.
-
-**Garantizar Exportabilidad**:
-
-Nunca encierres datos de reputación en tu sistema. Proporciona APIs públicas y documentadas para que usuarios puedan exportar toda su información de reputación en formatos estándar como JSON-LD o Verifiable Credentials del W3C.
-
-Idealmente, almacena reputación en infraestructura neutral como EAS o Ceramic en lugar de bases de datos propietarias. Esto garantiza que incluso si tu aplicación desaparece, las credenciales de usuarios persisten.
-
-Implementa estándares abiertos como DIDs del W3C para identidades en lugar de identificadores propietarios. Esto permite que reputación sea portable entre diferentes aplicaciones y ecosistemas.
+Lo que no puede faltar en ningún caso es trazabilidad: cada penalidad debe quedar registrada en la cadena con la razón que la motivó. Sin esa transparencia, las penalidades parecen arbitrarias desde fuera y erosionan la confianza en el sistema incluso entre quienes no han sido sancionados.
 
 ## Futuro de la Reputación Web3
 
 ### Reputación para Agentes de IA
 
-Con el surgimiento de agentes de IA autónomos que ejecutan transacciones on-chain, surge la necesidad de reputación para entidades no-humanas. Un agente de IA que gestiona un fondo de inversión DeFi necesitará construir reputación basándose en su track record de decisiones.
+Un agente de IA autónomo es un programa que opera de forma independiente: puede gestionar fondos en DeFi, votar en propuestas de gobernanza o firmar transacciones sin que un humano apruebe cada acción. La pregunta es: ¿deberías confiarle capital o poder de voto a un programa que funciona en base probabilidades y que además puede tener alucinaciones? Para responder surge la necesidad de reputación para estas entidades no-humanas.
 
-Esto es fundamentalmente diferente de reputación humana porque los agentes pueden ser copiados infinitamente. La solución probablemente involucre vincular agentes de IA a identidades humanas responsables (el desarrollador o DAO que lo controla) mediante attestations en cadena de responsabilidad.
+El problema central es que un agente de IA, al contrario que una persona, puede copiarse infinitamente. Tú solo puedes ser tú; una IA puede clonarse en mil instancias idénticas, cada una acumulando reputación limpia por separado y luego coordinándose para explotar el sistema. La reputación de un agente, por sí sola, no garantiza nada: siempre puedes lanzar una copia nueva cuando la reputación de la original se deteriora.
 
-[Autonolas](https://www.autonolas.network) está explorando este espacio con agentes autónomos que tienen identidades on-chain y acumulan reputación mediante sus acciones. Surgirán "credit scores" para agentes de IA que determinen cuánto capital la comunidad está dispuesta a confiarles.
+La solución que se perfila no es tratar al agente como si fuera una persona, sino anclar su identidad a quien lo controla: el desarrollador o la DAO responsable de su código y su comportamiento. Si el agente actúa mal, la penalización recae sobre esa identidad humana o colectiva, no solo sobre el programa. Esto se implementa mediante attestations en cadena que establecen explícitamente esa cadena de responsabilidad: esta IA está bajo el control de esta entidad, que responde por ella.
 
-### Sistemas de Karma Dinámicos y Contextuales
+[Autonolas](https://www.autonolas.network) es el proyecto más avanzado en este espacio: sus agentes tienen identidades on-chain propias y acumulan historial de decisiones verificable. Con el tiempo, ese historial podrá traducirse en algo equivalente a un scoring crediticio para programas: cuánto capital está dispuesta la comunidad a delegar en un agente concreto basándose en cómo se ha comportado hasta ahora.
 
-Los sistemas actuales usan pesos fijos: proveer liquidez vale X puntos, votar vale Y puntos. Los sistemas futuros usarán algoritmos adaptativos donde los pesos cambian basándose en comportamiento agregado de la cohorte.
+### Sistemas de Karma dinámicos y contextuales
 
-Si el 90% de usuarios están farmeando un tipo específico de actividad, el algoritmo automáticamente reduce el peso de esa actividad para prevenir dilución de valor. Esto crea un sistema auto-balanceado donde gaming es cada vez más difícil porque los farmers se compiten entre sí.
+Los sistemas actuales usan pesos fijos: proveer liquidez vale X puntos, votar vale Y puntos. Los sistemas futuros usarán algoritmos adaptativos donde esos pesos cambian en función de cómo se está comportando el conjunto de usuarios del protocolo en cada momento.
+
+Por ejemplo: si de repente muchos usuarios empiezan a votar masivamente en propuestas solo para acumular puntos, el algoritmo detecta ese patrón y reduce automáticamente cuánto vale cada voto. El truco pierde rentabilidad por sí solo, sin que nadie tenga que intervenir manualmente.
 
 [Orange Protocol](https://www.orangeprotocol.io) experimenta con modelos contextuales donde tu reputación es diferente en cada comunidad basándose en comportamientos específicos valorados por esa comunidad, en lugar de un score global único.
 
-### Mercados de Predicción Reputacional
+### Mercados de predicción reputacional
 
 Imagina poder apostar sobre el futuro comportamiento de una dirección basándote en su reputación histórica. Esto crearía mercados líquidos donde la reputación tiene precio explícito descubrible.
 
@@ -465,21 +408,17 @@ Por ejemplo, podrías apostar que una dirección con alta reputación DeFi no ha
 
 Esto crea incentivos económicos directos para mantener buena reputación: tu reputación literalmente tiene valor de mercado que puedes perder por comportamiento malicioso. Protocolos como [Augur](https://augur.net) o [Polymarket](https://polymarket.com) podrían evolucionar para incluir markets de reputación.
 
-### Proof of Being y Biometría Descentralizada
+### Proof of Being y Biometría descentralizada
 
-El mayor desafío sin resolver de reputación es Proof of Personhood definitivo. Worldcoin representa un enfoque mediante biometría centralizada, pero la comunidad busca alternativas descentralizadas.
+BrightID, Proof of Humanity e Idena ya existen hoy y se describieron en la guía práctica: cada una utiliza un mecanismo diferente para certificar que eres una persona única. El problema común a todas es que ninguna es definitiva: siguen siendo atacables con suficiente esfuerzo y coordinación, o requieren sacrificar privacidad de formas que muchos usuarios no están dispuestos a aceptar.
 
-Tecnologías emergentes como [Proof of Humanity](https://www.proofofhumanity.id) combinan video verificación, depósitos económicos, y arbitraje descentralizado. [Idena](https://idena.io) usa validation puzzles síncronos. Futuros sistemas podrían usar análisis de comportamiento on-chain sofisticado para detectar patrones que son prácticamente imposibles de replicar por bots a escala.
+Worldcoin intenta resolver el problema con biometría: escanea el iris con un dispositivo físico llamado Orb para generar una prueba criptográfica de unicidad sin revelar la identidad. El resultado es la solución técnicamente más robusta contra ataques Sybil, pero centraliza el registro biométrico en una sola empresa y exige confiarle datos corporales permanentes. La comunidad no ha llegado a un consenso sobre si ese intercambio es aceptable.
 
-El objetivo final es un sistema que distinga definitivamente humanos únicos de Sybils sin requerir un sacrificio extremo de privacidad.
+Lo que sigue sin resolverse es tener un sistema que distinga definitivamente humanos únicos de bots a escala global, sin depender de una empresa, sin revelar datos sensibles y que funcione también para quien no tiene smartphone, banco o documento de identidad. Ese problema sigue abierto.
 
-### Integración Cross-Chain Universal
+### Integración cross-chain
 
-Actualmente, reputación está mayormente fragmentada por chain. Tu actividad en Ethereum no se refleja automáticamente en Polygon o Solana. El futuro requiere agregación cross-chain transparente.
-
-Protocolos como [LayerZero](https://layerzero.network) y [Axelar](https://axelar.network) están construyendo infraestructura de mensajería cross-chain que podría permitir que attestations emitidas en una chain sean verificables en cualquier otra.
-
-Surgirán "reputation oracles" que agregan datos de múltiples chains en scores unificados. Tu reputación total incorporaría actividad en Ethereum, Polygon, Arbitrum, Solana, y cualquier otra chain donde participas.
+La fragmentación de la reputación entre cadenas sigue siendo un problema a resolver en futuro —tu historial en Ethereum no es visible desde Arbitrum ni desde Solana— es un problema de infraestructura que se aborda en detalle en [La fragmentación de la reputación y el estado](7-1-identity.md#la-fragmentación-de-la-reputación-y-el-estado), dentro del documento de identidad Web3.
 
 ## Referencias
 
