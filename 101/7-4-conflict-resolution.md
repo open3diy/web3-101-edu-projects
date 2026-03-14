@@ -2,7 +2,7 @@
 
 Los sistemas descentralizados eliminan intermediarios tradicionales y autoridades centrales, lo cual trae beneficios innegables de autonomía y resistencia a censura. Pero también eliminan algo fundamental: los mecanismos establecidos para resolver disputas cuando las cosas van mal. En el mundo tradicional, cuando un vendedor no entrega el producto que pagaste, recurres al banco para revertir el cargo, o demandas en un tribunal. En Web3, donde las transacciones son irreversibles y seudónimas, estos mecanismos simplemente no existen en su forma convencional.
 
-Este documento explora cómo los ecosistemas descentralizados están construyendo sistemas alternativos de resolución de conflictos que mantienen los principios de descentralización mientras proporcionan mecanismos efectivos para mediar disputas, proteger a participantes honestos y castigar comportamientos maliciosos. Veremos desde sistemas de arbitraje descentralizado hasta mecanismos de escrow automatizado, desde protecciones basadas en reputación hasta modelos híbridos que combinan code y coordinación humana.
+Este documento explora cómo los ecosistemas descentralizados están construyendo sistemas alternativos de resolución de conflictos que mantienen los principios de descentralización mientras proporcionan mecanismos efectivos para mediar disputas, proteger a participantes honestos y castigar comportamientos maliciosos. Exploraremos sistemas de arbitraje descentralizado, mecanismos de escrow automatizado, protecciones basadas en reputación, y modelos híbridos que combinan code y coordinación humana.
 
 ## El problema de la confianza sin intermediarios
 

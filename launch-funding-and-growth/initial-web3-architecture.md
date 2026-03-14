@@ -1,8 +1,8 @@
 # Arquitectura Web3 inicial: un enfoque práctico para la descentralización
 
-Este documento presenta un mapa de arquitectura para lanzar un proyecto Web3. Más que una simple lista de tecnologías, el conjunto de herramientas aquí descrito conforma un **marco de trabajo (framework)** que modela el flujo de desarrollo y la operativa del proyecto desde su inicio. La elección de este stack define un camino pragmático que equilibra los ideales de descentralización con las realidades del ecosistema actual.
+Este documento presenta un mapa de arquitectura para lanzar un proyecto Web3. Más que una simple lista de tecnologías, el conjunto de herramientas aquí descrito conforma un marco de trabajo (framework) que modela el flujo de desarrollo y la operativa del proyecto desde su inicio. La elección de este stack define un camino pragmático que equilibra los ideales de descentralización con las realidades del ecosistema actual, siguiendo los principios fundamentales descritos en el [documento fundacional de Ethereum](https://ethereum.org/en/whitepaper/).
 
-El principal desafío de cualquier equipo es gestionar la tensión entre el uso de infraestructura Web2 centralizada, necesaria para la agilidad y la experiencia de usuario, y el objetivo de construir un sistema resistente a la censura y sin puntos únicos de fallo. Por ello, el enfoque propuesto es un **modelo híbrido de descentralización progresiva**: se aceptan dependencias centralizadas para componentes no críticos (como la comunicación o el alojamiento de bots), mientras que las operaciones que custodian valor o gobiernan el protocolo se aseguran criptográficamente desde el primer día mediante herramientas como las wallets multifirma.
+El principal desafío de cualquier equipo es gestionar la tensión entre el uso de infraestructura Web2 centralizada, necesaria para la agilidad y la experiencia de usuario, y el objetivo de construir un sistema resistente a la censura y sin puntos únicos de fallo. Por ello, el enfoque propuesto es un modelo híbrido de descentralización progresiva: se aceptan dependencias centralizadas para componentes no críticos (como la comunicación o el alojamiento de bots), mientras que las operaciones que custodian valor o gobiernan el protocolo se aseguran criptográficamente desde el primer día mediante herramientas como las wallets multifirma y mecanismos de timelock.
 
 Este documento no incluye decisiones estratégicas ni desarrollo detallado; para ello puedes consultar [Alternativas Tecnológicas para un MVP Web3](./technological-alternatives-for-a-web3-mvp.md). Aquí se presentan los primeros pasos: una base que puede ayudarte a iniciar la idea de marca y crear la narrativa inicial, sobre la cual podrás crecer y evolucionar el proyecto.
 
@@ -40,11 +40,11 @@ Plataforma de votación sin gas basada en firmas que facilita mecanismos de gobe
 
 **[Safe (antes Gnosis Safe)](https://safe.global)**:
 
-Es el estándar de facto para la gestión de tesorería y operaciones críticas. Como wallet multifirma (multisig), requiere que múltiples miembros aprueben una transacción antes de ejecutarla, eliminando el riesgo de que una sola persona controle los fondos o el protocolo.
+Es el estándar de facto para la gestión de tesorería y operaciones críticas. Como wallet multifirma (multisig), requiere que múltiples miembros aprueben una transacción antes de ejecutarla, eliminando el riesgo de que una sola persona controle los fondos o el protocolo. Safe también permite configurar timelocks, que añaden un período de espera obligatorio entre la aprobación de una transacción y su ejecución, proporcionando una ventana de seguridad para detectar y cancelar operaciones maliciosas o erróneas antes de que se ejecuten.
 
 **Infraestructura para bots y automatización**:
 
-Herramientas como [Replit](https://replit.com), [Railway](https://railway.app) o [Fly.io](https://fly.io/) permiten alojar procesos automatizados (bots) que gestionan roles en Discord, verificaciones o tareas recurrentes. 
+Herramientas como [Replit](https://replit.com), [Railway](https://railway.app) o [Fly.io](https://fly.io/) permiten alojar procesos automatizados (bots) que gestionan roles en Discord, verificaciones o tareas recurrentes.
 
 Son componentes centralizados, pero útiles para la operativa diaria de la comunidad.
 
@@ -52,9 +52,13 @@ Son componentes centralizados, pero útiles para la operativa diaria de la comun
 
 Para alojar la interfaz de la DApp, servicios como [Vercel](https://vercel.com) o [Netlify](https://www.netlify.com) ofrecen integración continua y despliegue global desde un repositorio de GitHub. Aunque son centralizados, su eficiencia es clave para la experiencia de usuario. La alternativa descentralizada es alojar el frontend en IPFS.
 
-**Entornos de despliegue de contratos**:
+**Entornos de desarrollo y despliegue de contratos**:
 
-[Hardhat](https://hardhat.org), [Foundry](https://book.getfoundry.sh/) o [Remix](https://remix.ethereum.org) permiten compilar, probar y desplegar contratos. Remix es útil en prototipos rápidos; Hardhat y Foundry para desarrollos complejos.
+[Hardhat](https://hardhat.org), [Foundry](https://book.getfoundry.sh/) o [Remix](https://remix.ethereum.org) permiten compilar, probar y desplegar contratos. Remix es útil en prototipos rápidos; Hardhat y Foundry para desarrollos complejos. Estos entornos ofrecen capacidades de testing, debugging y simulación de transacciones que son esenciales para el desarrollo seguro de smart contracts.
+
+**Proveedores de nodos RPC ([Alchemy](https://www.alchemy.com), [Infura](https://infura.io), [QuickNode](https://www.quicknode.com))**:
+
+Para que una DApp interactúe con la blockchain sin ejecutar un nodo completo propio, se necesitan proveedores de infraestructura RPC. Estos servicios ofrecen endpoints para leer y escribir datos en la blockchain, junto con herramientas de monitoreo, webhooks y APIs mejoradas. Aunque introducen un componente centralizado, son cruciales para la experiencia de usuario y el rendimiento de la aplicación.
 
 **Exploradores de bloques ([Etherscan](https://etherscan.io), [Basescan](https://basescan.org))**:
 
@@ -68,9 +72,13 @@ Para que una DApp muestre datos históricos de la blockchain de forma eficiente 
 
 Los contratos inteligentes no pueden acceder a datos del mundo exterior (precios, resultados deportivos, etc.). Los oráculos como Chainlink resuelven este problema, proveyendo flujos de datos externos de forma segura y descentralizada, lo que es vital para cualquier aplicación DeFi.
 
+**Herramientas de auditoría y análisis estático ([Slither](https://github.com/crytic/slither), [Mythril](https://github.com/ConsenSys/mythril))**:
+
+El análisis estático de código es fundamental para detectar vulnerabilidades antes del despliegue. Slither es una herramienta de análisis estático de contratos Solidity desarrollada por Trail of Bits que detecta patrones de código inseguros. Mythril, por su parte, es un analizador de seguridad que utiliza ejecución simbólica para encontrar vulnerabilidades. Estas herramientas son esenciales en el flujo de trabajo de desarrollo seguro, como se describe en el [marco de análisis de seguridad de smart contracts](https://arxiv.org/abs/1908.04507).
+
 **Herramientas de monitoreo y debugging ([Tenderly](https://tenderly.co))**:
 
-Servicios como Tenderly ofrecen simulación de transacciones, debugging profundo y visualización de errores on-chain.  
+Servicios como Tenderly ofrecen simulación de transacciones, debugging profundo y visualización de errores on-chain. Permiten ejecutar transacciones en modo simulación antes de enviarlas a la red real, lo que ayuda a prevenir errores costosos.  
 
 **Sistemas de identidad descentralizada ([Sign-In With Ethereum](https://login.xyz))**:
 
@@ -126,13 +134,26 @@ Casi todos estos servicios exigen correos tradicionales. No existe un reemplazo 
 
 ## Cómo aproximarse a una descentralización realista
 
-La clave es la **descentralización progresiva y consciente**. En lugar de aspirar a una pureza total desde el inicio, se deben tomar medidas estratégicas para mitigar los riesgos de la centralización:
+La clave es la descentralización progresiva y consciente. En lugar de aspirar a una pureza total desde el inicio, se deben tomar medidas estratégicas para mitigar los riesgos de la centralización:
 
-- **Uso de Safe (multisig)** para la gestión de la tesorería, la propiedad de los contratos inteligentes y el dominio ENS. Esta es la medida más crítica.
-- **Organización en GitHub** con varios administradores y políticas de ramas protegidas para el código principal.
-- **Permisos distribuidos en Discord**, asignando roles de moderación a miembros de confianza de la comunidad.
-- **Replicación del contenido de IPFS** en múltiples servicios de *pinning* o nodos propios para evitar un único punto de fallo.
-- **Documentación duplicada** en repositorios públicos (GitHub) y en almacenamiento inmutable (Arweave/IPFS) para garantizar su preservación.
-- **Transparencia radical**: documentar públicamente qué componentes están centralizados y cuál es la hoja de ruta para descentralizarlos en el futuro.
+**Seguridad y control distribuido**:
+
+- Uso de Safe (multisig) para la gestión de la tesorería, la propiedad de los contratos inteligentes y el dominio ENS. Esta es la medida más crítica.
+- Implementación de timelocks en operaciones críticas, especialmente para actualizaciones de contratos y movimientos significativos de fondos. El timelock proporciona un período de gracia (típicamente 24-72 horas) entre la aprobación y ejecución de cambios importantes.
+- Auditorías de código mediante herramientas automatizadas (Slither, Mythril) antes de cada despliegue.
+- Testing exhaustivo incluyendo pruebas unitarias, de integración y fuzzing para validar el comportamiento de los contratos.
+
+**Infraestructura resiliente**:
+
+- Organización en GitHub con varios administradores y políticas de ramas protegidas para el código principal.
+- Permisos distribuidos en Discord, asignando roles de moderación a miembros de confianza de la comunidad.
+- Replicación del contenido de IPFS en múltiples servicios de pinning o nodos propios para evitar un único punto de fallo.
+- Uso de múltiples proveedores de RPC para garantizar disponibilidad incluso si uno falla.
+
+**Transparencia y trazabilidad**:
+
+- Documentación duplicada en repositorios públicos (GitHub) y en almacenamiento inmutable (Arweave/IPFS) para garantizar su preservación.
+- Transparencia radical: documentar públicamente qué componentes están centralizados y cuál es la hoja de ruta para descentralizarlos en el futuro.
+- Verificación de contratos en exploradores de bloques para permitir auditoría pública del código.
 
 ---

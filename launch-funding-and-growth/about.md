@@ -1,6 +1,6 @@
 # Acerca de
 
-En este apartado exploramos cómo abordar el lanzamiento, financiación y crecimiento de un proyecto Web3, cubriendo los aspectos que van más allá del desarrollo técnico.
+En este apartado exploramos cómo abordar el lanzamiento, financiación y crecimiento de un proyecto Web3 que usa un modelo de gobernanza de DAO, cubriendo los aspectos que van más allá del desarrollo técnico.
 
 Iniciar un proyecto en Web3 es fundamentalmente diferente a lanzar un startup Web2 tradicional. No solo por la complejidad técnica de blockchain y smart contracts, sino porque estamos construyendo sobre un paradigma radicalmente distinto de coordinación, valor y ownership.
 

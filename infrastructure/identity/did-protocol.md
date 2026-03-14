@@ -175,6 +175,18 @@ Una vez que dos identidades pueden descubrirse y verificarse, necesitan comunica
 
 La flexibilidad del sistema permite también modelar estructuras organizativas complejas. Un DID corporativo raíz puede delegar permisos limitados a departamentos o empleados, y las identidades de alto valor —como la tesorería de una DAO— pueden configurarse para requerir múltiples firmas, eliminando puntos únicos de fallo y distribuyendo la confianza entre varias partes.
 
+## Tooling: frameworks para implementar DID/VC
+
+Si quieres construir infraestructura DID/VC sin partir desde cero, el ecosistema dispone de tres frameworks de referencia que abstraen la complejidad de los estándares W3C:
+
+[**Veramo**](https://veramo.io/) es un framework JavaScript/TypeScript con arquitectura de plugins. Permite añadir emisión, verificación y gestión de VCs a cualquier aplicación Node.js o React Native. Su diseño modular permite intercambiar métodos DID, esquemas de credenciales o almacenes de claves sin reescribir la lógica de negocio. Es la opción más flexible para developers que quieren control fino sobre cada capa.
+
+[**walt.id**](https://walt.id/) está orientado a organizaciones que necesitan desplegar infraestructura DID/VC como servicio. Provee tres kits independientes con API REST: Issuer Kit para emitir VCs, Verifier Kit para verificarlas y Wallet Kit para custodiarlas. Es especialmente relevante en el contexto eIDAS/EBSI: gran parte de los proyectos piloto de la Comisión Europea sobre identidad digital lo usan como base de implementación. No es código para integrar en una app, sino infraestructura para desplegar como servicio.
+
+[**SpruceID**](https://www.spruceid.com/) se centra en interoperabilidad de estándares. Su librería `DIDKit`, escrita en Rust con bindings a JavaScript, Python y otros lenguajes, es la implementación de referencia más portable para trabajar con DIDs y VCs en cualquier plataforma. Además, son los autores de la especificación y el paquete [`siwe`](https://www.npmjs.com/package/siwe) (Sign-In with Ethereum), lo que los convierte en un actor central tanto en el mundo DID/VC como en el ecosistema de autenticación Ethereum.
+
+Los tres son agnósticos respecto al stack de aplicación: puedes construir sobre ellos una wallet como PrivadoID, un servicio de KYC como Fractal ID, o la infraestructura de credenciales de un gobierno como QuarkID —que en su caso optó por construir un stack propio sobre ZKSync Era siguiendo los estándares W3C directamente, sin usar ninguno de estos frameworks.
+
 ## Referencias y Especificaciones
 
 - [W3C DID Core 1.0](https://www.w3.org/TR/did-core/) - Especificación fundamental
