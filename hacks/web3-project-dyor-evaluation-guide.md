@@ -144,6 +144,12 @@ Auditorías de seguridad independientes por firmas reputadas, con hallazgos abor
 
 Hojas de ruta realistas que reconocen desafíos y no prometen avances revolucionarios en plazos poco realistas.
 
+## Herramientas de Evaluación de Protocolos
+
+Existen plataformas que facilitan la evaluación objetiva de protocolos DeFi. [DeFi Safety](https://www.defisafety.com/) y [DeFi Score](https://defiscore.io/) evalúan protocolos según múltiples dimensiones de seguridad: calidad de auditorías, historial del equipo, descentralización del protocolo y calidad del código. Estas puntuaciones ayudan a usuarios no técnicos a evaluar riesgo relativo, aunque deben entenderse como evaluaciones en un momento dado que pueden volverse obsoletas si el protocolo cambia.
+
+[Token Terminal](https://tokenterminal.com/) y [DeFi Llama](https://defillama.com/) proporcionan métricas de salud financiera de protocolos: TVL (Total Value Locked), ingresos, costos y rentabilidad. Estos datos ayudan a evaluar sostenibilidad económica, un indicador importante de longevidad y legitimidad del proyecto.
+
 ## Evaluación Continua
 
 DYOR no es una actividad puntual sino un proceso continuo. Los proyectos evolucionan—a veces mejoran, a menudo se degradan a medida que el idealismo inicial da paso a presiones comerciales.

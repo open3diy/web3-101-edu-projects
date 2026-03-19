@@ -582,7 +582,7 @@ Estas DApps son experimentos valiosos pero prematuros para impacto masivo. La ma
 
 El verdadero test será si pueden evolucionar más allá de comunidades nicho hacia herramientas genuinamente accesibles para personas en países en desarrollo que no tienen alternativas bancarias. Hasta entonces, representan más proof-of-concepts intelectualmente interesantes que soluciones escalables a desigualdad económica global.
 
-Para entender los fundamentos técnicos de cómo estos proyectos usan DeFi para generar sostenibilidad, consulta la sección "DeFi para impacto social" en [6-3-ecosystem-DeFI.md](6-3-ecosystem-DeFI.md). Para contexto sobre su rol en gobernanza de DAOs de impacto social, revisa [7-3-1-DAO.md](7-3-1-DAO.md).
+Para entender los fundamentos técnicos de cómo estos proyectos usan DeFi para generar sostenibilidad, consulta la sección "DeFi para impacto social" en [6-3-ecosystem-DeFI.md](6-3-ecosystem-DeFI.md). Para contexto sobre su rol en gobernanza de DAOs de impacto social, revisa [7-3-DAO.md](7-3-DAO.md).
 
 ## Seguros Descentralizados
 

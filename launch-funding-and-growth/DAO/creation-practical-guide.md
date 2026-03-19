@@ -1,6 +1,6 @@
 # Proceso de creación y lanzamiento de una DAO
 
-> Este documento cubre el proceso práctico de crear y lanzar una DAO, desde la preparación inicial hasta las primeras semanas de operación. Para comprender qué es una DAO, los diferentes tipos y cuándo necesitas una, consulta [7-3-1-DAO.md](../../101/7-3-1-DAO.md). Para profundizar en aspectos específicos como gobernanza, tesorería u operaciones, consulta los documentos especializados en este directorio.
+> Este documento cubre el proceso práctico de crear y lanzar una DAO, desde la preparación inicial hasta las primeras semanas de operación. Para comprender qué es una DAO, los diferentes tipos y cuándo necesitas una, consulta [7-3-DAO.md](../../101/7-3-DAO.md). Para profundizar en aspectos específicos como gobernanza, tesorería u operaciones, consulta los documentos especializados en este directorio.
 
 Crear una DAO es lanzar un experimento de coordinación humana que necesita funcionar técnicamente, ser económicamente sostenible, y generar legitimidad social. No es solo desplegar contratos: es diseñar incentivos, construir comunidad, gestionar riesgos legales, y preparar infraestructura operativa antes de que la gente empiece a usarla.
 
@@ -48,7 +48,9 @@ No necesitas construir todo desde cero. El ecosistema Web3 ofrece frameworks mad
 
 Para Protocol DAOs que gobiernan contratos DeFi complejos, el patrón Governor de OpenZeppelin es el estándar de industria. Es modular, audited, y usado por proyectos mayores como Compound, Uniswap, Gitcoin. Requiere desarrollo custom pero ofrece máxima flexibilidad.
 
-Para DAOs más simples que gestionan tesorería y votan decisiones sin necesidad de ejecutar código on-chain complejo, plataformas como Aragon, DAOhaus, o Gnosis Safe + Snapshot ofrecen interfaces no-code o low-code que permiten lanzar en días en lugar de meses.
+Para DAOs más simples que gestionan tesorería y votan decisiones sin necesidad de ejecutar código on-chain complejo, plataformas como [Aragon](https://aragon.org/product), [DAOhaus](https://app.daohaus.club/summon) o [Safe](https://safe.global/) + [Snapshot](https://snapshot.org/) ofrecen interfaces no-code o low-code que permiten lanzar en días en lugar de meses.
+
+Otras herramientas complementarias amplían las capacidades del stack de gobernanza. [Tally](https://www.tally.xyz/get-started) permite lanzar DAOs basadas en el patrón Governor con una interfaz de gestión completa para votación on-chain, delegación y analytics. [Colony](https://colony.io/) ofrece un framework orientado a la coordinación de trabajo y distribución de reputación, especializado en Service DAOs e Infrastructure DAOs donde la gestión de contribuciones es central. [Hats Protocol](https://www.hatsprotocol.xyz/) programa roles y permisos organizacionales como objetos on-chain, permitiendo automatizar qué personas pueden ejecutar qué acciones dentro de la DAO. [Coordinape](https://coordinape.com/) resuelve un problema específico de las Service DAOs: cómo distribuir compensación entre contributors cuando no hay jefe, utilizando rondas de reconocimiento entre pares donde cada miembro señala quién aportó más valor. El [catálogo de herramientas DAO en ethereum.org](https://ethereum.org/es/apps/categories/dao/) mantiene un listado actualizado de aplicaciones del ecosistema.
 
 La blockchain donde despliegas también importa. Ethereum Mainnet ofrece máxima seguridad y liquidez pero fees de gas muy altos hacen que votar sea prohibitivamente caro para holders pequeños. Layer 2s como Arbitrum, Optimism, Base ofrecen fees órdenes de magnitud menores manteniendo seguridad heredada de Ethereum. Alt-L1s como Solana o Avalanche tienen fees aún menores pero menor descentralización y ecosistemas menos maduros.
 
@@ -272,7 +274,7 @@ Este documento cubre el proceso de creación desde perspectiva de alto nivel. Lo
 
 **Tokenomics**: Para diseño económico del token, mecanismos de emisión, y captura de valor, consulta [tokenomics.md](../tokenomics.md).
 
-**Conceptos fundamentales de DAOs**: Para entender qué es una DAO, tipos, y casos de uso, consulta [7-3-1-DAO.md](../../101/7-3-1-DAO.md).
+**Conceptos fundamentales de DAOs**: Para entender qué es una DAO, tipos, y casos de uso, consulta [7-3-DAO.md](../../101/7-3-DAO.md).
 
 **Herramientas y frameworks técnicos**:
 

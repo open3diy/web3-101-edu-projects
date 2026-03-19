@@ -179,6 +179,8 @@ Infraestructura base que permite construir apps sociales descentralizadas separa
 
 - [CyberConnect](https://cyberconnect.me/): Social graph protocol multi-chain que permite a usuarios construir y poseer su grafo social portable entre diferentes aplicaciones y blockchains.
 
+- [RSS3](https://rss3.io/): Protocolo de distribución de información descentralizada que funciona como el "RSS del Web3". Indexa y agrega feeds de actividad on-chain de múltiples blockchains —transacciones DeFi, actividad NFT, interacciones sociales en Lens y Farcaster, participación en gobernanza de DAOs— en un formato estándar consumible por cualquier aplicación. A diferencia de los protocolos anteriores que gestionan el grafo social en sí, RSS3 proporciona la capa de indexación cross-chain que permite que el historial completo de actividad de un usuario sea portable y consultable desde cualquier plataforma sin depender de indexadores centralizados. CyberConnect lo utiliza para construir grafos sociales agregados, múltiples wallets lo integran para mostrar feeds de actividad unificados, y Mask Network lo usa para notificaciones descentralizadas. Resuelve el problema de interoperabilidad y portabilidad que el documento menciona como visión ideal: permitir que diferentes DApps sociales compartan feeds de actividad mediante un protocolo común.
+
 ### Aplicaciones SocialFi
 
 Interfaces de usuario que consumen protocolos sociales descentralizados:

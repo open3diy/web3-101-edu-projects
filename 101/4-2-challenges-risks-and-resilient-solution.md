@@ -1,4 +1,4 @@
-# Riesgos y Solución Resiliente
+# Riesgos y solución resiliente
 
 La seguridad es un aspecto fundamental en cualquier sistema descentralizado. Saber enfrentarse a las amenazas es importante, resolver los ataques es fundamental, pero lo primero y más crítico es conocer los riesgos para poder anticiparlos y mitigarlos antes de que se materialicen.
 

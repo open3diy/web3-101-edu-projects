@@ -394,7 +394,7 @@ El desarrollo iterativo despliega primero a testnet, observa comportamiento real
 
 Las pausas de emergencia permiten a admin detener operaciones si vulnerabilidad es descubierta post-deployment. OpenZeppelin Pausable implementa esto mediante modifier `whenNotPaused`. Usa juiciosamente: pausability es poder centralizado que contradice descentralización, pero puede prevenir pérdidas catastróficas.
 
-Los límites de rate y caps limitan daño potencial. Contratos pueden imponer máximos por transacción, por período de tiempo o totales. Si bug permite drenaje, estos límites restringen cuánto puede extraerse antes de detección y respuesta.
+Los límites de rate y caps limitan daño potencial. Contratos pueden imponer máximos por transacción, por período de tiempo o totales. Si bug permite drenaje, estos límites restringen cuánto puede extraerse antes de detección y respuesta. [Euler Finance](https://www.euler.finance/), por ejemplo, implementaba mecanismos de protección de liquidez donde retiros masivos de un asset desencadenan incrementos en las comisiones, desincentivando pánicos bancarios mientras permite que usuarios genuinos retiren a velocidad razonable.
 
 El monitoreo continuo observa contratos desplegados en busca de comportamiento anómalo. Las herramientas como Forta, OpenZeppelin Defender y monitoring custom detectan patrones sospechosos: transacciones inusualmente grandes, cambios de estado inesperados, calls desde direcciones no reconocidas. Las alertas tempranas permiten respuesta antes de explotación completa.
 

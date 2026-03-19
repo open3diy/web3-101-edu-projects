@@ -422,7 +422,7 @@ Los permisos granulares definen exactamente qué puede hacer cada Snap: leer tra
 
 **Simuladores de transacciones:** Snaps pueden interceptar transacciones antes de firma y simularlas contra estado actual de blockchain, mostrando exactamente qué ocurrirá: qué tokens serán transferidos, qué allowances serán otorgados, qué cambios de balance resultarán. Esto previene phishing de firmas ciegas donde usuarios aprueban transacciones sin entender consecuencias.
 
-[Wallet Guard](https://www.walletguard.app/) y [Fire](https://www.joinfire.xyz/) son ejemplos: antes de firmar transacción de "approve unlimited USDC a contrato desconocido", el Snap simula y advierte: "Esta transacción otorga permiso para gastar todos tus USDC. El contrato no está verificado y fue desplegado hace 2 días. Riesgo: ALTO". El usuario informado puede cancelar.
+[Wallet Guard](https://www.walletguard.app/), [Fire](https://www.joinfire.xyz/) y [Pocket Universe](https://pocketuniverse.app/) son ejemplos: antes de firmar transacción de "approve unlimited USDC a contrato desconocido", el Snap simula y advierte: "Esta transacción otorga permiso para gastar todos tus USDC. El contrato no está verificado y fue desplegado hace 2 días. Riesgo: ALTO". El usuario informado puede cancelar.
 
 **Verificación de contratos:** Snaps pueden consultar bases de datos de contratos auditados, reportes de seguridad y listas de scams conocidos. Antes de interactuar con contrato, el Snap verifica su reputación: "Este contrato fue auditado por OpenZeppelin hace 3 meses. Sin vulnerabilidades críticas encontradas. Riesgo: BAJO" vs "Este contrato está en lista de scams reportados. 47 usuarios perdieron fondos. Riesgo: CRÍTICO. Bloquear transacción".
 

@@ -67,6 +67,8 @@ La tokenización de activos del mundo real enfrenta un desafío regulatorio más
 
 La ventaja es que esta doble sujeción ofrece protección robusta. Si un emisor tokeniza un activo que no posee legalmente, comete fraude tanto en el mundo tradicional como en el crypto, duplicando las consecuencias legales. Los tribunales tradicionales pueden ejecutar sentencias sobre activos físicos incluso si la parte digital del protocolo es descentralizada.
 
+Sin embargo, la integración entre sistemas legales tradicionales y protocolos descentralizados permanece como un desafío abierto con múltiples dimensiones sin resolver. La tensión entre la inmutabilidad del código y la flexibilidad interpretativa del derecho, la jurisdicción aplicable a transacciones transfronterizas sin intermediarios identificables, y la ejecutabilidad de sentencias judiciales sobre activos digitales distribuidos son problemas que apenas comienzan a explorarse sistemáticamente en la literatura legal.
+
 **Coordinación de economía real: El vacío regulatorio**:
 
 Para plataformas que usan blockchain para coordinar intercambios de productos y servicios físicos, la protección regulatoria es más débil. Estas transacciones generalmente no califican como valores financieros, quedando fuera del alcance de reguladores financieros. Simultáneamente, son demasiado nuevas para estar cubiertas por regulación específica de protección al consumidor aplicada a comercio electrónico tradicional.
