@@ -43,7 +43,7 @@ IPFS fue concebido por **Juan Benet**, un emprendedor y científico de la comput
 
 La web de IPFS: <https://ipfs.tech/>.
 
-Es una solución [libre](https://es.wikipedia.org/wiki/Software_libre), de [código abierto](https://es.wikipedia.org/wiki/C%C3%B3digo_abierto) con [licencia MIT](https://es.wikipedia.org/wiki/Licencia_MIT) con repositorio en <https://github.com/ipfs>.
+Es una solución de [código abierto](https://es.wikipedia.org/wiki/C%C3%B3digo_abierto) con [licencia MIT](https://es.wikipedia.org/wiki/Licencia_MIT) con repositorio en <https://github.com/ipfs>.
 
 * Las propuestas de mejora se denominan `IPIP` (IPFS Improvement Proposal): <https://specs.ipfs.tech/meta/ipip-process/>.
 

@@ -1,5 +1,6 @@
 ---
 applyTo: "**/9-1-ecosystem-DApps.md"
+description: "Estructura específica para el documento de ecosistema DApps (9-1-ecosystem-DApps.md). Usa cuando edites o revises ese archivo: jerarquía de secciones, bloques conceptuales, taxonomía y formato de listas de proyectos."
 ---
 
 # Specific Structure for DApp Ecosystem Documents

@@ -1,3 +1,7 @@
+---
+description: "Genera un prompt para crear una imagen conceptual a partir de un texto. Usa cuando necesites crear un prompt para Midjourney u otras herramientas de generación de imágenes basado en contenido del proyecto."
+---
+
 # imágenes referencia
 
 1. Dame un prompt para generar una imagen conceptual en base al texto que te pongo a continuación entre comillas, no debes hacer referencia a estilo o formato, solo debes hacer una description lo mas corta posible sobre cómo generar la imagen, como si se lo indicases a un pintor que no sabe de lo que le hablas, solo debes hablarle de conceptos sencillos, por ejemplo, una imagen de un mercado en el atardecer, con frutas, no debes indicarle conceptos técnicos complejos, debes buscar una idea ampliamente conocida, se conciso y recuerda, quiero como resultado el texto para generar la imagen, no quiero la imagen.

@@ -1,5 +1,6 @@
 ---
 applyTo: "**/*.md"
+description: "Guía de estilo y estructura para documentación Markdown del proyecto. Usa cuando escribas, edites o revises archivos .md: idioma, formato narrativo, linting, enlaces, referencias académicas y convenciones de nombrado."
 ---
 
 # Documentation Guidelines for Markdown Files

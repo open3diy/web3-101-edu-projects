@@ -1,7 +1,3 @@
----
-applyTo: "**/*.*"
----
-
 # Project general coding standards
 
 ## Naming Conventions
@@ -61,6 +57,4 @@ docs: update README with setup instructions
 
 ## Markdown docs
 
-For additional guidance, refer to the `copilot-instructions-docs.md` file located in the `.github` directory. This file contains detailed examples and explanations for applying these standards effectively.
-
----
+For Markdown-specific guidelines (language, style, structure, links), follow the rules in `.github/instructions/docs.instructions.md`.

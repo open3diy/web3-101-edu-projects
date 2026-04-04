@@ -1,3 +1,7 @@
+---
+description: "Checklist de conocimiento técnico avanzado Web3. Usa cuando quieras evaluar si un documento o recurso cubre conceptos técnicos profundos del ecosistema Web3: tokenomics, identidad, escalabilidad, DeFi avanzado, criptografía."
+---
+
 # Checklist de conocimiento técnico avanzado Web3
 
 > Este checklist separa el conocimiento superficial (explicaciones simplistas de DAO/DeFi, maximalismo Bitcoin) del conocimiento técnico profundo que demuestra comprensión real del ecosistema Web3.

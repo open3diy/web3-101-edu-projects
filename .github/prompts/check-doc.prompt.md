@@ -1,3 +1,7 @@
+---
+description: "Revisión crítica de documentación. Usa cuando quieras revisar, auditar o validar un documento técnico o educativo del proyecto. Detecta inconsistencias, falta de cohesión, contenido vacío y errores lógicos."
+---
+
 # Prompt para Revisión Crítica de Documentación
 
 ## Contexto
