@@ -178,6 +178,12 @@ Finalmente, los esquemas de preventa con desbloqueo inmediato son casi siempre s
 
 Para evaluar la sostenibilidad de un protocolo, es útil observar ciertas métricas que reflejan su salud económica. Estas métricas se han vuelto tan importantes que existen plataformas especializadas que las recopilan y presentan de forma estandarizada.
 
+Sin embargo, existe una trampa conceptual que conviene tener presente antes de adentrarse en cualquier métrica concreta. La [ley de Goodhart](https://en.wikipedia.org/wiki/Goodhart%27s_law), formulada por el economista Charles Goodhart, establece que cuando una medida se convierte en un objetivo, deja de ser una buena medida. En el contexto de protocolos Web3, esto se traduce en una vulnerabilidad sistémica: cualquier métrica que gane suficiente relevancia como indicador de calidad se convierte automáticamente en un objetivo de manipulación.
+
+Cuando inversores y usuarios empiezan a usar el TVL como criterio de evaluación, los protocolos tienen incentivos para inflar artificialmente esa cifra contando el mismo capital múltiples veces. Cuando el volumen de trading se convierte en el indicador principal de un exchange, aparecen exchanges que fabrican volumen ficticio. Cuando la cantidad de wallets activas mide adopción, emergen granjeros de airdrops que generan actividad artificial para capturar incentivos. No se trata de comportamiento individual malicioso, sino de una consecuencia estructural predecible: cualquier sistema de incentivos producirá el comportamiento que mide, no necesariamente el comportamiento que pretende incentivar.
+
+Esta dinámica hace indispensable lo que desarrollamos en los siguientes subapartados: entender las métricas en profundidad, triangular múltiples indicadores, y mantener escepticismo ante números extraordinarios.
+
 ### Dónde encontrar las métricas: agregadores y rankings
 
 CoinMarketCap y CoinGecko son las dos plataformas más populares para consultar información sobre proyectos cripto. Funcionan como directorios exhaustivos que listan miles de tokens y protocolos, ordenándolos por capitalización de mercado, volumen de comercio, y otras métricas relevantes.
@@ -441,6 +447,9 @@ También examina diversidad de participantes únicos que votan. 100 direcciones 
 Protocolos serios implementan staking con lockups largos (ve-tokens) que obligan a comprometer capital por años para maximizar beneficios. Esto filtra participantes especulativos de aquellos genuinamente alineados con éxito largo plazo.
 
 Curve finance con veCRV ejemplifica esto: usuarios bloquean CRV hasta 4 años para maximizar recompensas y poder de voto. Esto reduce presión vendedora y asegura que quienes gobiernan están comprometidos con futuro del protocolo.
+
+> todo: Pero para tomar esa decisión necesitas entender si el juego tiene economía inflacionaria o deflacionaria, si los activos mantienen valor por escasez real o demanda subsidiada, y si el staking del token da ventajas competitivas o solo rendimiento pasivo. Cada mecánica de juego está entrelazada con decisiones económicas complejas.
+> Incluso conceptos aparentemente simples esconden complejidad. Si una plataforma te ofrece "monetizar tus publicaciones", necesitas entender si cobras en tokens volátiles o estables, si tienen liquidez, qué porcentaje retiene el protocolo, y qué costes de retiro existen. Información crítica sobre seguridad del protocolo (auditorías, antigüedad, historial de incidentes) rara vez está visible en la interfaz. Y estas decisiones son continuas: los parámetros cambian mediante votaciones, las fórmulas de incentivos se ajustan periódicamente, y debes monitorizar activamente si tu estrategia sigue siendo óptima.
 
 ---
 

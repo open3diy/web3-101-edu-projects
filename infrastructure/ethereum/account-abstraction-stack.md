@@ -6,7 +6,7 @@ Account Abstraction (AA) surge como respuesta a las limitaciones estructurales d
 
 La base técnica sobre la que se construye es el concepto de [Smart Contract Wallet (SCW)](https://defiantapp.medium.com/qu%C3%A9-son-las-smart-contract-wallets-bf558c2b915c): una cuenta gestionada por código en lugar de una clave privada de la EOA. A diferencia de las EOAs tradicionales, una SCW puede definir sus propias reglas de validación, delegar autorización de forma programable y ejecutar lógica compleja antes de confirmar cualquier operación. Proyectos como Safe demostraron el potencial de este modelo años antes de que existiera un estándar unificado, pero su adopción quedaba limitada a casos avanzados por la complejidad de integración que suponía para cada DApp.
 
-La visión de AA, como [explica MetaMask](https://support.metamask.io/configure/accounts/what-is-a-smart-account), consiste precisamente en hacer que las SCW sean el modelo por defecto en lugar de la excepción. Desde la perspectiva del usuario, esto significa poder recuperar el acceso sin depender de una clave privada única —mediante recuperación social implementada en el SCW o passkeys como mecanismo de firma—, autorizar una aplicación para que opere en su nombre dentro de límites estrictos en lugar de firmar cada transacción individualmente, y no necesitar ETH para pagar gas, ya sea porque un protocolo lo patrocina o porque se paga con otro token. Desde la perspectiva de la aplicación, significa poder ofrecer operaciones en lote atómicas, multi-firma nativa y permisos granulares sin depender de que el usuario comprenda la infraestructura subyacente.
+La visión de AA, como [explica MetaMask](https://support.metamask.io/configure/accounts/what-is-a-smart-account), consiste precisamente en hacer que las SCW sean el modelo por defecto en lugar de la excepción. Desde la perspectiva del usuario, esto significa poder recuperar el acceso sin depender de una clave privada única —mediante [recuperación social](https://vitalik.eth.limo/general/2021/01/11/recovery.html) implementada en el SCW o passkeys como mecanismo de firma—, autorizar una aplicación para que opere en su nombre dentro de límites estrictos en lugar de firmar cada transacción individualmente, y no necesitar ETH para pagar gas, ya sea porque un protocolo lo patrocina o porque se paga con otro token. Desde la perspectiva de la aplicación, significa poder ofrecer operaciones en lote atómicas, multi-firma nativa y permisos granulares sin depender de que el usuario comprenda la infraestructura subyacente.
 
 **Inicio con ERC-4337**:
 
@@ -15,6 +15,8 @@ Inicialmente [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) (2023) estandar
 Esto trajo no solo un nuevo tipo de smart contract en la blockchain, sino también un cambio de paradigma en cómo la DApp interactúa con la infraestructura subyacente. Ya no hablamos de la DApp conectada a una red con la wallet enviando transacciones directamente: la arquitectura se fragmenta en capas con roles distintos.
 
 Por una parte, la wallet inicialmente seguía siendo agnóstica al cambio. Bajo demanda un SCW se crea la primera vez que se usa, mediante un contrato factoría que recibe los parámetros de inicialización. En implementaciones como Safe, la EOA puede actuar como owner del SCW, pero en otras —Kernel, Biconomy Nexus— la lógica de validación está completamente dentro del contrato y no hay un "owner" EOA explícito. Lo que sí es común es el uso del patrón proxy para que todos los SCWs de un mismo tipo compartan la misma lógica desplegada, reduciendo costes.
+
+Además, este desacoplamiento es precisamente lo que habilita las **embedded wallets** para el onboarding social de forma segura. Como la lógica de validación del SCW es programable, no es necesario que el propietario sea una EOA gestionada por el usuario: proveedores como [Privy](https://www.privy.io/), [Dynamic](https://www.dynamic.xyz/) o [Turnkey](https://www.turnkey.com/) despliegan un SCW cuyo material criptográfico gestionan ellos mediante [MPC](https://en.wikipedia.org/wiki/Secure_multi-party_computation) (Multi-Party Computation, donde la clave privada nunca existe completa en un solo lugar) o [HSM](https://en.wikipedia.org/wiki/Hardware_security_module) (Hardware Security Module, hardware certificado que custodia y opera la clave sin exponerla), y el usuario se autentica con sus credenciales sociales habituales (Google, email, etc.). La dirección on-chain es la del SCW —permanente, portable, con historial propio— pero el acceso nunca requiere que el usuario toque una clave privada. La seguridad descansa en el contrato: solo esa clave gestionada puede autorizar operaciones, y las garantías criptográficas del SCW se mantienen independientemente de quién custodie el material de firma. Esto convierte ERC-4337 en la base técnica natural para aplicaciones que quieren incorporar usuarios sin experiencia Web3 sin sacrificar la soberanía on-chain.
 
 La DApp aporta el callData —qué quiere ejecutar— y el SDK de infraestructura (wallet SDK o bundler SDK) ensambla el objeto UserOperation completo. La wallet firma ese objeto, que actúa como envoltorio para que un tercero realice el trámite. El SDK es quien envía la petición a ese tercero; no existe transacción directa a la red desde el usuario.
 
@@ -32,9 +34,15 @@ Ante este panorama, con la actualización Pectra de 2025, este flujo se mejora y
 
 En detalle, EIP-7702 introduce un nuevo tipo de transacción (tipo 4) que incluye una `authorization_list`. Esta lista modifica el campo de código de la EOA para que apunte al contrato delegado, y esa delegación es persistente: se mantiene para todas las transacciones posteriores hasta que el propio usuario envíe otra transacción tipo 4 que la revoque o la cambie. Por eso se dice que EIP-7702 permite que tu wallet tenga código: lo que ocurre exactamente es que tu EOA ejecuta la lógica del contrato delegado manteniendo su propia dirección, sin migrar a una cuenta nueva.
 
-Las motivaciones de EIP-7702 se centran en batching, patrocinio de gas y de-escalada de privilegios (privilege de-escalation), que tiene su implementación práctica en [session keys](session-keys.md).
+Las motivaciones de EIP-7702 se centran en batching, patrocinio de gas y de-escalada de privilegios (privilege de-escalation que tiene su implementación práctica en [session keys](session-keys.md)).
 
-Existen casos donde este modelo se adapta peor. Al ser la EOA la que referencia el SCW, las firmas multisig se complican; en esos escenarios puede ser preferible confiar en wallets ERC-4337 puras como Safe. Igualmente, otros mecanismos de propiedad como passkeys o recuperación social se resuelven con un cambio de diseño: en wallets como MetaMask, el [login social](https://metamask.io/es/news/introducing-metamask-social-login) forma parte de la propia wallet y no del SCW, usando soluciones descentralizadas como MPC según el caso. Hay que aclarar que soluciones como Safe aún siguen el modelo anterior, por lo que no existe un cambio único ni universal. Lo que sí parece claro es que EIP-7702 simplificó varios de estos casos para implementaciones nuevas.
+ERC-4337 y EIP-7702 no se reemplazan: conviven y se complementan según el caso de uso.
+
+Con **EIP-7702**, el usuario ya tiene una EOA y quiere capacidades de smart account sin cambiar de dirección. La wallet —MetaMask, por ejemplo— delega esa EOA a un SCW y gestiona ella misma cómo accede el usuario: passkey, [login social](https://metamask.io/es/news/introducing-metamask-social-login) o clave privada son mecanismos de autenticación que viven en la capa de la wallet, no en el SCW. El usuario obtiene batch, patrocinio de gas y session keys sin migrar ni perder su historial on-chain.
+
+Con **ERC-4337 puro**, no existe una EOA de usuario de partida. Es el modelo de las embedded wallets: el SCW es la cuenta desde el principio, con una clave gestionada por el proveedor (Privy, Dynamic, Turnkey) mediante MPC o HSM. El usuario se autentica con sus credenciales sociales y accede directamente a su SCW. Es la vía natural cuando la aplicación quiere incorporar usuarios sin wallet previa.
+
+En ambos casos la wallet ve cómo accedes y lo gestiona internamente: el modelo subyacente —EIP-7702 o ERC-4337— es un detalle de implementación invisible para el usuario. Que ambos coexistan no es fragmentación, sino que cada uno cubre mejor su subconjunto de casos.
 
 La autorización también habilita un cambio de paradigma respecto a ERC-4337: ya no es necesaria la infraestructura compleja de bundlers para todos los casos. Permite que existan relayers u otros servicios de terceros que paguen gas con su propia infraestructura, y la autorización de EIP-7702 facilita ese proceso sin necesitar el EntryPoint.
 
@@ -122,6 +130,40 @@ El ecosistema de Account Abstraction ha generado una infraestructura de recursos
 
 [BundleBear](https://www.bundlebear.com/erc4337-account-activation/all) ofrece una dimensión distinta: métricas en tiempo real sobre la adopción real de ERC-4337 en producción. Rastrea el número de cuentas activadas, UserOperations procesadas, bundlers activos y paymasters desplegados por cadena y en el tiempo. Su utilidad principal es empírica: permite contrastar el discurso teórico sobre Account Abstraction con los datos reales de uso, observar qué cadenas lideran la adopción y entender el ritmo al que el ecosistema avanza en la práctica.
 
+## Desafíos y estrategia
+
+Account Abstraction resuelve problemas reales de experiencia de usuario, pero introduce complejidad genuina que conviene reconocer sin minimizar. Ninguno de los desafíos que se describen a continuación es un argumento en contra de adoptar AA, pero sí condicionan cómo debe adoptarse y qué decisiones de diseño hay que tomar con criterio antes de comprometerse con una implementación.
+
+**Superficie de ataque y seguridad de contratos**:
+
+Cada SCW es código ejecutable en la cadena cuya corrección es responsabilidad del equipo que lo despliega o del proveedor cuya implementación se utiliza. A diferencia de una EOA, donde el único secreto que proteger es la clave privada, un SCW puede contener vulnerabilidades en su lógica de validación, en la gestión de permisos de session keys o en la integración con el paymaster. Un bug en `validateUserOp` puede permitir que un atacante ejecute operaciones sin la autorización del propietario. La lógica de recuperación social, si no está correctamente acotada en tiempo y quórum, puede ser explotada para sustituir las claves de control antes de que el propietario reaccione.
+
+La estrategia ante este riesgo no es implementar los contratos desde cero sino partir de implementaciones auditadas con trayectoria real en producción. Safe lleva años siendo la referencia en multisig y SCW; Kernel y Biconomy Nexus han sido auditados por firmas especializadas y tienen adopción real. Para la lógica de session keys, las [implementaciones de referencia de Pimlico](https://docs.pimlico.io/permissionless) o el módulo de permisos de Safe son puntos de partida más seguros que código propio. El principio es el mismo que en cualquier desarrollo de contratos inteligentes: la auditoría no es opcional para código que custodia valor, y la base sobre la que se construye importa tanto como los añadidos.
+
+**Costos de gas y overhead operativo**:
+
+Un SCW tiene un costo de despliegue inicial que las EOAs no tienen. Cada operación que pasa por el EntryPoint arrastra el overhead de validación del `validateUserOp` y, si hay paymaster, dos llamadas adicionales al contrato de patrocinio. En cadenas con gas caro, este overhead puede ser significativo para operaciones de bajo valor. El patrón proxy reduce el costo de despliegue compartiendo la lógica entre todos los SCWs del mismo tipo, pero no elimina el costo de las llamadas adicionales por operación.
+
+La estrategia aquí pasa por dimensionar adecuadamente el uso de AA según el tipo de operación y el perfil de usuario. Para usuarios avanzados con EOA que ya tienen historial on-chain, EIP-7702 es la vía con menor overhead estructural porque no requiere desplegar un contrato nuevo. Para flujos de onboarding donde el usuario no tiene wallet previa y se quiere experiencia sin fricción, el overhead de ERC-4337 es el precio de esa abstracción y normalmente queda cubierto por el paymaster con cargo a la DApp o el protocolo. La elección del modelo no es neutral en costos y debe ser consciente.
+
+**Fragmentación de implementaciones y compatibilidad**:
+
+No todas las wallets soportan EIP-5792. No todas las SCW implementan las mismas versiones del EntryPoint. Safe, Kernel y Biconomy Nexus tienen interfaces de módulos distintas. ERC-4337 y EIP-7702 coexisten pero no toda la infraestructura existente soporta ambos modelos por igual. El ecosistema de bundlers y paymasters está más maduro en redes como Base, Polygon o Optimism que en chains más pequeñas, donde la disponibilidad de infraestructura operativa puede ser escasa o directamente inexistente.
+
+La estrategia ante la fragmentación es el patrón de degradación graceful que ya se describió en la guía de referencia: detectar capacidades con `wallet_getCapabilities` antes de activar rutas AA, y diseñar siempre un flujo de fallback a EOA estándar que funcione sin errores. Un usuario con una wallet que no soporta AA no debe encontrar una DApp rota; debe encontrar una experiencia funcional aunque sin las optimizaciones de AA activadas.
+
+**Centralización de la infraestructura operativa**:
+
+Como se detalla en la sección sobre descentralización, la infraestructura de bundlers y paymasters sigue estando concentrada en pocos proveedores. Pimlico, Alchemy, Coinbase y Biconomy cubren la mayoría del tráfico de UserOperations en producción. Esto representa una dependencia de disponibilidad y confianza que no existe en el modelo EOA estándar: una DApp que depende de un bundler específico hereda su disponibilidad, sus políticas de censura y su modelo de negocio.
+
+La estrategia de mitigación more razonable a corto plazo es la abstracción del proveedor mediante bibliotecas como Permissionless.js, que permiten cambiar de bundler con un parámetro de configuración sin reescribir la lógica de integración. Configurar al menos dos proveedores como fallback es una medida operativa que cualquier equipo en producción debería adoptar. A medio plazo, el avance de estándares como RIP-7560 apunta hacia una descentralización más estructural, pero sin un horizonte comprometido.
+
+**Recuperación social y custodia de guardianes**:
+
+La recuperación social es una de las capacidades más atractivas de AA desde la perspectiva de onboarding: permite que el usuario recupere el acceso a su cuenta si pierde la clave, sin depender de una frase de recuperación que puede perderse o ser robada. Pero el modelo desplaza el riesgo, no lo elimina. Si los guardianes designados para aprobar la recuperación son comprometidos —mediante ingeniería social, acceso no autorizado a sus cuentas o simplemente inactividad— el mecanismo puede ser explotado para sustituir las claves de control del SCW.
+
+El diseño correcto de la recuperación social requiere acotarla con timelocks —un periodo de espera antes de que la recuperación sea ejecutable, durante el cual el propietario legítimo puede cancelarla— y con un quórum suficiente pero no excesivo de guardianes. Delegar la gestión de este mecanismo a infraestructura de terceros como [Candide Atelier](https://docs.candide.dev/wallet/plugins/recovery-with-guardians/) o el módulo de recuperación de Safe desplaza la implementación a código auditado, aunque no elimina la necesidad de que el usuario comprenda qué está delegando y a quién.
+
 ## Guía de referencia para el desarrollador de DApps con AA
 
 El análisis previo describe el ecosistema desde la perspectiva del usuario. Esta sección sintetiza las implicaciones prácticas para el equipo que construye la DApp: qué debe cambiar en el contrato, qué debe cambiar en el frontend y qué herramientas existen hoy para hacerlo sin implementar cada pieza desde cero.
@@ -130,7 +172,7 @@ El análisis previo describe el ecosistema desde la perspectiva del usuario. Est
 
 La mayoría de contratos escritos antes de la era AA asumen implícitamente que el caller es siempre una EOA. Hay dos patrones concretos que rompen la compatibilidad con SCW y que deben auditarse antes de declarar una DApp compatible con AA.
 
-El primero es la comprobación `tx.origin == msg.sender`. Esta línea, históricamente usada para verificar que el llamador es directamente una EOA y no un contrato intermediario, rechaza silenciosamente cualquier SCW porque en ese caso `tx.origin` es la EOA que inició la cadena de llamadas pero `msg.sender` es el contrato de la wallet. El reemplazo correcto depende del propósito original: si la intención era prevenir llamadas desde otros contratos, la solución moderna pasa por lógica explícita de autorización mediante patrones como `Ownable` o `AccessControl` de OpenZeppelin. La guía de [Ethereum sobre compatibilidad de AA](https://docs.alchemy.com/docs/smart-contract-compatibility-for-account-abstraction) documenta los patrones problemáticos más habituales.
+El primero es la comprobación `tx.origin == msg.sender`. Esta línea, históricamente usada para verificar que el llamador es directamente una EOA y no un contrato intermediario, rechaza silenciosamente cualquier SCW porque en ese caso `tx.origin` es la EOA que inició la cadena de llamadas pero `msg.sender` es el contrato de la wallet. El reemplazo correcto depende del propósito original: si la intención era prevenir llamadas desde otros contratos, la solución moderna pasa por lógica explícita de autorización mediante patrones como `Ownable` o `AccessControl` de OpenZeppelin. [Este articulo](<https://docs.openzeppelin.com/contracts/5.x/faq)>) indica porque no debes restringir solo a una EOA.
 
 El segundo es la verificación de firmas. Si el contrato verifica firmas con `ecrecover` directamente, es incompatible con todas las SCW. La solución es implementar soporte para [EIP-1271](https://eips.ethereum.org/EIPS/eip-1271): antes de llamar a `ecrecover`, comprobar si la dirección firmante es un contrato; si lo es, llamar a su función `isValidSignature()` para delegar la verificación. OpenZeppelin ofrece el helper [`SignatureChecker`](https://docs.openzeppelin.com/contracts/4.x/api/utils#SignatureChecker) que abstrae esta lógica de forma compatible con ambos modelos (EOA y SCW) sin reescribir la lógica de verificación del contrato.
 
@@ -148,9 +190,9 @@ Para equipos que despliegan en Base y quieren aprovechar el ecosistema ya constr
 
 ### Cómo conectar wallets de forma agnóstica
 
-Más allá de AA, la selección del conector de wallets determina directamente si la DApp padece el problema de la gran dispersión del login descrito antes. El ecosistema ha generado varias soluciones que implementan [EIP-6963](https://eip6963.org/) —el estándar que permite detectar automáticamente las wallets instaladas por el usuario— como comportamiento por defecto.
+La selección del conector de wallets —RainbowKit, ConnectKit, Dynamic, Privy y equivalentes— es independiente de AA y está cubierta en detalle en la [guía del ecosistema de wallets](../identity/web3-wallet-ecosystem.md): qué bibliotecas usar, cómo funciona EIP-6963 para la detección multi-wallet y cómo elegir según el perfil del usuario objetivo.
 
-[RainbowKit](https://www.rainbowkit.com/) es el conector más utilizado junto a wagmi: muestra automáticamente las wallets que el usuario tiene instaladas, soporta EIP-6963 y WalletConnect para wallets móviles, y ofrece UI configurable. [ConnectKit](https://docs.family.co/connectkit) de Family es la alternativa con diseño más cuidado y soporte nativo para Safe y Coinbase Smart Wallet. [Dynamic](https://www.dynamic.xyz/) y [Privy](https://www.privy.io/) son soluciones de nivel superior orientadas a onboarding progresivo: gestionan tanto wallets externas como Embedded Wallets con login social, y son especialmente relevantes si la DApp quiere soportar usuarios sin wallet previa. La evaluación independiente de [0xpass sobre RainbowKit](https://blog.0xpass.io/p/exploring-rainbowkit-assessing-its) documenta con detalle las limitaciones actuales de cada librería en cuanto a detección y priorización de wallets.
+El punto de intersección con AA es EIP-5792: una vez conectada la wallet, `wallet_getCapabilities` permite detectar si esa wallet soporta las capacidades descritas en la sección anterior y adaptar la experiencia en consecuencia.
 
 ### Compatibilidad, incompatibilidad y degradación graceful
 
@@ -180,13 +222,15 @@ La frontera entre compatibilidad plena y degradación no la fija la DApp, la fij
 
 ### Referencias para el desarrollador
 
+- [Ethereum.org: roadmap de Account Abstraction](https://ethereum.org/roadmap/account-abstraction/) — visión general del enfoque, motivaciones y evolución de AA dentro del ecosistema Ethereum
+- [Documentación de ERC-4337](https://docs.erc4337.io/index.html) — guía técnica sobre arquitectura, UserOperations, bundlers, paymasters y patrones de integración
 - [Documentación oficial de EIP-5792](https://eips.ethereum.org/EIPS/eip-5792) — wallet_sendCalls y wallet_getCapabilities
 - [Wagmi — useCapabilities y useSendCalls](https://wagmi.sh/react/api/hooks/useCapabilities) — implementación frontend de EIP-5792
 - [Permissionless.js](https://docs.pimlico.io/permissionless) — librería open-source para smart accounts con ERC-4337
 - [Alchemy Account Kit](https://accountkit.alchemy.com/) — SDK de alto nivel para AA con bundler y paymaster integrados
-- [Compatibilidad de contratos con AA](https://docs.alchemy.com/docs/smart-contract-compatibility-for-account-abstraction) — patrones a auditar (`tx.origin`, firmas)
+- [OpenZeppelin FAQ sobre EOAs y smart wallets](https://docs.openzeppelin.com/contracts/5.x/faq) — por qué no debes restringir contratos a EOAs ni asumir que toda wallet firma como una cuenta tradicional
 - [OpenZeppelin SignatureChecker](https://docs.openzeppelin.com/contracts/4.x/api/utils#SignatureChecker) — verificación de firmas compatible con EOA y SCW
-- [EIP-6963](https://eip6963.org/) — detección multi-wallet en DApps
+- [Guía del ecosistema de wallets](../identity/web3-wallet-ecosystem.md) — conectores de wallet, EIP-6963, WalletConnect y criterios de selección según perfil de usuario
 - [OnchainKit de Coinbase](https://onchainkit.xyz/) — componentes React para Base con AA integrado
 
 ---

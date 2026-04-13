@@ -1,6 +1,8 @@
 # Reputación Web3
 
-En [identidad Web3](7-1-identity.md) vimos cómo la identidad responde a la pregunta *quién eres*: atributos verificables que te definen independientemente de tu historial de acción. La reputación responde a una pregunta distinta: *qué has hecho y qué autoridad has acumulado por ello*. No es un perfil estático que un emisor externo te otorga, sino un historial dinámico que construyes con cada acción verificable on-chain.
+En [identidad Web3](7-1-identity.md) vimos cómo esta responde a la pregunta *quién eres* mediante atributos verificables y reputación, por eso está tan relacionado.
+
+La reputación responde a una pregunta distinta: *qué has hecho y qué autoridad has acumulado por ello*. No es un perfil estático que un emisor externo te otorga, sino un historial dinámico que construyes con cada acción verificable on-chain.
 
 Esta distinción importa porque cambia quién tiene poder para definirte. Tu identidad depende en gran medida de emisores con autoridad reconocida —una universidad, un proveedor KYC, un protocolo de prueba de humanidad—. Tu reputación, en cambio, emerge de la propia red: quién te sigue, qué DAOs te aceptan como contribuidor, cuántas propuestas has votado, qué protocolo llevas años usando. Nadie te la concede; la acumulas acción a acción.
 
@@ -14,7 +16,7 @@ Las primitivas técnicas con las que la reputación cobra vida —SBTs, POAPs y 
 
 ## Visión de la Reputación
 
-La reputación Web3 representa uno de los experimentos socio-técnicos más ambiciosos de nuestra era. Estamos intentando construir sistemas de confianza y coordinación que funcionan globalmente sin autoridades centrales, que resisten censura y manipulación, y que empoderan individuos en lugar de corporations.
+La reputación Web3 representa uno de los experimentos socio-técnicos más ambiciosos de nuestra era. Estamos intentando construir sistemas de confianza y coordinación que funcionan globalmente sin autoridades centrales, que resisten censura y manipulación, y que empoderan individuos en lugar de corporaciones.
 
 El camino está lleno de desafíos técnicos sin resolver, dilemas éticos complejos, y incertidumbre regulatoria. Pero el potencial es transformador: un mundo donde tu reputación es portátil, verificable, y verdaderamente tuya. Donde la contribución importa tanto como el capital. Donde la confianza se construye mediante acciones verificables, no mediante intermediarios que pueden manipular o censurar.
 
@@ -60,15 +62,19 @@ La reputación Web3 hereda la naturaleza inmutable de la blockchain. Si el smart
 
 **Falta de Interoperabilidad y Estándares**:
 
-Actualmente existe una gran fragmentación en cómo se define a un participante legítimo. Protocolos como Gitcoin Passport, Proof of Humanity o BrightID utilizan criterios y arquitecturas diferentes. Al no existir un estándar técnico universal, la reputación acumulada en un ecosistema rara vez es interoperable o traducible de forma directa a otro. Esta falta de componibilidad técnica limita la promesa de una identidad verdaderamente portable.
+Existen iniciativas serias de estandarización: la [Chain Agnostic Standards Alliance (CASA)](https://chainagnostic.org/) publica CAIPs que resuelven cómo identificar cadenas, cuentas y activos de forma universal; el W3C mantiene los estándares de [DIDs](https://www.w3.org/TR/did-core/) y [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) como base interoperable para credenciales digitales; y EAS se ha convertido en el formato de facto para atestaciones en el ecosistema Ethereum. El problema no es ausencia de estándares, sino fragmentación en cómo los protocolos de reputación los adoptan e interpretan. Gitcoin Passport, Proof of Humanity y BrightID comparten la misma capa conceptual pero definen criterios de elegibilidad y arquitecturas incompatibles entre sí. La reputación acumulada en un ecosistema rara vez es interoperable o traducible de forma directa a otro, no porque no existan estándares comunes para expresar credenciales, sino porque cada protocolo decide qué emisores reconoce y qué señales considera válidas. La componibilidad técnica es posible; la componibilidad social —el acuerdo sobre qué vale qué— sigue sin resolverse.
 
-**El Problema del Arranque en Frío y el Oráculo Social**:
+**Fragmentación del Estado entre Cadenas**:
 
-Construir un historial on-chain requiere, por definición, interactuar en la blockchain desde cero, lo que excluye el valor aportado previamente por un usuario en el mundo tradicional. Para mitigar esto, se intenta importar credibilidad off-chain, pero esto requiere oráculos y puentes de validación centralizados. Técnicamente, la blockchain solo puede registrar eventos deterministas, lo que dificulta integrar acciones cualitativas humanas (como liderazgo o mentoría) sin depender de un punto central de confianza, sesgando el sistema a medir únicamente lo programáticamente cuantificable.
+La capa anterior describe la fragmentación de estándares entre protocolos. Hay una segunda dimensión igual de estructural: la fragmentación del historial del mismo usuario entre cadenas distintas. Un usuario puede tener un historial de gobernanza impecable en Base, ser un completo desconocido en Arbitrum y acumular una década de reputación profesional en LinkedIn. El problema es que los contratos inteligentes están aislados por diseño: no pueden leer lo que ocurre en otras cadenas ni lo que existe en servidores tradicionales. El resultado es una reputación inevitablemente dispersa que el protocolo receptor no puede agregar sin introducir alguna forma de confianza externa.
+
+El ecosistema ha desarrollado varias estrategias para manejarlo. La más austera delega la prueba al propio usuario: las atestaciones off-chain de EAS viajan como documentos portátiles firmados por un emisor reconocido, que cada aplicación verifica localmente sin consultar otra cadena. Para importar credenciales del mundo Web2 —historial bancario, reputación en plataformas cerradas— herramientas de zkTLS generan pruebas criptográficas de datos privados sin revelarlos. Cuando una aplicación necesita orquestar acciones automáticas entre cadenas, protocolos de mensajería como CCIP propagan el estado de identidad desde un hub hacia los spokes donde operan las dApps. Construir sobre grafos sociales unificados como Lens o Farcaster evita el problema desde la raíz: la identidad reside en el protocolo y las aplicaciones son ventanas sobre el mismo estado compartido. Ninguna estrategia resuelve todos los casos sin compromisos, ya sea en confianza, coste o complejidad operacional. El análisis completo de estas opciones está en [fragmentación del estado y portabilidad cross-chain](../infrastructure/ethereum/reputation-state-fragmentation.md).
 
 **Privacidad frente a Verificabilidad**:
 
 La transparencia por defecto de la blockchain pública entra en conflicto con el derecho a la privacidad. Para que una credencial funcione como reputación, suele ser visible para todos, lo que permite trazar el comportamiento y las afiliaciones de una persona. Aunque existen soluciones criptográficas como las pruebas de conocimiento cero para proteger los datos, integrarlas en los sistemas de reputación actuales añade una enorme complejidad computacional que aún limita su uso masivo.
+
+> Algo que por cierto ya analizamos en parte en [el desafío de la privacidad](4-3-challenges-privacy.md).
 
 **Sesgo Cuantitativo y de Dominio**:
 
@@ -86,7 +92,13 @@ Hay además un problema de fondo que ninguna regla técnica sobre "intransferibi
 
 ### Inclusión y Exclusión Estructural
 
-El problema no es el coste de las transacciones —los L2 lo han resuelto en gran medida— sino que los mecanismos de reputación están construidos sobre historial on-chain acumulado en el tiempo. Esto privilegia estructuralmente a los early adopters: quien llega hoy parte de cero, y los sistemas de scoring penalizan esa ausencia histórica sin importar la capacidad real del nuevo participante. El efecto Mateo opera sin necesidad de intención: la reputación tiende a acumularse donde ya existe, porque las DAOs delegan trabajo y los protocolos seleccionan a wallets con actividad consolidada. Estudios sobre redes descentralizadas como [Measuring Decentralization in Web3 Social Networks](https://arxiv.org/abs/2302.10825) muestran que la concentración en estos sistemas reproduce, y a veces amplifica, la del mundo off-chain. A eso se suma una barrera cultural menos visible: participar requiere navegar foros de gobernanza, leer propuestas técnicas en inglés y moverse por comunidades con normas no escritas heredadas de la cultura anglosajona de internet.
+El problema no es el coste de las transacciones —los L2 lo han resuelto en gran medida— sino que los mecanismos de reputación están construidos sobre historial on-chain acumulado en el tiempo. Quien llega hoy parte de cero: no tiene transacciones pasadas, no ha votado en ninguna propuesta, no ha completado ningún bounty. Los sistemas de scoring interpretan esa ausencia como señal negativa, independientemente de la capacidad real del nuevo participante.
+
+Esta dinámica tiene nombre en sociología: el [efecto Mateo](https://en.wikipedia.org/wiki/Matthew_effect), formulado por Robert K. Merton a partir del evangelio de Mateo («al que tiene se le dará más»). En sistemas de reputación Web3 opera sin necesidad de intención: las DAOs delegan trabajo a wallets con historial consolidado, los protocolos conceden acceso preferencial a cuentas antiguas, y los sistemas de scoring amplifican las ventajas de quienes ya las tienen. Estudios sobre redes descentralizadas como [Measuring Decentralization in Web3 Social Networks](https://arxiv.org/abs/2302.10825) muestran que la concentración en estos sistemas reproduce, y a veces amplifica, la del mundo off-chain.
+
+Hay una segunda dimensión del mismo problema: el historial relevante de una persona no empieza en blockchain. Un contribuidor con diez años de experiencia en desarrollo open source, liderazgo comunitario o resolución de conflictos llega a Web3 con una reputación que el protocolo no puede ver porque no ocurrió on-chain. Importar esa credibilidad off-chain requiere oráculos o puentes de validación centralizados, y la blockchain solo puede registrar eventos deterministas: lo que no deja rastro programáticamente cuantificable —liderazgo, mentoría, capacidad de escucha— simplemente no existe para el sistema. Esto no es un límite técnico resoluble, sino una consecuencia estructural de medir únicamente lo verificable en cadena, algo que analizamos en detalle en [el desafío de integrar el mundo off-chain](4-4-challenges-off-chain-integration.md).
+
+A estas dos barreras se suma una tercera, menos visible: participar activamente requiere navegar foros de gobernanza, leer propuestas técnicas en inglés y moverse por comunidades con normas no escritas heredadas de la cultura anglosajona de internet. No es exclusión intencional, pero su efecto práctico es el mismo.
 
 ### Regulación y Vacío Jurídico
 
@@ -98,9 +110,9 @@ Además, el uso de la reputación ya está entrando en terrenos altamente regula
 
 Todo apunta a que, a la larga, no se creará una ley especial a medida para Web3. Lo más probable es que se apliquen directamente las leyes que ya existen —sobre protección de datos, sobre crédito, contra la discriminación— a una tecnología que se construyó creyendo que las reglas del mundo tradicional no le afectaban.
 
-## Primitivas técnicas de reputación
+## Primitivas de reputación basadas en emisor
 
-La reputación on-chain no existe en abstracto: necesita mecanismos concretos para registrarse, verificarse y componerse. El ecosistema ha convergido en primitivas complementarias que operan en capas distintas.
+La reputación on-chain no existe en abstracto: necesita mecanismos concretos para registrarse, verificarse y componerse. En estas primitivas, la confianza descansa en el emisor: una entidad con autoridad reconocida —un protocolo, una DAO, el organizador de un evento— certifica algo sobre ti, y el valor de la credencial depende directamente de cuánto confía el ecosistema en quien la emite.
 
 ### Soulbound Tokens
 
@@ -154,27 +166,23 @@ Su valor no está en el token en sí sino en lo que otros hacen con él. [Guild.
 
 Un POAP prueba presencia física o virtual, no comprensión ni contribución real: asistir pasivamente a cien conferencias genera más tokens que contribuir a fondo en un solo proyecto. El gaming más difícil de frenar es pagar a alguien para que escanee el QR en tu lugar. Y aunque los tokens son on-chain, el artwork y la metadata dependen de la infraestructura centralizada de POAP.xyz. La dirección en la que evoluciona el formato —POAPs que desbloquean capas adicionales al completar un quiz, o que progresan visualmente al alcanzar hitos de participación— intenta precisamente responder a esa crítica: pasar de "proof of attendance" a algo más cercano a "proof of action".
 
+## Redes de confianza
+
+Las primitivas del apartado anterior —SBTs, attestations EAS, POAPs— construyen reputación desde el emisor: alguien con autoridad reconocida certifica algo sobre ti. Pero hay una dimensión distinta donde la confianza no proviene de un emisor designado, sino que emerge del propio comportamiento de la red: quién reconoce tu trabajo, quién te sigue, quién te avala, quién te incluye en sus registros.
+
+Hay un concepto con el que esto converge: el web of trust. Su idea central —que la confianza puede derivarse de la acumulación de relaciones verificables entre pares, sin depender de una autoridad central— aparece formalizada matemáticamente en el paper [EigenTrust: Reputation Management in P2P Networks](https://nlp.stanford.edu/pubs/eigentrust.pdf), que modela cómo la confianza se propaga en redes P2P usando teoría de grafos. Más que una génesis de los mecanismos que veremos a continuación, es un marco descriptivo que comparten: todos ellos son formas de construir confianza desde el reconocimiento mutuo, no desde registros de un emisor autorizado.
+
+Los mecanismos que materializan esta dimensión en Web3 son los Hypercerts —donde publicas tu trabajo y la validación llega si fondos de la comunidad deciden reconocerlo—, el grafo social, las listas curadas y el vouching con coste económico.
+
 ### Hypercerts
 
-[Hypercerts](https://hypercerts.org) es un estándar abierto —especificado como ERC-1155 con semántica extendida— para certificar y financiar impacto en bienes públicos. La diferencia conceptual respecto al resto de primitivas es fundamental: un POAP acredita que estuviste en un evento, un SBT acredita que tienes una habilidad, pero un Hypercert acredita que generaste un impacto verificable en un rango temporal concreto. El objeto que emite el protocolo no es una credencial de identidad sino un certificado de trabajo realizado: quién lo hizo, en qué periodo, con qué alcance geográfico o temático y con qué evidencia adjunta.
+En las primitivas del apartado anterior la confianza viene del emisor: Gitcoin, Coinbase, el organizador del evento certifica algo sobre ti. [Hypercerts](https://hypercerts.org) rompe ese modelo: es un smart contract permisionless en Optimism que tú llamas directamente para auto-declarar tu propio trabajo —qué hiciste, en qué periodo, quién contribuyó y con qué porcentaje, con qué evidencia—. No hay emisor con autoridad que te valide previamente; tú eres el emisor.
 
-El modelo de datos tiene tres componentes que viajan juntos en cada token. El primero describe el trabajo: nombre del proyecto, descripción del impacto, alcance y periodo cubierto. El segundo identifica a los contribuidores: las direcciones que realizaron ese trabajo y el porcentaje de participación de cada una, lo que convierte al Hypercert en un registro distribuible de autoría colectiva. El tercero es la política de transferencia, que puede ser intransferible —comportándose como un SBT de impacto— o permitir la fracción y venta a patrocinadores retroactivos.
-
-Esta última posibilidad abre el mecanismo de financiación que hace a los Hypercerts relevantes para la reputación: el retroactive public goods funding. La lógica es que es difícil predecir antes de que ocurra qué trabajo generará impacto real, pero fácil verificarlo después. Un protocolo o fondo como [Optimism RetroPGF](https://app.optimism.io/retropgf) puede comprar fracciones de Hypercerts de proyectos que ya demostraron impacto, distribuyendo financiación retroactiva a quienes lo generaron. Los contribuidores acumulan así tanto capital económico como reputación verificable: su wallet contiene Hypercerts que demuestran qué construyeron y quién lo reconoció comprando una fracción.
-
-El protocolo fue desarrollado originalmente por [Protocol Labs](https://protocol.ai) y adoptado por Gitcoin como capa de certificación de impacto complementaria a sus rondas de financiación. La combinación es natural: Gitcoin Grants financia trabajo prospectivo mientras los Hypercerts certifican retroactivamente el impacto de ese trabajo, creando un ciclo donde la reputación de impacto pasado aumenta las posibilidades de financiación futura.
+El token que minteas puede dividirse en fracciones transferibles. La idea es que tras publicar el trabajo, un fondo como [Optimism RetroPGF](https://app.optimism.io/retropgf) puede decidir —voluntariamente, sin ninguna obligación— reconocerlo económicamente transfiriéndote ETH a cambio de una fracción. Esa transacción queda on-chain como señal de reputación verificable: "Optimism reconoció este trabajo" es un hecho público. Es más una subvención retroactiva que una compra comercial: el fondo no obtiene nada fungible a cambio, simplemente reconoce impacto pasado. El protocolo fue desarrollado por [Protocol Labs](https://protocol.ai) y adoptado por Gitcoin complementando sus rondas prospectivas: Gitcoin Grants financia trabajo futuro, los Hypercerts documentan el trabajo ya entregado para que pueda ser reconocido después.
 
 **Limitaciones**:
 
-El problema central de los Hypercerts es la verificación del impacto declarado. El protocolo registra las afirmaciones del emisor, pero no tiene mecanismo nativo para validar que el impacto descrito ocurrió realmente. La credibilidad del certificado depende de que los compradores retroactivos realicen su propia diligencia —que haya alguien dispuesto a pagar por ese Hypercert es la señal de mercado que valida el impacto—, pero eso presupone compradores sofisticados y un mercado de impacto con suficiente liquidez, condiciones que hoy no se cumplen a escala. Además, como ocurre con cualquier primitiva de reputación on-chain, quien llega tarde al ecosistema parte de cero: los proyectos con historial de Hypercerts reconocidos tienen ventaja acumulada sobre los que empiezan.
-
-## Redes de confianza
-
-Las primitivas técnicas —SBTs, attestations, POAPs, Hypercerts— responden a la pregunta de qué has hecho y quién lo certifica. Pero hay una dimensión distinta de la reputación que no se construye acumulando credenciales propias, sino emergiendo de cómo otros se relacionan contigo: quién te sigue, quién te avala, quién te incluye en sus registros. Esta dimensión relacional no requiere un emisor central que declare tu historial; surge de la estructura misma de la red.
-
-Hay un concepto con el que esto converge: el web of trust. Su idea central —que la confianza puede derivarse de la acumulación de relaciones verificables entre pares, sin depender de una autoridad central— aparece formalizada matemáticamente en el paper [EigenTrust: Reputation Management in P2P Networks](https://nlp.stanford.edu/pubs/eigentrust.pdf), que modela cómo la confianza se propaga en redes P2P usando teoría de grafos. Más que una génesis de los mecanismos que veremos a continuación, es un marco descriptivo que comparten: todos ellos son formas de construir confianza desde las relaciones, no desde los registros.
-
-Los mecanismos concretos que materializan esta dimensión en Web3 son el grafo social, el vouching con coste económico y las listas curadas por la comunidad. Cada uno aborda la confianza relacional desde un ángulo diferente.
+El protocolo registra lo que tú declaras sin verificación previa, así que el certificado vale lo que otros decidan reconocer. El reconocimiento no es para cerrar un proyecto acabado sino para señalizar que un trabajo continuo merece seguir: quien paga dice "esto es valioso, continúa". El problema es que nadie está obligado a hacerlo aunque el trabajo sea bueno y público. La credibilidad del modelo descansa en que los fondos tengan reputación que perder si no reconocen trabajo valioso, lo que es un incentivo social frágil. A esto se suma que quien llega al ecosistema sin historial previo de Hypercerts reconocidos es más difícil que los fondos lo encuentren.
 
 ### Grafo Social
 
@@ -488,19 +496,19 @@ Esto crea incentivos económicos directos para mantener buena reputación: tu re
 
 ### Proof of Being y Biometría descentralizada
 
-Como se analiza en detalle en [la guía de identidad Web3](7-1-identity.md), estos mecanismos comparten un problema estructural conocido como el trilema de Proof of Personhood: ningún sistema puede ser simultáneamente descentralizado, privado y resistente a Sybil. Cada implementación cede en alguna de las tres dimensiones, y entender ese trade-off es suficiente para elegir el mecanismo adecuado a cada caso de uso.
+Todo lo desarrollado en este documento —SBTs, EAS, grafos sociales, vouching con coste económico, scoring dinámico, agentes de IA con identidad on-chain— asume implícitamente algo que no está resuelto: que detrás de cada dirección hay exactamente una persona real y única. Si eso no es cierto, cualquier sistema de reputación puede vaciarse creando mil cuentas. No importa cuánto sofistiques el scoring si el actor que lo acumula puede clonarse.
 
-BrightID, Proof of Humanity e Idena ya existen hoy y se describieron en la guía práctica: cada una utiliza un mecanismo diferente para certificar que eres una persona única. El problema común a todas es que ninguna es definitiva: siguen siendo atacables con suficiente esfuerzo y coordinación, o requieren sacrificar privacidad de formas que muchos usuarios no están dispuestos a aceptar.
+Proof of Being —o Proof of Personhood— es el problema de demostrar on-chain esa unicidad. No certifica quién eres ni qué has hecho; solo responde a la pregunta más básica: ¿hay un humano ahí, y solo uno? Es la capa cero de la que dependen los anti-Sybil, los airdrops selectivos y las votaciones cuadráticas. Sin ella, todo lo construido encima es provisional.
 
-Worldcoin intenta resolver el problema con biometría: escanea el iris con un dispositivo físico llamado Orb para generar una prueba criptográfica de unicidad sin revelar la identidad. El resultado es la solución técnicamente más robusta contra ataques Sybil, pero centraliza el registro biométrico en una sola empresa y exige confiarle datos corporales permanentes. La comunidad no ha llegado a un consenso sobre si ese intercambio es aceptable.
+Como se analiza en detalle en [la guía de identidad Web3](7-1-identity.md), estos mecanismos comparten un problema estructural conocido como el trilema de Proof of Personhood: ningún sistema puede ser simultáneamente descentralizado, privado y resistente a Sybil. Cada implementación cede en alguna de las tres dimensiones.
 
-El trade-off entre los cuatro se lee con claridad al compararlos. BrightID e Idena comparten el mismo perfil: alta descentralización, alta privacidad, sin coste de entrada —pero resistencia Sybil media, porque no exigen ninguna prueba costosa de unicidad y son atacables con suficiente coordinación—. Proof of Humanity y Worldcoin van al extremo opuesto en resistencia Sybil: la primera mediante un registro público con depósito económico que hace prohibitivo crear identidades falsas a escala; la segunda mediante biometría con ZK-proofs que llega a un coste de entrada nulo manteniendo alta privacidad, a cambio de una descentralización muy baja al depender de un único fabricante del Orb.
+BrightID, Proof of Humanity e Idena ya existen hoy y se describieron en la guía práctica: cada una usa un mecanismo diferente para certificar que eres una persona única. El problema común es que ninguna es definitiva: siguen siendo atacables con suficiente esfuerzo y coordinación, o requieren sacrificar privacidad de formas que muchos usuarios no aceptan. Worldcoin intenta resolverlo con biometría —escanea el iris con un dispositivo físico llamado Orb para generar una prueba criptográfica de unicidad sin revelar la identidad—, lo que la convierte en la solución técnicamente más robusta contra ataques Sybil, pero centraliza el registro biométrico en una sola empresa y exige confiarle datos corporales permanentes. La comunidad no ha llegado a consenso sobre si ese intercambio es aceptable.
 
-Lo que sigue sin resolverse es tener un sistema que distinga definitivamente humanos únicos de bots a escala global, sin depender de una empresa, sin revelar datos sensibles y que funcione también para quien no tiene smartphone, banco o documento de identidad. Ese problema sigue abierto.
+La conclusión honesta es que en 2026 la reputación Web3 es una arquitectura sofisticada construida sobre suelo no consolidado. Los mecanismos descritos en este documento funcionan y tienen valor real, pero todos operan asumiendo que el problema de fondo —distinguir humanos únicos de bots a escala global, sin depender de una empresa, sin revelar datos sensibles, sin excluir a quien no tiene smartphone ni documento de identidad— tiene solución suficientemente buena. Hoy no la tiene. Ese es el problema estructural pendiente del que depende todo lo demás.
 
 ### Integración cross-chain
 
-La fragmentación de la reputación entre cadenas sigue siendo un problema a resolver en futuro —tu historial en Ethereum no es visible desde Arbitrum ni desde Solana— es un problema de infraestructura que se aborda en detalle en [La fragmentación de la reputación y el estado](7-1-identity.md#la-fragmentación-de-la-reputación-y-el-estado), dentro del documento de identidad Web3.
+La fragmentación de la reputación entre cadenas sigue siendo un problema a resolver en futuro —tu historial en Ethereum no es visible desde Arbitrum ni desde Solana— es un problema de infraestructura que se aborda en detalle en [La fragmentación de la reputación y el estado](../infrastructure/ethereum/reputation-state-fragmentation.md), dentro del documento de identidad Web3.
 
 ## Referencias
 

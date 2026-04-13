@@ -2,6 +2,8 @@
 
 > 🚧 Documento en construcción...
 
+> Este documento tiene su enfoque para ecosistema Ethereum por ser en este caso el más relevante
+
 Más allá de las Verifiable Credentials que vimos como estándar W3C para credenciales off-chain, el ecosistema blockchain ha desarrollado lo que se conoce como Attestation Layer o Capa de Atestación: infraestructura on-chain diseñada específicamente para registrar, verificar y gestionar attestations de forma nativa.
 
 Una attestation es, en su concepto más fundamental de seguridad informática, una declaración firmada digitalmente por un emisor que da fe de ciertos atributos o afirmaciones sobre un sujeto. Este concepto existe desde hace décadas en sistemas de seguridad tradicionales. Se habla de capa de atestación y no de credenciales porque el enfoque es más primitivo: las attestations son declaraciones emitidas por terceros sobre un sujeto, no evidencias que el propio sujeto presenta para identificarse.
