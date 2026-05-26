@@ -1,4 +1,26 @@
-# Lecciones económicas en Web3
+# Fallos económicos y lecciones aprendidas en Web3
+
+## Prólogo
+
+Este documento es una colección de casos de estudio sobre proyectos Web3 que colapsaron por ignorar principios económicos fundamentales. A diferencia de un manual teórico, aquí encontrarás **historias reales de fallos** con nombres, números y consecuencias.
+
+**¿Para quién es este documento?**:
+
+- Founders que están diseñando tokenomics y necesitan ver qué NO hacer
+- Inversores que quieren identificar red flags antes de invertir
+- Cualquiera que haya perdido dinero en Web3 y quiera entender por qué
+
+**¿Qué NO es este documento?**:
+
+- No es un tutorial de conceptos económicos básicos (para eso lee [tokenomics-fundamentals-guide.md](tokenomics-fundamentals-guide.md))
+- No es una guía paso a paso para diseñar tokenomics
+- No es teoría abstracta, es historia documentada
+
+**Advertencia personal**: Este autor perdió $7,000 USD en un fork de OlympusDAO. Este documento existe para que tú no cometas los mismos errores. Los proyectos mencionados aquí no son hipotéticos, colapsaron realmente y gente real perdió dinero real. Lee, aprende, y construye mejor.
+
+**Orden de lectura recomendado**: Si eres nuevo en economía de tokens, primero lee [tokenomics-fundamentals-guide.md](tokenomics-fundamentals-guide.md) para entender los conceptos base. Luego regresa aquí para ver cómo esos conceptos fueron violados en la práctica.
+
+---
 
 Web3 no está inventando nuevas leyes económicas. Está redescubriendo, a menudo de forma dolorosa, principios que la economía clásica conoce desde hace décadas o siglos. La tentación de crear sistemas tokenómicos "innovadores" ha llevado a muchos proyectos a ignorar reglas fundamentales, creyendo que la tecnología blockchain de alguna manera las hacía obsoletas.
 

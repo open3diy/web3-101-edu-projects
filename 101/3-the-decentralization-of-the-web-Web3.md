@@ -330,21 +330,13 @@ La seguridad criptoeconómica se basa en el diseño de incentivos y penalizacion
 
 incluso aportar seguridad sobre el precio que se mantenga sosteible, motivo que aparecen mecanisos como vote escrow.
 
-hacer stack no solo aporta seguridad a un protocolo, lo aporta a un token.
-
 La seguridad no es solo ataques a una red p2p, lo peude ser al protocolo y al precio del token.
 
 efecto red? se puede capturar valor token futuro, por eso el stake se premia
 
-Si tu proyecto está muy anclado a la infraestructura/red (ej. ENS en Ethereum, o un L2 como Optimism) → tiene sentido usar el token nativo de esa red (ETH) como referencia. Es como una forma de pertenencia, de identidad comunitaria.
 
-Si tu proyecto busca usuarios más generales o externos (juegos, pagos, remesas) → lo natural es usar estables, porque el usuario piensa en dólares/euros y quiere estabilidad.
 
-//todo hablar del token y nft
 
-//todo hablar de como afecta al quemado burn en la seguridad del precio
-
-// hablar de protocolos staking y Restaking
 
 ## Casos de uso que habilita Web3
 

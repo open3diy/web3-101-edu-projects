@@ -1,4 +1,4 @@
-# Seguridad en el proyecto
+# Construyendo Protocolos Seguros
 
 Tanto en la DApp como en la DAO relacionada y los pools de liquidez, existen elementos de seguridad clave. Ya hemos hablado de la importancia de generar valor, de crear comunidad, de la presión fiscal, del rendimiento del protocolo y su enfoque económico. Igualmente dispones del apartado de [hacks de seguridad](../hacks/about.md) en este repositorio. Sin embargo, este artículo explora más específicamente, con ejemplos prácticos y herramientas concretas, qué aspectos básicos de seguridad debes contemplar al desarrollar tu proyecto Web3.
 

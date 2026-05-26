@@ -269,10 +269,6 @@ Sin embargo, la transición puede ser gradual. Una comunidad de 150 co-emisores 
 
 La limitación principal es cultural: este modelo requiere compromiso activo de los 150 miembros. No es un esquema de inversión pasiva ni una ICO especulativa. Es una comunidad de práctica donde todos contribuyen, deciden y asumen riesgos colectivamente. Si los miembros no participan, el proyecto fracasa por inercia, no por regulación.
 
-## Conclusión
-
-El desafío del emisor en Web3 no es solo técnico ni legal: es político. MiCA y otras regulaciones buscan proteger al inversor minorista mediante transparencia y supervisión, pero al hacerlo imponen barreras que dificultan la experimentación descentralizada. La solución no es evadir la ley, sino repensar qué significa "emisión de tokens".
-
 ## La hipótesis de la fragmentación controlada
 
 Existe una lectura alternativa, más oscura, de por qué MiCA está diseñado como está. No es paranoia conspirativa, sino análisis de incentivos institucionales: ¿y si el objetivo real no es proteger al inversor, sino atomizar el ecosistema cripto para hacerlo más controlable?

@@ -104,7 +104,7 @@ Más allá de feeds de precios básicos, Chainlink ha desarrollado servicios esp
 
 Chainlink VRF (Verifiable Random Function) proporciona aleatoriedad verificable on-chain, crucial para aplicaciones de juego, NFTs, y selección aleatoria en protocolos de gobernanza. La aleatoriedad es generada off-chain pero es criptográficamente verificable on-chain, garantizando que nadie (ni siquiera el operador del nodo) puede manipular o predecir el resultado.
 
-Chainlink Keepers automatiza la ejecución de funciones de contratos inteligentes basadas en condiciones predefinidas, actuando como cron jobs descentralizados. Esto permite que contratos ejecuten mantenimiento regular, rebalanceos, o triggers de eventos sin depender de intervención manual centralizada.
+Chainlink Automation —antes llamado Chainlink Keepers— automatiza la ejecución de funciones de contratos inteligentes basadas en condiciones predefinidas, actuando como cron jobs descentralizados. Esto permite que contratos ejecuten mantenimiento regular, rebalanceos, o triggers de eventos sin depender de intervención manual centralizada.
 
 Chainlink Proof of Reserve proporciona verificación on-chain de que activos tokenizados están realmente respaldados por reservas correspondientes, crítico para stablecoins, wrapped tokens, y activos tokenizados del mundo real.
 
@@ -114,13 +114,17 @@ Cross-Chain Interoperability Protocol (CCIP) de Chainlink permite transferencia 
 
 Aunque Chainlink domina el mercado, existen otros proyectos notables en el espacio de oráculos descentralizados.
 
-Band Protocol ofrece infraestructura de oráculos descentralizada optimizada para velocidad y costo, particularmente popular en el ecosistema Cosmos y blockchains que requieren alta frecuencia de actualización de datos. Utiliza un modelo de staking delegado donde holders de tokens BAND pueden delegar a validadores de datos, similar a DPoS.
+Band Protocol ofrece infraestructura de oráculos descentralizada optimizada para velocidad y costo, inicialmente popular en el ecosistema Cosmos. Utiliza un modelo de staking delegado donde holders de tokens BAND pueden delegar a validadores de datos, similar a DPoS. Su relevancia ha decaído considerablemente desde 2022 frente a Chainlink y Pyth, y hoy apenas tiene presencia activa en los protocolos DeFi principales.
 
-API3 adopta un enfoque diferente: en lugar de nodos intermediarios, conecta APIs directamente a blockchain mediante Airnodes operados por los proveedores de datos mismos. Esto reduce intermediación y potencialmente mejora calidad de datos, aunque introduce dependencia de que proveedores de APIs operen correctamente sus Airnodes.
+API3 adopta un enfoque diferente: en lugar de nodos intermediarios, conecta APIs directamente a blockchain mediante Airnodes operados por los proveedores de datos mismos. Esto reduce intermediación y potencialmente mejora calidad de datos, aunque introduce dependencia de que proveedores de APIs operen correctamente sus Airnodes. En 2024, API3 lanzó su OEV Network (Oracle Extractable Value Network), una solución para capturar el valor que normalmente extraen los bots de liquidación cuando actúan sobre datos de oráculos, devolviendo parte de ese valor al protocolo en lugar de dejarlo escapar a searchers externos.
 
-Pyth Network, desarrollado inicialmente en Solana pero expandiendo a otras chains, se especializa en datos financieros de alta frecuencia proporcionados directamente por instituciones financieras tradicionales y market makers. Su modelo permite latencias extremadamente bajas, crítico para aplicaciones DeFi sofisticadas.
+Pyth Network, que nació en Solana pero hoy opera en más de cincuenta blockchains, se especializa en datos financieros de alta frecuencia proporcionados directamente por instituciones financieras tradicionales, market makers y exchanges. Su arquitectura "pull" permite que los contratos lean precios publicados on-demand, reduciendo costos frente al modelo "push" de Chainlink. En 2025 y 2026, Pyth se ha convertido en el oráculo dominante para protocolos de derivados y perpetuos on-chain en casi todas las L2 relevantes, mientras Chainlink sigue dominando en lending por su mayor conservadurismo y tiempo de consolidación.
 
 UMA (Universal Market Access) implementa un mecanismo de oráculo optimista: asume que los datos son correctos a menos que alguien los dispute. Si se presenta una disputa, un sistema de votación de holders de tokens UMA determina el valor correcto. Este modelo minimiza costos en el caso común donde datos no son disputados, pero proporciona mecanismo de resolución cuando surgen discrepancias.
+
+[RedStone](https://redstone.finance/) adopta un modelo distinto: los datos se publican en un layer off-chain (Arweave) y los contratos los leen solo cuando los necesitan, lo que reduce drásticamente los costos de gas comparado con modelos push. Ha ganado adopción significativa en protocolos de lending que manejan LRTs y activos de larga cola, donde Chainlink no siempre tiene feeds disponibles.
+
+[Chronicle Protocol](https://chroniclelabs.org/) es el oráculo que nació dentro de MakerDAO para alimentar sus propios contratos y que posteriormente se abrió como protocolo independiente. Su arquitectura se basa en un sistema de validadores con identidad conocida que firman datos criptográficamente, lo que lo hace más conservador y auditables que modelos completamente permissionless. Sigue siendo el oráculo principal de Sky (antes MakerDAO) y tiene presencia creciente en protocolos del ecosistema Ethereum mainnet.
 
 ## Casos de uso y aplicaciones de oráculos
 
@@ -130,11 +134,11 @@ Los oráculos son componentes fundamentales en múltiples sectores de aplicacion
 
 El caso de uso más prominente de oráculos se encuentra en DeFi, donde proporcionan datos en tiempo real sobre precios de criptomonedas, tasas de interés, y otros indicadores económicos cruciales. Esta información es esencial para funciones críticas de protocolos DeFi.
 
-Los protocolos de lending como Aave, Compound y MakerDAO dependen fundamentalmente de oráculos para determinar cuándo liquidar posiciones. Si el valor del colateral de un usuario cae por debajo del umbral requerido, el oráculo proporciona el precio actualizado que desencadena la liquidación automática. Un oráculo comprometido o impreciso aquí podría causar liquidaciones incorrectas que destruyen valor de usuarios honestos o, inversamente, permitir que posiciones insolventes permanezcan abiertas, poniendo en riesgo la solvencia del protocolo.
+Los protocolos de lending como Aave, Compound y Sky (antes MakerDAO) dependen fundamentalmente de oráculos para determinar cuándo liquidar posiciones. Si el valor del colateral de un usuario cae por debajo del umbral requerido, el oráculo proporciona el precio actualizado que desencadena la liquidación automática. Un oráculo comprometido o impreciso aquí podría causar liquidaciones incorrectas que destruyen valor de usuarios honestos o, inversamente, permitir que posiciones insolventes permanezcan abiertas, poniendo en riesgo la solvencia del protocolo.
 
 Los AMM y DEX de nueva generación utilizan oráculos para protegerse contra manipulación de precios y MEV (Maximal Extractable Value). En lugar de confiar únicamente en precios de sus propios pools (que pueden ser manipulados mediante flash loans), consultan oráculos que agregan precios de múltiples fuentes para validar que las operaciones se ejecutan a precios justos de mercado.
 
-Las stablecoins algorítmicas dependen críticamente de oráculos para mantener su peg. Protocols como MakerDAO usan oráculos para determinar el valor del colateral respaldando DAI, ajustando parámetros del sistema para mantener la estabilidad del precio. Errores históricos en oráculos han causado depreciaciones masivas de stablecoins, demostrando cuán crítica es la precisión en este contexto.
+Las stablecoins algorítmicas y sobrecollateralizadas dependen críticamente de oráculos para mantener su peg. Protocolos como Sky (antes MakerDAO) usan oráculos para determinar el valor del colateral respaldando DAI y USDS, ajustando parámetros del sistema para mantener la estabilidad del precio. Errores históricos en oráculos han causado depreciaciones masivas de stablecoins, demostrando cuán crítica es la precisión en este contexto.
 
 Los protocolos de derivados y opciones on-chain requieren feeds de precios extremadamente confiables para liquidar contratos correctamente. Platforms como dYdX y Synthetix procesan volúmenes de trading significativos, donde incluso discrepancias pequeñas en precios pueden traducirse en millones de dólares de valor mal distribuido.
 
@@ -190,17 +194,13 @@ Incluso oráculos descentralizados pueden tener puntos de centralización residu
 
 Los oráculos inherentemente dependen de infraestructura off-chain (APIs, servidores, conectividad internet) que puede fallar o ser censurada. Esta dependencia introduce riesgos que no existen en lógica puramente on-chain. Diseños robustos deben considerar degradación graciosa cuando fuentes externas no están disponibles temporalmente.
 
-## El futuro de los oráculos
+## El estado actual y las tendencias abiertas
 
-El futuro de los oráculos en blockchain apunta hacia mayor descentralización, mecanismos de seguridad más robustos, y expansión de casos de uso.
+Muchas de las tendencias que en 2022 se describían como "futuro" ya han ocurrido. CCIP de Chainlink está operativo y es el estándar para mensajería cross-chain en muchos protocolos institucionales. La interoperabilidad multi-chain de Pyth es una realidad sobre más de cincuenta redes. RedStone y Chronicle han madurado como alternativas viables para casos de uso específicos.
 
-Se espera evolución en cómo los datos se recopilan, verifican y transmiten, con enfoque en minimizar confianza en cualquier entidad individual y fortalecer resistencia contra manipulaciones. Las mejoras en protocolos de consenso entre nodos, mayor diversificación de fuentes de datos, y adopción de técnicas criptográficas avanzadas como zero-knowledge proofs para verificación de datos sin revelar fuentes continuarán mejorando seguridad.
+Lo que sigue abierto en 2026 es principalmente la frontera de los datos no financieros. Los oráculos de precios son un problema en gran medida resuelto para los activos más líquidos. El desafío pendiente está en datos más complejos: verificación de identidad off-chain, datos de IoT con garantías criptográficas, y resultados de eventos subjetivos que no pueden agregarse simplemente con una mediana. Para estos casos, los mecanismos de oráculo optimista como UMA y las pruebas de conocimiento cero aplicadas a la verificación de fuentes (TLS Notary y similares) son las líneas activas de desarrollo.
 
-La interoperabilidad cross-chain se volverá cada vez más importante. A medida que el ecosistema blockchain se expande a múltiples chains, los oráculos necesitarán adaptarse para servir múltiples blockchains y permitir transferencia de datos entre ellas. Esto incluye no solo provisión de datos sino también facilitación de mensajería y transferencia de activos cross-chain de forma segura.
-
-La integración con tecnologías emergentes como computación confidencial (trusted execution environments), hardware de seguridad especializado, y redes descentralizadas de sensores IoT abrirá nuevas posibilidades para oráculos que pueden verificar criptográficamente la integridad de datos desde su fuente original.
-
-Finalmente, la estandarización de interfaces de oráculos y mejores prácticas facilitará que desarrolladores integren oráculos de forma segura y eficiente, reduciendo errores comunes y mejorando composabilidad del ecosistema DeFi.
+La estandarización de interfaces de oráculos y mejores prácticas facilita cada vez más que desarrolladores integren oráculos de forma segura, reduciendo errores comunes de integración que han sido el origen de varios exploits históricos.
 
 ## Referencias y recursos adicionales
 

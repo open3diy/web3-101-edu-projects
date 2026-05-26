@@ -1,6 +1,6 @@
 # Gestión de tesorería
 
-La tesorería no es un monolito que simplemente "se descentraliza" mediante un solo contrato. Es una colección de actividades interconectadas donde cada una requiere estrategias específicas de gestión. A continuación se detallan las operaciones financieras fundamentales que toda DAO debe dominar.
+La tesorería no es un monolito que simplemente "se descentraliza" mediante un solo contrato. Es una colección de actividades interconectadas donde cada una requiere estrategias específicas de gestión: desde tokenomics y diversificación hasta bóvedas de inversión automatizada que optimizan rendimientos sin intervención manual constante. A continuación se detallan las operaciones financieras fundamentales que toda DAO debe dominar.
 
 ## Tokenomics y estructura de capital
 
@@ -122,7 +122,7 @@ El lending directo en protocolos establecidos como [Aave](https://aave.com/) o [
 
 Yield farming más complejo involucra proveer liquidez a DEXs como Uniswap en exchange por trading fees y posibles incentivos en tokens de gobernanza. Esto tiene impermanent loss risk: si los precios relativos de los dos tokens en el pool cambian significativamente, terminas con menos valor del que depositaste inicialmente comparado con simplemente holdear. Es más arriesgado pero potencialmente más rentable.
 
-Estrategias estructuradas pueden construirse mediante protocolos como [Yearn Finance](https://yearn.finance/) que automatizan la rotación de capital entre estrategias según yields disponibles. La tesorería deposita en un vault de Yearn y el protocolo optimiza continuamente dónde está el capital para maximizar retornos ajustados por riesgo.
+Estrategias estructuradas pueden construirse mediante protocolos como [Yearn Finance](https://yearn.finance/) que automatizan la rotación de capital entre estrategias según yields disponibles. La tesorería deposita en un vault de Yearn y el protocolo optimiza continuamente dónde está el capital para maximizar retornos ajustados por riesgo. Esta lógica de automatización evoluciona hacia un concepto más amplio (las bóvedas de inversión automatizada) que se detalla en la siguiente sección.
 
 **Consideraciones de riesgo**:
 
@@ -139,6 +139,72 @@ La decisión de qué estrategias usar, con qué porcentaje de la tesorería, y e
 Los límites de exposición son críticos: nunca depositar más de cierto porcentaje de la tesorería en un solo protocolo externo, sin importar cuán seguro parezca. Diversificar riesgo entre múltiples estrategias y protocolos. Una regla práctica: máximo diez a veinte por ciento de tesorería en cualquier protocolo externo individual.
 
 La transparencia total sobre dónde está cada dólar de la tesorería debe mantenerse on-chain y en dashboards públicos. Cualquier miembro debe poder ver en tiempo real qué estrategias están activas, cuánto capital está en cada una, y qué rendimientos están generando.
+
+## Bóvedas de inversión automatizada
+
+Las bóvedas (vaults) son contratos inteligentes que agrupan capital de múltiples depositantes y ejecutan estrategias de inversión predefinidas de forma completamente automatizada. Funcionan como fondos de inversión on-chain: el depositante transfiere activos al vault, recibe tokens representativos de su participación proporcional, y el contrato se encarga de desplegar ese capital en las oportunidades más rentables disponibles sin que nadie tenga que tomar decisiones manuales día a día.
+
+A diferencia del lending y yield farming directo donde la DAO decide activamente en qué protocolo depositar y cuándo rotar, las bóvedas delegan esa ejecución a estrategias codificadas que se auto-optimizan. La DAO deposita capital y recibe rendimientos; la complejidad operativa queda abstraída dentro del vault.
+
+**Cómo funcionan internamente**:
+
+Cuando un usuario o una tesorería deposita activos en un vault, el contrato emite tokens de participación (shares) proporcionales al valor depositado respecto al valor total del pool. Si el vault contiene un millón de USDC y la DAO deposita cien mil, recibe diez por ciento de los shares totales. A medida que las estrategias generan rendimientos, el valor total del vault crece pero la cantidad de shares permanece igual, de modo que cada share vale progresivamente más. Al retirar, la DAO quema sus shares y recibe su proporción del pool, ahora mayor gracias a rendimientos acumulados.
+
+La mayoría de vaults implementan auto-compounding: los rendimientos generados (trading fees, rewards en tokens de gobernanza, intereses) se reinvierten automáticamente en la misma estrategia en intervalos regulares. Esto elimina la necesidad de que cada participante pague gas para reclamar y reinvertir manualmente, y aprovecha el efecto del interés compuesto. Un vault que genera ocho por ciento APR con auto-compounding diario produce aproximadamente 8.3 por ciento APY efectivo.
+
+Las estrategias dentro del vault pueden ser simples o multi-paso. Una estrategia simple deposita USDC en Aave y cobra intereses. Una multi-paso podría depositar ETH como colateral en Aave, pedir prestado USDC contra ese colateral, depositar el USDC en un pool de Curve, stakear los LP tokens de Curve en Convex para maximizar rewards, y periódicamente vender los rewards de CRV y CVX para comprar más ETH y repetir el ciclo. Todo automático, todo codificado.
+
+**Tipos de vaults relevantes para tesorerías**:
+
+Los vaults de stablecoins son los más conservadores y probablemente los más apropiados para la porción operativa de una tesorería. Aceptan USDC, DAI, o USDT y generan rendimientos mediante lending en mercados monetarios, provisión de liquidez en pools de stablecoins (donde el impermanent loss es mínimo porque los activos mantienen paridad), o estrategias de arbitraje entre diferentes mercados. Los rendimientos típicos oscilan entre tres y diez por ciento APY dependiendo de condiciones de mercado, con riesgo significativamente menor que vaults de activos volátiles.
+
+Los vaults de activos volátiles (ETH, BTC wrapeado, tokens de gobernanza) buscan maximizar retornos sobre activos que la tesorería ya posee y no planea vender. En lugar de tener ETH inactivo esperando apreciación de precio, un vault de ETH puede generar rendimiento adicional mediante liquid staking, provisión de liquidez en pools ETH/stablecoin, o estrategias de looping apalancado. El riesgo principal aquí es que las estrategias pueden amplificar pérdidas si el precio del activo base cae significativamente, especialmente en estrategias apalancadas.
+
+Los vaults multi-estrategia distribuyen capital entre múltiples estrategias simultáneamente, rebalanceando automáticamente según rendimientos y riesgo. Si una estrategia particular ve reducido su yield o aumentado su riesgo (por ejemplo, un protocolo subyacente sufre exploit), el vault puede retirar capital de esa estrategia y redistribuirlo. [Yearn Finance](https://yearn.finance/) popularizó este modelo: cada vault (llamado yVault) puede contener múltiples estrategias activas con allocations que los strategists ajustan según condiciones de mercado.
+
+**Protocolos de bóvedas establecidos**:
+
+[Yearn Finance](https://yearn.finance/) es el referente original. Sus vaults v3 permiten que múltiples estrategias compitan dentro de un mismo vault, con allocations determinadas por riesgo-retorno. Yearn cobra comisión de gestión (típicamente dos por ciento anual sobre assets) y comisión de rendimiento (veinte por ciento sobre profits generados), similar a la estructura "dos y veinte" de hedge funds tradicionales. Ha procesado billones de dólares en volumen acumulado con track record sólido, aunque ha sufrido exploits menores en estrategias individuales.
+
+[Beefy Finance](https://beefy.finance/) opera en múltiples chains (Arbitrum, Optimism, Polygon, BNB Chain, Avalanche, y más) con énfasis en auto-compounding. No crea estrategias propias sino que automatiza el compounding de vaults de terceros: depositas LP tokens de cualquier protocolo DeFi compatible y Beefy reclama rewards y reinvierte automáticamente. Cobra solo comisión de rendimiento, sin comisión de gestión, haciéndolo más económico para estrategias simples.
+
+[Sommelier Finance](https://www.sommelier.finance/) introduce un modelo donde estrategas externos (llamados strategists) proponen y gestionan vaults con parámetros de riesgo verificables on-chain. La gobernanza del protocolo aprueba qué estrategias pueden ejecutarse, estableciendo límites de exposición y validaciones automáticas que previenen acciones que excedan parámetros aprobados. Esto combina flexibilidad de gestión activa con protecciones descentralizadas contra mal comportamiento del gestor.
+
+**Riesgos específicos de las bóvedas**:
+
+El riesgo de smart contract se multiplica porque cada vault depende de la seguridad de su propio contrato más la seguridad de todos los protocolos donde despliega capital. Si un vault deposita en Aave, Curve y Convex simultáneamente, una vulnerabilidad en cualquiera de los tres puede causar pérdidas. Es riesgo composable: cada capa adicional de complejidad añade superficie de ataque.
+
+Las estrategias apalancadas amplifican tanto ganancias como pérdidas. Un vault que usa looping (depositar, pedir prestado, redepositar) puede ofrecer yields atractivos pero sufrir liquidaciones en cascada si los precios caen rápidamente. La tesorería de una DAO no debería exponer porción significativa a estrategias apalancadas: el riesgo existencial de perder capital operativo no justifica el rendimiento marginal adicional.
+
+La concentración de TVL (total value locked) crea riesgo sistémico. Si un vault acumula cientos de millones de dólares y necesita salir de una estrategia rápidamente, puede no haber suficiente liquidez en los mercados subyacentes para ejecutar sin deslizamiento masivo. Las tesorerías grandes deben evaluar si el TVL del vault permite retiradas de su tamaño sin impacto significativo.
+
+Las comisiones de gestión y rendimiento erosionan retornos netos. Un vault que genera diez por ciento bruto pero cobra dos por ciento de gestión y veinte por ciento de performance entrega efectivamente 6.4 por ciento neto. Para montos grandes de tesorería, la diferencia entre bruto y neto puede ser sustancial en términos absolutos.
+
+**Gobernanza de la inversión en bóvedas**:
+
+La decisión de depositar fondos de tesorería en vaults debe seguir proceso formal de gobernanza. La propuesta debería especificar: qué vault y protocolo, qué activos y cuánto capital, qué porcentaje máximo de la tesorería representa, y criterios de salida (bajo qué condiciones se retira el capital automáticamente).
+
+Algunas DAOs implementan "vault policies" votadas una vez que establecen parámetros generales: porcentaje máximo de tesorería en vaults (frecuentemente entre veinte y cuarenta por ciento), protocolos aprobados (whitelist de vaults auditados), límite por protocolo individual, y requisito de liquidez mínima retenida fuera de vaults para operaciones. Dentro de esos parámetros, el comité de tesorería puede ejecutar sin votación adicional por cada movimiento individual, reportando resultados mensualmente.
+
+El monitoreo continuo es imprescindible. Los rendimientos de vaults fluctúan, nuevas vulnerabilidades se descubren, y las condiciones de mercado cambian. El comité de tesorería o un sistema de alertas automatizado debe rastrear rendimientos reales versus esperados, health factors de posiciones apalancadas, y noticias de seguridad sobre protocolos subyacentes. Si un protocolo utilizado sufre un exploit en otro vault, retirar preventivamente aunque el vault propio no haya sido afectado directamente es gestión de riesgo prudente.
+
+**Crear tu propio vault público: ERC-4626 como estándar de captación**:
+
+Hasta ahora hemos visto los vaults desde la perspectiva de una DAO que deposita en vaults existentes. Pero hay un ángulo distinto y relevante para fundadores: crear tu propio vault público como vehículo de captación de inversores externos. La analogía más cercana al mundo tradicional es salir a bolsa con un fondo de inversión: defines tu estrategia, la abres al público, cualquier persona puede comprar participaciones, y todos los depositantes se benefician proporcionalmente de los rendimientos generados.
+
+Este enfoque se articula técnicamente mediante el estándar [ERC-4626](https://eips.ethereum.org/EIPS/eip-4626), aprobado en 2022 como la interfaz unificada para vaults tokenizados en Ethereum. Antes de ERC-4626, cada protocolo de vaults implementaba su propia lógica incompatible: los vaults de Yearn, Aave, Compound o Balancer tenían interfaces diferentes, lo que dificultaba que otros contratos o protocolos se integraran con ellos de forma genérica. ERC-4626 define una interfaz estándar con cuatro operaciones clave: `deposit` (depositar activos y recibir shares), `withdraw` (quemar shares y recuperar activos), `convertToShares` y `convertToAssets` (calcular la conversión entre ambos en cualquier momento). Cualquier protocolo que implemente ERC-4626 es automáticamente compatible con el ecosistema que respeta ese estándar.
+
+Para un fundador, crear un vault siguiendo ERC-4626 significa desplegar un contrato que acepta un único activo base (por ejemplo USDC), ejecuta una estrategia de yield definida, y emite shares a cada depositante proporcionales a su aportación. Cuando el vault acumula rendimientos, el precio de cada share sube: si al inicio un share valía 1 USDC y la estrategia genera veinte por ciento en un año, cada share valdrá aproximadamente 1,20 USDC. El inversor que depositó mil USDC recibe mil shares y puede recuperar mil doscientos USDC al retirar un año después. No necesita hacer nada: solo depositar y esperar.
+
+La diferencia respecto a emitir un token de gobernanza es fundamental. Las shares de un vault no son gobernanza, son participación económica directa en una estrategia concreta. Esto lo hace más parecido a un ETF o a un fondo indexado que a una acción de empresa. El inversor no vota sobre el protocolo; confía en la estrategia codificada. Y porque las shares son tokens ERC-20 estándar (lo que ERC-4626 exige como base), pueden ser transferidas, listadas en DEXs, o usadas como colateral en protocolos de lending compatibles, añadiendo liquidez secundaria al instrumento.
+
+Ejemplos reales de este modelo incluyen los yVaults de Yearn Finance, que son vaults ERC-4626 abiertos al público donde cualquier inversor puede participar en estrategias gestionadas por strategists de la comunidad. Sommelier Finance permite que estrategistas externos desplieguen sus propios vaults ERC-4626 bajo supervisión de gobernanza del protocolo, creando un marketplace de fondos DeFi con parámetros de riesgo verificables on-chain. Morpho y Spark utilizan ERC-4626 para sus mercados de lending curated, donde gestores independientes configuran pools de préstamos con parámetros propios y atraen capital externo.
+
+Para un proyecto que quiere lanzar este tipo de vehículo de captación, el proceso práctico parte de definir claramente la estrategia. ¿El vault depositará en protocolos de lending como Aave? ¿Proveerá liquidez en Curve? ¿Ejecutará estrategias de staking? La estrategia debe estar completamente codificada en smart contracts auditados, porque los inversores confiarán en ese código para gestionar su capital. Después se despliega el contrato ERC-4626, se configura la interfaz pública (Yearn ofrece infraestructura reutilizable para construir sobre sus vaults v3), y se comunica el vault a posibles inversores mediante dashboards que muestran APY histórico, TVL, y composición de estrategias.
+
+Las implicaciones regulatorias de este modelo no son triviales. Ofrecer un instrumento que promete rendimientos a inversores externos puede encuadrar en la definición de valor mobiliario según distintas jurisdicciones. En Estados Unidos, la SEC ha perseguido proyectos DeFi que ofrecían vaults con rendimientos prometidos al público. En Europa, el marco MiCA establece requisitos específicos para ciertos tipos de tokens que incluyen derechos económicos. Esto no significa que el modelo sea inviable, pero requiere análisis legal antes de lanzar un vault público como vehículo de captación. Proyectos como Sommelier han optado por estructuras donde los strategists son entidades verificables y el protocolo establece límites de riesgo aprobados por gobernanza, como capa de protección frente a reclamaciones regulatorias.
+
+El principal riesgo para el fundador que crea el vault es reputacional y de responsabilidad. Si la estrategia falla y los depositantes pierden capital, aunque el contrato sea correcto técnicamente, existe presión social y potencialmente legal. A diferencia de un token de gobernanza donde el valor depende de mercado, un vault promete implícitamente rendimiento mediante una estrategia activa. Si esa estrategia pierde valor, los depositantes pueden reclamar que el fundador les prometió algo que no cumplió.
 
 ## Reemisión de tokens y dilución
 

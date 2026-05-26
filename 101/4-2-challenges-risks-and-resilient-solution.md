@@ -108,7 +108,7 @@ Pero tener el código disponible no es suficiente si nadie puede entenderlo. La 
 
 La construcción de una comunidad técnicamente capaz es igualmente vital. Esto significa no solo atraer usuarios, sino cultivar contribuidores activos que entiendan profundamente el sistema. Programas de grants para desarrolladores, bug bounties gestionados por plataformas como [Immunefi](https://immunefi.com/), y programas de mentoría que transfieran conocimiento del equipo core a la comunidad son inversiones en la supervivencia a largo plazo del protocolo.
 
-La governance on-chain con controles multifirma distribuidos entre miembros de la comunidad asegura que ninguna persona individual pueda controlar aspectos críticos del protocolo. 
+La governance on-chain con controles multifirma distribuidos entre miembros de la comunidad asegura que ninguna persona individual pueda controlar aspectos críticos del protocolo.
 
 ¿Qué significa esto en la práctica? Imaginemos que el proyecto tiene una "tesorería" (treasury) con 1 millón de dólares en fondos para desarrollo. En un proyecto centralizado, el CEO podría simplemente transferir ese dinero a su cuenta. Con multifirma, se requieren por ejemplo 5 de 7 firmas para mover fondos. Estas 7 personas son miembros respetados de la comunidad, geográficamente distribuidos, sin relación entre ellos. Para robar los fondos, tendrías que corromper a 5 de ellos simultáneamente, lo cual es extremadamente difícil.
 

@@ -1,5 +1,36 @@
 # Fundamentos Económicos para Web3
 
+## Prólogo
+
+Este documento es tu guía educativa para entender los principios económicos que sostienen proyectos Web3 exitosos. No encontrarás historias de colapsos aquí, sino **conceptos fundamentales explicados sistemáticamente** con fórmulas, métricas y ejemplos de cómo aplicarlos correctamente.
+
+**¿Para quién es este documento?**:
+
+- Founders diseñando su primera tokenomics desde cero
+- Desarrolladores que necesitan entender el "por qué" detrás de decisiones económicas
+- Cualquiera que quiera analizar protocolos con rigor económico
+- Personas sin formación en economía que necesitan un punto de partida sólido
+
+**¿Qué encontrarás aquí?**:
+
+- Glosario completo de métricas (Market Cap, TVL, FDV, APY vs APR)
+- Conceptos económicos fundamentales aplicados a Web3
+- Fórmulas para calcular inflación, dilución, CAC, LTV
+- Frameworks para valorar protocolos y analizar cohortes
+- Guías sobre gestión de tesorería y riesgos
+
+**¿Qué NO es este documento?**:
+
+- No es una colección de casos de estudio de fracasos (para eso lee [economic-failures-and-lessons.md](economic-failures-and-lessons.md))
+- No es una receta única que funcione para todo proyecto
+- No reemplaza asesoría legal, financiera o fiscal profesional
+
+**Estructura pedagógica**: Cada sección construye sobre la anterior. Si un concepto te parece confuso, retrocede a las secciones previas. El documento está diseñado para leerse secuencialmente desde el principio, pero el glosario inicial te permite usarlo como referencia rápida.
+
+**Orden de lectura recomendado**: Lee este documento primero para construir tu base conceptual. Luego lee [economic-failures-and-lessons.md](economic-failures-and-lessons.md) para ver cómo estos conceptos fueron ignorados en proyectos reales y qué consecuencias tuvieron.
+
+---
+
 Construir en Web3 no solo requiere entender tecnología blockchain, smart contracts o criptografía. Requiere entender economía. Cada protocolo descentralizado es, en esencia, una economía en miniatura con sus propias reglas de creación, distribución y captura de valor. Cada token es un activo financiero con dinámicas de oferta y demanda. Cada DAO es una organización que debe gestionar recursos escasos para maximizar valor.
 
 Este documento es una guía práctica de conceptos económicos fundamentales aplicados al contexto Web3. No asume conocimiento previo de economía, pero sí asume que estás involucrado o interesado en proyectos descentralizados. El objetivo es que, al terminar, puedas entender las métricas que importan, evaluar la salud económica de protocolos, y diseñar sistemas tokenómicos sostenibles.

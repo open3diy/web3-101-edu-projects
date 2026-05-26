@@ -17,3 +17,5 @@ Para la generación X, acostumbrada a la estabilidad de las estructuras jerárqu
 Pero esa incomodidad es también una oportunidad. Web3 no busca excluir, sino incluir nuevas formas de pensamiento. Es un terreno donde la experiencia de las generaciones anteriores puede convivir con la energía y la flexibilidad de las nuevas. Aprender a caminar este camino —no solo conocerlo— es aceptar que el futuro digital no será propiedad de unos pocos, sino el resultado del esfuerzo colectivo.
 
 Quizá el verdadero reto no sea entender Web3, sino desaprender Web2. Solo así podremos pasar del discurso a la acción, del concepto a la práctica, del conocimiento al camino recorrido.
+
+---
