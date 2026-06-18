@@ -203,6 +203,14 @@ Los sistemas de arbitraje descentralizado como pueden ayudar, pero no eliminan c
 
 Esta limitación no es un bug temporal que se resolverá con mejor tecnología. Es una característica fundamental de intentar automatizar decisiones que inherentemente requieren contexto, experiencia y juicio humano. La pregunta no es cómo eliminar completamente esta necesidad, sino cómo distribuir y verificar el juicio humano de formas más transparentes y resistentes a la manipulación que los sistemas tradicionales.
 
+**El problema del Oráculo legal en RWA**:
+
+Los activos del mundo real introducen una variante distinta del oracle problem que no tiene que ver con subjetividad, sino con la incapacidad estructural del código de acceder al estado jurídico real de un activo. Un token que representa la propiedad de un apartamento en Madrid puede estar técnicamente bien construido, con oráculos que verifican su precio de mercado y smart contracts que ejecutan transferencias automáticamente, y aun así ser completamente incapaz de saber si ese apartamento tiene una hipoteca registrada esa mañana, si un juez dictó un embargo preventivo la semana pasada, o si el transmitente perdió la titularidad legal por un fallo judicial.
+
+El problema es que los registros de propiedad, los juzgados, las notarías y los organismos fiscales son sistemas de información independientes, diseñados para el mundo analógico, que no exponen sus datos de forma continua ni en tiempo real. Ningún oráculo puede leer el Registro de la Propiedad español en tiempo real porque ese registro no ofrece esa interfaz. La información jurídica relevante es intermitente, dispersa en múltiples administraciones con jurisdicciones solapadas, y frecuentemente requiere intervención humana especializada para interpretarse correctamente.
+
+Esto crea una brecha estructural: el token puede transferirse perfectamente en la blockchain mientras el activo real permanece bloqueado legalmente, o puede existir el activo mientras el token ha sido fraude desde el origen. A diferencia del oracle problem subjetivo, aquí ni siquiera hay datos disponibles que un sistema de arbitraje pueda evaluar. La única solución robusta conocida hasta ahora requiere que el derecho tradicional y la blockchain estén formalmente integrados, lo que implica que los registros públicos adopten APIs verificables, que los notarios o equivalentes certifiquen on-chain, y que los tribunales reconozcan los smart contracts como instrumentos jurídicamente vinculantes. Ese es un proceso de décadas, no de ciclos de financiación.
+
 **Volatilidad financiera y desalineación de incentivos**:
 
 Los mecanismos de skin in the game funcionan brillantemente bajo el supuesto de mercados relativamente estables. Pero los mercados de criptomonedas son notoriamente volátiles, con movimientos de 20-30% en días o incluso horas. Esta volatilidad puede destruir la alineación de incentivos que estos mecanismos buscan crear.

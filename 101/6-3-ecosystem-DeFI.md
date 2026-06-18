@@ -58,8 +58,52 @@ Su pilar técnico es la agregación y orquestación [cross-chain](https://www.co
 
 Dentro de esta misma etapa emerge un cambio arquitectónico relevante: las arquitecturas basadas en *intents* (intenciones declarativas). En el modelo de agregación clásico el usuario especifica cómo ejecutar la transacción —ruta, slippage máximo, pool— y el protocolo la encamina por el mejor camino disponible. En el modelo de intents, el usuario solo declara el resultado deseado ("quiero X de este token pagando como máximo Y"), y agentes especializados llamados *solvers* compiten entre sí para ejecutar esa intención de la forma más eficiente. [UniswapX](https://uniswap.org/whitepaper/uniswapX.pdf) y [CoW Protocol](https://cow.fi/) son implementaciones características de este modelo, y algunos de los agregadores clásicos han migrado también su ejecución principal hacia esta arquitectura. La razón es que resuelve un problema que la agregación clásica no eliminaba del todo: el MEV, el valor que bots externos extraen reordenando o interceptando transacciones. Con los solvers compitiendo para ofrecer el mejor precio al usuario, ese valor revierte al usuario en lugar de ser capturado por terceros.
 
+Junto a los agregadores y los intents, existe una tercera aproximación al problema cross-chain que merece distinguirse: las redes de liquidez nativa entre cadenas. Los agregadores como LI.FI dependen de puentes externos para mover activos y, por tanto, del riesgo que esos puentes introduzcan. Los protocolos de esta tercera categoría, en cambio, no enrutan a través de infraestructura ajena sino que crean sus propias pools de liquidez para cada par de cadenas, usando un activo nativo del propio protocolo como capa de liquidación. [THORChain](https://thorchain.org/) es el ejemplo más representativo: cualquier swap entre Bitcoin, Ethereum u otros activos nativos pasa por pools respaldadas por RUNE, sin necesidad de versiones envueltas ni de confiar en un puente externo. El resultado es un intercambio cross-chain donde el protocolo es al mismo tiempo la infraestructura de liquidez y el mecanismo de ejecución.
+
 Mirando al futuro, una posible capa DeFi 4.0 tendría como objetivo la adopción masiva mediante la completa abstracción de la tecnología, transformando la interacción en una experiencia simple e intuitiva para el usuario final. Su interoperabilidad sería perfecta y omnipresente, integrando no solo protocolos DeFi, sino también el sistema financiero tradicional y otras plataformas digitales, haciendo que la blockchain subyacente sea prácticamente invisible.
 
 Sin perder perspectiva en el resto de capas, como fundadores de proyectos sobre todo nos centraremos en la capa 1.0 que es donde crearemos liquidez en un proyecto para el mercado secundario y previsiblemente en la 2.0 para automatizar.
 
 ---
+
+🔴 Rojo = Emisión e incentivos
+
+Liquidity mining.
+Recompensas.
+Inflación del token.
+Subsidios.
+Bootstrapping de liquidez.
+
+🟢 Verde = Generación de valor
+
+Comisiones de trading.
+Intereses de préstamos.
+Ingresos del protocolo.
+Cash flow real.
+Actividad económica.
+
+🟡 Dorado = Especulación
+
+Trading.
+Narrativas.
+Memecoins.
+Apuestas sobre crecimiento.
+Valoraciones futuras.
+
+🔵 Azul = Seguridad y confianza
+
+Staking.
+Validadores.
+Auditorías.
+Colateralización.
+Gestión de riesgo.
+Oráculos.
+
+🟣 Morado = Eficiencia del sistema
+
+Arbitrajistas.
+Liquidadores.
+MEV "útil".
+Market makers.
+Solvers.
+Routers.

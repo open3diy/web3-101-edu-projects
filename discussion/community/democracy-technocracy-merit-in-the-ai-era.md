@@ -1,4 +1,4 @@
-# Democracia, tecnocracia y mérito: lo que no se ve en la era de la IA
+# Democracia, tecnocracia y mérito
 
 ## Introducción: la tensión que no se nombra
 
