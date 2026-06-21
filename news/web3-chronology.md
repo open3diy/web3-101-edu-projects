@@ -114,8 +114,6 @@ El precio se dispara y alcanza los mil dólares por primera vez. La burbuja atra
 
 Vitalik Buterin, un joven de diecinueve años, propone una cadena de bloques con un lenguaje de programación completo. La idea es crear un ordenador mundial descentralizado donde cualquiera pueda ejecutar contratos inteligentes.
 
-[hasta aqui]
-
 ## ★ Diciembre 2013: Nace Dogecoin
 
 Dogecoin nace como una broma basada en un meme de internet, pero desarrolla una comunidad activa y cultura propia. Años después se convertirá en el ejemplo más visible del poder social y especulativo de las memecoins.
@@ -131,6 +129,10 @@ Monero aparece como una criptomoneda centrada en privacidad. Sus firmas de anill
 ## ★★ Julio 2014: Ethereum realiza su crowdsale
 
 Ethereum vende ether para financiar el desarrollo inicial de la red. La venta muestra una nueva forma de financiación abierta para protocolos, precedente directo de las ICO que explotarán años después.
+
+## ★★ Julio 2014: Nace Stellar y el consenso federado
+
+Jed McCaleb, cofundador de Mt. Gox y de Ripple, abandona este último proyecto y funda junto a Joyce Kim la Stellar Development Foundation. La red Stellar es una plataforma de pagos y activos digitales diseñada para remesas internacionales e inclusión financiera, especialmente en mercados sin acceso bancario. Su mecanismo de consenso, el Stellar Consensus Protocol (SCP), es un sistema de acuerdo federado byzantine: en lugar de exigir que todos los nodos confíen entre sí, cada nodo elige su propio conjunto de nodos de confianza y el consenso emerge de la intersección de esos conjuntos. El diseño resulta en una red mucho más rápida y barata que Ethereum o Bitcoin, aunque con un modelo de descentralización más matizado. Stellar se convierte en infraestructura de emisión de stablecoins y activos tokenizados, incluyendo versiones de USDC, y en soporte técnico de proyectos de banca digital en África, Asia y América Latina.
 
 ## ★★ Octubre 2014: Nace Tether
 
@@ -152,9 +154,9 @@ La red Ethereum entra en funcionamiento con Frontier, su primera fase oficial: u
 
 Fabian Vogelsteller propone el estándar ERC-20, un conjunto mínimo de funciones que cualquier token fungible en Ethereum debe implementar para ser interoperable con wallets, exchanges y contratos. La estandarización convierte la emisión de tokens en algo trivial y se transforma en el cimiento técnico del boom de las ICO, de las stablecoins y de prácticamente todo DeFi. Pocos estándares han tenido un impacto tan desproporcionado respecto a su simplicidad.
 
-## ★ Diciembre 2015: Hyperledger y la entrada empresarial
+## ★ Diciembre 2015: La Linux Foundation lanza Hyperledger
 
-La Linux Foundation impulsa Hyperledger para desarrollar tecnologías blockchain empresariales. Bancos, consultoras y corporaciones exploran registros distribuidos privados, separando la narrativa de blockchain empresarial de la de criptoactivos públicos.
+La Linux Foundation lanza Hyperledger para desarrollar tecnologías blockchain empresariales de código abierto. El proyecto institucionaliza la exploración de registros distribuidos privados por parte de bancos, consultoras y corporaciones, separando la narrativa de blockchain empresarial de la de criptoactivos públicos.
 
 ## ★★★ Junio 2016: El hackeo de The DAO
 
@@ -176,9 +178,13 @@ Zcash lanza una red con pruebas de conocimiento cero para permitir transacciones
 
 Los contratos inteligentes de Ethereum permiten a cualquiera crear tokens y venderlos al público para financiar proyectos. Las Ofertas Iniciales de Moneda estallan en popularidad. Proyectos sin producto recaudan decenas de millones de dólares en minutos. EOS levanta cuatro mil millones de dólares en un año. El ciclo se extendió durante todo 2017 y colapsó definitivamente a principios de enero de 2018 con el inicio del crypto winter. Muchos proyectos resultaron ser estafas o fracasos.
 
-## ★★★ 2017–2018: Los primeros Ethereum killers
+## ★★ 2017: Los primeros Ethereum killers
 
-Al calor del ciclo ICO surge la primera generación de los llamados Ethereum killers. EOS, NEO, Cardano, Tezos y otros prometen resolver las limitaciones de rendimiento y gobernanza de Ethereum con arquitecturas alternativas y levantan miles de millones con la promesa de destronar a la red líder. La narrativa se desinfla durante el crypto winter: ninguno consigue desplazar a Ethereum como plataforma dominante de contratos inteligentes y, hacia el Q4 de 2018, con el crypto winter en su punto más bajo, la primera ola de Ethereum killers queda como advertencia temprana sobre la distancia entre financiación y adopción real.
+Al calor del ciclo ICO surge la primera generación de los llamados Ethereum killers. EOS, NEO, Cardano, Tezos y otros prometen resolver las limitaciones de rendimiento y gobernanza de Ethereum con arquitecturas alternativas y levantan miles de millones con la promesa de destronar a la red líder. La narrativa empieza a desinflarse con el inicio del crypto winter en enero de 2018 y se da por agotada a finales de ese año, cuando la mayoría de estos proyectos quedan sin tracción real.
+
+## ★★ 2017: IOTA y la apuesta por el Internet de las Cosas
+
+La Fundación IOTA lanza la red pública de MIOTA con una arquitectura radicalmente distinta a blockchain: usa un grafo acíclico dirigido llamado Tangle donde cada transacción valida dos anteriores, eliminando comisiones y mineros. El objetivo no son los contratos inteligentes sino el Internet de las Cosas, con micropagos entre dispositivos y trazabilidad industrial. En el ciclo ICO alcanza una capitalización de miles de millones, pero la promesa no se sostiene: el Tangle requiere un coordinador central gestionado por la propia Fundación, una contradicción flagrante con la descentralización prometida, y el desarrollo técnico se frena durante años. Lo que hace a IOTA un hito es lo que ocurre después: en lugar de desaparecer, la Fundación abandona la narrativa especulativa y reorienta el proyecto hacia comercio internacional y trazabilidad de cadena de suministro. El resultado más visible en 2025 es TWIN (Trade Worldwide Information Network), una infraestructura digital pública construida sobre IOTA respaldada por el Foro Económico Mundial, el Instituto Tony Blair y TradeMark Africa, que permite a gobiernos, importadores, exportadores y agencias aduaneras compartir datos de comercio en tiempo real sin intermediarios ni papel. Es uno de los pocos ejemplos del ecosistema de una red que sale del casino cripto y encuentra un nicho de infraestructura global con legitimidad institucional real.
 
 ## ★ Q2 2017: La narrativa del Flippening
 
@@ -194,7 +200,7 @@ Bitcoin activa SegWit para mejorar eficiencia y preparar soluciones de segunda c
 
 ## ★★ Septiembre 2017: China prohíbe ICO y presiona a exchanges
 
-China prohíbe las ICO y endurece la actividad de exchanges locales. El mercado cae con fuerza, pero la actividad migra a otras jurisdicciones. El episodio anticipa la tensión permanente entre innovación global y regulación nacional.
+China prohíbe las ICO y endurece la actividad de exchanges locales. El mercado cae con fuerza, pero la actividad migra a otras jurisdicciones. La represión no se detuvo en 2017: en septiembre de 2021 China declaró ilegales todas las transacciones con criptomonedas en el territorio continental y forzó el cierre de la minería, completando la prohibición más amplia del ecosistema. El episodio tiene un segundo acto: en 2023 Hong Kong abre un marco regulado para exchanges y trading minorista de criptoactivos, reposicionándose como el hub cripto de la región bajo la misma bandera que había cerrado las puertas en el continente, mostrando que la estrategia no era erradicar la industria sino controlar desde dónde operaba.
 
 ## ★★ Octubre 2017: Polkadot, Web3 Foundation y la locura de las ICO técnicas
 
@@ -242,7 +248,7 @@ La Comisión Europea y varios Estados miembros crean la European Blockchain Part
 
 ## ★ Junio 2018: EOS y las blockchains de alto rendimiento
 
-EOS lanza su red principal tras una ICO multimillonaria. Promete alto rendimiento mediante un número reducido de validadores elegidos por voto. Su caso populariza el debate entre velocidad, descentralización, gobernanza y captura por grandes actores.
+Block.one lanza la red EOS tras la ICO más grande hasta ese momento, con cerca de cuatro mil millones de dólares recaudados. La red promete alto rendimiento mediante Delegated Proof of Stake: los poseedores del token EOS eligen a veintiún productores de bloques que controlan toda la validación. El modelo fracasa como plataforma de contratos inteligentes: los productores se confabulan para repartirse recompensas, congelan cuentas de usuarios por decisión propia y el ecosistema de desarrolladores se vacía. EOS acaba siendo el ejemplo canónico de que reducir el número de validadores para ganar velocidad concentra el poder hasta hacer irrelevante la descentralización.
 
 ## ★★ Septiembre 2018: Nace USDC
 
@@ -256,9 +262,13 @@ Hayden Adams lanza Uniswap, un exchange descentralizado que no usa libro de órd
 
 Synthetix empieza a construir un protocolo para emitir activos sintéticos respaldados por colateral. Su propuesta amplía DeFi más allá de préstamos e intercambios: se pueden crear exposiciones a divisas, materias primas o índices sin custodiar el activo subyacente.
 
-## ★ Abril 2019: Matic Network propone escalar Ethereum
+## ★ Febrero 2019: POAP y los NFTs como credenciales de participación
 
-Matic Network, que luego adoptará el nombre Polygon, gana atención como solución para transacciones más baratas y rápidas conectadas a Ethereum. Su crecimiento anticipa la demanda de capas de escalabilidad antes de que los rollups dominen la conversación.
+Patricio Worthalter presenta POAP (Proof of Attendance Protocol) en ETHDenver, una herramienta para emitir tokens no fungibles como credenciales de asistencia a eventos. La propuesta es estructuralmente opuesta a la especulación NFT: no hay precio de mercado ni escasez artificial, solo un registro verificable de que alguien estuvo presente en un lugar o momento concreto. POAP sobrevive el colapso de la NFT Mania de 2021-2022 y sigue en uso activo en conferencias, hackathons y comunidades Web3, representando uno de los pocos casos en que los NFTs demostraron utilidad real más allá de la especulación.
+
+## ★★ Marzo 2019: Cosmos lanza su mainnet e introduce IBC
+
+La Fundación Interchain lanza la mainnet de Cosmos Hub con el protocolo IBC, que permite transferir tokens y datos entre cadenas sin puentes custodiales. Cada cadena es soberana y usa Tendermint, lo que define la visión alternativa a Polkadot: app-chains independientes que se comunican mediante un protocolo abierto en lugar de compartir seguridad en una relay chain. El ecosistema crece con Binance Chain, Terra, dYdX y decenas de redes sobre el SDK de Cosmos.
 
 ## ★★ Mayo 2019: Compound y el inicio de los préstamos DeFi
 
@@ -266,7 +276,7 @@ Compound Finance lanza un protocolo de préstamos descentralizados sobre Ethereu
 
 ## ★★ Junio 2019: Facebook anuncia Libra
 
-Facebook presenta Libra, una stablecoin global respaldada por una cesta de activos. La reacción de reguladores y bancos centrales es inmediata. El proyecto se renombra Diem en diciembre de 2020 y es liquidado definitivamente en enero de 2022, cuando sus activos tecnológicos se venden a Silvergate Bank. Aunque ninguna parte de la visión original llega a operarse, el episodio acelera el debate mundial sobre stablecoins y monedas digitales de banco central.
+Facebook presenta Libra, una stablecoin global respaldada por una cesta de activos y gestionada por un consorcio privado. La respuesta política es inmediata: el Congreso convoca audiencias y varios socios del consorcio abandonan el proyecto. Se renombra Diem en 2020 y se liquida en enero de 2022. No fue un fracaso técnico: fue bloqueada porque amenazaba la soberanía monetaria, mientras USDT y USDC, que extienden el dólar sin competirle, crecían sin obstáculos.
 
 ## ★★ Junio 2019: FATF extiende la Travel Rule a cripto
 
@@ -274,7 +284,7 @@ El Grupo de Acción Financiera Internacional recomienda aplicar obligaciones de 
 
 ## ★★ Q1 2019: Binance Launchpad y el modelo IEO
 
-Binance relanza su plataforma Launchpad con la venta del token de BitTorrent, que se agota en minutos, e inaugura como tendencia el modelo de Initial Exchange Offering: ventas de tokens organizadas y filtradas por un exchange que actúa de intermediario y garante. Las IEO sustituyen brevemente a las ICO como mecanismo de financiación de moda, trasladando la confianza desde el proyecto hacia la plataforma que lo lista y consolidando a los grandes exchanges como guardianes del acceso al capital minorista.
+Binance relanza su plataforma Launchpad con la venta del token de BitTorrent, que se agota en minutos, e inaugura el modelo de Initial Exchange Offering: ventas de tokens filtradas por un exchange que actúa de intermediario y garante. El modelo traslada la confianza desde el proyecto hacia la plataforma que lo lista y posiciona a los grandes exchanges como guardianes del acceso al capital minorista.
 
 ## ★ Q1 2019: PlusToken y los esquemas piramidales cripto
 
@@ -296,13 +306,15 @@ Curve Finance lanza pools optimizados para activos de precio similar, especialme
 
 Aave, evolución de ETHLend, introduce préstamos instantáneos que se toman y devuelven dentro de una misma transacción. Los flash loans abren estrategias de arbitraje y refinanciación sin capital inicial, pero también facilitan ataques complejos contra oráculos y protocolos mal diseñados.
 
-## ★★ 2019–2020: Wrapped Bitcoin trae la liquidez de Bitcoin a DeFi
+## ★★ Enero 2019: Wrapped Bitcoin trae la liquidez de Bitcoin a DeFi
 
 Wrapped Bitcoin (WBTC), lanzado a comienzos de 2019 y consolidado durante el auge de DeFi de 2020, representa bitcoins custodiados uno a uno como tokens ERC-20 en Ethereum. La pieza permite usar el activo más líquido del ecosistema como colateral en préstamos, pools de liquidez y estrategias de yield farming, conectando dos mundos que hasta entonces vivían separados. A cambio introduce un compromiso incómodo y revelador: la versión de Bitcoin que circula por DeFi depende de custodios centralizados que guardan el colateral real, un recordatorio de que la composabilidad casi siempre se paga con confianza.
 
 ## ★★★ Marzo 2020: Black Thursday en MakerDAO
 
-La caída global de mercados por la pandemia provoca liquidaciones masivas en MakerDAO. La congestión de Ethereum permite subastas con pujas de cero DAI y deja deuda en el sistema. Es una prueba temprana de estrés para DeFi.
+El pánico financiero por la pandemia desencadena una venta masiva global de activos de riesgo: bolsa, materias primas y cripto se hunden juntos mientras los inversores buscan liquidez en dólares. ETH pierde cerca del cincuenta por ciento de su valor en un solo día, lo que dispara liquidaciones masivas de posiciones colateralizadas en MakerDAO. El mecanismo de liquidación funciona mediante subastas: los liquidadores deben pujar DAI para quedarse el colateral de las posiciones en mora. Pero Ethereum estaba tan congestionado que la mayoría de los bots no pudieron enviar transacciones, y algunos liquidadores ganaron subastas pujando cero DAI, llevándose el colateral sin pagar nada. El resultado fue una deuda de varios millones de DAI sin respaldo en el sistema, que MakerDAO cubrió acuñando y subastando tokens MKR. El episodio expuso que DeFi no solo hereda los riesgos del protocolo sino también los de la capa base sobre la que corre.
+
+[ha]
 
 ## ★★ Abril 2020: China lanza BSN y separa blockchain de cripto abierta
 
@@ -387,6 +399,10 @@ Uniswap lanza su versión 3 introduciendo la "liquidez concentrada". Permite a l
 ## ★★ Mayo 2021: China endurece la minería de Bitcoin
 
 China intensifica la represión contra la minería y el trading de criptomonedas. Gran parte del hashrate de Bitcoin migra a Estados Unidos, Kazajistán y otros países. La red sobrevive, pero la geografía de la minería cambia radicalmente.
+
+## ★★ Mayo 2021: Internet Computer y la promesa de reemplazar internet
+
+DFINITY lanza la mainnet de Internet Computer con la promesa más ambiciosa del ciclo: ejecutar contratos inteligentes a escala capaz de reemplazar servicios de internet tradicionales —redes sociales, correo, infraestructura empresarial— sin depender de Amazon, Google ni ningún proveedor cloud. La Fundación había recaudado más de doscientos setenta millones de dólares antes del lanzamiento público. El token ICP debuta alrededor de los setecientos dólares, situando al proyecto momentáneamente entre los diez activos con mayor capitalización del ecosistema. En las semanas siguientes pierde más del noventa y cinco por ciento de su valor. El ecosistema de desarrolladores no alcanza masa crítica y la red queda técnicamente en funcionamiento pero con actividad marginal, convirtiendo el lanzamiento en uno de los mayores contrastes de todo el ciclo entre financiación recibida y adopción real.
 
 ## ★★ Q2 2021: GameFi y play-to-earn
 
@@ -492,6 +508,10 @@ El Departamento del Tesoro de Estados Unidos sanciona Tornado Cash, un protocolo
 
 Ethereum completa su transición de Prueba de Trabajo a Prueba de Participación. El consumo energético de la red se reduce en un noventa y nueve coma nueve por ciento. Es el mayor cambio de consenso de una blockchain en funcionamiento.
 
+## ★★ Octubre 2022: Aptos, Sui y los Ethereum killers con capital institucional
+
+Aptos lanza su mainnet respaldada por más de cuatrocientos millones de dólares de fondos como Andreessen Horowitz, FTX Ventures y Coinbase Ventures. El equipo fundador son ex-ingenieros de Meta que desarrollaron el lenguaje Move dentro del proyecto Diem, la stablecoin global de Facebook que nunca llegó a operarse. La propuesta es una capa 1 con arquitectura de ejecución paralela y finalidad más rápida que Ethereum. Sui, fundada por otro grupo del mismo origen, recauda unos trescientos treinta y seis millones de dólares y lanza su mainnet en mayo de 2023 con un diseño similar. Dos años después de sus respectivos lanzamientos, los ecosistemas DeFi y de aplicaciones de ambas redes se mantienen marginales pese al capital invertido y al pedigrí técnico de los equipos. El patrón repite el de EOS en el ciclo anterior pero con capital institucional de venture capital en lugar de ICO: el problema de convencer a desarrolladores y usuarios de migrar desde redes con liquidez y herramientas establecidas no lo resuelve el dinero.
+
 ## ★★ Octubre 2022: El caso Mango Markets y la explotación económica
 
 Un trader manipula el precio del token nativo del exchange descentralizado Mango Markets, construido sobre Solana, para inflar artificialmente el valor de su colateral y retirar unos ciento diez millones de dólares en préstamos contra esa garantía. El atacante reivindica públicamente la operación como una "estrategia rentable legal", abriendo un debate jurídico inédito sobre si manipular un mercado onchain constituye un delito o una explotación económica permitida por el propio diseño del protocolo. La justicia estadounidense terminaría procesándolo, marcando un precedente sobre los límites legales de lo que el código permite.
@@ -503,6 +523,10 @@ El exchange FTX, dirigido por Sam Bankman-Fried, se declara en quiebra tras reve
 ## ★★ Q4 2022: Pruebas de reservas y desconfianza hacia custodios
 
 Tras FTX, exchanges como Binance, Kraken y otros publican pruebas de reservas o intentan demostrar solvencia. La práctica ayuda a transparentar activos, pero también muestra sus límites si no se acompaña de auditorías de pasivos y controles financieros completos.
+
+## ★★★ Q1 2023: El modelo de financiación por tokens cierra su primer ciclo
+
+La quiebra de FTX en noviembre de 2022 marca el punto final de un arco que arrancó con la primera ICO de Mastercoin en 2013. En diez años, el modelo pasó por cuatro fases reconocibles: las ICO de 2017, donde cualquiera podía vender tokens al público antes de tener producto; las IEO de 2019, donde los exchanges actuaron de filtro y garante trasladando la confianza hacia las plataformas; el liquidity mining de 2020, donde el token dejó de ser un instrumento de financiación para convertirse en recompensa de actividad; y los airdrops de 2022-2023, donde los protocolos distribuían tokens a usuarios reales para descentralizar la gobernanza y atraer liquidez. Cada fase intentó corregir los excesos de la anterior. Ninguna resolvió la contradicción central: un token emitido sin ingresos reales detrás solo tiene valor si hay compradores más tardíos dispuestos a pagarlo. Lo que quedó en pie no fue el modelo de financiación, sino los casos de uso donde el token tenía función real —gobernanza operativa, acceso a un servicio, colateral en un protocolo— y una distinción más clara, forzada por la regulación y por los colapsos, entre esos casos y la especulación pura.
 
 ## ★★★ 2023: La carrera institucional hacia la regulación favorable
 
@@ -568,9 +592,13 @@ El proyecto Worldcoin, impulsado por Sam Altman, se lanza oficialmente con el "O
 
 Un tribunal federal de apelaciones de Washington D.C. falla a favor de Grayscale y ordena a la SEC revisar su rechazo previo a la conversión del fondo GBTC en un ETF de Bitcoin al contado. El tribunal considera que la SEC no justificó de forma coherente el trato diferenciado respecto a los futuros de Bitcoin, ya aprobados. La sentencia debilita la posición del regulador y despeja el camino para las aprobaciones masivas que llegarán en enero de 2024.
 
-## ★★ Agosto 2023: Base y la entrada de grandes exchanges en capa 2
+## ★★★ Q2 2023: La carrera de las capas 2 y la proliferación de rollups
 
-Coinbase lanza Base, una red de capa 2 construida sobre Ethereum. El movimiento refuerza la idea de que los exchanges pueden convertirse en puertas de entrada a ecosistemas onchain, no solo en mercados de compraventa.
+Con Arbitrum y Optimism consolidados como el duopolio dominante, la competencia se desplaza del TVL al diseño de ecosistemas. Optimism abre el OP Stack como un marco público para que cualquier proyecto lance su propia L2 compartiendo la misma base técnica y heredando la seguridad de Ethereum. La idea de la Superchain toma forma: no una L2 sino una red de cadenas que comparten puentes, gobernanza e infraestructura. En paralelo, zkSync Era y Polygon zkEVM abren sus mainnets en marzo de 2023 y consolidan los ZK rollups como segunda familia técnica, con finalidad criptográfica sin el periodo de disputa de los rollups optimistas. La proliferación crea un problema nuevo: cada cadena fragmenta liquidez, exige su propia infraestructura de bridging y obliga a usuarios y protocolos a elegir entre ecosistemas incompatibles. L2Beat se convierte en el sitio de referencia para comparar la seguridad, madurez y descentralización de cada rollup. El ciclo más competitivo de la guerra de L2s se cierra técnicamente con la actualización Dencun de marzo de 2024, que introduce blobs y reduce drásticamente los costes de datos en rollups, aunque la fragmentación de liquidez entre decenas de L2s activas sigue abierta.
+
+## ★★ Agosto 2023: Base y la Superchain de Coinbase
+
+Coinbase lanza Base, una L2 construida sobre OP Stack y la primera apuesta de un exchange de escala global por su propia infraestructura blockchain. Base no compite como una cadena independiente sino como miembro de la Superchain: hereda la seguridad de Ethereum a través de Optimism, comparte arquitectura con otras cadenas del ecosistema OP Stack y añade la red de distribución de Coinbase, su legitimidad regulatoria y millones de usuarios con KYC. En sus primeros meses supera a Arbitrum en transacciones diarias y se convierte en la L2 con mayor actividad de aplicaciones de consumo. El lanzamiento valida el modelo OP Stack como franquicia para construir L2s y convierte a Base en el ejemplo más visible de cómo las grandes empresas del sector pueden entrar en la infraestructura Web3 sin construir una blockchain competidora desde cero.
 
 ## ★★ Q2 2023: Solicitudes de ETF de Bitcoin al contado
 
@@ -587,6 +615,10 @@ Binance acepta pagar cuatro mil trescientos millones de dólares y su fundador C
 ## ★★★ Noviembre 2023: El hackeo de KyberSwap
 
 El exchange descentralizado KyberSwap pierde alrededor de cincuenta millones de dólares mediante un ataque sofisticado que explota la lógica de liquidez concentrada del protocolo con cálculos de precios manipulados justo en los límites de los rangos. Es uno de los mayores hackeos DeFi de 2023 y destaca por la complejidad matemática del exploit, que requería una comprensión profunda del funcionamiento interno del protocolo, un recordatorio de que la sofisticación de DeFi multiplica también la sofisticación de sus ataques.
+
+## ★★ Q4 2023: DeFi como infraestructura, no como revolución
+
+Tres años después del DeFi Summer, el balance es paradójico: los protocolos sobrevivieron y funcionan, pero la promesa de reemplazar el sistema financiero tradicional no se materializó. Uniswap, Aave, Compound, MakerDAO y Curve siguen operando con decenas de miles de millones en valor bloqueado, pero sus usuarios son principalmente traders sofisticados, tesorerías cripto-nativas y bots de arbitraje, no los usuarios no bancarizados ni las pequeñas empresas que protagonizaban la narrativa de adopción masiva. Los rendimientos sostenibles se asentaron en rangos modestos, muy por debajo de los APY de cuatro dígitos del verano de 2020, y la composabilidad que prometía los money legos demostró ser también la superficie de ataque que multiplicó la escala de hackeos y explotaciones. Lo que DeFi sí logró es más técnico que transformador: mercados de préstamo, intercambio y derivados que funcionan ininterrumpidamente sin custodios, con reglas transparentes y sin intermediarios que puedan quebrar con los fondos de los clientes. Ese modelo resistió el crypto winter de 2022 y el colapso de FTX, y siguió procesando volúmenes reales cuando los exchanges centralizados más grandes fallaban. La pregunta que quedó abierta no fue si DeFi funcionaba, sino si el mundo fuera del ecosistema cripto tenía razones suficientes para usarlo.
 
 ## ★★ Q4 2023: Solana resurge tras el golpe de FTX
 
