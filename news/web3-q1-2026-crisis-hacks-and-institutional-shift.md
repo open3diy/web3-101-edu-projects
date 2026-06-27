@@ -1,4 +1,4 @@
-# Informe Web3: Primer semestre de 2026 entre crisis, hacks y reordenamiento institucional
+# 📊 Informe Web3: Primer semestre de 2026 entre crisis, hacks y reordenamiento institucional
 
 ## Introducción: El semestre en que la fragilidad quedó expuesta
 

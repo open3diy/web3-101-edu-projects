@@ -314,19 +314,17 @@ Wrapped Bitcoin (WBTC), lanzado a comienzos de 2019 y consolidado durante el aug
 
 El pánico financiero por la pandemia desencadena una venta masiva global de activos de riesgo: bolsa, materias primas y cripto se hunden juntos mientras los inversores buscan liquidez en dólares. ETH pierde cerca del cincuenta por ciento de su valor en un solo día, lo que dispara liquidaciones masivas de posiciones colateralizadas en MakerDAO. El mecanismo de liquidación funciona mediante subastas: los liquidadores deben pujar DAI para quedarse el colateral de las posiciones en mora. Pero Ethereum estaba tan congestionado que la mayoría de los bots no pudieron enviar transacciones, y algunos liquidadores ganaron subastas pujando cero DAI, llevándose el colateral sin pagar nada. El resultado fue una deuda de varios millones de DAI sin respaldo en el sistema, que MakerDAO cubrió acuñando y subastando tokens MKR. El episodio expuso que DeFi no solo hereda los riesgos del protocolo sino también los de la capa base sobre la que corre.
 
-[ha]
-
 ## ★★ Abril 2020: China lanza BSN y separa blockchain de cripto abierta
 
 China impulsa la Blockchain-based Service Network como infraestructura nacional para desplegar aplicaciones basadas en registros distribuidos bajo un marco controlado. El movimiento contrasta con la prohibición de ICO, exchanges y minería: el Estado rechaza la criptoeconomía abierta, pero adopta parte de la tecnología para servicios públicos, trazabilidad e infraestructura empresarial. Junto al avance del yuan digital, China define una vía asiática de digitalización estatal sin descentralización política.
 
 ## ★★★ Mayo 2020: Tercer halving de Bitcoin
 
-La recompensa por bloque se reduce a seis punto veinticinco bitcoins. El evento refuerza la narrativa de oro digital y anticipa el mercado alcista.
+La recompensa por bloque se reduce a 6.25 bitcoins. El evento refuerza la narrativa de oro digital y anticipa el mercado alcista.
 
 ## ★★ Mayo 2020: Uniswap V2 y Balancer expanden los pools de liquidez
 
-Uniswap V2 permite pares ERC-20 contra ERC-20 y mejora el diseño de los AMM. Balancer introduce pools con varios activos y pesos configurables. Juntos amplían la idea de liquidez programable: los mercados ya no necesitan una empresa central ni un libro de órdenes clásico.
+Uniswap V2 permite pares directos entre tokens sin necesitar ETH como intermediario y mejora el diseño de los AMM. Balancer introduce pools con varios activos y pesos configurables. Juntos amplían la idea de liquidez programable: los mercados ya no necesitan una empresa central ni un libro de órdenes clásico.
 
 ## ★★ Mayo 2020: Polkadot lanza su red principal
 
@@ -370,7 +368,7 @@ Ethereum activa la fase cero de su transición hacia Prueba de Participación co
 
 ## ★★ Diciembre 2020: Lido y la centralización del staking líquido
 
-Lido Finance lanza en diciembre de 2020 la primera solución de staking líquido a escala: los usuarios depositan ether y reciben stETH, un token que representa su posición en staking y que puede usarse en DeFi mientras genera recompensas. El protocolo crece hasta concentrar más del treinta por ciento del ether total en staking para 2022, superando el umbral que activaría ventajas de consenso en Ethereum. La situación convierte a Lido en el epicentro del debate sobre descentralización real: una red puede tener miles de nodos y aun así tener un único protocolo con influencia mayoritaria sobre el consenso. A lo largo de 2023, Vitalik Buterin y otros investigadores del protocolo articularon propuestas formales para que Lido autorregulara su cuota de mercado, pero el protocolo cerró ese año sin comprometerse a límites vinculantes y seguía siendo el proveedor dominante del staking líquido. La narrativa del staking líquido sigue plenamente activa: alternativas más descentralizadas como Rocket Pool ganan terreno, pero los derivados líquidos, con stETH a la cabeza, se consolidan como una de las piezas de colateral más utilizadas de todo DeFi.
+Lido Finance lanza en diciembre de 2020 el staking líquido a escala: los usuarios depositan ether y reciben stETH, un token que representa esa posición y puede usarse en DeFi mientras acumula recompensas. Para 2022 concentra más del treinta por ciento del ether en staking, por encima del umbral que podría darle ventajas de consenso, y se convierte en el caso central del debate sobre descentralización real: Ethereum puede tener miles de nodos y aun así depender demasiado de un solo protocolo. En 2023, Vitalik Buterin y otros investigadores proponen que Lido limite voluntariamente su cuota de mercado, pero el protocolo cierra el año sin límites vinculantes y mantiene el liderazgo del staking líquido. La narrativa sigue activa: alternativas más descentralizadas como Rocket Pool ganan terreno, mientras stETH se consolida como una de las principales piezas de colateral en DeFi.
 
 ## ★★★ Diciembre 2020: La SEC demanda a Ripple
 
@@ -378,7 +376,7 @@ La SEC acusa a Ripple de vender XRP como valor no registrado. El caso se convier
 
 ## ★★★ Marzo 2021: Los NFTs irrumpen en escena
 
-Beeple vende una obra de arte digital como NFT por sesenta y nueve millones de dólares en Christie's. La venta desata una locura por los tokens no fungibles. CryptoPunks y Bored Ape Yacht Club se convierten en símbolos de estatus digital, y colecciones como Azuki o Pudgy Penguins suman comunidades enteras alrededor de imágenes de perfil. Los volúmenes de comercio de NFTs alcanzan miles de millones de dólares mensuales y la NFT Mania se convierte en una de las narrativas dominantes del ciclo alcista. La euforia se enfrió a lo largo de 2022 con la caída del mercado y se considera terminada hacia el Q2 de 2023, cuando los volúmenes se desplomaron a una fracción de su pico y los NFTs pasaron de fenómeno especulativo masivo a nicho cultural y de coleccionismo.
+Beeple vende una obra de arte digital como NFT por 79 millones de dólares en Christie's. La venta desata una locura por los tokens no fungibles. CryptoPunks y Bored Ape Yacht Club se convierten en símbolos de estatus digital, y colecciones como Azuki o Pudgy Penguins suman comunidades enteras alrededor de imágenes de perfil. Los volúmenes de comercio de NFTs alcanzan miles de millones de dólares mensuales y la NFT Mania se convierte en una de las narrativas dominantes del ciclo alcista. La euforia se enfrió a lo largo de 2022 con la caída del mercado y se considera terminada hacia el Q2 de 2023, cuando los volúmenes se desplomaron a una fracción de su pico y los NFTs pasaron de fenómeno especulativo masivo a nicho cultural y de coleccionismo.
 
 ## ★★★ Abril 2021: Coinbase sale a bolsa
 
@@ -386,7 +384,7 @@ Coinbase debuta en Nasdaq mediante cotización directa, convirtiéndose en la pr
 
 ## ★★ Abril 2021: Bored Ape Yacht Club y los NFTs como identidad
 
-Yuga Labs lanza la colección Bored Ape Yacht Club, diez mil simios generados algorítmicamente que rápidamente trascienden el coleccionismo para convertirse en símbolo de estatus, marca cultural y puerta de acceso a una comunidad. Celebridades, deportistas y marcas adoptan los apes como foto de perfil, los precios mínimos alcanzan cientos de miles de dólares y Yuga Labs construye alrededor un imperio que incluye el token ApeCoin y el metaverso Otherside. BAYC define el modelo del NFT como identidad y pertenencia, no solo como obra, y se convierte en el proyecto más influyente de toda la NFT Mania.
+Yuga Labs lanza la colección Bored Ape Yacht Club, diez mil simios generados algorítmicamente que rápidamente trascienden el coleccionismo para convertirse en símbolo de estatus, marca cultural y puerta de acceso a una comunidad. Celebridades, deportistas y marcas adoptan los apes como foto de perfil, mientras Yuga Labs expande la marca con ApeCoin y Otherside. BAYC consolida el modelo del NFT como identidad y pertenencia, no solo como obra digital.
 
 ## ★★ Q1 2021: Polygon lleva DeFi a comisiones bajas
 
@@ -402,35 +400,31 @@ China intensifica la represión contra la minería y el trading de criptomonedas
 
 ## ★★ Mayo 2021: Internet Computer y la promesa de reemplazar internet
 
-DFINITY lanza la mainnet de Internet Computer con la promesa más ambiciosa del ciclo: ejecutar contratos inteligentes a escala capaz de reemplazar servicios de internet tradicionales —redes sociales, correo, infraestructura empresarial— sin depender de Amazon, Google ni ningún proveedor cloud. La Fundación había recaudado más de doscientos setenta millones de dólares antes del lanzamiento público. El token ICP debuta alrededor de los setecientos dólares, situando al proyecto momentáneamente entre los diez activos con mayor capitalización del ecosistema. En las semanas siguientes pierde más del noventa y cinco por ciento de su valor. El ecosistema de desarrolladores no alcanza masa crítica y la red queda técnicamente en funcionamiento pero con actividad marginal, convirtiendo el lanzamiento en uno de los mayores contrastes de todo el ciclo entre financiación recibida y adopción real.
+DFINITY lanza la mainnet de Internet Computer con la promesa de reemplazar servicios de internet tradicionales mediante contratos inteligentes a gran escala. Tras un debut espectacular del token ICP, el precio se desploma en pocas semanas y la red no logra atraer una comunidad significativa de desarrolladores. El hito queda como uno de los fiascos más visibles del ciclo: mucha financiación, una promesa enorme y adopción real limitada.
 
 ## ★★ Q2 2021: GameFi y play-to-earn
 
 Axie Infinity populariza el modelo play-to-earn, especialmente en países con salarios bajos y alta adopción digital. El fenómeno mezcla juego, trabajo, especulación y economías tokenizadas, pero su sostenibilidad depende de flujos constantes de nuevos usuarios. El modelo alcanzó su apogeo especulativo durante el Q3 de 2021 y colapsó en el Q1 de 2022, cuando los flujos de nuevos jugadores se detuvieron y los tokens del ecosistema se desplomaron, dejando el play-to-earn sin viabilidad como modelo económico masivo.
 
-## ★★ Q3 2021: Auge de Solana, Avalanche y las cadenas alternativas
+## ★★ Q3 2021: Auge de las L1 alternativas a Ethereum
 
-El alto coste de Ethereum impulsa el crecimiento de cadenas de capa 1 como Solana, Avalanche, Terra, Fantom y Binance Smart Chain. La narrativa multicadena gana fuerza, pero también crecen los riesgos de puentes, validadores más concentrados y ecosistemas fragmentados. El pico de este ciclo se situó en el Q4 de 2021, cuando la mayoría de estas redes alcanzaron sus máximos históricos de capitalización y actividad. El primer ciclo de la narrativa multicadena se dio por agotado hacia el Q2 de 2022: el colapso de Terra arrastró a uno de sus ecosistemas más grandes y el mercado bajista sometió al resto a una prueba de estrés que muchos no superaron, dejando solo a un puñado de cadenas con actividad sostenida.
+El alto coste de Ethereum empuja a usuarios y protocolos hacia L1 que prometen más velocidad y comisiones bajas, muchas veces con una tesis monolítica: escalar ejecutándolo todo en una sola cadena. Solana, Avalanche, Binance Smart Chain, Fantom y Terra viven su gran auge durante 2021, aunque no todas siguen el mismo camino: Terra era una L1 soberana centrada en el ecosistema UST/Luna y colapsa en 2022, mientras Solana, Avalanche y BNB Chain conservan comunidades y actividad, aunque con mucha menos euforia. Fantom pierde bastante tracción. Lo que termina no son las L1 alternativas, sino el primer ciclo de la tesis de que una cadena más rápida que Ethereum bastaría para absorber el mercado.
 
 ## ★★★ Agosto 2021: Arbitrum One abre el liderazgo de las capas 2
 
 Offchain Labs abre Arbitrum One al público, un rollup optimista que ejecuta transacciones fuera de la cadena principal y publica los datos en Ethereum heredando su seguridad. Arbitrum se convertirá en la capa 2 con mayor liquidez y actividad del ecosistema y lideró el valor total bloqueado entre las L2 durante años, base de buena parte del DeFi posterior a 2021 y referencia del enfoque rollup-centric que Ethereum adopta formalmente como hoja de ruta.
 
-## ★★★ 2021: La crisis sistémica de los puentes cross-chain
+## ★★★ Agosto 2021: La crisis sistémica de los puentes cross-chain
 
-Los puentes cross-chain acumulan miles de millones en valor bloqueado como infraestructura crítica para mover activos entre redes. En menos de doce meses, Poly Network, Wormhole, Ronin, Harmony y Nomad son comprometidos por un total superior a los dos mil millones de dólares. Los ataques se extendieron desde el hackeo de Poly Network en agosto de 2021 hasta el saqueo de Nomad en agosto de 2022, cerrando un ciclo que forzó al ecosistema a replantearse la arquitectura de interoperabilidad. El patrón revela un problema estructural: los puentes concentran riesgo extremo al requerir contratos complejos que coordinan estados entre cadenas diferentes, con superficies de ataque que crecen exponencialmente con la sofisticación del protocolo.
-
-## ★★ Agosto 2021: Hackeo de Poly Network
-
-Un atacante explota Poly Network y mueve más de seiscientos millones de dólares entre varias cadenas. La mayor parte de los fondos se devuelve, pero el evento revela la fragilidad de los puentes cross-chain.
+La crisis sistémica de los puentes cross-chain empieza con el hackeo de Poly Network y expone una debilidad central de la infraestructura multicadena. En menos de un año, Wormhole, Ronin, Harmony y Nomad también son comprometidos, con pérdidas acumuladas superiores a los dos mil millones de dólares. Esa primera racha de ataques instala el problema en el centro del debate, pero no lo resuelve.
 
 ## ★★ Agosto 2021: EIP-1559 y la narrativa del ultrasound money
 
-Ethereum activa EIP-1559, que quema una parte de las comisiones de transacción. Bajo ciertas condiciones, la emisión de ether se vuelve deflacionaria. Nace la narrativa del ultrasound money, presentando al ether como un activo más escaso que el bitcoin. La narrativa sigue viva pero se debilitó desde 2022: tras The Merge la oferta de ether solo es deflacionaria cuando la actividad y las comisiones son altas, y la migración de la actividad a las capas 2 redujo la quema en la red principal, devolviendo al ether a una emisión ligeramente inflacionaria en periodos de baja demanda.
+EIP-1559 introdujo la quema parcial de comisiones en Ethereum y abrió la narrativa del ultrasound money, según la cual el ether podía convertirse en un activo monetario superior a bitcoin. La tesis surgió como respuesta al concepto de Sound Money asociado a Bitcoin y sostenía que la combinación de baja emisión y quema permanente de ETH haría al activo progresivamente más escaso, una idea reforzada después por The Merge. La narrativa alcanzó gran popularidad durante el mercado alcista de 2021-2022, pero perdió fuerza en los años posteriores al comprobarse que la reducción de la oferta dependía del nivel de actividad de la red principal, afectado por el desplazamiento de uso hacia las L2, y no constituía una característica permanente del protocolo.
 
 ## ★★★ Septiembre 2021: El Salvador adopta Bitcoin como moneda de curso legal
 
-El Salvador convierte Bitcoin en moneda de curso legal junto al dólar estadounidense. Es el primer país en hacerlo. La decisión provoca entusiasmo, críticas internas, tensiones con organismos financieros internacionales y un debate sobre adopción forzada frente a soberanía monetaria.
+El Salvador convierte Bitcoin en moneda de curso legal junto al dólar estadounidense. Es el primer país en hacerlo. La decisión provoca entusiasmo, críticas internas, tensiones con organismos financieros internacionales y un debate sobre adopción forzada frente a soberanía monetaria. A comienzos de 2025, tras un acuerdo con el FMI, el país reduce el alcance de la ley y vuelve voluntaria la aceptación de Bitcoin, desplazando el experimento desde moneda de uso cotidiano hacia reserva estatal y símbolo político.
 
 ## ★ Octubre 2021: Facebook se rebautiza como Meta
 
@@ -440,29 +434,27 @@ Mark Zuckerberg anuncia que Facebook cambia su nombre corporativo a Meta y apues
 
 Impulsada por el cambio de nombre de Meta, estalla la narrativa del metaverso como el próximo internet inmersivo y económico. Decentraland y The Sandbox venden terrenos virtuales por cifras de seis dígitos, marcas globales abren tiendas y sedes digitales, y proyectos como Otherside, de Yuga Labs, levantan cientos de millones en ventas de parcelas. La promesa es una economía digital de propiedad, avatares e identidad online tokenizada. La narrativa se desinfló con rapidez durante el mercado bajista de 2022 y se considera prácticamente agotada hacia el Q1 de 2023, cuando los precios de los terrenos virtuales se desplomaron, la actividad de usuarios cayó a mínimos y la atención del sector migró hacia la inteligencia artificial.
 
-## ★★★ Noviembre 2021: Bitcoin alcanza los sesenta y nueve mil dólares
+## ★★★ Noviembre 2021: Bitcoin alcanza los 69 mil dólares
 
-El precio de Bitcoin marca su máximo histórico el diez de noviembre. La capitalización total del mercado cripto supera los tres billones de dólares.
+El precio de Bitcoin marca su máximo histórico el diez de noviembre. La capitalización total del mercado cripto supera los 3 millones de millones de dólares.
 
-## ★★★ Noviembre 2021: Taproot, la mayor actualización de Bitcoin desde SegWit
+## ★★ Noviembre 2021: Taproot mejora privacidad y eficiencia en Bitcoin
 
-Bitcoin activa Taproot, su actualización más importante desde SegWit y fruto de años de investigación y de un raro consenso casi unánime entre desarrolladores y mineros. Introduce las firmas Schnorr, que permiten agregar varias firmas en una sola, y la estructura MAST junto con el lenguaje Tapscript, que comprime las condiciones de gasto y solo revela la rama efectivamente utilizada. El resultado combina mejoras simultáneas en privacidad, eficiencia y coste: transacciones complejas como las multifirma o los contratos de Lightning resultan indistinguibles de un pago ordinario, abaratando comisiones y reforzando la confidencialidad. Taproot pasa relativamente desapercibida en el momento por su carácter técnico, pero amplía silenciosamente la capacidad de expresión de Bitcoin y sienta las bases que años después harán posibles innovaciones como los Ordinals, los BRC-20 y los Runes.
+Bitcoin activa Taproot, su actualización más importante desde SegWit. La mejora incorpora firmas Schnorr y Tapscript para hacer más eficientes y privadas las transacciones complejas, como multifirmas y canales de Lightning, sin convertir Bitcoin en una plataforma generalista de smart contracts. Su impacto inicial fue discreto, pero facilitó años después experimentos como Ordinals, BRC-20 y Runes.
 
 ## ★ Noviembre 2021: ConstitutionDAO y la cultura DAO
 
 Miles de personas coordinan fondos para intentar comprar una copia original de la Constitución de Estados Unidos. Aunque pierden la subasta, el episodio convierte a las DAO en fenómeno cultural y muestra el poder de coordinación de comunidades online con tesorerías compartidas. El experimento se cerró en el mismo noviembre de 2021: tras perder la puja, la DAO devolvió los fondos a sus contribuyentes y se disolvió pocas semanas después, dejando un legado más cultural que operativo.
 
-## ★ Noviembre 2021: Parachain auctions y crowdloans en Polkadot
-
-Polkadot inaugura subastas de parachains donde proyectos compiten por slots bloqueando DOT, muchas veces con apoyo de comunidades mediante crowdloans. La mecánica convierte la interoperabilidad en un mercado de acceso a seguridad compartida y marca uno de los experimentos más ambiciosos de financiación comunitaria post-ICO. El modelo perdió relevancia a lo largo de 2023, cuando el interés por los slots se enfrió, muchos crowdloans no recuperaron su valor y Polkadot reorientó su arquitectura hacia un esquema de coretime más flexible que sustituyó a las subastas.
-
-## ★ Q3 2021–2022: DeFi 2.0, OlympusDAO y la narrativa POL
+## ★★ Q3 2021–2022: DeFi 2.0, OlympusDAO y la narrativa POL
 
 OlympusDAO populariza la Protocol Owned Liquidity, conocida como POL, una estrategia donde el protocolo intenta poseer su propia liquidez en vez de alquilarla con recompensas temporales. Tokemak y Fei exploran ideas cercanas para dirigir o estabilizar liquidez. La narrativa DeFi 2.0 intenta corregir los costes del liquidity mining, aunque muchos modelos terminan mostrando fragilidad ante caídas de mercado. La fragilidad quedó expuesta durante el mercado bajista de 2022, cuando los colapsos encadenados de Terra, Celsius y FTX arrastraron la liquidez que sostenía estos modelos, y la mayoría de los proyectos de la narrativa DeFi 2.0 dejaron de tener relevancia operativa.
 
 ## ★★ Q4 2021: La Curve War
 
-Curve Finance se convierte en el protocolo clave para el intercambio de stablecoins. Controlar Curve significa controlar el flujo de liquidez de DeFi. Convex Finance agrega poder de voto y estalla una guerra de gobernanza entre protocolos que compiten por dirigir las emisiones de CRV a sus pools. La intensidad de la guerra se desvaneció hacia finales de 2022, cuando el mercado bajista y los colapsos de Terra, Celsius y FTX drenaron la liquidez en disputa y redujeron drásticamente el valor de controlar las emisiones de CRV.
+Curve Finance concentraba el grueso del intercambio de stablecoins en DeFi, y sus emisiones de CRV eran el mecanismo que decidía qué pools atraían más liquidez. Quien controlaba esas emisiones, controlaba el flujo de capital. Para tener poder de voto en Curve había que bloquear CRV hasta 4 años, lo que inmovilizaba capital. Esto abrió la puerta a protocolos como Convex, que permitían a usuarios pequeños agregar su veCRV y votar en bloque con más peso del que tendrían solos, a cambio de recompensas adicionales. Pronto otros protocolos como Yearn o Stake DAO hicieron lo mismo, desatando una guerra abierta por acumular veCRV y dirigir las emisiones hacia sus propios pools. La guerra se apagó a finales de 2022: los colapsos de Terra, Celsius y FTX drenaron la liquidez y las emisiones de CRV dejaron de ser un premio por el que valiera la pena pelear.
+
+[ha]
 
 ## ★★ Diciembre 2021: Optimism abre su mainnet al público
 
@@ -644,6 +636,10 @@ Ethereum activa Dencun, una actualización que introduce blobs para reducir cost
 
 BlackRock, la mayor gestora de activos del mundo, lanza BUIDL, un fondo tokenizado del mercado monetario que invierte en deuda pública estadounidense de corto plazo y reparte rendimiento diario directamente sobre Ethereum. Que el gestor más grande del planeta emita un producto regulado nativo en una cadena pública envía una señal inequívoca: la tokenización de activos del mundo real deja de ser un experimento de startups para convertirse en infraestructura financiera institucional. BUIDL se convierte rápidamente en el mayor fondo tokenizado del mercado y en la referencia de toda la narrativa RWA.
 
+## ★★★ Marzo–Abril 2024: La SEC investiga Ethereum como posible security
+
+La SEC intensifica una investigación para sostener que, tras The Merge y el paso a Prueba de Participación, ether podía tratarse como un valor financiero no registrado. La señal pública llega cuando la Fundación Ethereum elimina de su sitio el aviso de que no había recibido requerimientos de autoridades, lo que sugiere presión formal del regulador. Consensys responde en abril demandando a la SEC y acusándola de intentar regular Ethereum por la vía de la intimidación. El hito es crítico porque traslada el conflicto regulatorio desde tokens concretos, exchanges o aplicaciones hacia la capa base de Ethereum.
+
 ## ★★★ Abril 2024: Cuarto halving de Bitcoin
 
 La recompensa por bloque se reduce a tres punto ciento veinticinco bitcoins. El evento ocurre en un mercado ya marcado por ETFs, tesorerías corporativas y mayor presencia institucional.
@@ -663,6 +659,10 @@ El exchange japonés DMM Bitcoin pierde cerca de trescientos millones de dólare
 ## ★★ Mayo 2024: Aprobación de los ETFs de Ethereum al contado
 
 Estados Unidos aprueba ETFs de ether al contado. La decisión amplía el puente entre finanzas tradicionales y cripto más allá de Bitcoin, aunque también intensifica el debate sobre staking, centralización y naturaleza regulatoria del ether.
+
+## ★★★ Junio 2024: La SEC cierra la investigación sobre Ethereum 2.0
+
+Tras la aprobación de los ETFs de ether al contado, la SEC comunica el cierre de su investigación sobre Ethereum 2.0 y abandona, al menos en ese ciclo, la tesis de perseguir el activo nativo de Ethereum como security. El cierre no elimina la presión regulatoria sobre aplicaciones, intermediarios o servicios de staking, pero marca una frontera decisiva: atacar actores construidos sobre Ethereum no es lo mismo que declarar ilegal la capa base de la red.
 
 ## ★ Junio 2024: MiCA empieza a aplicarse a stablecoins
 
