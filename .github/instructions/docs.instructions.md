@@ -3,76 +3,19 @@ applyTo: "**/*.md"
 description: "Guía de estilo y estructura para documentación Markdown del proyecto. Usa cuando escribas, edites o revises archivos .md: idioma, formato narrativo, linting, enlaces, referencias académicas y convenciones de nombrado."
 ---
 
-# Documentation Guidelines for Markdown Files
+# Guías de documentación para archivos Markdown
 
-## Language and Content Standards
-
-- All explanations, descriptions, and texts must be written in Spanish (project's native language)
-- Use technical terms in English when they are industry standard (e.g., "smart contracts", "blockchain", "stack")
-- Maintain consistency between Spanish explanations and English technical terminology
-- File names must be in English and use kebab-case format (e.g., `smart-contracts-guide.md`, `installation-troubleshooting.md`)
-- Folder names should also follow kebab-case convention in English
-
-## Formatting and Narrative Style
-
-- Style: Maintain a clean and minimal documentation style. Explanations should be didactic and narrative, avoiding an overuse of lists. Prefer fluid text that guides the reader through concepts.
-- Headings: Use a proper hierarchy (#, ##, ###) but avoid excessive depth to keep the structure simple. All headings must be followed by a blank line.
-- Bold Formatting: Avoid using bold formatting (`**text**`). The only exception is for creating conceptual subgroups within a section using the format `**Title**:` followed by two line breaks to comply with linting rules.
-- Lists: Use lists sparingly, only for items that don't require narrative explanation (e.g., listing files or options). When used, ensure a blank line precedes the first item.
-- Code Blocks: Must not be indented and should use the appropriate language identifier (e.g., `bash`, `solidity`, `json`).
-- Tabs: Do not use tabs anywhere.
-- Linting: Follow markdownlint rules, such as ensuring no extra spaces in headings and surrounding code blocks with blank lines.
-
-## Structure Guidelines
-
-### For Stack Documentation (docs/stacks/**)
-
-- Follow the structure: Concepto → Instalación → Configuración → Uso → Ejemplos
-- Separate required tools from optional ones clearly
-- Include verification commands after installation steps
-- Provide troubleshooting sections when relevant
-- Link to official documentation when referencing external tools
-
-### For Installation Guides
-
-- Provide specific commands for Ubuntu (the project's target OS)
-- Include version verification steps after each installation
-- Group related installations logically
-- Explain what each tool does before installation instructions
-- Include common troubleshooting scenarios
-
-### For Best Practices Documentation
-
-- Focus on security implications for blockchain development
-- Include concrete code examples, not just theoretical explanations
-- Reference official standards (ERC-20, ERC-721, etc.) when applicable
-- Explain the "why" behind each recommendation
-
-## Code Examples Standards
-
-- Always specify the context where code should be executed
-- Include file paths when showing configuration files
-- Use realistic examples that match the project's tech stack
-- Provide complete command sequences, not partial snippets
-
-## Links and References
-
-- Internal Links: Use relative paths for internal documentation links.
-- External Links: Always verify external links are working and point to official sources. Prefer official documentation over third-party tutorials.
-- Academic References: For every new theoretical concept introduced, include a link to a relevant academic paper or authoritative technical article. If no academic paper exists, a relevant high-quality article is sufficient. This reference is only required on the first mention of the concept within the document.
-- Official Documentation: When referencing concrete tools, technologies, or examples (e.g., Hardhat, OpenZeppelin), always link to their official website.
-- Link Descriptions: Include link descriptions in Spanish, even if the target content is in English.
-
-## Technical Accuracy
-
-- Verify all commands work on Ubuntu before documenting them
-- Test installation procedures in clean environments when possible
-- Keep tool versions current and note when specific versions are required
-- Include compatibility information when relevant
-
-## Maintenance Guidelines
-
-- Update documentation immediately when underlying tools change
-- Mark deprecated practices clearly and provide migration paths
-- Keep examples aligned with the current project structure
-- Review and update external links periodically
+- Los nombres de archivo deben estar en inglés y usar formato kebab-case (p. ej., `smart-contracts-guide.md`, `installation-troubleshooting.md`)
+- Los nombres de carpeta también deben seguir la convención kebab-case en inglés
+- Encabezados: Usar una jerarquía adecuada (#, ##, ###) pero evitar una profundidad excesiva para mantener la estructura simple. Todos los encabezados deben ir seguidos de una línea en blanco.
+- Todas las explicaciones, descripciones y textos deben escribirse en español (idioma nativo del proyecto)
+- Usar términos técnicos en inglés cuando sean estándar de la industria (p. ej., "smart contracts", "blockchain", "stack")
+- La prosa narrativa es el estándar por defecto para el cuerpo de cada sección. No usar tablas o texto en negrita, y no recurrir a listas con viñetas o numeradas como atajo para lo que debería ser una explicación fluida. Las listas siguen siendo aceptables solo para elementos que no necesitan conexión narrativa (una lista de archivos, un conjunto de opciones) o para contenido que genuinamente no puede ser prosa (un bloque de código, un glosario).
+- Evitar emojis en la documentación.
+- Evitar aperturas pedantes que sepulten al lector en jerga antes de establecer contexto. Los documentos a menudo sirven a múltiples audiencias a la vez (curiosos del mercado retail, founders y ocasionalmente profesionales), por lo que un punto de entrada accesible importa incluso en material de profundidad técnica.
+- Explicar con lenguaje claro y términos simples. Claridad y precisión por encima de brevedad: no escribir denso, parco ni pedante. Preferir frases directas a construcciones recargadas.
+- Describir acciones concretas de actores, no procesos abstractos. Decir quién hace qué (el usuario deposita, el agente adelanta los fondos), no fórmulas vacías como "eso arranca el camino lento" que no dicen nada verificable.
+- Al explicar un mecanismo, un primer párrafo dice qué es y el siguiente recorre las interacciones. Ese recorrido es una secuencia concreta de quién hace qué, en orden y empezando por el usuario (con su dapp o wallet): quién crea la operación, a quién se manda, quién paga, quién inicia cada paso y quién liquida al final. Nombrar en cada paso el agente de ejecución que interviene, sin dejar acciones colgando de un "el sistema" o "el protocolo" sin sujeto.
+- No usar un término técnico (p. ej. "settlement canónico") sin explicarlo la primera vez que aparece, ahí mismo y en palabras simples. Si se usa una sigla, desarrollarla al introducirla.
+- Evitar metáforas imprecisas que falseen el mecanismo (p. ej. "los tokens viajan" cuando en realidad se bloquean en una cadena y se libera el equivalente en otra). Describir lo que ocurre de verdad.
+- Linting: Seguir las reglas de markdownlint, como asegurar que no haya espacios adicionales en los encabezados y rodear los bloques de código con líneas en blanco.
