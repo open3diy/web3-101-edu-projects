@@ -68,7 +68,7 @@ Estos protocolos, que veremos en otros capítulos, son variados y está diseñad
 
 Para hacer el sistema sostenible, Los participantes de la red hacen un trabajo porque son parte interesada.
 
-Lo son por diferentes motivos, pero la más común es por el interés económico, donde es más beneficios aportar seguridad y honestidad que delinquir.
+Lo son por diferentes motivos, pero la más común es por el interés económico, donde es más beneficios aportar seguridad y honestidad que delinquir. Esto es teoría de juegos y se articula con el token de la red, que sirve como incentivo a los participantes, los cuales a cambio aportan seguridad.
 
 Por eso se dice que la seguridad de una red descentralizada basada en criptomonedas es seguridad criptoeconómica, porque es la propia [criptoeconomía](https://en.wikipedia.org/wiki/Cryptoeconomics) y su beneficio la que da interés a los participantes en generar seguridad a la red.
 

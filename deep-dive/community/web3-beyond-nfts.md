@@ -49,8 +49,10 @@ Este relato es simple porque la solución debe ser simple. No estamos hablando d
 
 Estamos trabajando en ello. Es complejo y queda camino por recorrer, pero la idea es tan potente precisamente porque es sencilla: **Si el sistema no te protege, el incentivo económico del token lo hará.**
 
-**Insto a la audiencia:** No dejéis morir la Web3. No os distraigáis con el ruido. Su verdadero potencial no está en el metaverso, sino en la Sprinter que no arranca y en el mecánico que hoy se siente solo frente al gigante. La Web3 es la herramienta para que el pequeño vuelva a tener voz.
+**Insto a la audiencia:** No dejéis morir la Web3. No os distraigáis con el ruido. Su verdadero potencial no está en el metaverso, sino en la Sprinter que no arranca y en el mecánico que hoy se siente solo frente al gigante. Web3 es la herramienta para que el pequeño vuelva a tener voz.
 
 ---
 
 *Basado en el análisis del caso de Talleres ARG en carwow.es*
+
+---
